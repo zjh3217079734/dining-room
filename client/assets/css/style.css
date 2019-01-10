@@ -1829,7 +1829,9 @@ textarea:focus {
 .main-menu ul li a {
     color: #fff;
     display: inline-block;
-    font-size: 14px;
+    font-size: 18px;
+    font-family: Cursive sans-serif;
+    font-weight:bolder;
     font-weight: 500;
     line-height: 60px;
     text-transform: uppercase;

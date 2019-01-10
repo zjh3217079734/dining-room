@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Fudink - Food & Drink eCommerce Bootstrap4 Template</title>
+        <title>非食不可</title>
         <meta name="description" content="">
         <meta name="robots" content="noindex, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,13 +27,14 @@
     </head>
     <body>
         <!-- header start -->
+        <!-- 下面这个注释是上面的头部,一个黑框 -->
         <header class="header-area">
-            <div class="header-top black-bg">
+            <!-- <div class="header-top black-bg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-12 col-sm-4">
                             <div class="welcome-area">
-                                <p>Default welcome msg! </p>
+                                <p>非食不可</p>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-12 col-sm-8">
@@ -68,7 +69,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <!-- 上面是黑框 -->
             <div class="header-middle">
                 <div class="container">
                     <div class="row">
@@ -87,28 +89,32 @@
                                             <i class="icon-user icons"></i>
                                         </div>
                                         <div class="login-text-content">
-                                            <p>Register <br> or <span>Sign in</span></p>
+                                            <p>登陆 <br> or <span>注册</span></p>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="header-wishlist">
-                                    <a href="wishlist.html">
+                                    <!-- 注释心愿单 -->
+                                    <!-- <a href="wishlist.html">
                                         <div class="header-icon-style">
                                             <i class="icon-heart icons"></i>
                                         </div>
                                         <div class="wishlist-text">
                                             <p>Your <br> <span>Wishlist</span></p>
                                         </div>
-                                    </a>
+                                    </a> -->
                                 </div>
                                 <div class="header-cart">
                                     <a href="#">
                                         <div class="header-icon-style">
                                             <i class="icon-handbag icons"></i>
-                                            <span class="count-style">02</span>
+                                            <!-- 商品数量标识 -->
+                                            <span class="count-style">3+</span>
+                                            <!-- 商品数量标识,数量后面跟+ -->
                                         </div>
                                         <div class="cart-text">
-                                            <span class="digit">My Cart</span>
+                                            <span class="digit">购物车</span>
+                                            <!-- 当前购物车的统计 -->
                                             <span class="cart-digit-bold">$209.00</span>
                                         </div>
                                     </a>
@@ -116,23 +122,24 @@
                                         <ul>
                                             <li class="single-shopping-cart">
                                                 <div class="shopping-cart-img">
-                                                    <a href="#"><img alt="" src="assets/img/cart/cart-1.jpg"></a>
+                                                    <a href="cart-page.html"><img alt="" src="assets/img/cart/cart-1.jpg"></a>
                                                 </div>
                                                 <div class="shopping-cart-title">
-                                                    <h4><a href="#">Phantom Remote </a></h4>
+                                                    <h4><a href="cart-page.html">Phantom Remote </a></h4>
                                                     <h6>Qty: 02</h6>
                                                     <span>$260.00</span>
                                                 </div>
                                                 <div class="shopping-cart-delete">
+                                                    <!-- ion是删除图标,做成动态删除数据就好了 -->
                                                     <a href="#"><i class="ion ion-close"></i></a>
                                                 </div>
                                             </li>
                                             <li class="single-shopping-cart">
                                                 <div class="shopping-cart-img">
-                                                    <a href="#"><img alt="" src="assets/img/cart/cart-2.jpg"></a>
+                                                    <a href="cart-page.html"><img alt="" src="assets/img/cart/cart-2.jpg"></a>
                                                 </div>
                                                 <div class="shopping-cart-title">
-                                                    <h4><a href="#">Phantom Remote</a></h4>
+                                                    <h4><a href="cart-page.html">Phantom Remote</a></h4>
                                                     <h6>Qty: 02</h6>
                                                     <span>$260.00</span>
                                                 </div>
@@ -146,8 +153,10 @@
                                             <h4>Total : <span class="shop-total">$260.00</span></h4>
                                         </div>
                                         <div class="shopping-cart-btn">
-                                            <a href="cart-page.html">view cart</a>
-                                            <a href="checkout.html">checkout</a>
+                                            <!-- <a href="cart-page.html">view cart</a> -->
+                                            <!-- 这个我也不知道怎么回事,href是不生效的,所以只能用onclick -->
+                                            <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">view cart</a>
+                                            <a onclick="window.location = 'checkout.html'" href="javascript:void(0);">checkout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -163,19 +172,28 @@
                             <div class="main-menu">
                                 <nav>
                                     <ul>
-                                        <li class="top-hover"><a href="index.html">home <i class="ion-chevron-down"></i></a>
+                                        <li>
+                                        <a href="index.html">home </a>
+                                        </li>
+                                        <!-- <li><a href="shop.html">首页</a></li> -->
+                                        <!-- <li class="top-hover">
                                             <ul class="submenu">
                                                 <li><a href="index.html">home version 1</a></li>
                                                 <li><a href="index-2.html">home version 2</a></li>
                                             </ul>
+                                        </li> -->
+                                        <li class="mega-menu-position top-hover">
+                                             <a href="shop.html">shop          <!-- <i class="ion-chevron-down"></i> -->
+                                            </a>
                                         </li>
-                                        <li><a href="about-us.html">about</a></li>
-                                        <li class="mega-menu-position top-hover"><a href="shop.html">shop <i class="ion-chevron-down"></i></a>
-                                            <ul class="mega-menu">
+                                    <li class="mega-menu-position top-hover">
+                                        <a href="about-us.html">about</a></li>
+                                            <!-- <ul class="mega-menu">
                                                 <li>
                                                     <ul>
-                                                        <li class="mega-menu-title"><a href="#">Categories 01</a></li>
-                                                        <li><a href="shop.html">salad</a></li>
+                                                        <li class="mega-menu-title">
+                                                            <a href="#">Categories 01</a></li>
+                                                            <li><a href="shop.html">salad</a></li>
                                                         <li><a href="shop.html">sandwich</a></li>
                                                         <li><a href="shop.html">bread</a></li>
                                                         <li><a href="shop.html">steak</a></li>
@@ -216,8 +234,8 @@
                                                         <li><a href="shop.html">hamburger</a></li>
                                                     </ul>
                                                 </li>
-                                            </ul>
-                                        </li>
+                                            </ul> -->
+                                        <!-- </li> -->
                                         <li class="top-hover"><a href="blog-rightsidebar.html">blog <i class="ion-chevron-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="blog.html">Blog No sidebar</a></li>
@@ -242,10 +260,10 @@
                                                 <li><a href="testimonial.html">Testimonials</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">contact us</a></li>
-                                        <li><a href="shop.html">burger</a></li>
-                                        <li><a href="shop.html">pizza</a></li>
-                                        <li><a href="shop.html">cold drink</a></li>
+                                        <li><a href="contact.html">关于我们</a></li>
+                                        <!-- <li><a href="shop.html">首页</a></li> -->
+                                        <!-- <li><a href="shop.html">pizza</a></li> -->
+                                        <!-- <li><a href="shop.html">cold drink</a></li> -->
                                     </ul>
                                 </nav>
                             </div>
@@ -428,7 +446,9 @@
                                                 </div>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
                                                 <div class="shop-list-cart-wishlist">
+                                                    <!-- 喜欢 -->
                                                     <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
+                                                    <!-- 添加到购物车 -->
                                                     <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
                                                     <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
                                                         <i class="ion-android-open"></i>
@@ -1056,6 +1076,7 @@
                                         <img src="assets/img/logo/footer-logo.png" alt="">
                                     </a>
                                 </div>
+                                <!-- 这里写一段台词 -->
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidi ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
                                 <div class="payment-img">
                                     <a href="#">
@@ -1214,8 +1235,10 @@
                                         </div>
                                     </div>
                                     <div class="product-quantity">
+                                        <!-- 商品详细信息页面 -->
                                         <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
+                                            <!-- 商品数量 -->
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
                                         </div>
                                         <button>Add to cart</button>
                                     </div>
