@@ -1,0 +1,46 @@
+/* 1.设置默认样式 */
+body,h2,p{
+	margin: 0;
+	color: #999;
+	
+}
+a{
+	text-decoration: none;
+}
+/* 2.外部容器 */
+#container{
+		width:990px;
+		margin: 0 auto;
+}
+/*3. 顶部标题 */
+h2{
+	font-weight: normal;
+	border-bottom: 1px solid #ccc;
+	padding: 20px 0;
+	margin-bottom: 30px;
+}
+#main{
+	/* 解决子元素浮动造成的父元素高度为0 */
+	overflow: hidden;
+}
+/* 左列 */
+#main .left{
+	float: left;
+	position: relative;
+}
+.left a{
+	position: absolute;
+	right: 173px;
+	bottom: 20px;
+	width: 150px;
+	height: 45px;
+	border: 1px solid #64a131;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 45px;
+	color: #64a131;
+	font-size: 20px;
+}
+#main .right{
+	float: right;
+}
