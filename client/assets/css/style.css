@@ -102,7 +102,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Rubik', sans-serif;
+    font-family: '微软雅黑', sans-serif;
     color: #2f333a;
     margin-top: 0px;
     font-style: normal;
@@ -154,7 +154,7 @@ p {
     line-height: 24px;
     color: #242424;
     margin-bottom: 15px;
-    font-family: 'Rubik', sans-serif;
+    font-family: '微软雅黑', sans-serif;
 }
 
 hr {
@@ -2455,7 +2455,7 @@ textarea:focus {
 /* slider style */
 .slider-content h3 {
     color: #fff;
-    font-family: "Playfair Display", serif;
+    font-family: "微软雅黑", serif;
     font-size: 24px;
     font-weight: bold;
     margin: 0;
@@ -2463,7 +2463,7 @@ textarea:focus {
 
 .slider-content h1 {
     color: #fff;
-    font-family: "Playfair Display", serif;
+    font-family: "微软雅黑", serif;
     font-size: 48px;
     font-weight: bold;
     margin: 0 0 25px;
@@ -2961,7 +2961,7 @@ textarea:focus {
 
 .footer-title>h4 {
     color: #fff;
-    font-size: 14px;
+    font-size: 24px;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -3380,10 +3380,11 @@ product-quantity {
 .breadcrumb-content li {
     color: #e02c2b;
     display: inline-block;
-    font-size: 14px;
+    font-size: 24px;
     margin-right: 28px;
     position: relative;
     font-weight: 500;
+	font-family: "微软雅黑";
 }
 
 .breadcrumb-content li a {
@@ -3399,11 +3400,11 @@ product-quantity {
     content: "";
     height: 2px;
     position: absolute;
-    right: -22px;
-    top: 10px;
+    right: -28px;
+    top: 18px;
     transform: rotate(-67deg);
     transition: all 0.4s ease 0s;
-    width: 12px;
+    width: 24px;
 }
 
 .breadcrumb-content li:last-child::before {
@@ -4453,7 +4454,7 @@ h4.shop-sidebar-title {
 .table-content table th {
     border-top: medium none;
     color: #2f333a;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     padding: 21px 45px 22px;
     text-align: center;
@@ -4535,7 +4536,7 @@ h4.shop-sidebar-title {
 }
 
 h3.page-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     margin: 0 0 25px;
 }
@@ -4776,7 +4777,7 @@ h4.grand-totall-title span {
     border-radius: 3px;
     color: #fff;
     display: block;
-    font-size: 14px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 1;
     padding: 18px 10px 19px;
@@ -4977,7 +4978,7 @@ h5.panel-title a::before {
     color: #242424;
     content: "";
     display: inline-block;
-    font-family: "Ionicons";
+    font-family: "微软雅黑";
     font-size: 15px;
     position: absolute;
     right: 10px;
@@ -4988,7 +4989,7 @@ h5.panel-title a.collapsed::after {
     color: #666666;
     content: "";
     display: inline-block;
-    font-family: "Ionicons";
+    font-family: "微软雅黑";
     font-size: 12px;
     position: absolute;
     right: 10px;
