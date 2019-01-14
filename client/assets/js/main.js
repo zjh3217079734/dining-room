@@ -264,7 +264,7 @@
         if ($button.text() === "+") {
             var newVal = parseFloat(oldValue) + 1;
         } else {
-            // Don't allow decrementing below zero
+            // 不允许小于零
             if (oldValue > 0) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
