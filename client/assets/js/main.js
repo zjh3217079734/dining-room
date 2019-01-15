@@ -1,19 +1,19 @@
-(function($) {
+(function ($) {
     'use strict';
-    
+
     /* Cart Currency Search toggle active */
-    $(".header-cart a").on("click", function(e) {
+    $(".header-cart a").on("click", function (e) {
         e.preventDefault();
         $(this).parent().find('.shopping-cart-content').slideToggle('medium');
     })
-    
+
     /*--
     Menu Stick
     -----------------------------------*/
     var header = $('.transparent-bar');
     var win = $(window);
 
-    win.on('scroll', function() {
+    win.on('scroll', function () {
         var scroll = win.scrollTop();
         if (scroll < 200) {
             header.removeClass('stick');
@@ -21,14 +21,14 @@
             header.addClass('stick');
         }
     });
-    
+
     /* jQuery MeanMenu */
     $('#mobile-menu-active').meanmenu({
         meanScreenWidth: "991",
         meanMenuContainer: ".mobile-menu-area .mobile-menu",
     });
-    
-    
+
+
     /* Slider active */
     $('.slider-active').owlCarousel({
         loop: true,
@@ -51,7 +51,7 @@
             }
         }
     })
-    
+
     /* Best selling active */
     $('.product-slider-active').owlCarousel({
         loop: true,
@@ -110,9 +110,9 @@
             }
         }
     })
-    
-    
-    
+
+
+
     /* Testimonial active */
     $('.testimonial-active').owlCarousel({
         loop: true,
@@ -165,20 +165,20 @@
             }
         }
     })
-    
-    
+
+
     /*---------------------
         Countdown
     --------------------- */
-    $('[data-countdown]').each(function() {
+    $('[data-countdown]').each(function () {
         var $this = $(this),
             finalDate = $(this).data('countdown');
-        $this.countdown(finalDate, function(event) {
+        $this.countdown(finalDate, function (event) {
             $this.html(event.strftime('<span class="cdown day">%-D <p>Days</p></span> <span class="cdown hour">%-H <p>Hour</p></span> <span class="cdown minutes">%M <p>Min</p></span class="cdown second"> <span>%S <p>Sec</p></span>'));
         });
     });
-    
-    
+
+
     /*--------------------------
         ScrollUp
     ---------------------------- */
@@ -188,27 +188,27 @@
         scrollSpeed: 900,
         animation: 'fade'
     });
-    
-    
+
+
     /*---------------------
         Price slider
     --------------------- */
     var sliderrange = $('#slider-range');
     var amountprice = $('#amount');
-    $(function() {
+    $(function () {
         sliderrange.slider({
             range: true,
             min: 0,
             max: 1200,
             values: [0, 800],
-            slide: function(event, ui) {
+            slide: function (event, ui) {
                 amountprice.val("$" + ui.values[0] + " - $" + ui.values[1]);
             }
         });
         amountprice.val("$" + sliderrange.slider("values", 0) +
             " - $" + sliderrange.slider("values", 1));
     });
-    
+
     /*---------------------
         Product dec slider
     --------------------- */
@@ -220,45 +220,46 @@
         prevArrow: '<span class="product-dec-icon product-dec-prev"><i class="fa fa-angle-left"></i></span>',
         nextArrow: '<span class="product-dec-icon product-dec-next"><i class="fa fa-angle-right"></i></span>',
         responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 479,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
             }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 479,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+        }
         ]
     });
-    
+
     /*------ Wow Active ----*/
     new WOW().init();
-    
+
     /* counterUp */
     $('.count').counterUp({
         delay: 10,
         time: 1000
     });
-    
+
     /*----------------------------
     	Cart Plus Minus Button
     ------------------------------ */
     var CartPlusMinus = $('.cart-plus-minus');
+
     CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
     CartPlusMinus.append('<div class="inc qtybutton">+</div>');
-    $(".qtybutton").on("click", function() {
+    $(".qtybutton").on("click", function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
         if ($button.text() === "+") {
@@ -272,8 +273,13 @@
             }
         }
         $button.parent().find("input").val(newVal);
+        // 60是单价,后期换
+        $("#xiaoji").html(newVal *60)
+        $("#xiaoji1").val = newVal *60
+        // $("#xiaoji2").html(newVal *70)
+
     });
-    
+
     /*-------------------------------------
         Thumbnail Product activation
     --------------------------------------*/
@@ -301,21 +307,21 @@
             }
         }
     })
-    $('.thumb-menu a').on('click', function() {
+    $('.thumb-menu a').on('click', function () {
         $('.thumb-menu a').removeClass('active');
     })
-    
-    
+
+
     /*---------------------
     shop grid list
     --------------------- */
-    $('.view-mode li a').on('click', function() {
+    $('.view-mode li a').on('click', function () {
         var $proStyle = $(this).data('view');
         $('.view-mode li').removeClass('active');
         $(this).parent('li').addClass('active');
         $('.product-view').removeClass('product-grid product-list').addClass($proStyle);
     })
-    
+
     /* blog gallery slider */
     $('.blog-gallery-slider').owlCarousel({
         loop: true,
@@ -338,7 +344,7 @@
             }
         }
     })
-    
+
     /*--------------------------
         Product Zoom
 	---------------------------- */
@@ -351,8 +357,8 @@
         zoomType: "inner",
         cursor: "crosshair"
     });
-    
-    
+
+
     $('.testimonial-2-active').owlCarousel({
         loop: true,
         margin: 20,
@@ -386,12 +392,12 @@
             }
         }
     });
-    
-    
+
+
     /* magnificPopup video popup */
     $('.video-popup').magnificPopup({
         type: 'iframe'
     });
-    
+
 
 })(jQuery);
