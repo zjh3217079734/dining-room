@@ -253,7 +253,8 @@
     });
 
     /*----------------------------
-    	Cart Plus Minus Button
+        Cart Plus Minus Button
+        购物车增减及小计功能函数
     ------------------------------ */
     var CartPlusMinus = $('.cart-plus-minus');
 
@@ -272,13 +273,39 @@
                 newVal = 1;
             }
         }
+        //文本框赋值
         $button.parent().find("input").val(newVal);
-        // 60是单价,后期换
-        $("#xiaoji").html(newVal *60)
-        $("#xiaoji1").val = newVal *60
-        // $("#xiaoji2").html(newVal *70)
+        //取出单价
+        var priceStr = $(this).parent(".cart-plus-minus").parent(".product-quantity").prev('.product-price-cart').find(".amount").html();
+        // console.log(priceStr)
+        var price = Number(priceStr.substring(1));
+        //算小计
+        var xiaoji = newVal * price
+        //小计赋值
+        $(this).parent(".cart-plus-minus").parent(".product-quantity").next(".product-subtotal").html("&yen;" + xiaoji);
 
+        countItem();
     });
+     /*----------------------------
+        Cart count
+        购物统计数量及总价函数
+    ------------------------------ */
+    function countItem(){
+        var count = 0 // 总数
+        var allPrice = 0 //总价
+        $(".product-quantity").each(function(){
+            count +=
+            Number($(this).find(".cart-plus-minus-box").val());
+            // console.log(count)
+            var priceStr = $(this).next(".product-subtotal").html();
+            var priceNum = Number(priceStr.substring(1));
+            allPrice += priceNum
+            // console.log(allPrice)
+        })
+        $(".grand-totall-number span").html(count);
+		$(".grand-totall-title span").html("&yen;" + allPrice);
+    }
+
 
     /*-------------------------------------
         Thumbnail Product activation
