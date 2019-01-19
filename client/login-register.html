@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <link rel="stylesheet" href="assets/css/login-register.css">
+
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -200,6 +203,16 @@
                                                     <label>记住密码</label>
                                                     <a href="#">忘记密码？</a>
                                                 </div>
+
+
+                                                <div class="verification-content" style=""> 
+                                                    <span>*</span>验证码：<input type="text" class="verification-input">
+                                                    <img id="verification-code" src="C:/">
+                                                    <span>看不清？</span>
+                                                    <span style="color:#37CAF2" id="changeImgCode">换一张</span>
+                                                </div> 
+
+                                                
                                                 <button type="submit"><span>登录</span></button>
                                             </div>
                                         </form>
@@ -213,6 +226,20 @@
                                             <input type="text" name="user-name" placeholder="用户名">
                                             <input type="password" name="user-password" placeholder="密码">
                                             <input name="user-email" placeholder="邮箱" type="email">
+
+
+                                        <div class="verification-msg">
+                                            <div class="verification-PhoneNum">
+                                                <input type="text" name="number" placeholder="手机号码">
+                                                <button type="button" class="send-verificationCode">获取短信验证码</button>
+                                            </div>
+                                            <div class="verification-CodeNum">
+                                                <input type="text" name="verifyCode" placeholder="验证码">
+                                                <button type="button" class="sub-btn">提交</button>
+                                            </div>
+                                        </div>
+
+
                                             <div class="button-box">
                                                 <button type="submit"><span>注册</span></button>
                                             </div>
