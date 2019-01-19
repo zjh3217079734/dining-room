@@ -292,11 +292,26 @@
    Cart remonve
    购物车删除
    ------------------------------ */
-    $(".product-remove").click(function (){
-        $(this).parent().remove()
-		countItem();
+    $(".fa-times").click(function () {
+        $(this).parent().parent().parent().remove()
+        countItem();
     })
+    /*----------------------------
+  Cart note
+  购物车备注
+  ------------------------------ */
+    var writeNote = false
+    $(".fa-pencil").click(function () {
+        writeNote = !writeNote
+        //    window.writeNote = writeNote
+        if (writeNote) {
+            $(this).parent().parent('.product-remove').append("<input class='beizhu' type='text' style='font-size:6px' value='备注:'>")
+        } else { $(this).parent().parent('.product-remove').find('.beizhu').remove() }
 
+    })
+    //    $(".fa-pencil").blur(function () {
+    //        writeNote = false
+    //    })
     /*----------------------------
         Cart count
         购物统计数量及总价函数
@@ -304,54 +319,82 @@
 
     function countItem() {
         var allPrice = 0;
+        window.allPrice = allPrice
         var count = 0 // 总数
         $(".product-quantity").each(function () {
             // dxk();
             count +=
-            Number($(this).find(".cart-plus-minus-box").val());
+                Number($(this).find(".cart-plus-minus-box").val());
             // console.log(count)
             var priceStr = $(this).next(".product-subtotal").html();
             var priceNum = Number(priceStr.substring(1));
             allPrice += priceNum
-    
+            window.allPrice = allPrice
         })
-        $(".grand-totall-number span").html(count);
+        $("#dbcj").each(function () {
+            if ($("input[name='dbcj']:checked").val() == "on") {
+                allPrice += 20;
+                // console.log(allPrice)
+            }
+        })
+        $("#kpf").each(function () {
+            if ($("input[name='kpf']:checked").val() == "on") {
+                allPrice += 30;
+            }
+        })
+        console.log(allPrice)
         $(".grand-totall-title span").html("&yen;" + allPrice);
-        
-    
-            /*----------------------------
-            Cart checkbox
-            购物车单选框
-            ------------------------------ */
-        var isChicked = false
-        var isChicked2 =false
-        $("#dbcj").click(function(){
-            console.log(allPrice)
-            isChicked = !isChicked
-            if(isChicked){
-                allPrice +=20;
-                $(".grand-totall-title span").html("&yen;" + allPrice);
-            }else{
-             //    $(this).removeAttr("checked")
-                allPrice -=20;
-                $(".grand-totall-title span").html("&yen;" + allPrice);
-            }
-        })
-        $("#kpf").click(function(){
-            console.log(allPrice)
-            isChicked2 = !isChicked2
-            if(isChicked2){
-                allPrice +=30;
-                $(".grand-totall-title span").html("&yen;" + allPrice);
-            }else{
-             //    $(this).removeAttr("checked")
-                allPrice -=30;
-                $(".grand-totall-title span").html("&yen;" + allPrice);
-            }
-        })
-        // console.log(allPrice)
+        $(".grand-totall-number span").html(count);
+        /*----------------------------
+        Cart checkbox
+        购物车单选框
+        不要把问题想得太复杂,就是加或者还原
+        ------------------------------ */
     }
-   
+    var isChicked = false
+    var isChicked2 = false
+    $("#dbcj").click(function () {
+        isChicked = !isChicked
+        if (isChicked) {
+            countItem()
+            // allPrice += 20;
+            // console.log($("input[name='dbcj']:checked").val())
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // console.log(allPrice)
+            // window.allPrice = allPrice
+        } else {
+            countItem()
+            //    $(this).removeAttr("checked")
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // allPrice -= 20;
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // console.log(allPrice)
+            // window.allPrice = allPrice
+
+        }
+    })
+    $("#kpf").click(function () {
+        // console.log(allPrice)
+        isChicked2 = !isChicked2
+        if (isChicked2) {
+            countItem()
+            // allPrice += 30;
+            // console.log(allPrice)
+            // window.allPrice = allPrice
+
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+        } else {
+            countItem()
+            //    $(this).removeAttr("checked")
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // allPrice -= 30;
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // window.allPrice = allPrice
+            // console.log(allPrice)
+        }
+    })
+
+
 
     /*-------------------------------------
         Thumbnail Product activation
