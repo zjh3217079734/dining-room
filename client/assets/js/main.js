@@ -1,4 +1,5 @@
 (function ($) {
+    countItem()
     'use strict';
 
     /* Cart Currency Search toggle active */
@@ -253,7 +254,8 @@
     });
 
     /*----------------------------
-    	Cart Plus Minus Button
+        Cart Plus Minus Button
+        购物车增减及小计功能函数
     ------------------------------ */
     var CartPlusMinus = $('.cart-plus-minus');
 
@@ -272,13 +274,127 @@
                 newVal = 1;
             }
         }
+        //文本框赋值
         $button.parent().find("input").val(newVal);
-        // 60是单价,后期换
-        $("#xiaoji").html(newVal *60)
-        $("#xiaoji1").val = newVal *60
-        // $("#xiaoji2").html(newVal *70)
+        //取出单价
+        var priceStr = $(this).parent(".cart-plus-minus").parent(".product-quantity").prev('.product-price-cart').find(".amount").html();
+        // console.log(priceStr)
+        var price = Number(priceStr.substring(1));
+        //算小计
+        var xiaoji = newVal * price
+        //小计赋值
+        $(this).parent(".cart-plus-minus").parent(".product-quantity").next(".product-subtotal").html("&yen;" + xiaoji);
+
+        countItem();
 
     });
+    /*----------------------------
+   Cart remonve
+   购物车删除
+   ------------------------------ */
+    $(".fa-times").click(function () {
+        $(this).parent().parent().parent().remove()
+        countItem();
+    })
+    /*----------------------------
+  Cart note
+  购物车备注
+  ------------------------------ */
+    var writeNote = false
+    $(".fa-pencil").click(function () {
+        writeNote = !writeNote
+        //    window.writeNote = writeNote
+        if (writeNote) {
+            $(this).parent().parent('.product-remove').append("<input class='beizhu' type='text' style='font-size:6px' value='备注:'>")
+        } else { $(this).parent().parent('.product-remove').find('.beizhu').remove() }
+
+    })
+    //    $(".fa-pencil").blur(function () {
+    //        writeNote = false
+    //    })
+    /*----------------------------
+        Cart count
+        购物统计数量及总价函数
+    ------------------------------ */
+
+    function countItem() {
+        var allPrice = 0;
+        window.allPrice = allPrice
+        var count = 0 // 总数
+        $(".product-quantity").each(function () {
+            // dxk();
+            count +=
+                Number($(this).find(".cart-plus-minus-box").val());
+            // console.log(count)
+            var priceStr = $(this).next(".product-subtotal").html();
+            var priceNum = Number(priceStr.substring(1));
+            allPrice += priceNum
+            window.allPrice = allPrice
+        })
+        $("#dbcj").each(function () {
+            if ($("input[name='dbcj']:checked").val() == "on") {
+                allPrice += 20;
+                // console.log(allPrice)
+            }
+        })
+        $("#kpf").each(function () {
+            if ($("input[name='kpf']:checked").val() == "on") {
+                allPrice += 30;
+            }
+        })
+        console.log(allPrice)
+        $(".grand-totall-title span").html("&yen;" + allPrice);
+        $(".grand-totall-number span").html(count);
+        /*----------------------------
+        Cart checkbox
+        购物车单选框
+        不要把问题想得太复杂,就是加或者还原
+        ------------------------------ */
+    }
+    var isChicked = false
+    var isChicked2 = false
+    $("#dbcj").click(function () {
+        isChicked = !isChicked
+        if (isChicked) {
+            countItem()
+            // allPrice += 20;
+            // console.log($("input[name='dbcj']:checked").val())
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // console.log(allPrice)
+            // window.allPrice = allPrice
+        } else {
+            countItem()
+            //    $(this).removeAttr("checked")
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // allPrice -= 20;
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // console.log(allPrice)
+            // window.allPrice = allPrice
+
+        }
+    })
+    $("#kpf").click(function () {
+        // console.log(allPrice)
+        isChicked2 = !isChicked2
+        if (isChicked2) {
+            countItem()
+            // allPrice += 30;
+            // console.log(allPrice)
+            // window.allPrice = allPrice
+
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+        } else {
+            countItem()
+            //    $(this).removeAttr("checked")
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // allPrice -= 30;
+            // $(".grand-totall-title span").html("&yen;" + allPrice);
+            // window.allPrice = allPrice
+            // console.log(allPrice)
+        }
+    })
+
+
 
     /*-------------------------------------
         Thumbnail Product activation
