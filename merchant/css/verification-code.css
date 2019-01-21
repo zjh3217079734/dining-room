@@ -1,0 +1,22 @@
+div.verification-code-input{
+	width:120px;
+}
+
+input.verification-input{
+	width:20px;
+	height:40px;
+}
+
+div.verification-code-picture{
+	margin-bottom:20px;
+}
+
+div.verification-code-picture>span{
+	font-size:12px;
+}
+
+div.verification-code-picture>span#changeImgCode{
+	font-size:12px;
+}
+
+
