@@ -25,8 +25,12 @@
     <link rel="stylesheet" href="assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <link rel="stylesheet" href="assets/css/login-register.css">
+
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+
 
 <body>
     <!-- header start -->
@@ -49,14 +53,15 @@
                                         <i class="icon-user icons"></i>
                                     </div>
                                     <div class="login-text-content">
-                                        <p>登陆 <br> or <span>注册</span></p>
+                                        <p>登录 <br> or <span>注册</span></p>
                                     </div>
                                 </a>
                             </div>
                             <div class="header-wishlist">
                             </div>
                             <div class="header-cart">
-                                <a href="#">
+                                <!-- <a href="#"> -->
+                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">
                                     <div class="header-icon-style">
                                         <i class="icon-handbag icons"></i>
                                         <!-- 商品数量标识 -->
@@ -69,7 +74,7 @@
                                         <span class="cart-digit-bold">$209.00</span>
                                     </div>
                                 </a>
-                                <div class="shopping-cart-content">
+                                <!-- <div class="shopping-cart-content">
                                     <ul>
                                         <li class="single-shopping-cart">
                                             <div class="shopping-cart-img">
@@ -81,7 +86,6 @@
                                                 <span>$260.00</span>
                                             </div>
                                             <div class="shopping-cart-delete">
-                                                <!-- ion是删除图标,做成动态删除数据就好了 -->
                                                 <a href="#"><i class="ion ion-close"></i></a>
                                             </div>
                                         </li>
@@ -95,6 +99,7 @@
                                                 <span>$260.00</span>
                                             </div>
                                             <div class="shopping-cart-delete">
+                                                // ion是删除图标,做成动态删除数据就好了
                                                 <a href="#"><i class="ion ion-close"></i></a>
                                             </div>
                                         </li>
@@ -104,13 +109,11 @@
                                         <h4>Total : <span class="shop-total">$260.00</span></h4>
                                     </div>
                                     <div class="shopping-cart-btn">
-                                        <!-- <a href="cart-page.html">view cart</a> -->
-                                        <!-- 这个我也不知道怎么回事,href是不生效的,所以只能用onclick -->
                                         <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">view
                                             cart</a>
                                         <a onclick="window.location = 'checkout.html'" href="javascript:void(0);">checkout</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -168,8 +171,8 @@
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active"> Login / Register </li>
+                    <li><a href="index.html">首页</a></li>
+                    <li class="active"> 登录 / 注册 </li>
                 </ul>
             </div>
         </div>
@@ -181,10 +184,10 @@
                     <div class="login-register-wrapper">
                         <div class="login-register-tab-list nav">
                             <a class="active" data-toggle="tab" href="#lg1">
-                                <h4> login </h4>
+                                <h4> 登录 </h4>
                             </a>
                             <a data-toggle="tab" href="#lg2">
-                                <h4> register </h4>
+                                <h4> 注册 </h4>
                             </a>
                         </div>
                         <div class="tab-content">
@@ -192,15 +195,25 @@
                                 <div class="login-form-container">
                                     <div class="login-register-form">
                                         <form action="#" method="post">
-                                            <input type="text" name="user-name" placeholder="Username">
-                                            <input type="password" name="user-password" placeholder="Password">
+                                            <input type="text" name="user-name" placeholder="用户名">
+                                            <input type="password" name="user-password" placeholder="密码">
                                             <div class="button-box">
                                                 <div class="login-toggle-btn">
                                                     <input type="checkbox">
-                                                    <label>Remember me</label>
-                                                    <a href="#">Forgot Password?</a>
+                                                    <label>记住密码</label>
+                                                    <a href="reset-password.html">忘记密码？</a>
                                                 </div>
-                                                <button type="submit"><span>Login</span></button>
+
+
+                                                <div class="verification-content" style=""> 
+                                                    <span>*</span>验证码：<input type="text" class="verification-input">
+                                                    <img id="verification-code" src="C:/">
+                                                    <span>看不清？</span>
+                                                    <span style="color:#37CAF2" id="changeImgCode">换一张</span>
+                                                </div> 
+
+                                                
+                                                <button type="submit"><span>登录</span></button>
                                             </div>
                                         </form>
                                     </div>
@@ -210,11 +223,25 @@
                                 <div class="login-form-container">
                                     <div class="login-register-form">
                                         <form action="#" method="post">
-                                            <input type="text" name="user-name" placeholder="Username">
-                                            <input type="password" name="user-password" placeholder="Password">
-                                            <input name="user-email" placeholder="Email" type="email">
+                                            <input type="text" name="user-name" placeholder="用户名">
+                                            <input type="password" name="user-password" placeholder="密码">
+                                            <input name="user-email" placeholder="邮箱" type="email">
+
+
+                                        <div class="verification-msg">
+                                            <div class="verification-PhoneNum">
+                                                <input type="text" name="number" placeholder="手机号码">
+                                                <button type="button" class="send-verificationCode">获取短信验证码</button>
+                                            </div>
+                                            <div class="verification-CodeNum">
+                                                <input type="text" name="verifyCode" placeholder="验证码">
+                                                <button type="button" class="sub-btn">提交</button>
+                                            </div>
+                                        </div>
+
+
                                             <div class="button-box">
-                                                <button type="submit"><span>Register</span></button>
+                                                <button type="submit"><span>注册</span></button>
                                             </div>
                                         </form>
                                     </div>
