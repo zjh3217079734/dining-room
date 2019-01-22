@@ -267,14 +267,15 @@ textarea {
 *************************/
 
 input {
+    margin: 0 auto;
     background: #eceff8;
     border: 2px solid #eceff8;
-    height: 45px;
+    height: 15px;
     box-shadow: none;
     padding-left: 10px;
     font-size: 14px;
     color: #626262;
-    width: 100%;
+    width: 70%;
 }
 
 select {
@@ -4943,16 +4944,17 @@ h4.grand-totall-title span {
 }
 
 /*---------------------------
-    9. Checkout page
+    9. 个人信息
 -----------------------------*/
 
-.panel.panel-default {
-    border: 1px solid #ebebeb;
+.panel .panel-default {
+    border: 1px solid #fff;
     margin-bottom: 20px;
 }
 
+/* #f9f9f9 */
 h5.panel-title {
-    background-color: #f9f9f9;
+    background-color:  #f9f9f9;
     border-bottom: 1px solid #ebebeb;
     color: #242424;
     font-size: 14px;
@@ -5194,15 +5196,21 @@ h5.panel-title span {
 .shipping-method-wrapper,
 .payment-info-wrapper,
 .order-review-wrapper {
-    background-color: #fff;
+    background-color:#fff;
     padding: 30px 20px;
 }
 
 .billing-info>label {
     color: #242424;
     font-size: 14px;
+    /* border  */
     letter-spacing: 0.2px;
     text-transform: capitalize;
+}
+/* 输入框添加外边框颜色 */
+.billing-info>input{
+    /* border:1px solid black; */
+    border-radius: 1em;
 }
 
 .billing-info input,
@@ -5223,7 +5231,10 @@ h5.panel-title span {
 }
 
 .billing-info {
-    margin-bottom: 20px;
+    /* 原版 */
+    /* margin-bottom: 20px; */
+    /* 修改 */
+    margin:10px auto;
 }
 
 .single-ship>input {
@@ -5248,6 +5259,7 @@ h5.panel-title span {
 }
 
 .billing-back-btn {
+    margin:0 60px;
     display: flex;
     justify-content: space-between;
     margin-top: 26px;
@@ -6386,4 +6398,17 @@ h5.panel-title span {
 .pagination-style .owl-dot.active {
     height: 10px;
     width: 30px;
+}
+.billing-info>input{
+    /* border-radius: 1px; */
+    border:1px solid rgb(196, 173, 143);
+    border-radius: 1em; 
+    box-shadow:inset 0px 0px 10px 0px #ccc;
+    
+}
+.col-lg-6 col-md-6 > input{
+    width:300px;
+}
+.col-lg-12{
+    margin-left:90px;
 }
