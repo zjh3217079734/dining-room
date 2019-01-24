@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05459d70-2ab2-4a95-8e1a-7c5f49783465" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dining-room.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/about-us.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/blog-details-gallery.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/blog-details.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/blog-rightsidebar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/blog.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/cart-page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/checkout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/contact.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/login-register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/my-account.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/product-details.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/reset-password.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/shop-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/shop.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/testimonial.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/wishlist.html" beforeDir="false" />
-    </list>
+    <list default="true" id="05459d70-2ab2-4a95-8e1a-7c5f49783465" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/client/index.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="25">
-              <caret line="20" column="79" lean-forward="true" selection-start-line="20" selection-start-column="79" selection-end-line="20" selection-end-column="79" />
+              <caret line="20" column="79" selection-start-line="20" selection-start-column="79" selection-end-line="20" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -70,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2" />
     <option name="y" value="43" />
     <option name="width" value="1346" />
@@ -228,7 +207,7 @@
     <entry file="file://$PROJECT_DIR$/client/index.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
-          <caret line="20" column="79" lean-forward="true" selection-start-line="20" selection-start-column="79" selection-end-line="20" selection-end-column="79" />
+          <caret line="20" column="79" selection-start-line="20" selection-start-column="79" selection-end-line="20" selection-end-column="79" />
         </state>
       </provider>
     </entry>
