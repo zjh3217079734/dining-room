@@ -353,7 +353,6 @@
         不要把问题想得太复杂,就是加或者还原
         ------------------------------ */
     }
-    countItem();
     var isChicked = false
     var isChicked2 = false
     $("#dbcj").click(function () {
@@ -612,5 +611,6 @@
         type: 'iframe'
     });
 
+    countItem();
 
 })(jQuery);
