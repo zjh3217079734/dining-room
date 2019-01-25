@@ -3,7 +3,7 @@
 
 {% block title %}
 <!-- 修改页面title标签 -->
-<title>非食不可</title>
+<title>非食不可-购物车</title>
 <!-- 结束修改 -->
 {% endblock %}
 
@@ -12,5 +12,198 @@
 {% block content %}
 <!-- ,将原有的页面拷贝过来即可 class 为:header-area和
     footer-area black-bg-2 pt-70 这两个div之间的内容 -->
-
+    <div class="breadcrumb-area gray-bg">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="index.html">主页</a></li>
+                    <li class="active">购物车 </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- shopping-cart-area start -->
+    <div class="cart-main-area pt-95 pb-100">
+        <div class="container">
+            <h3 class="page-title">购物车物品</h3>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <form action="#">
+                        <div class="table-content table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>图片</th>
+                                        <th>菜品名称</th>
+                                        <th>菜品单价</th>
+                                        <th>数量</th>
+                                        <th>菜品小计</th>
+                                        <th>修改</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img src="../../assets/img/cart/shiguohamiguatangpai.jpg" alt=""></a>
+                                        </td>
+                                        <td class="product-name"><a href="#">石锅哈密瓜糖排 </a></td>
+                                        <td class="product-price-cart"><span class="amount">¥60.00</span></td>
+                                        <td class="product-quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">&yen;60</td>
+                                        <td class="product-remove">
+                                            <a><i class="fa fa-pencil"></i></a>
+                                            <a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img src="../../assets/img/cart/tusixiangcaozhilaohuxie.jpg" alt=""></a>
+                                        </td>
+                                        <td class="product-name"><a href="#">土司香草汁老虎蟹 </a></td>
+                                        <td class="product-price-cart"><span class="amount">¥150.00</span></td>
+                                        <td class="product-quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">&yen;150</td>
+                                        <td class="product-remove">
+                                            <a><i class="fa fa-pencil"></i></a>
+                                            <a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img src="../../assets/img/cart/suancaiyuner.jpg" alt=""></a>
+                                        </td>
+                                        <td class="product-name"><a href="#">酸菜云耳 </a></td>
+                                        <td class="product-price-cart"><span class="amount">¥70.00</span></td>
+                                        <td class="product-quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">&yen;70</td>
+                                        <td class="product-remove">
+                                            <a><i class="fa fa-pencil"></i></a>
+                                            <a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="cart-shiping-update-wrapper">
+                                    <!-- <div class="cart-shiping-update">
+                                        <a href="#">继续点菜</a>
+                                    </div> -->
+                                    <div class="cart-clear">
+                                        <button>刷新菜单</button>
+                                        <a href="#">清除购物车</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="cart-tax">
+                                <form id="testForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Reason</label>
+                                            <div class="col-md-6">
+                                                <textarea class='form-control' name='test' onkeyup='textAreaChange(this)' onkeydown='textAreaChange(this)' rows='5'></textarea>
+                                                <div class='text-right'>
+                                                    <em style='color:red'>200</em>/<span>200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-3 col-md-6">
+                                                <button type="button" class="btn btn-info" id="testConfirm">Confirm</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                <!-- <div class="title-wrap">
+                                    <h4 class="cart-bottom-title section-bg-gray">Estimate Shipping And Tax</h4>
+                                </div>
+                                <div class="tax-wrapper">
+                                    <p>Enter your destination to get a shipping estimate.</p>
+                                    <div class="tax-select-wrapper">
+                                        <div class="tax-select">
+                                            <label>
+                                                * Country
+                                            </label>
+                                            <select class="email s-email s-wid">
+                                                <option>Bangladesh</option>
+                                                <option>Albania</option>
+                                                <option>Åland Islands</option>
+                                                <option>Afghanistan</option>
+                                                <option>Belgium</option>
+                                            </select>
+                                        </div>
+                                        <div class="tax-select">
+                                            <label>
+                                                * Region / State
+                                            </label>
+                                            <select class="email s-email s-wid">
+                                                <option>Bangladesh</option>
+                                                <option>Albania</option>
+                                                <option>Åland Islands</option>
+                                                <option>Afghanistan</option>
+                                                <option>Belgium</option>
+                                            </select>
+                                        </div>
+                                        <div class="tax-select">
+                                            <label>
+                                                * Zip/Postal Code
+                                            </label>
+                                            <input type="text">
+                                        </div>
+                                        <button class="cart-btn-2" type="submit">Get A Quote</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-lg-4 col-md-6">
+                            <div class="discount-code-wrapper">
+                                <div class="title-wrap">
+                                    <h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
+                                </div>
+                                <div class="discount-code">
+                                    <p>Enter your coupon code if you have one.</p>
+                                    <form>
+                                        <input type="text" required="" name="name">
+                                        <button class="cart-btn-2" type="submit">Apply Coupon</button>
+                                    </form>z
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="grand-totall">
+                                <div class="title-wrap">
+                                    <h4 class="cart-bottom-title section-bg-gary-cart">菜品清单</h4>
+                                </div>
+                                <h5 class="grand-totall-number">菜品总数 <span>0</span></h5>
+                                <div class="total-shipping">
+                                    <h5>有偿提供</h5>
+                                    <ul>
+                                        <li><input type="checkbox" id="dbcj" name='dbcj'> 打包餐具 <span>¥20.00</span></li>
+                                        <li><input type="checkbox" id="kpf" name = 'kpf'> 开瓶费 <span>¥30.00</span></li>
+                                    </ul>
+                                </div>
+                                <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
+                                <a href="#">去支付</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
