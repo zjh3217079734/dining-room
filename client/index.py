@@ -24,9 +24,9 @@ def login_views():
 	if request.method=='GET':
 		return render_template('login-register.html')
 	else:
-		username=request.form['username']
+		user_name=request.form['username']
 		password=generate_password_hash(request.form['password'])
-		print("用户名：%s,密码:%s"%(username,password))
+		print("用户名:%s,密码:%s"%(user_name,password))
 		result=check_password_hash(password,'123456')
 		if result:
 			print('密码为123456')
@@ -40,10 +40,10 @@ def register_views():
 	if request.method=='GET':
 		return render_template('login-register.html')
 	else:
-		username=request.form['username']
+		user_name=request.form['username']
 		password=generate_password_hash(request.form['password'])
-		email=request.form['email']
-		print("用户名:%s,密码:%s,邮箱:%s"%(username,password,email))
+		phone=request.form['phonenum']		
+		print("用户名:%s,密码:%s,手机号:%s"%(user_name,password,phone))
 		result=check_password_hash(password,'123456')
 		if result:
 			print('密码为123456')
