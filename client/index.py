@@ -52,24 +52,6 @@ def register_views():
 		return "接收数据成功"
 
 
-@app.route('/ResetPwd',methods=['GET','POST'])
-def ResetPwd_views():
-	if request.method=='GET':
-		return render_template('ResetPwd.html')
-	else:
-		username=request.form['username']
-		password=generate_password_hash(request.form['newpassword'])
-		print("用户名:%s,新密码:%s"%(username,password))
-		result=check_password_hash(password,'123456')
-		if result:
-			print('密码为123456')
-		else:
-			print('密码不是123456')
-		return "接收数据成功"
-
-
-
-
 if __name__ == "__main__":
     app.run(debug=True,
             # port=5555,  # 开放访问的端口号,默认为50000
