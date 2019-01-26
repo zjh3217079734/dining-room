@@ -1,4 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
+
+from werkzeug.security import generate_password_hash,check_password_hash
+
 
 app = Flask(__name__,
             # template_folder="",  # 指定存放模板的文件夹名称
@@ -13,6 +16,58 @@ def html(name=None):
     if name is None:
         return render_template("index.html")
     return render_template(name)
+
+
+# 应巧
+@app.route('/login',methods=['GET','POST'])
+def login_views():
+	if request.method=='GET':
+		return render_template('login-register.html')
+	else:
+		username=request.form['username']
+		password=generate_password_hash(request.form['password'])
+		print("用户名：%s,密码:%s"%(username,password))
+		result=check_password_hash(password,'123456')
+		if result:
+			print('密码为123456')
+		else:
+			print('密码不是123456')
+		return "接收数据成功"
+
+
+@app.route('/register',methods=['GET','POST'])
+def register_views():
+	if request.method=='GET':
+		return render_template('login-register.html')
+	else:
+		username=request.form['username']
+		password=generate_password_hash(request.form['password'])
+		email=request.form['email']
+		print("用户名:%s,密码:%s,邮箱:%s"%(username,password,email))
+		result=check_password_hash(password,'123456')
+		if result:
+			print('密码为123456')
+		else:
+			print('密码不是123456')
+		return "接收数据成功"
+
+
+@app.route('/ResetPwd',methods=['GET','POST'])
+def ResetPwd_views():
+	if request.method=='GET':
+		return render_template('ResetPwd.html')
+	else:
+		username=request.form['username']
+		password=generate_password_hash(request.form['newpassword'])
+		print("用户名:%s,新密码:%s"%(username,password))
+		result=check_password_hash(password,'123456')
+		if result:
+			print('密码为123456')
+		else:
+			print('密码不是123456')
+		return "接收数据成功"
+
+
 
 
 if __name__ == "__main__":
