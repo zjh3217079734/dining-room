@@ -6415,3 +6415,26 @@ h5.panel-title span {
 .col-lg-12{
     margin-left:0px;
 }
+/* 购物车备注样式 */
+.beizhu{
+	height: 30px;
+}
+/* 购物车去支付按钮 */
+.grand-totall>input {
+    background-color: #e02c2b;
+    border-radius: 3px;
+	height: 64px;
+    color: #fff;
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 18px 10px 19px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.grand-totall>input:hover {
+    color: #7F7F7F;
+    text-decoration: none;
+}
