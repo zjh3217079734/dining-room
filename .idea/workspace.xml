@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05459d70-2ab2-4a95-8e1a-7c5f49783465" name="Default Changelist" comment="" />
+    <list default="true" id="05459d70-2ab2-4a95-8e1a-7c5f49783465" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dining-room.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dining-room.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +31,21 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/index.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="1188">
+              <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa0.599/Day08/FlaskDemo07/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="655">
+              <caret line="209" column="26" lean-forward="true" selection-start-line="209" selection-start-column="26" selection-end-line="209" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -49,7 +63,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="2" />
     <option name="y" value="43" />
     <option name="width" value="1346" />
@@ -66,7 +80,12 @@
           <expand>
             <path>
               <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -77,7 +96,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../python_space/框架" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -137,16 +157,20 @@
       <updated>1548301827039</updated>
       <workItem from="1548301830883" duration="2012000" />
       <workItem from="1548305628653" duration="2366000" />
+      <workItem from="1548895104953" duration="1029000" />
+      <workItem from="1548897177575" duration="2862000" />
+      <workItem from="1548901170593" duration="3079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2412000" />
+    <option name="totallyTimeSpent" value="9382000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24659607" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25751072" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -160,7 +184,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -180,25 +204,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/index2.html">
+    <entry file="file://$PROJECT_DIR$/client/templates/index2.html" />
+    <entry file="file://$PROJECT_DIR$/client/index.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="919" column="50" selection-start-line="919" selection-start-column="50" selection-end-line="919" selection-end-column="50" />
-          <folding>
-            <element signature="e#20679#21961#0#HTML" />
-            <element signature="e#21962#74794#0#HTML" />
-            <element signature="e#74795#75569#0#HTML" />
-            <element signature="e#75570#98784#0#HTML" />
-            <element signature="e#98785#99314#0#HTML" />
-            <element signature="e#99315#100258#0#HTML" />
-          </folding>
+        <state relative-caret-position="1188">
+          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/index.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa0.599/Day08/FlaskDemo07/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="655">
+          <caret line="209" column="26" lean-forward="true" selection-start-line="209" selection-start-column="26" selection-end-line="209" selection-end-column="26" />
         </state>
       </provider>
     </entry>
