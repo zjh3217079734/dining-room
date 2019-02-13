@@ -31,7 +31,6 @@
 </head>
 
 <body>
-
     <!-- 顶部导航栏开始 -->
     <header class="header-area">
         <div class="header-middle">
@@ -72,46 +71,6 @@
                                         <span class="cart-digit-bold">$209.00</span>
                                     </div>
                                 </a>
-                                <!-- <div class="shopping-cart-content">
-                                            <ul>
-                                                <li class="single-shopping-cart">
-                                                    <div class="shopping-cart-img">
-                                                        <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
-                                                    </div>
-                                                    <div class="shopping-cart-title">
-                                                        <h4><a href="cart-page.html">Phantom Remote </a></h4>
-                                                        <h6>Qty: 02</h6>
-                                                        <span>$260.00</span>
-                                                    </div>
-                                                    <div class="shopping-cart-delete">
-                                                        <a href="#"><i class="ion ion-close"></i></a>
-                                                    </div>
-                                                </li>
-                                                <li class="single-shopping-cart">
-                                                    <div class="shopping-cart-img">
-                                                        <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
-                                                    </div>
-                                                    <div class="shopping-cart-title">
-                                                        <h4><a href="cart-page.html">Phantom Remote</a></h4>
-                                                        <h6>Qty: 02</h6>
-                                                        <span>$260.00</span>
-                                                    </div>
-                                                    <div class="shopping-cart-delete">
-                                                        // ion是删除图标,做成动态删除数据就好了
-                                                        <a href="#"><i class="ion ion-close"></i></a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="shopping-cart-total">
-                                                <h4>Shipping : <span>$20.00</span></h4>
-                                                <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                            </div>
-                                            <div class="shopping-cart-btn">
-                                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">view
-                                                    cart</a>
-                                                <a onclick="window.location = 'checkout.html'" href="javascript:void(0);">checkout</a>
-                                            </div>
-                                        </div> -->
                             </div>
                         </div>
                     </div>
@@ -167,9 +126,6 @@
     </header>
     <!-- 顶部导航栏结束 -->
 
-
-
-
     <div class="breadcrumb-area gray-bg">
         <div class="container">
             <div class="breadcrumb-content">
@@ -180,7 +136,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="login-register-area pt-95 pb-100">
         <div class="container">
@@ -197,11 +152,10 @@
                                         </a>
                                     </div>
 
-                                    <form action="#" method="post">
-                                        <input type="text" name="user-name" placeholder="用户名">
-                                        <input type="password" name="new-password" placeholder="输入新密码">
-                                        <input type="password" name="new-password" placeholder="再次确认密码">
-
+                                    <form action="/ResetPwd" method="post">
+                                        <input type="text" name="username" placeholder="用户名">
+                                        <input type="password" name="newpassword" placeholder="输入新密码">
+                                        <input type="password" name="newpassword" placeholder="再次确认密码">
 
                                         <div class="verification-msg">
                                             <div class="verification-PhoneNum">
@@ -214,15 +168,12 @@
                                             </div>
                                         </div>
 
-
                                         <div class="button-box" onclick="document.write('密码已修改!')">
                                             <button type="submit">
                                                 <span>重置</span>
                                             </button>
                                         </div>
                                     </form>
-
-
 
                                 </div>
                             </div>
@@ -233,8 +184,6 @@
         </div>
     </div>
     </div>
-
-
 
     <!-- 底部导航栏 -->
     <div class="footer-area black-bg-2 pt-70">
