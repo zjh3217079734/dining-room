@@ -2,13 +2,18 @@ from flask import Flask, render_template,request
 
 from werkzeug.security import generate_password_hash,check_password_hash
 
+# sorapoi
+from checkout import add_new_route
+
 
 app = Flask(__name__,
             # template_folder="",  # 指定存放模板的文件夹名称
             static_url_path="/assets",  # "指定访问静态资源的路径
             static_folder="assets"  # 静态文件夹名称
             )
-
+ 
+# sorapoi
+add_new_route(app)
 
 @app.route("/")
 @app.route("/<name>")
