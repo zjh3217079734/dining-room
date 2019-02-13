@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 from flask import Flask, request, render_template, redirect
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_, func
 import pymysql
-=======
-from flask import Flask, render_template,request
-
 from werkzeug.security import generate_password_hash,check_password_hash
->>>>>>> f376e8ba910259cab17a9daf6f95148ebcdfd323
 
 
 app = Flask(__name__,
@@ -309,9 +304,7 @@ def cart_page_viwes():
     # goods = db.session.query(order_details)
     pass
 
-<<<<<<< HEAD
 #---------------------------------------
-=======
 # 应巧
 @app.route('/login',methods=['GET','POST'])
 def login_views():
@@ -346,7 +339,6 @@ def register_views():
 		return "接收数据成功"
 
 
->>>>>>> f376e8ba910259cab17a9daf6f95148ebcdfd323
 if __name__ == "__main__":
     # app.run(debug=True,
     #         # port=5555,  # 开放访问的端口号,默认为50000
