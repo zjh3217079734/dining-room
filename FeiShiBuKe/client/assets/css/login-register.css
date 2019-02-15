@@ -28,3 +28,7 @@ div.verification-PhoneNum>input,div.verification-CodeNum>input{
 	width:250px;
 	height:40px;
 }
+
+input{
+	width:100%;
+}

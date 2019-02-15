@@ -4,48 +4,49 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Fudink - Food & Drink eCommerce Bootstrap4 Template</title>
+    <title>非食不可-关于我们</title>
     <meta name="description" content="">
     <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.png"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="static/img/icon.jpg">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.png">
 
 
     <!-- all css here -->
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/animate.css">
-    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/css/slick.css">
-    <link rel="stylesheet" href="static/css/chosen.min.css">
-    <link rel="stylesheet" href="static/css/ionicons.min.css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static/css/simple-line-icons.css">
-    <link rel="stylesheet" href="static/css/jquery-ui.css">
-    <link rel="stylesheet" href="static/css/meanmenu.min.css">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/responsive.css">
-    <script src="static/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/chosen.min.css">
+    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
-    <!-- header start -->
+
+    <!-- 顶部导航栏开始 -->
     <header class="header-area">
         <div class="header-middle">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-12 col-sm-4">
                         <div class="logo">
-                            <a href="index">
-                                <img alt="" src="static/img/logo/logo.png">
+                            <a href="index.html">
+                                <img alt="" src="../assets/img/logo/logo.png">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-8 col-12 col-sm-8">
                         <div class="header-middle-right f-right">
                             <div class="header-login">
-                                <a href="login-register">
+                                <a href="login-register.html">
                                     <div class="header-icon-style">
                                         <i class="icon-user icons"></i>
                                     </div>
@@ -57,8 +58,7 @@
                             <div class="header-wishlist">
                             </div>
                             <div class="header-cart">
-                                <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
-
+                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">
                                     <div class="header-icon-style">
                                         <i class="icon-handbag icons"></i>
                                         <!-- 商品数量标识 -->
@@ -72,45 +72,45 @@
                                     </div>
                                 </a>
                                 <!-- <div class="shopping-cart-content">
-                                    <ul>
-                                        <li class="single-shopping-cart">
-                                            <div class="shopping-cart-img">
-                                                <a href="cart-page"><img alt="" src="static/img/cart/cart-1.jpg"></a>
+                                            <ul>
+                                                <li class="single-shopping-cart">
+                                                    <div class="shopping-cart-img">
+                                                        <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="cart-page.html">Phantom Remote </a></h4>
+                                                        <h6>Qty: 02</h6>
+                                                        <span>$260.00</span>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a href="#"><i class="ion ion-close"></i></a>
+                                                    </div>
+                                                </li>
+                                                <li class="single-shopping-cart">
+                                                    <div class="shopping-cart-img">
+                                                        <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="cart-page.html">Phantom Remote</a></h4>
+                                                        <h6>Qty: 02</h6>
+                                                        <span>$260.00</span>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        // ion是删除图标,做成动态删除数据就好了
+                                                        <a href="#"><i class="ion ion-close"></i></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="shopping-cart-total">
+                                                <h4>Shipping : <span>$20.00</span></h4>
+                                                <h4>Total : <span class="shop-total">$260.00</span></h4>
                                             </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="cart-page">Phantom Remote </a></h4>
-                                                <h6>Qty: 02</h6>
-                                                <span>$260.00</span>
+                                            <div class="shopping-cart-btn">
+                                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">view
+                                                    cart</a>
+                                                <a onclick="window.location = 'checkout.html'" href="javascript:void(0);">checkout</a>
                                             </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="ion ion-close"></i></a>
-                                            </div>
-                                        </li>
-                                        <li class="single-shopping-cart">
-                                            <div class="shopping-cart-img">
-                                                <a href="cart-page"><img alt="" src="static/img/cart/cart-2.jpg"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="cart-page">Phantom Remote</a></h4>
-                                                <h6>Qty: 02</h6>
-                                                <span>$260.00</span>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                // ion是删除图标,做成动态删除数据就好了
-                                                <a href="#"><i class="ion ion-close"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="shopping-cart-total">
-                                        <h4>Shipping : <span>$20.00</span></h4>
-                                        <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                    </div>
-                                    <div class="shopping-cart-btn">
-                                        <a onclick="window.location = 'cart-page'" href="javascript:void(0);">view
-                                            cart</a>
-                                        <a onclick="window.location = 'checkout'" href="javascript:void(0);">checkout</a>
-                                    </div>
-                                </div> -->
+                                        </div> -->
                             </div>
                         </div>
                     </div>
@@ -124,14 +124,14 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li class="mega-menu-position top-hover"><a href="index">首页</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="shop">发现商家</a></li>
-                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
-                                    <li class="mega-menu-position top-hover"><a href="cart-page">购物车</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="checkout">提交订单</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="my-account">个人信息</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="index.html">首页</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="shop.html">发现商家</a></li>
+                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list.html">点菜</a></li> -->
+                                    <li class="mega-menu-position top-hover"><a href="cart-page.html">购物车</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="checkout.html">提交订单</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="my-account.html">个人信息</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="about-us.html">关于我们</a></li>
+                                    <!-- <li class="mega-menu-position top-hover"><a href="contact.html">联系我们</a></li> -->
                                 </ul>
                             </nav>
                         </div>
@@ -148,13 +148,13 @@
                         <div class="mobile-menu">
                             <nav id="mobile-menu-active">
                                 <ul class="menu-overflow" id="nav">
-                                    <li><a href="index">首页</a></li>
-                                    <li><a href="shop">发现商家</a></li>
-                                    <!-- <li><a href="shop-list">点菜</a></li> -->
-                                    <li><a href="cart-page">购物车</a></li>
-                                    <li><a href="checkout">提交订单</a></li>
-                                    <li><a href="about-us">关于我们</a></li>
-                                    <li><a href="contact">联系我们</a></li>
+                                    <li><a href="index.html">首页</a></li>
+                                    <li><a href="shop.html">发现商家</a></li>
+                                    <!-- <li><a href="shop-list.html">点菜</a></li> -->
+                                    <li><a href="cart-page.html">购物车</a></li>
+                                    <li><a href="checkout.html">提交订单</a></li>
+                                    <li><a href="about-us.html">关于我们</a></li>
+                                    <!-- <li><a href="contact.html">联系我们</a></li> -->
                                 </ul>
                             </nav>
                         </div>
@@ -164,11 +164,15 @@
         </div>
         <!-- mobile-menu-area-end -->
     </header>
+    <!-- 顶部导航栏结束 -->
+
+
+
     <div class="breadcrumb-area gray-bg">
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
-                    <li><a href="index">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li class="active">About us </li>
                 </ul>
             </div>
@@ -180,7 +184,7 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="overview-img text-center">
                         <a href="#">
-                            <img src="static/img/banner/about-us.jpg" alt="">
+                            <img src="../assets/img/banner/about-us.jpg" alt="">
                         </a>
                     </div>
                 </div>
@@ -196,7 +200,7 @@
                         <p>The theme design package provides a complete Magento theme set for your online store
                             according to your desired theme.</p>
                         <div class="overview-btn mt-45">
-                            <a class="btn-style-2" href="shop">Shop now!</a>
+                            <a class="btn-style-2" href="shop.html">Shop now!</a>
                         </div>
                     </div>
                 </div>
@@ -338,137 +342,34 @@
             </div>
         </div>
     </div>
-    <div class="team-area pt-100">
-        <div class="container">
-            <div class="section-border section-mrg-none mb-45">
-                <div class="section-title-wrap">
-                    <h3 class="section-title section-bg-white">Team Members</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="team-wrapper mb-30">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="static/img/team/team-1.jpg" alt="">
-                            </a>
-                            <div class="team-action">
-                                <a class="action-plus facebook" href="#">
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                                <a class="action-heart twitter" title="Wishlist" href="#">
-                                    <i class="ion-social-twitter"></i>
-                                </a>
-                                <a class="action-cart instagram" href="#">
-                                    <i class="ion-social-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Mr.Mike Banding</h4>
-                            <span>Manager </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="team-wrapper mb-30">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="static/img/team/team-3.jpg" alt="">
-                            </a>
-                            <div class="team-action">
-                                <a class="action-plus facebook" href="#">
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                                <a class="action-heart twitter" title="Wishlist" href="#">
-                                    <i class="ion-social-twitter"></i>
-                                </a>
-                                <a class="action-cart instagram" href="#">
-                                    <i class="ion-social-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Mr.Peter Pan</h4>
-                            <span>Developer </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="team-wrapper mb-30">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="static/img/team/team-2.jpg" alt="">
-                            </a>
-                            <div class="team-action">
-                                <a class="action-plus facebook" href="#">
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                                <a class="action-heart twitter" title="Wishlist" href="#">
-                                    <i class="ion-social-twitter"></i>
-                                </a>
-                                <a class="action-cart instagram" href="#">
-                                    <i class="ion-social-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Ms.Sophia</h4>
-                            <span>Designer </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="team-wrapper mb-30">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="static/img/team/team-4.jpg" alt="">
-                            </a>
-                            <div class="team-action">
-                                <a class="action-plus facebook" href="#">
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                                <a class="action-heart twitter" title="Wishlist" href="#">
-                                    <i class="ion-social-twitter"></i>
-                                </a>
-                                <a class="action-cart instagram" href="#">
-                                    <i class="ion-social-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Mr.John Lee</h4>
-                            <span>Chairmen </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="brand-logo-area pt-70 pb-100">
         <div class="container">
             <div class="brand-logo-active owl-carousel">
                 <div class="single-brand-logo">
-                    <img alt="" src="static/img/brand-logo/logo-1.png">
+                    <img alt="" src="../assets/img/brand-logo/logo-1.png">
                 </div>
                 <div class="single-brand-logo">
-                    <img alt="" src="static/img/brand-logo/logo-2.png">
+                    <img alt="" src="../assets/img/brand-logo/logo-2.png">
                 </div>
                 <div class="single-brand-logo">
-                    <img alt="" src="static/img/brand-logo/logo-3.png">
+                    <img alt="" src="../assets/img/brand-logo/logo-3.png">
                 </div>
                 <div class="single-brand-logo">
-                    <img alt="" src="static/img/brand-logo/logo-4.png">
+                    <img alt="" src="../assets/img/brand-logo/logo-4.png">
                 </div>
                 <div class="single-brand-logo">
-                    <img alt="" src="static/img/brand-logo/logo-5.png">
+                    <img alt="" src="../assets/img/brand-logo/logo-5.png">
                 </div>
                 <div class="single-brand-logo">
-                    <img alt="" src="static/img/brand-logo/logo-2.png">
+                    <img alt="" src="../assets/img/brand-logo/logo-2.png">
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- 底部导航栏 -->
     <div class="footer-area black-bg-2 pt-70">
         <div class="footer-top-area pb-18">
             <div class="container">
@@ -476,15 +377,14 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-about mb-40">
                             <div class="footer-logo">
-                                <a href="index">
-                                    <img src="static/img/logo/footer-logo.png" alt="">
+                                <a href="index.html">
+                                    <img src="../assets/img/logo/footer-logo.png" alt="">
                                 </a>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidi
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                            <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
                             <div class="payment-img">
                                 <a href="#">
-                                    <img src="static/img/icon-img/payment.png" alt="">
+                                    <img src="../assets/img/icon-img/payment.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -492,16 +392,16 @@
                     <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="footer-widget mb-40">
                             <div class="footer-title mb-22">
-                                <h4>Information</h4>
+                                <h4>帮助中心</h4>
                             </div>
                             <div class="footer-content">
                                 <ul>
-                                    <li><a href="about-us">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Customer Service</a></li>
-                                    <li><a href="#">Return Policy</a></li>
+                                    <li><a href="about-us.html">关于我们</a></li>
+                                    <li><a href="#">配送信息</a></li>
+                                    <li><a href="#">隐私政策</a></li>
+                                    <li><a href="#">条款和条件</a></li>
+                                    <li><a href="#">客户服务</a></li>
+                                    <li><a href="#">改进意见</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -509,16 +409,16 @@
                     <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="footer-widget mb-40">
                             <div class="footer-title mb-22">
-                                <h4>My Account</h4>
+                                <h4>个人账户</h4>
                             </div>
                             <div class="footer-content">
                                 <ul>
-                                    <li><a href="my-account">My Account</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="wishlist">Wish List</a></li>
-                                    <li><a href="#">Newsletter</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="#">International Orders</a></li>
+                                    <li><a href="my-account.html">我的账户</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="wishlist.html">愿望清单</a></li>
+                                    <li><a href="#">个人信息</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="#">国际订单</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -526,22 +426,22 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-widget mb-40">
                             <div class="footer-title mb-22">
-                                <h4>Get in touch</h4>
+                                <h4>关于我们</h4>
                             </div>
                             <div class="footer-contact">
                                 <ul>
-                                    <li>Address: 123 Main Street, Anytown, CA 12345 - USA.</li>
-                                    <li>Telephone Enquiry: (012) 800 456 789-987 </li>
-                                    <li>Email: <a href="#">Info@example.com</a></li>
+                                    <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
+                                    <li>电话咨询: 400-100-6789</li>
+                                    <li>电子邮件: <a href="#">Info@example.com</a></li>
                                 </ul>
                             </div>
                             <div class="mt-35 footer-title mb-22">
-                                <h4>Get in touch</h4>
+                                <h4>服务支持</h4>
                             </div>
                             <div class="footer-time">
                                 <ul>
-                                    <li>Open: <span>8:00 AM</span> - Close: <span>18:00 PM</span></li>
-                                    <li>Saturday - Sunday: <span>Close</span></li>
+                                    <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
+                                    <li>周一 - 周日: <span>营业</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -554,7 +454,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-7">
                         <div class="copyright">
-                            <p>Copyright © <a href="http://www.17sucai.com/">Fudink</a> . All Right Reserved.</p>
+                            <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-5">
@@ -573,7 +473,7 @@
             </div>
         </div>
     </div>
-
+    <!-- 底部导航栏结束 -->
 
 
 
@@ -583,15 +483,15 @@
 
 
     <!-- all js here -->
-    <script src="static/js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="static/js/popper.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/imagesloaded.pkgd.min.js"></script>
-    <script src="static/js/isotope.pkgd.min.js"></script>
-    <script src="static/js/ajax-mail.js"></script>
-    <script src="static/js/owl.carousel.min.js"></script>
-    <script src="static/js/plugins.js"></script>
-    <script src="static/js/main.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/ajax-mail.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 
 </html>

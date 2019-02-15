@@ -4,50 +4,51 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Fudink - Food & Drink eCommerce Bootstrap4 Template</title>
+    <title>非食不可-购物车</title>
     <meta name="description" content="">
     <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.png"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="static/img/icon.jpg">
-    
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.png">
+
 
 
     <!-- all css here -->
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/animate.css">
-    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/css/slick.css">
-    <link rel="stylesheet" href="static/css/chosen.min.css">
-    <link rel="stylesheet" href="static/css/ionicons.min.css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static/css/simple-line-icons.css">
-    <link rel="stylesheet" href="static/css/jquery-ui.css">
-    <link rel="stylesheet" href="static/css/meanmenu.min.css">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/responsive.css">
-    <link rel="stylesheet" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
-    <script src="static/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/chosen.min.css">
+    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <!-- <link rel="stylesheet" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css"> -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
-    <!-- header start -->
+
+    <!-- 顶部导航栏开始 -->
     <header class="header-area">
         <div class="header-middle">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-12 col-sm-4">
                         <div class="logo">
-                            <a href="index">
-                                <img alt="" src="static/img/logo/logo.png">
+                            <a href="index.html">
+                                <img alt="" src="../assets/img/logo/logo.png">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-8 col-12 col-sm-8">
                         <div class="header-middle-right f-right">
                             <div class="header-login">
-                                <a href="login-register">
+                                <a href="login-register.html">
                                     <div class="header-icon-style">
                                         <i class="icon-user icons"></i>
                                     </div>
@@ -59,8 +60,7 @@
                             <div class="header-wishlist">
                             </div>
                             <div class="header-cart">
-                                <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
-
+                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">
                                     <div class="header-icon-style">
                                         <i class="icon-handbag icons"></i>
                                         <!-- 商品数量标识 -->
@@ -70,49 +70,49 @@
                                     <div class="cart-text">
                                         <span class="digit">购物车</span>
                                         <!-- 当前购物车的统计 -->
-                                        <span class="cart-digit-bold">¥209.00</span>
+                                        <span class="cart-digit-bold">$209.00</span>
                                     </div>
                                 </a>
                                 <!-- <div class="shopping-cart-content">
-                                    <ul>
-                                        <li class="single-shopping-cart">
-                                            <div class="shopping-cart-img">
-                                                <a href="cart-page"><img alt="" src="static/img/cart/cart-1.jpg"></a>
+                                            <ul>
+                                                <li class="single-shopping-cart">
+                                                    <div class="shopping-cart-img">
+                                                        <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="cart-page.html">Phantom Remote </a></h4>
+                                                        <h6>Qty: 02</h6>
+                                                        <span>$260.00</span>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a href="#"><i class="ion ion-close"></i></a>
+                                                    </div>
+                                                </li>
+                                                <li class="single-shopping-cart">
+                                                    <div class="shopping-cart-img">
+                                                        <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="cart-page.html">Phantom Remote</a></h4>
+                                                        <h6>Qty: 02</h6>
+                                                        <span>$260.00</span>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        // ion是删除图标,做成动态删除数据就好了
+                                                        <a href="#"><i class="ion ion-close"></i></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="shopping-cart-total">
+                                                <h4>Shipping : <span>$20.00</span></h4>
+                                                <h4>Total : <span class="shop-total">$260.00</span></h4>
                                             </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="cart-page">Phantom Remote </a></h4>
-                                                <h6>Qty: 02</h6>
-                                                <span>¥260.00</span>
+                                            <div class="shopping-cart-btn">
+                                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">view
+                                                    cart</a>
+                                                <a onclick="window.location = 'checkout.html'" href="javascript:void(0);">checkout</a>
                                             </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="ion ion-close"></i></a>
-                                            </div>
-                                        </li>
-                                        <li class="single-shopping-cart">
-                                            <div class="shopping-cart-img">
-                                                <a href="cart-page"><img alt="" src="static/img/cart/cart-2.jpg"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="cart-page">Phantom Remote</a></h4>
-                                                <h6>Qty: 02</h6>
-                                                <span>¥260.00</span>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                // ion是删除图标,做成动态删除数据就好了
-                                                <a href="#"><i class="ion ion-close"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="shopping-cart-total">
-                                        <h4>Shipping : <span>¥20.00</span></h4>
-                                        <h4>Total : <span class="shop-total">¥260.00</span></h4>
-                                    </div>
-                                    <div class="shopping-cart-btn">
-                                        <a onclick="window.location = 'cart-page'" href="javascript:void(0);">view
-                                            cart</a>
-                                        <a onclick="window.location = 'checkout'" href="javascript:void(0);">checkout</a>
-                                    </div>
-                                </div> -->
+                                        </div> -->
                             </div>
                         </div>
                     </div>
@@ -126,14 +126,14 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li class="mega-menu-position top-hover"><a href="index">首页</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="shop">发现商家</a></li>
-                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
-                                    <li class="mega-menu-position top-hover"><a href="cart-page">购物车</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="checkout">提交订单</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="my-account">个人信息</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="index.html">首页</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="shop.html">发现商家</a></li>
+                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list.html">点菜</a></li> -->
+                                    <li class="mega-menu-position top-hover"><a href="cart-page.html">购物车</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="checkout.html">提交订单</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="my-account.html">个人信息</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="about-us.html">关于我们</a></li>
+                                    <!-- <li class="mega-menu-position top-hover"><a href="contact.html">联系我们</a></li> -->
                                 </ul>
                             </nav>
                         </div>
@@ -150,13 +150,13 @@
                         <div class="mobile-menu">
                             <nav id="mobile-menu-active">
                                 <ul class="menu-overflow" id="nav">
-                                    <li><a href="index">首页</a></li>
-                                    <li><a href="shop">发现商家</a></li>
-                                    <!-- <li><a href="shop-list">点菜</a></li> -->
-                                    <li><a href="cart-page">购物车</a></li>
-                                    <li><a href="checkout">提交订单</a></li>
-                                    <li><a href="about-us">关于我们</a></li>
-                                    <li><a href="contact">联系我们</a></li>
+                                    <li><a href="index.html">首页</a></li>
+                                    <li><a href="shop.html">发现商家</a></li>
+                                    <!-- <li><a href="shop-list.html">点菜</a></li> -->
+                                    <li><a href="cart-page.html">购物车</a></li>
+                                    <li><a href="checkout.html">提交订单</a></li>
+                                    <li><a href="about-us.html">关于我们</a></li>
+                                    <!-- <li><a href="contact.html">联系我们</a></li> -->
                                 </ul>
                             </nav>
                         </div>
@@ -166,11 +166,14 @@
         </div>
         <!-- mobile-menu-area-end -->
     </header>
+    <!-- 顶部导航栏结束 -->
+
+
     <div class="breadcrumb-area gray-bg">
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
-                    <li><a href="index">主页</a></li>
+                    <li><a href="index.html">主页</a></li>
                     <li class="active">购物车 </li>
                 </ul>
             </div>
@@ -182,7 +185,7 @@
             <h3 class="page-title">购物车物品</h3>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <form action="#" method="POST">
+                    <form action="#" method="POST" enctype="multipart/form-data">
                         <div class="table-content table-responsive">
                             <table>
                                 <thead>
@@ -198,7 +201,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="product-thumbnail">
-                                            <a href="#"><img src="static/img/cart/shiguohamiguatangpai.jpg" alt=""></a>
+                                            <a href="#"><img src="../assets/img/cart/shiguohamiguatangpai.jpg" alt=""></a>
                                         </td>
                                         <td class="product-name"><a href="#">石锅哈密瓜糖排 </a></td>
                                         <td class="product-price-cart"><span class="amount">¥60.00</span></td>
@@ -215,7 +218,7 @@
                                     </tr>
                                     <tr>
                                         <td class="product-thumbnail">
-                                            <a href="#"><img src="static/img/cart/tusixiangcaozhilaohuxie.jpg" alt=""></a>
+                                            <a href="#"><img src="../assets/img/cart/tusixiangcaozhilaohuxie.jpg" alt=""></a>
                                         </td>
                                         <td class="product-name"><a href="#">土司香草汁老虎蟹 </a></td>
                                         <td class="product-price-cart"><span class="amount">¥150.00</span></td>
@@ -232,7 +235,7 @@
                                     </tr>
                                     <tr>
                                         <td class="product-thumbnail">
-                                            <a href="#"><img src="static/img/cart/suancaiyuner.jpg" alt=""></a>
+                                            <a href="#"><img src="../assets/img/cart/suancaiyuner.jpg" alt=""></a>
                                         </td>
                                         <td class="product-name"><a href="#">酸菜云耳 </a></td>
                                         <td class="product-price-cart"><span class="amount">¥70.00</span></td>
@@ -251,40 +254,61 @@
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="cart-shiping-update-wrapper">
+                            <div class="col-lg-12" >
+                                <!-- <div class="cart-shiping-update-wrapper"> -->
                                     <!-- <div class="cart-shiping-update">
                                         <a href="#">继续点菜</a>
                                     </div> -->
                                     <div class="cart-clear">
-                                        <a href='#'>刷新菜单</a>
-                                        <a href="#">清除购物车</a>
+                                        <a href="#" class="clearcart" style="margin-top:20px">清空购物车</a>
+                                        <!-- <button>刷新菜单</button> -->
                                     </div>
-                                </div>
+                                    <div class="cart-liuyankuang" style="width:400px ;float: left;height:420px" >
+                                        <form id="testForm" class="form-horizontal" >
+                                            <div class="form-group" style="height:100%">
+                                                <!-- <label class="col-md-3 control-label">留言板</label> -->
+                                                <label class="control-label" >留言板</label>
+                                                <!-- <div class="col-md-6"> -->
+                                                <textarea class='form-control' name='test' onkeyup='textAreaChange(this)'
+                                                    onkeydown='textAreaChange(this)' rows='15'></textarea>
+                                                <div class='text-right'>
+                                                    <em style='color:red'>200</em>/<span>200</span>
+                                                </div>
+                                                <!-- </div> -->
+                                            </div>
+                                            <div class="form-group">
+                                                <!-- <div class="col-md-offset-3 col-md-6"> -->
+                                                    <button type="button" class="btn btn-info" id="testConfirm" style="float:right">确认</button>
+                                                <!-- </div> -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="grand-totall" style="float:right;width:30%;">
+                                            <div class="title-wrap">
+                                                <h4 class="cart-bottom-title section-bg-gary-cart">菜品清单</h4>
+                                            </div>
+                                            <h5 class="grand-totall-number">菜品总数 <span>0</span></h5>
+                                            <div class="total-shipping">
+                                                <h5>有偿提供</h5>
+                                                <ul>
+                                                    <li><input type="checkbox" id="dbcj" name='dbcj'> 打包餐具 <span>¥20.00</span></li>
+                                                    <li><input type="checkbox" id="kpf" name='kpf'> 开瓶费 <span>¥30.00</span></li>
+                                                </ul>
+                                            </div>
+                                            <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
+                                            <!-- <a href="#">去支付</a> -->
+											<input type="submit" name="quzhifu" id="quzhifu" value="去支付" action="/checkout.html">
+                                        </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </form>
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <div class="cart-tax">
-                                <form id="testForm" class="form-horizontal" method="POST">
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Reason</label>
-                                            <div class="col-md-6">
-                                                <textarea class='form-control' name='test' onkeyup='textAreaChange(this)' onkeydown='textAreaChange(this)' rows='5'></textarea>
-                                                <div class='text-right'>
-                                                    <em style='color:red'>200</em>/<span>200</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-3 col-md-6">
-                                                <button type="button" class="btn btn-info" id="testConfirm">Confirm</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                  <!-- <div class="title-wrap">
-                                  <h4 class="cart-bottom-title section-bg-gray">Estimate Shipping And Tax</h4>
+                            <!--<div class="cart-tax">
+                               
+                                 <div class="title-wrap">
+                                    <h4 class="cart-bottom-title section-bg-gray">Estimate Shipping And Tax</h4>
                                 </div>
                                 <div class="tax-wrapper">
                                     <p>Enter your destination to get a shipping estimate.</p>
@@ -324,7 +348,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <!-- <div class="col-lg-4 col-md-6">
+                            <!-- <div class="col-lg-4 col-md-6">
                             <div class="discount-code-wrapper">
                                 <div class="title-wrap">
                                     <h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
@@ -335,11 +359,11 @@
                                         <input type="text" required="" name="name">
                                         <button class="cart-btn-2" type="submit">Apply Coupon</button>
                                     </form>z
-                                </div> -->
-                            </div>
+                                </div>
+                            </div> -->
                         </div>
                         <div class="col-lg-4 col-md-12">
-                            <div class="grand-totall">
+                            <!-- <div class="grand-totall">
                                 <div class="title-wrap">
                                     <h4 class="cart-bottom-title section-bg-gary-cart">菜品清单</h4>
                                 </div>
@@ -348,18 +372,19 @@
                                     <h5>有偿提供</h5>
                                     <ul>
                                         <li><input type="checkbox" id="dbcj" name='dbcj'> 打包餐具 <span>¥20.00</span></li>
-                                        <li><input type="checkbox" id="kpf" name = 'kpf'> 开瓶费 <span>¥30.00</span></li>
+                                        <li><input type="checkbox" id="kpf" name='kpf'> 开瓶费 <span>¥30.00</span></li>
                                     </ul>
                                 </div>
                                 <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
-                                <a href="/checkout">去支付</a>
-                            </div>
+                                <a href="#">去支付</a>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- 底部导航栏 -->
     <div class="footer-area black-bg-2 pt-70">
         <div class="footer-top-area pb-18">
             <div class="container">
@@ -367,14 +392,14 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-about mb-40">
                             <div class="footer-logo">
-                                <a href="index">
-                                    <img src="static/img/logo/footer-logo.png" alt="">
+                                <a href="index.html">
+                                    <img src="../assets/img/logo/footer-logo.png" alt="">
                                 </a>
                             </div>
                             <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
                             <div class="payment-img">
                                 <a href="#">
-                                    <img src="static/img/icon-img/payment.png" alt="">
+                                    <img src="../assets/img/icon-img/payment.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -382,11 +407,11 @@
                     <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="footer-widget mb-40">
                             <div class="footer-title mb-22">
-                                <h4>Information</h4>
+                                <h4>帮助中心</h4>
                             </div>
                             <div class="footer-content">
                                 <ul>
-                                    <li><a href="about-us">关于我们</a></li>
+                                    <li><a href="about-us.html">关于我们</a></li>
                                     <li><a href="#">配送信息</a></li>
                                     <li><a href="#">隐私政策</a></li>
                                     <li><a href="#">条款和条件</a></li>
@@ -403,12 +428,12 @@
                             </div>
                             <div class="footer-content">
                                 <ul>
-                                    <li><a href="my-account">我的账户</a></li>
+                                    <li><a href="my-account.html">我的账户</a></li>
                                     <li><a href="#">历史订单</a></li>
-                                    <li><a href="wishlist">愿望清单</a></li>
+                                    <li><a href="wishlist.html">愿望清单</a></li>
                                     <li><a href="#">个人信息</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="#">International Orders</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="#">国际订单</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -416,17 +441,17 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-widget mb-40">
                             <div class="footer-title mb-22">
-                                <h4>保持联系</h4>
+                                <h4>关于我们</h4>
                             </div>
                             <div class="footer-contact">
                                 <ul>
                                     <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
-                                    <li>T电话咨询: (0571) 800 456 789-987</li>
+                                    <li>电话咨询: 400-100-6789</li>
                                     <li>电子邮件: <a href="#">Info@example.com</a></li>
                                 </ul>
                             </div>
                             <div class="mt-35 footer-title mb-22">
-                                <h4>Get in touch</h4>
+                                <h4>服务支持</h4>
                             </div>
                             <div class="footer-time">
                                 <ul>
@@ -444,7 +469,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-7">
                         <div class="copyright">
-                            <p>Copyright © <a href="http://www.baidu.com/">达人预备队</a> . All Right Reserved.</p>
+                            <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-5">
@@ -463,7 +488,7 @@
             </div>
         </div>
     </div>
-
+    <!-- 底部导航栏结束 -->
 
 
 
@@ -471,16 +496,16 @@
 
 
     <!-- all js here -->
-    <script src="static/js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="static/js/popper.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/imagesloaded.pkgd.min.js"></script>
-    <script src="static/js/isotope.pkgd.min.js"></script>
-    <script src="static/js/ajax-mail.js"></script>
-    <script src="static/js/owl.carousel.min.js"></script>
-    <script src="static/js/plugins.js"></script>
-    <script src="static/js/main.js"></script>
-    <script src="static/js/cart-count.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/ajax-mail.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/cart-count.js"></script>
 </body>
 
 </html>
