@@ -1,36 +1,7 @@
-from flask import Flask, request, render_template
-from flask_migrate import Migrate, MigrateCommand
-from flask_script import Manager
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
+# 根据数据库编写实体类
+from . import db
 
 
-app = Flask(__name__,
-            # template_folder="",  # 指定存放模板的文件夹名称
-            static_url_path="/assets",  # "指定访问静态资源的路径
-            static_folder="assets"  # 静态文件夹名称
-            )
-<<<<<<< HEAD
- 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://aid:123456@176.23.4.101:3306/project"
-=======
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@localhost:3306/project"
->>>>>>> 9bd62056a7b60f1c0b64f5567ecf7dff3cb0531b
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['DEBUG'] = True
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-db = SQLAlchemy(app)
-print(db)
-manager = Manager(app)
-migrate = Migrate(app, db)
-manager.add_command('db', MigrateCommand)
-
-
-# +++++++++++++++++++++++++++++++++++++++++++
-# 各种表的类
-# ........................................
-# 门店申请表
 class Apply(db.Model):
     __tablename__ = "apply"
     id = db.Column(db.Integer, primary_key=True)
@@ -54,9 +25,10 @@ class Apply(db.Model):
     remark = db.Column(db.String(255), nullable=True)
     pass
 
-
 # ........................................
 # 地区表
+
+
 class Area(db.Model):
     __tablename__ = "area"
     # 二级地区id
@@ -97,21 +69,10 @@ class Goods_info(db.Model):
     goods_type = db.Column(db.Integer, nullable=False)
     # 商品备注；也就是商品简介
     goods_notes = db.Column(db.String(255), nullable=True)
-
-    def to_dict(self):
-        dic = {
-            "id": self.id,
-            "goods_name": self.goods_name,
-            "goods_image": self.goods_image,
-            "goods_price": self.goods_price,
-            "goods_status": self.goods_status,
-            "goods_type": self.goods_type,
-            "goods_notes": self.goods_notes,
-        }
-
-    # ........................................
+    pass
 
 
+# ........................................
 # 商品种类表 关联了门店id
 class Goods_type(db.Model):
     __tablename__ = "goods_type"
@@ -154,21 +115,22 @@ class Order(db.Model):
     # 订单id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
     order_id = db.Column(db.CHAR(20),
                          nullable=False,
+                         primary_key=True,
                          )
     # 门店id
-    shop_id = db.Column(db.Integer, nullable=True)
+    shop_id = db.Column(db.Integer, nullable=False)
     # userid
-    user_id = db.Column(db.Integer, nullable=True)
+    user_id = db.Column(db.Integer, nullable=False)
     # 支付金额
-    pay_money = db.Column(db.Float(2), nullable=True)
+    pay_money = db.Column(db.Float(2), nullable=False)
     # 支付类型
-    pay_type = db.Column(db.SmallInteger, nullable=True)
+    pay_type = db.Column(db.SmallInteger, nullable=False)
     # 订单交易状态
-    status = db.Column(db.SmallInteger, nullable=True)
+    status = db.Column(db.SmallInteger, nullable=False)
     # 订单创建时间
-    create_time = db.Column(db.DATETIME, nullable=True)
+    create_time = db.Column(db.DATETIME, nullable=False)
     # 订单更新时间
-    update_taime = db.Column(db.DATETIME, nullable=True)
+    update_taime = db.Column(db.DATETIME, nullable=False)
     # 付款时间
     pay_time = db.Column(db.DATETIME, nullable=True)
     # 订单备注
@@ -186,17 +148,10 @@ class Order(db.Model):
     # 买家/用户昵称（不得超过20个字符
     nick = db.Column(db.String(20), nullable=True)
     # 一 对 order_details('多')
-<<<<<<< HEAD
     orders_id = db.relationship(
-        'Order_details',
-        backref = 'order',
-        lazy ='dynamic'
-=======
-    order_details_id = db.relationship(
-        'Order_details',
+        'Order',
         backref='order',
         lazy='dynamic'
->>>>>>> 9bd62056a7b60f1c0b64f5567ecf7dff3cb0531b
     )
 
 
@@ -207,20 +162,20 @@ class Order_details(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # 订单Id 增加外键,引用自order表的order_id主键
     order_id = db.Column(db.Integer,
-                         db.ForeignKey('order.id'),
-                         nullable=True, )
+                         db.ForeignKey('order.order_id'),
+                         nullable=True,)
     # 商品id
     goods_id = db.Column(db.Integer, nullable=True)
     # 商品名称
-    goods_name = db.Column(db.String(255), nullable=True)
+    goods_name = db.Column(db.VARCHAR(255), nullable=True)
     # 图片url地址
-    image_url = db.Column(db.String(255), nullable=True)
+    image_url = db.Column(db.VARCHAR(255), nullable=True)
     # 单价
     price = db.Column(db.Float, nullable=True)
     # 商品数量 不为空
     num = db.Column(db.Integer, nullable=False)
     # 订单总价
-    count_money = db.Column(db.String(255), nullable=True)
+    count_money = db.Column(db.VARCHAR(255), nullable=True)
 
 
 # ........................................
@@ -258,11 +213,12 @@ class type(db.Model):
     type_name = db.Column(db.String(10), nullable=True)
     pass
 
-
 # ........................................
 # 类型和门店关联的表；
 # 门店可以属于多个类型；
 # 例如：汉堡王，可以是汉堡，也可以是西餐
+
+
 class type_shop(db.Model):
     __tablename__ = "type_shop"
     id = db.Column(db.Integer, primary_key=True)
@@ -270,9 +226,10 @@ class type_shop(db.Model):
     shop_id = db.Column(db.Integer, nullable=False)
     pass
 
-
 # ........................................
 # 用户信息表
+
+
 class user_info(db.Model):
     __tablename__ = "user_info"
     id = db.Column(db.Integer, primary_key=True)
@@ -296,123 +253,5 @@ class user_info(db.Model):
     update_time = db.Column(db.DATETIME, nullable=True)
     pass
 
-
 # ........................................
 # +++++++++++++++++++++++++++++++++++++++++
-
-
-# ---------------------------------------------
-# localhost:5000/
-# 主页部分
-@app.route("/")
-@app.route("/<name>")
-def html(name=None):
-    if name is None:
-        return render_template("index.html")
-    return render_template(name)
-
-
-# -------------------------------------------
-
-# ----------------------------------------
-# localhost:5000/cart-page.html
-# 购物车后台部分
-@app.route('/cart-page', methods=["GET", "POST"])
-def cart_page_viwes():
-    if request.method == "GET":
-        # 先判断是否登录
-        # if 'id' in session and 'lognname' in session:
-        # 1. 获取当前订单号,及订单里的数据
-        # order_id = session['order_id']
-        # goods_id = session["goods_id"]
-        goodsid = [10001, 10002, 10003, 10004]
-        goods =[]
-        for g in goodsid:
-            # for g in goods_id:
-            good = Goods_info().query.filter_by(id=g).all()
-            goods.append(good)
-        # 2.传送到页面上
-
-        return render_template('cart-page.html', params=locals())
-    #     else:
-    #         redirect('/login')
-    # else:
-    #     od = Order()
-    #     ods = Order_details()
-    #     count_money = request.form['count_money']
-    # 3.保存到数据库order表和order_details中
-
-    # # 2. 根据订单号,查询出订单下菜品详情
-    # goods = db.session.query(order_details)
-    pass
-
-
-# ---------------------------------------
-# ---------------------------------------
-# 应巧
-@app.route('/login', methods=['GET', 'POST'])
-def login_views():
-    if request.method == 'GET':
-        return render_template('login-register.html')
-    else:
-        user_name = request.form['username']
-        password = generate_password_hash(request.form['password'])
-        print("用户名:%s,密码:%s" % (user_name, password))
-        result = check_password_hash(password, '123456')
-        if result:
-            print('密码为123456')
-        else:
-            print('密码不是123456')
-        return "接收数据成功"
-
-
-@app.route('/register', methods=['GET', 'POST'])
-def register_views():
-<<<<<<< HEAD
-	if request.method=='GET':
-		return render_template('login-register.html')
-	else:
-		user_name=request.form['username']
-		password=generate_password_hash(request.form['password'])
-		phone=request.form['phonenum']		
-		print("用户名:%s,密码:%s,手机号:%s"%(user_name,password,phone))
-		result=check_password_hash(password,'123456')
-		if result:
-			print('密码为123456')
-		else:
-			print('密码不是123456')
-		return "接收数据成功"
-
-
-#--------------------------------------------------------
-@ app.route('/checkout.html',methods=['GET','POST'])
-def checkout():
-    
-    goodlsit = [{'name':'food','price':500,'num':2},{'name':'food','price':500,'num':2}]
-    return render_template("checkout.html",goodlist = goodlsit)
-
-=======
-    if request.method == 'GET':
-        return render_template('login-register.html')
-    else:
-        user_name = request.form['username']
-        password = generate_password_hash(request.form['password'])
-        phone = request.form['phonenum']
-        print("用户名:%s,密码:%s,手机号:%s" % (user_name, password, phone))
-        result = check_password_hash(password, '123456')
-        if result:
-            print('密码为123456')
-        else:
-            print('密码不是123456')
-        return "接收数据成功"
-
-
-# ---------------------------------------
->>>>>>> 9bd62056a7b60f1c0b64f5567ecf7dff3cb0531b
-if __name__ == "__main__":
-    # app.run(debug=True,
-    #         # port=5555,  # 开放访问的端口号,默认为50000
-    #         # host="0.0.0.0"  # host:指定访问到本项目的地址,0.0.0.0表示局域网内任何机器都可以访问到当前本项目,其他访问班级项目时需要使用ip地址
-    #         )
-
-    manager.run()

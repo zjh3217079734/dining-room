@@ -1,16 +1,18 @@
-﻿<!doctype html>
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>非食不可-注册登录</title>
+    <title>非食不可-购物车</title>
     <meta name="description" content="">
     <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png"> -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.png">
+
+
 
     <!-- all css here -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -23,15 +25,14 @@
     <link rel="stylesheet" href="../assets/css/simple-line-icons.css">
     <link rel="stylesheet" href="../assets/css/jquery-ui.css">
     <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
-
-    <link rel="stylesheet" href="../assets/css/login-register.css">
-
+    <!-- <link rel="stylesheet" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css"> -->
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
+
     <!-- 顶部导航栏开始 -->
     <header class="header-area">
         <div class="header-middle">
@@ -167,91 +168,222 @@
     </header>
     <!-- 顶部导航栏结束 -->
 
+
     <div class="breadcrumb-area gray-bg">
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li class="active"> 登录 | 注册 </li>
+                    <li><a href="index.html">主页</a></li>
+                    <li class="active">购物车 </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="login-register-area pt-95 pb-100">
+    <!-- shopping-cart-area start -->
+    <div class="cart-main-area pt-95 pb-100">
         <div class="container">
+            <h3 class="page-title">购物车物品</h3>
             <div class="row">
-                <div class="col-lg-7 col-md-12 ml-auto mr-auto">
-                    <div class="login-register-wrapper">
-                        <div class="login-register-tab-list nav">
-                            <a class="active" data-toggle="tab" href="#lg1">
-                                <h4> 登录 </h4>
-                            </a>
-                            <a data-toggle="tab" href="#lg2">
-                                <h4> 注册 </h4>
-                            </a>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <div class="table-content table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>图片</th>
+                                        <th>菜品名称</th>
+                                        <th>菜品单价</th>
+                                        <th>数量</th>
+                                        <th>菜品小计</th>
+                                        <th>修改</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img src="../assets/img/cart/shiguohamiguatangpai.jpg" alt=""></a>
+                                        </td>
+                                        <td class="product-name"><a href="#">石锅哈密瓜糖排 </a></td>
+                                        <td class="product-price-cart"><span class="amount">¥60.00</span></td>
+                                        <td class="product-quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">&yen;60</td>
+                                        <td class="product-remove">
+                                            <a><i class="fa fa-pencil"></i></a>
+                                            <a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img src="../assets/img/cart/tusixiangcaozhilaohuxie.jpg" alt=""></a>
+                                        </td>
+                                        <td class="product-name"><a href="#">土司香草汁老虎蟹 </a></td>
+                                        <td class="product-price-cart"><span class="amount">¥150.00</span></td>
+                                        <td class="product-quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">&yen;150</td>
+                                        <td class="product-remove">
+                                            <a><i class="fa fa-pencil"></i></a>
+                                            <a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img src="../assets/img/cart/suancaiyuner.jpg" alt=""></a>
+                                        </td>
+                                        <td class="product-name"><a href="#">酸菜云耳 </a></td>
+                                        <td class="product-price-cart"><span class="amount">¥70.00</span></td>
+                                        <td class="product-quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">&yen;70</td>
+                                        <td class="product-remove">
+                                            <a><i class="fa fa-pencil"></i></a>
+                                            <a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="tab-content">
-                            <div id="lg1" class="tab-pane active">
-                                <div class="login-form-container">
-                                    <div class="login-register-form">
-
-                                        <form action="/login" method="post">
-                                            <input type="text" name="username" placeholder="用户名">
-                                            <input type="password" name="password" placeholder="密码">
-                                            <div class="button-box">
-
-                                                <div class="login-toggle-btn">
-                                                    <input type="checkbox" name="isSaved">
-                                                    <label>记住密码</label>
-                                                    <a href="ResetPwd.html">忘记密码？</a>
+                        <div class="row">
+                            <div class="col-lg-12" >
+                                <!-- <div class="cart-shiping-update-wrapper"> -->
+                                    <!-- <div class="cart-shiping-update">
+                                        <a href="#">继续点菜</a>
+                                    </div> -->
+                                    <div class="cart-clear">
+                                        <a href="#" class="clearcart" style="margin-top:20px">清空购物车</a>
+                                        <!-- <button>刷新菜单</button> -->
+                                    </div>
+                                    <div class="cart-liuyankuang" style="width:400px ;float: left;height:420px" >
+                                        <form id="testForm" class="form-horizontal" >
+                                            <div class="form-group" style="height:100%">
+                                                <!-- <label class="col-md-3 control-label">留言板</label> -->
+                                                <label class="control-label" >留言板</label>
+                                                <!-- <div class="col-md-6"> -->
+                                                <textarea class='form-control' name='test' onkeyup='textAreaChange(this)'
+                                                    onkeydown='textAreaChange(this)' rows='15'></textarea>
+                                                <div class='text-right'>
+                                                    <em style='color:red'>200</em>/<span>200</span>
                                                 </div>
-
-                                                <div class="verification-content" style="">
-                                                    <span>*</span>验证码：<input type="text" class="verification-input">
-                                                    <img id="verification-code" src="C:/">
-                                                    <span>看不清？</span>
-                                                    <span style="color:#37CAF2" id="changeImgCode">换一张</span>
-                                                </div>
-
-                                                <button type="submit" value="登录"><span>登录</span></button>
+                                                <!-- </div> -->
+                                            </div>
+                                            <div class="form-group">
+                                                <!-- <div class="col-md-offset-3 col-md-6"> -->
+                                                    <button type="button" class="btn btn-info" id="testConfirm" style="float:right">确认</button>
+                                                <!-- </div> -->
                                             </div>
                                         </form>
                                     </div>
-                                </div>
+                                    <div class="grand-totall" style="float:right;width:30%;">
+                                            <div class="title-wrap">
+                                                <h4 class="cart-bottom-title section-bg-gary-cart">菜品清单</h4>
+                                            </div>
+                                            <h5 class="grand-totall-number">菜品总数 <span>0</span></h5>
+                                            <div class="total-shipping">
+                                                <h5>有偿提供</h5>
+                                                <ul>
+                                                    <li><input type="checkbox" id="dbcj" name='dbcj'> 打包餐具 <span>¥20.00</span></li>
+                                                    <li><input type="checkbox" id="kpf" name='kpf'> 开瓶费 <span>¥30.00</span></li>
+                                                </ul>
+                                            </div>
+                                            <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
+                                            <!-- <a href="#">去支付</a> -->
+											<input type="submit" name="quzhifu" id="quzhifu" value="去支付" action="/checkout.html">
+                                        </div>
+                                <!-- </div> -->
                             </div>
-                            <div id="lg2" class="tab-pane">
-                                <div class="login-form-container">
-                                    <div class="login-register-form">
-
-                                        <form action="/register" method="post">
-                                            <input type="text" name="username" placeholder="用户名">
-                                            <input type="password" name="password" placeholder="密码">
-
-                                            <div class="verification-msg">
-                                                <div class="verification-PhoneNum">
-                                                    <input type="text" name="phone" placeholder="手机号码">
-                                                    <button type="button" class="send-verificationCode">获取短信验证码</button>
-                                                </div>
-                                                <div class="verification-CodeNum">
-                                                    <input type="text" name="verifyCode" placeholder="验证码">
-                                                    <button type="button" class="sub-btn">提交</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="button-box">
-                                                <button type="submit" id="btnReg" value="注册"><span>注册</span></button>
-                                            </div>
-                                        </form>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <!--<div class="cart-tax">
+                               
+                                 <div class="title-wrap">
+                                    <h4 class="cart-bottom-title section-bg-gray">Estimate Shipping And Tax</h4>
+                                </div>
+                                <div class="tax-wrapper">
+                                    <p>Enter your destination to get a shipping estimate.</p>
+                                    <div class="tax-select-wrapper">
+                                        <div class="tax-select">
+                                            <label>
+                                                * Country
+                                            </label>
+                                            <select class="email s-email s-wid">
+                                                <option>Bangladesh</option>
+                                                <option>Albania</option>
+                                                <option>Åland Islands</option>
+                                                <option>Afghanistan</option>
+                                                <option>Belgium</option>
+                                            </select>
+                                        </div>
+                                        <div class="tax-select">
+                                            <label>
+                                                * Region / State
+                                            </label>
+                                            <select class="email s-email s-wid">
+                                                <option>Bangladesh</option>
+                                                <option>Albania</option>
+                                                <option>Åland Islands</option>
+                                                <option>Afghanistan</option>
+                                                <option>Belgium</option>
+                                            </select>
+                                        </div>
+                                        <div class="tax-select">
+                                            <label>
+                                                * Zip/Postal Code
+                                            </label>
+                                            <input type="text">
+                                        </div>
+                                        <button class="cart-btn-2" type="submit">Get A Quote</button>
                                     </div>
                                 </div>
                             </div>
+                        </div> -->
+                            <!-- <div class="col-lg-4 col-md-6">
+                            <div class="discount-code-wrapper">
+                                <div class="title-wrap">
+                                    <h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
+                                </div>
+                                <div class="discount-code">
+                                    <p>Enter your coupon code if you have one.</p>
+                                    <form>
+                                        <input type="text" required="" name="name">
+                                        <button class="cart-btn-2" type="submit">Apply Coupon</button>
+                                    </form>z
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <!-- <div class="grand-totall">
+                                <div class="title-wrap">
+                                    <h4 class="cart-bottom-title section-bg-gary-cart">菜品清单</h4>
+                                </div>
+                                <h5 class="grand-totall-number">菜品总数 <span>0</span></h5>
+                                <div class="total-shipping">
+                                    <h5>有偿提供</h5>
+                                    <ul>
+                                        <li><input type="checkbox" id="dbcj" name='dbcj'> 打包餐具 <span>¥20.00</span></li>
+                                        <li><input type="checkbox" id="kpf" name='kpf'> 开瓶费 <span>¥30.00</span></li>
+                                    </ul>
+                                </div>
+                                <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
+                                <a href="#">去支付</a>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- 底部导航栏 -->
     <div class="footer-area black-bg-2 pt-70">
         <div class="footer-top-area pb-18">
@@ -358,6 +490,11 @@
     </div>
     <!-- 底部导航栏结束 -->
 
+
+
+
+
+
     <!-- all js here -->
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="../assets/js/popper.js"></script>
@@ -368,6 +505,7 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/cart-count.js"></script>
 </body>
 
 </html>
