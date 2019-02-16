@@ -25,9 +25,9 @@
     <link rel="stylesheet" href="../assets/css/simple-line-icons.css">
     <link rel="stylesheet" href="../assets/css/jquery-ui.css">
     <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <!-- <link rel="stylesheet" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css"> -->
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -185,7 +185,7 @@
             <h3 class="page-title">购物车物品</h3>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <form action="#">
+                    <form action="#" method="POST" enctype="multipart/form-data">
                         <div class="table-content table-responsive">
                             <table>
                                 <thead>
@@ -254,40 +254,60 @@
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="cart-shiping-update-wrapper">
+                            <div class="col-lg-12" >
+                                <!-- <div class="cart-shiping-update-wrapper"> -->
                                     <!-- <div class="cart-shiping-update">
                                         <a href="#">继续点菜</a>
                                     </div> -->
                                     <div class="cart-clear">
-                                        <button>刷新菜单</button>
-                                        <a href="#">清除购物车</a>
+                                        <a href="#" class="clearcart" style="margin-top:20px">清空购物车</a>
+                                        <!-- <button>刷新菜单</button> -->
                                     </div>
-                                </div>
+                                    <div class="cart-liuyankuang" style="width:400px ;float: left;height:420px" >
+                                        <form id="testForm" class="form-horizontal" >
+                                            <div class="form-group" style="height:100%">
+                                                <!-- <label class="col-md-3 control-label">留言板</label> -->
+                                                <label class="control-label" >留言板</label>
+                                                <!-- <div class="col-md-6"> -->
+                                                <textarea class='form-control' name='test' onkeyup='textAreaChange(this)'
+                                                    onkeydown='textAreaChange(this)' rows='15'></textarea>
+                                                <div class='text-right'>
+                                                    <em style='color:red'>200</em>/<span>200</span>
+                                                </div>
+                                                <!-- </div> -->
+                                            </div>
+                                            <div class="form-group">
+                                                <!-- <div class="col-md-offset-3 col-md-6"> -->
+                                                    <button type="button" class="btn btn-info" id="testConfirm" style="float:right">确认</button>
+                                                <!-- </div> -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="grand-totall" style="float:right;width:30%;">
+                                            <div class="title-wrap">
+                                                <h4 class="cart-bottom-title section-bg-gary-cart">菜品清单</h4>
+                                            </div>
+                                            <h5 class="grand-totall-number">菜品总数 <span>0</span></h5>
+                                            <div class="total-shipping">
+                                                <h5>有偿提供</h5>
+                                                <ul>
+                                                    <li><input type="checkbox" id="dbcj" name='dbcj'> 打包餐具 <span>¥20.00</span></li>
+                                                    <li><input type="checkbox" id="kpf" name='kpf'> 开瓶费 <span>¥30.00</span></li>
+                                                </ul>
+                                            </div>
+                                            <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
+                                            <!-- <a href="#">去支付</a> -->
+											<input type="submit" name="quzhifu" id="quzhifu" value="去支付" action="/checkout.html">
+                                        </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </form>
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <div class="cart-tax">
-                                <form id="testForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Reason</label>
-                                        <div class="col-md-6">
-                                            <textarea class='form-control' name='test' onkeyup='textAreaChange(this)'
-                                                onkeydown='textAreaChange(this)' rows='5'></textarea>
-                                            <div class='text-right'>
-                                                <em style='color:red'>200</em>/<span>200</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-3 col-md-6">
-                                            <button type="button" class="btn btn-info" id="testConfirm">Confirm</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- <div class="title-wrap">
+                            <!--<div class="cart-tax">
+                               
+                                 <div class="title-wrap">
                                     <h4 class="cart-bottom-title section-bg-gray">Estimate Shipping And Tax</h4>
                                 </div>
                                 <div class="tax-wrapper">
@@ -328,7 +348,7 @@
                                 </div>
                             </div>
                         </div> -->
-                                <!-- <div class="col-lg-4 col-md-6">
+                            <!-- <div class="col-lg-4 col-md-6">
                             <div class="discount-code-wrapper">
                                 <div class="title-wrap">
                                     <h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
@@ -339,11 +359,11 @@
                                         <input type="text" required="" name="name">
                                         <button class="cart-btn-2" type="submit">Apply Coupon</button>
                                     </form>z
-                                </div> -->
-                            </div>
+                                </div>
+                            </div> -->
                         </div>
                         <div class="col-lg-4 col-md-12">
-                            <div class="grand-totall">
+                            <!-- <div class="grand-totall">
                                 <div class="title-wrap">
                                     <h4 class="cart-bottom-title section-bg-gary-cart">菜品清单</h4>
                                 </div>
@@ -357,7 +377,7 @@
                                 </div>
                                 <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
                                 <a href="#">去支付</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
