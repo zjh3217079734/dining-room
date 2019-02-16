@@ -14,10 +14,10 @@ db = SQLAlchemy()  # 原来是:db = SQLAlchemy()
 def Create_App():
     # 创建Flask程序实例--app
     app = Flask(__name__,
-            # template_folder="templates",  # 指定存放模板的文件夹名称,默认为templates
-            static_url_path="/assets",  # "指定访问静态资源的路径
-            static_folder="assets"  # 静态文件夹名称
-            )
+                # template_folder="templates",  # 指定存放模板的文件夹名称,默认为templates
+                static_url_path="/assets",  # "指定访问静态资源的路径
+                static_folder="assets"  # 静态文件夹名称
+                )
 
     # 为app指定各种配置
     app.config['DEBUG'] = True

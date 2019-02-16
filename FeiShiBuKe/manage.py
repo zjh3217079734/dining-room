@@ -1,6 +1,6 @@
 # 启动和管理项目的相关代码
 
-from client import Create_App, db
+from client import *
 from flask_script import Manager
 from flask_migrate import MigrateCommand, Migrate
 
