@@ -72,3 +72,14 @@ def register_views():
         else:
             print('密码不是123456')
         return "接收数据成功"
+
+
+
+#--------------------------------------------------------------------------
+#颜飞龙
+
+@main.route('/checkout.html')
+def checkout():
+    goodlist = [{'name':'apple','price':100,'num':3}]
+    return render_template('checkout.html',list=locals())
+
