@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="../assets/css/login-register.css">
 
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/jquery-1.11.3.js"></script>
+    <script src="../assets/js/login-register.js"></script>
+
 </head>
 
 <body>
@@ -196,8 +200,11 @@
                                     <div class="login-register-form">
 
                                         <form action="/login" method="post">
-                                            <input type="text" name="username" placeholder="用户名">
-                                            <input type="password" name="password" placeholder="密码">
+                                            <input type="text" name="username" value="{{ params.username }}" placeholder="用户名">
+                                            <div>
+                                                <span>{{ params.errMsg }}</span>
+                                            </div>
+                                            <input type="password" name="password" value="{{ params.password }}" placeholder="密码">
                                             <div class="button-box">
 
                                                 <div class="login-toggle-btn">
@@ -213,7 +220,7 @@
                                                     <span style="color:#37CAF2" id="changeImgCode">换一张</span>
                                                 </div>
 
-                                                <button type="submit" value="登录"><span>登录</span></button>
+                                                <button type="submit" id="btnLog" value="登录"><span>登录</span></button>
                                             </div>
                                         </form>
                                     </div>
@@ -222,14 +229,15 @@
                             <div id="lg2" class="tab-pane">
                                 <div class="login-form-container">
                                     <div class="login-register-form">
-
                                         <form action="/register" method="post">
-                                            <input type="text" name="username" placeholder="用户名">
-                                            <input type="password" name="password" placeholder="密码">
-
+                                            <div class="checkuname">
+                                                <span id="uname-show"></span>
+                                            </div>
+                                            <input type="text" name="uname" placeholder="用户名">
+                                            <input type="password" name="upwd" placeholder="密码">
                                             <div class="verification-msg">
                                                 <div class="verification-PhoneNum">
-                                                    <input type="text" name="phone" placeholder="手机号码">
+                                                    <input type="text" name="uphone" placeholder="手机号码">
                                                     <button type="button" class="send-verificationCode">获取短信验证码</button>
                                                 </div>
                                                 <div class="verification-CodeNum">
@@ -239,7 +247,7 @@
                                             </div>
 
                                             <div class="button-box">
-                                                <button type="submit" value="注册"><span>注册</span></button>
+                                                <button type="submit" id="btnReg" value="注册"><span>注册</span></button>
                                             </div>
                                         </form>
                                     </div>
