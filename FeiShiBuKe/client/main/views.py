@@ -23,6 +23,8 @@ def html(name=None):
     if name is None:
         return render_template("index.html")
     return render_template(name)
+# 首页需要判断cookies中是否有登录信息,不然会报错
+
 # -------------------------------------------
 
 # ----------------------------------------

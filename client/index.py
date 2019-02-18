@@ -14,13 +14,7 @@ app = Flask(__name__,
             static_url_path="/assets",  # "指定访问静态资源的路径
             static_folder="assets"  # 静态文件夹名称
             )
-<<<<<<< HEAD
- 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://aid:123456@176.23.4.101:3306/project"
-=======
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@localhost:3306/project"
->>>>>>> 9bd62056a7b60f1c0b64f5567ecf7dff3cb0531b
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
@@ -190,18 +184,11 @@ class Order(db.Model):
     # 买家/用户昵称（不得超过20个字符
     nick = db.Column(db.String(20), nullable=True)
     # 一 对 order_details('多')
-<<<<<<< HEAD
+
     orders_id = db.relationship(
         'Order_details',
         backref = 'order',
-        lazy ='dynamic'
-=======
-    order_details_id = db.relationship(
-        'Order_details',
-        backref='order',
-        lazy='dynamic'
->>>>>>> 9bd62056a7b60f1c0b64f5567ecf7dff3cb0531b
-    )
+        lazy ='dynamic')
 
 
 # ........................................
@@ -321,20 +308,20 @@ def html(name=None):
 # ----------------------------------------
 # localhost:5000/cart-page.html
 # 购物车后台部分
-@app.route('/cart-get')
-def cart_get_views():
-    user_id = request.args['user_id']
-    shop_id = request.args['shop_id']
-    goods_id = request.args['goods_id']
-    l=[]
-    goods = Goods_info().query.filter_by(id=goods_id).all()
-    for good in goods:
-
-        l.append(good.to_dict())
-    l.append(user_id)
-    l.append(shop_id)
-
-    return json.dumps(l)
+# @app.route('/cart-get')
+# def cart_get_views():
+#     user_id = request.args['user_id']
+#     shop_id = request.args['shop_id']
+#     goods_id = request.args['goods_id']
+#     l=[]
+#     goods = Goods_info().query.filter_by(id=goods_id).all()
+#     for good in goods:
+#
+#         l.append(good.to_dict())
+#     l.append(user_id)
+#     l.append(shop_id)
+#
+#     return json.dumps(l)
 
 
 @app.route('/cart-page', methods=["GET", "POST"])
@@ -362,6 +349,8 @@ def cart_post_views():
     # user_id = session['user_id']
     # order_id = session['order_id']
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H%M%S')
+    param = request.get_json()
+    print(param)
 
     # goods_ids =[]
     # for g in request.form[]
@@ -372,7 +361,7 @@ def cart_post_views():
     # 插入表中B-order_details
     # 循环插入
     # order_id goods_id,goods_name,image_url,price,num,count_money
-    return "接收成功"
+    return render_template('cart-page.html')
 
 
 # ---------------------------------------
@@ -396,30 +385,7 @@ def login_views():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_views():
-<<<<<<< HEAD
-	if request.method=='GET':
-		return render_template('login-register.html')
-	else:
-		user_name=request.form['username']
-		password=generate_password_hash(request.form['password'])
-		phone=request.form['phonenum']		
-		print("用户名:%s,密码:%s,手机号:%s"%(user_name,password,phone))
-		result=check_password_hash(password,'123456')
-		if result:
-			print('密码为123456')
-		else:
-			print('密码不是123456')
-		return "接收数据成功"
 
-
-#--------------------------------------------------------
-@ app.route('/checkout.html',methods=['GET','POST'])
-def checkout():
-    
-    goodlsit = [{'name':'food','price':500,'num':2},{'name':'food','price':500,'num':2}]
-    return render_template("checkout.html",goodlist = goodlsit)
-
-=======
     if request.method == 'GET':
         return render_template('login-register.html')
     else:
@@ -436,7 +402,7 @@ def checkout():
 
 
 # ---------------------------------------
->>>>>>> 9bd62056a7b60f1c0b64f5567ecf7dff3cb0531b
+
 if __name__ == "__main__":
     # app.run(debug=True,
     #         # port=5555,  # 开放访问的端口号,默认为50000
