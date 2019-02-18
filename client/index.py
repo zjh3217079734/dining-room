@@ -184,19 +184,11 @@ class Order(db.Model):
     # 买家/用户昵称（不得超过20个字符
     nick = db.Column(db.String(20), nullable=True)
     # 一 对 order_details('多')
-<<<<<<< HEAD
-    order_details_id = db.relationship(
-        'Order_details',
-        backref='order',
-        lazy='dynamic'
-    )
-=======
 
     orders_id = db.relationship(
         'Order_details',
         backref = 'order',
         lazy ='dynamic')
->>>>>>> 29b184607c8f4c2657502b8740a036fd23b39a3f
 
 
 # ........................................
@@ -413,10 +405,6 @@ def register_views():
 
 
 # ---------------------------------------
-<<<<<<< HEAD
-=======
-
->>>>>>> 29b184607c8f4c2657502b8740a036fd23b39a3f
 if __name__ == "__main__":
     # app.run(debug=True,
     #         # port=5555,  # 开放访问的端口号,默认为50000

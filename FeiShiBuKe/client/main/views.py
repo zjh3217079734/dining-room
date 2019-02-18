@@ -96,29 +96,6 @@ def register_views():
     if request.method == 'GET':
         return render_template('login-register.html', params={})
     else:
-<<<<<<< HEAD
-        user_name = request.form['username']
-        password = generate_password_hash(request.form['password'])
-        phone = request.form['phonenum']
-        print("用户名:%s,密码:%s,手机号:%s" % (user_name, password, phone))
-        result = check_password_hash(password, '123456')
-        if result:
-            print('密码为123456')
-        else:
-            print('密码不是123456')
-        return "接收数据成功"
-
-
-
-#--------------------------------------------------------------------------
-#颜飞龙
-
-@main.route('/checkout.html')
-def checkout():
-    goodlist = [{'name':'apple','price':100,'num':3}]
-    return render_template('checkout.html',list=locals())
-
-=======
         username = request.form['uname']
         password = request.form['upwd']
         phone = request.form['uphone']
@@ -155,4 +132,3 @@ def checkuname():
         return "0"
 
 # -----------------------------------------------------------
->>>>>>> 29b184607c8f4c2657502b8740a036fd23b39a3f
