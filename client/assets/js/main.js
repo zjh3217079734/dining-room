@@ -402,15 +402,20 @@
 
  // 表单数据json获取测试
     $("form").submit(function() {
-      $("form").each(function (i,e) {
+      $("#caidan tbody tr","").each(function (i,e) {
           var orderObj={
               good_info_id:"",
               goods_image:"",
               goods_name:"",
               goods_price:"",
-              count_money:""
-
+              count_money:"",
+              remark:""
+          };
+          var pay_money={
+              p_money:""
           }
+          var row={}
+          $(e).find("input").each
       })
     });
 
