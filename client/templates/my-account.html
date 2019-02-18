@@ -60,7 +60,7 @@
                             <div class="header-cart">
                                 <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">
                                     <div class="header-icon-style">
-                                        <i class="icon-handbag icons"></i>
+                                        <!-- <i class="icon-handbag icons"></i> -->
                                         <!-- 商品数量标识 -->
                                         <span class="count-style">3+</span>
                                         <!-- 商品数量标识,数量后面跟+ -->
@@ -178,6 +178,7 @@
     </div>
     <!-- my account start -->
     <div class="myaccount-area pb-80 pt-100">
+        <form action="/my-account" enctype="multipart/form-data">
         <div class="container">
             <div class="row">
                 <div class="ml-auto mr-auto col-lg-9">
@@ -185,9 +186,11 @@
                         <div id="faq" class="panel-group">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq"
+                                    <h5 class="panel-title"><span>1</span> 
+                                         <a data-toggle="collapse" data-parent="#faq"
                                             href="#my-account-1"><b>个人信息</b> </a></h5>
                                 </div>
+                                <form action="" method="POST">
                                 <div id="my-account-1" class="panel-collapse collapse show">
                                     <div class="panel-body">
                                         <div class="billing-information-wrapper">
@@ -201,7 +204,7 @@
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>用户名:</label>
-                                                        <input type="test">
+                                                        <input type="test" name="uname" value="123">{{params.uname}}
                                                     </div>
                                                 </div>
                                                 <!-- 姓名 -->
@@ -220,32 +223,32 @@
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>电话号:</label>
-                                                        <input type="email" placeholder="请输入电话号">
+                                                        <input type="text" name="phone" placeholder="请输入电话号">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>支付宝:</label>
-                                                        <input type="test">
+                                                        <input type="test" name="zhifubao">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>微&nbsp;&nbsp;&nbsp;信:</label>
-                                                        <input type="text">
+                                                        <input type="text" name="weixin">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>邮&nbsp;&nbsp;&nbsp;箱:</label>
-                                                        <input type="email" placeholder="个人邮箱">
+                                                        <input type="email" name="email" placeholder="个人邮箱">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>地&nbsp;&nbsp;&nbsp;址:</label>
-                                                        <input type="email" placeholder="店家地址">
+                                                        <input type="text" name="address" placeholder="店家地址">
                                                     </div>
                                                 </div>
 
@@ -267,22 +270,23 @@
                                                 <div class="billing-btn">
                                                     <!-- 返回顶部改为 修改 -->
                                                     <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
-                                                    <button><b>修改</b></button>
-
+                                                    <input type="reset" value="重置">
                                                 </div>
                                                 <div class="billing-btn">
-                                                    <button type="submit"><b>保存</b></button>
+                                                    <input type="submit"><b>保存</b></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq"
                                             href="#my-account-2"><b>修改密码</b></a></h5>
                                 </div>
+                                <form action="" method="post">
                                 <div id="my-account-2" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <div class="billing-information-wrapper">
@@ -295,28 +299,29 @@
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>请输入密码</label>
-                                                        <input type="password" placeholder="请输入大于6位小于20位的组合密码">
+                                                        <input type="password" name="password" placeholder="请输入大于6位小于20位的组合密码">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>请重新输入</label>
-                                                        <input type="password" placeholder="请输入大于6位小于20位的组合密码">
+                                                        <input type="password" name="password" placeholder="请输入大于6位小于20位的组合密码">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="billing-back-btn">
                                                 <div class="billing-btn">
                                                     <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
-                                                    <button>修改</button>
+                                                    <input type="reset" value="重置">
                                                 </div>
                                                 <div class="billing-btn">
-                                                    <button type="submit">保存</button>
+                                                    <input type="submit">保存</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                             <!-- <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -377,7 +382,9 @@
                     </div>
                 </div>
             </div>
+       
         </div>
+    </form>
     </div>
 
     <!-- 底部导航栏 -->
