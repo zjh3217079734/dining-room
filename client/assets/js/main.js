@@ -252,6 +252,10 @@
         time: 1000
     });
 
+
+
+
+
     /*----------------------------
         Cart Plus Minus Button
         购物车增减及小计功能函数
@@ -396,7 +400,19 @@
         }
     })
 
+ // 表单数据json获取测试
+    $("form").submit(function() {
+      $("form").each(function (i,e) {
+          var orderObj={
+              good_info_id:"",
+              goods_image:"",
+              goods_name:"",
+              goods_price:"",
+              count_money:""
 
+          }
+      })
+    });
 
     /*-------------------------------------
         Thumbnail Product activation

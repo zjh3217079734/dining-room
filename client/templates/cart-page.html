@@ -189,6 +189,7 @@
                         <table>
                             <thead>
                             <tr>
+{#                                <th>id</th>#}
                                 <th>图片</th>
                                 <th>菜品名称</th>
                                 <th>菜品单价</th>
@@ -198,15 +199,24 @@
                             </tr>
                             </thead>
                             <tbody>
-
+{#                             <tr id="dingwei"></tr>#}
                             {% for good in params.goods %}
                                 {% for g in good %}
 
                             <tr>
-                                <td class="product-thumbnail">
-                                    <a href="#"><img src="../assets/{{ g.goods_image }}" alt=""></a>
+                                <td style="display: none">
+                                    <input type="text" value="{{ g.id }}" name="good_info_id">
+                                    <input type="text" value="{{ g.good_name }}" name="goods_name">
+                                    <input type="text" value="{{ g.goods_image }}" name="goods_image">
+                                    <input type="text" value="{{ g.goods_price }}" name="goods_price">
+                                    <input type="text" value="{{ g.good }}">
+
+
                                 </td>
-                                <td class="product-name"><a href="#">{{ g.goods_name }} </a></td>
+                                <td class="product-thumbnail">
+                                    <a href="#"><img src="../assets/{{ g.goods_image }}" name="goods_image"></a>
+                                </td>
+                                <td class="product-name">{{ g.goods_name }} </td>
                                 <td class="product-price-cart"><span class="amount">¥{{ g.goods_price }}</span></td>
                                 <td class="product-quantity">
                                     <div class="cart-plus-minus">
@@ -221,40 +231,40 @@
                             </tr>
                                 {% endfor %}
                                 {% endfor %}
-                            <tr>
-                                <td class="product-thumbnail">
-                                    <a href="#"><img src="../assets/img/cart/tusixiangcaozhilaohuxie.jpg" alt=""></a>
-                                </td>
-                                <td class="product-name"><a href="#">土司香草汁老虎蟹 </a></td>
-                                <td class="product-price-cart"><span class="amount">¥150.00</span></td>
-                                <td class="product-quantity">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                    </div>
-                                </td>
-                                <td class="product-subtotal">&yen;150</td>
-                                <td class="product-remove">
-                                    <a><i class="fa fa-pencil"></i></a>
-                                    <a href="#"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="product-thumbnail">
-                                    <a href="#"><img src="../assets/img/cart/suancaiyuner.jpg" alt=""></a>
-                                </td>
-                                <td class="product-name"><a href="#">酸菜云耳 </a></td>
-                                <td class="product-price-cart"><span class="amount">¥70.00</span></td>
-                                <td class="product-quantity">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                    </div>
-                                </td>
-                                <td class="product-subtotal">&yen;70</td>
-                                <td class="product-remove">
-                                    <a><i class="fa fa-pencil"></i></a>
-                                    <a href="#"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
+{#                            <tr>#}
+{#                                <td class="product-thumbnail">#}
+{#                                    <a href="#"><img src="../assets/img/cart/tusixiangcaozhilaohuxie.jpg" alt=""></a>#}
+{#                                </td>#}
+{#                                <td class="product-name"><a href="#">土司香草汁老虎蟹 </a></td>#}
+{#                                <td class="product-price-cart"><span class="amount">¥150.00</span></td>#}
+{#                                <td class="product-quantity">#}
+{#                                    <div class="cart-plus-minus">#}
+{#                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">#}
+{#                                    </div>#}
+{#                                </td>#}
+{#                                <td class="product-subtotal">&yen;150</td>#}
+{#                                <td class="product-remove">#}
+{#                                    <a><i class="fa fa-pencil"></i></a>#}
+{#                                    <a href="#"><i class="fa fa-times"></i></a>#}
+{#                                </td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td class="product-thumbnail">#}
+{#                                    <a href="#"><img src="../assets/img/cart/suancaiyuner.jpg" alt=""></a>#}
+{#                                </td>#}
+{#                                <td class="product-name"><a href="#">酸菜云耳 </a></td>#}
+{#                                <td class="product-price-cart"><span class="amount">¥70.00</span></td>#}
+{#                                <td class="product-quantity">#}
+{#                                    <div class="cart-plus-minus">#}
+{#                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">#}
+{#                                    </div>#}
+{#                                </td>#}
+{#                                <td class="product-subtotal">&yen;70</td>#}
+{#                                <td class="product-remove">#}
+{#                                    <a><i class="fa fa-pencil"></i></a>#}
+{#                                    <a href="#"><i class="fa fa-times"></i></a>#}
+{#                                </td>#}
+{#                            </tr>#}
                             </tbody>
                         </table>
                     </div>
@@ -302,9 +312,9 @@
                                         <li><input type="checkbox" id="kpf" name='kpf'> 开瓶费 <span>¥30.00</span></li>
                                     </ul>
                                 </div>
-                                <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
+                                <h4 class="grand-totall-title">菜单总价 <span></span></h4>
                                 <!-- <a href="#">去支付</a> -->
-                                <input type="submit" name="quzhifu" id="quzhifu" value="去支付" action="/checkout.html">
+                                <input type="submit" name="quzhifu" id="quzhifu" value="去支付" >
                             </div>
                             <!-- </div> -->
                         </div>
