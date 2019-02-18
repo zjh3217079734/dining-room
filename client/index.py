@@ -1,7 +1,11 @@
-from flask import Flask, request, render_template
+import datetime
+import json
+
+from flask import Flask, request, render_template, session
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
+
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -100,9 +104,9 @@ class Goods_info(db.Model):
             "goods_price": self.goods_price,
             "goods_status": self.goods_status,
             "goods_type": self.goods_type,
-            "goods_notes": self.goods_notes,
+            "goods_notes": self.goods_notes
         }
-
+        return dic
     # ........................................
 
 
@@ -180,11 +184,19 @@ class Order(db.Model):
     # 买家/用户昵称（不得超过20个字符
     nick = db.Column(db.String(20), nullable=True)
     # 一 对 order_details('多')
+<<<<<<< HEAD
     order_details_id = db.relationship(
         'Order_details',
         backref='order',
         lazy='dynamic'
     )
+=======
+
+    orders_id = db.relationship(
+        'Order_details',
+        backref = 'order',
+        lazy ='dynamic')
+>>>>>>> 29b184607c8f4c2657502b8740a036fd23b39a3f
 
 
 # ........................................
@@ -304,6 +316,22 @@ def html(name=None):
 # ----------------------------------------
 # localhost:5000/cart-page.html
 # 购物车后台部分
+# @app.route('/cart-get')
+# def cart_get_views():
+#     user_id = request.args['user_id']
+#     shop_id = request.args['shop_id']
+#     goods_id = request.args['goods_id']
+#     l=[]
+#     goods = Goods_info().query.filter_by(id=goods_id).all()
+#     for good in goods:
+#
+#         l.append(good.to_dict())
+#     l.append(user_id)
+#     l.append(shop_id)
+#
+#     return json.dumps(l)
+
+
 @app.route('/cart-page', methods=["GET", "POST"])
 def cart_page_viwes():
     if request.method == "GET":
@@ -313,25 +341,35 @@ def cart_page_viwes():
         # order_id = session['order_id']
         # goods_id = session["goods_id"]
         goodsid = [10001, 10002, 10003, 10004]
-        goods =[]
+        goods = []
         for g in goodsid:
-            # for g in goods_id:
             good = Goods_info().query.filter_by(id=g).all()
             goods.append(good)
         # 2.传送到页面上
 
         return render_template('cart-page.html', params=locals())
-    #     else:
-    #         redirect('/login')
-    # else:
-    #     od = Order()
-    #     ods = Order_details()
-    #     count_money = request.form['count_money']
-    # 3.保存到数据库order表和order_details中
 
-    # # 2. 根据订单号,查询出订单下菜品详情
-    # goods = db.session.query(order_details)
-    pass
+
+@app.route('/cart-post', methods=["POST"])
+def cart_post_views():
+    # 收集以下数据:shop_id,user_id order_id 所有的goods_id\name\img\price,num,单个小计count_money,总价pay_many,创建时间create_time,备注remark
+    # shop_id = session['shop_id']
+    # user_id = session['user_id']
+    # order_id = session['order_id']
+    create_time = datetime.datetime.now().strftime('%Y-%m-%d %H%M%S')
+    param = request.get_json()
+    print(param)
+
+    # goods_ids =[]
+    # for g in request.form[]
+    # 插入表中A-order表
+    # order_id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
+    # shop_id,user_id,pay_money,create_time
+
+    # 插入表中B-order_details
+    # 循环插入
+    # order_id goods_id,goods_name,image_url,price,num,count_money
+    return render_template('cart-page.html')
 
 
 # ---------------------------------------
@@ -355,6 +393,10 @@ def login_views():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_views():
+<<<<<<< HEAD
+=======
+
+>>>>>>> 29b184607c8f4c2657502b8740a036fd23b39a3f
     if request.method == 'GET':
         return render_template('login-register.html')
     else:
@@ -371,6 +413,10 @@ def register_views():
 
 
 # ---------------------------------------
+<<<<<<< HEAD
+=======
+
+>>>>>>> 29b184607c8f4c2657502b8740a036fd23b39a3f
 if __name__ == "__main__":
     # app.run(debug=True,
     #         # port=5555,  # 开放访问的端口号,默认为50000
