@@ -1,17 +1,15 @@
-﻿<!doctype html>
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>非食不可-提交订单</title>
+    <title>非食不可-忘记密码</title>
     <meta name="description" content="">
     <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png"> -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.png">
-
 
     <!-- all css here -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -26,11 +24,13 @@
     <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+
+    <link rel="stylesheet" href="../assets/css/login-register.css">
+
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
-
     <!-- 顶部导航栏开始 -->
     <header class="header-area">
         <div class="header-middle">
@@ -71,46 +71,6 @@
                                         <span class="cart-digit-bold">$209.00</span>
                                     </div>
                                 </a>
-                                <!-- <div class="shopping-cart-content">
-                                            <ul>
-                                                <li class="single-shopping-cart">
-                                                    <div class="shopping-cart-img">
-                                                        <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
-                                                    </div>
-                                                    <div class="shopping-cart-title">
-                                                        <h4><a href="cart-page.html">Phantom Remote </a></h4>
-                                                        <h6>Qty: 02</h6>
-                                                        <span>$260.00</span>
-                                                    </div>
-                                                    <div class="shopping-cart-delete">
-                                                        <a href="#"><i class="ion ion-close"></i></a>
-                                                    </div>
-                                                </li>
-                                                <li class="single-shopping-cart">
-                                                    <div class="shopping-cart-img">
-                                                        <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
-                                                    </div>
-                                                    <div class="shopping-cart-title">
-                                                        <h4><a href="cart-page.html">Phantom Remote</a></h4>
-                                                        <h6>Qty: 02</h6>
-                                                        <span>$260.00</span>
-                                                    </div>
-                                                    <div class="shopping-cart-delete">
-                                                        // ion是删除图标,做成动态删除数据就好了
-                                                        <a href="#"><i class="ion ion-close"></i></a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="shopping-cart-total">
-                                                <h4>Shipping : <span>$20.00</span></h4>
-                                                <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                            </div>
-                                            <div class="shopping-cart-btn">
-                                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">view
-                                                    cart</a>
-                                                <a onclick="window.location = 'checkout.html'" href="javascript:void(0);">checkout</a>
-                                            </div>
-                                        </div> -->
                             </div>
                         </div>
                     </div>
@@ -166,101 +126,55 @@
     </header>
     <!-- 顶部导航栏结束 -->
 
-
-
-
     <div class="breadcrumb-area gray-bg">
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
                     <li><a href="index.html">首页</a></li>
-                    <li class="active"> 提交订单 </li>
+                    <li class="active"> 密码重置 </li>
                 </ul>
             </div>
         </div>
     </div>
-    <!-- checkout-area start -->
-    <div class="checkout-area pb-80 pt-100">
+
+    <div class="login-register-area pt-95 pb-100">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
-                    <div class="checkout-wrapper">
-                        <div id="faq" class="panel-group">
-                            <!-- ------------------------------------------------------- -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h5 class="panel-title"> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">订单列表</a></h5>
-                                </div>
-                                <div id="payment-6" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="order-review-wrapper">
-                                            <div class="order-review">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="width-1">商品名</th>
-                                                                <th class="width-2">单价</th>
-                                                                <th class="width-3">数量</th>
-                                                                <th class="width-4">价格</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            {% for good in goodlist %}
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="o-pro-dec">
-                                                                        <p>{{good.name}}</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-price">
-                                                                        <p>{{good.price}}</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-qty">
-                                                                        <p>{{good.num}}</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-subtotal">
-                                                                        <p>{{good.price * good.num}}</p>
-                                                                    </div>
-                                                                </td>
-                                                            <tr>
-                                                                {% endfor %}
-                                                        </tbody>
-                                                        <tfoot>
+                <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                    <div class="login-register-wrapper">
+                        <div id="lg2" class="tab-pane">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
 
-                                                            <tr>
-                                                                <td colspan="3">小计</td>
-                                                                <td colspan="1">{{ subtotal }}</td>
-                                                            </tr>
-                                                            <tr class="tr-f">
-                                                                <td colspan="3">优惠</td>
-                                                                <td colspan="1">$45.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="3">总计</td>
-                                                                <td colspan="1">$4,722.00</td>
-                                                            </tr>
-                                                        </tfoot>
-                                                    </table>
-                                                </div>
-                                                <div class="billing-back-btn">
-                                                    <span>
-                                                        Forgot an Item?
-                                                        <a href="#"> Edit Your Cart.</a>
+                                    <div class="login-register-tab-list nav">
+                                        <a class="active" data-toggle="tab" href="#lg1">
+                                            <h4> 密码重置 </h4>
+                                        </a>
+                                    </div>
 
-                                                    </span>
-                                                    <div class="billing-btn">
-                                                        <button type="submit">Continue</button>
-                                                    </div>
-                                                </div>
+                                    <form action="/ResetPwd" method="post">
+                                        <input type="text" name="username" placeholder="用户名">
+                                        <input type="password" name="newpassword" placeholder="输入新密码">
+                                        <input type="password" name="newpassword" placeholder="再次确认密码">
+
+                                        <div class="verification-msg">
+                                            <div class="verification-PhoneNum">
+                                                <input type="text" name="number" placeholder="手机号码">
+                                                <button type="button" class="send-verificationCode">获取短信验证码</button>
+                                            </div>
+                                            <div class="verification-CodeNum">
+                                                <input type="text" name="verifyCode" placeholder="验证码">
+                                                <button type="button" class="sub-btn">提交</button>
                                             </div>
                                         </div>
-                                    </div>
+
+                                        <div class="button-box" onclick="document.write('密码已修改!')">
+                                            <button type="submit">
+                                                <span>重置</span>
+                                            </button>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -269,8 +183,7 @@
             </div>
         </div>
     </div>
-
-
+    </div>
 
     <!-- 底部导航栏 -->
     <div class="footer-area black-bg-2 pt-70">
@@ -378,10 +291,6 @@
     </div>
     <!-- 底部导航栏结束 -->
 
-
-
-
-
     <!-- all js here -->
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="../assets/js/popper.js"></script>
@@ -392,7 +301,6 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-
 </body>
 
 </html>

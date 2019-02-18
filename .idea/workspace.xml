@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="05459d70-2ab2-4a95-8e1a-7c5f49783465" name="Default Changelist" comment="数据库类基本建立完毕">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/assets/js/cart-count.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/js/cart-count.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/migrations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/migrations/alembic.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/migrations/env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/migrations/script.py.mako" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/migrations/versions/e8bda08547ff_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/templates/cart-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/templates/cart-page.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/dining_room$index.coverage" NAME="index Coverage Results" MODIFIED="1549885504992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/client" />
+    <SUITE FILE_PATH="coverage/dining_room$index.coverage" NAME="index Coverage Results" MODIFIED="1550396712848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/client" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -28,44 +37,124 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/index.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5280">
-              <caret line="38" column="36" lean-forward="true" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../jl/jiangli/flask/1-30day07/FlaskDemo07/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.51239115">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/assets/js/cart-count.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="110">
+                  <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="31" selection-end-column="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/assets/js/main.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="198">
+                  <caret line="410" column="28" selection-start-line="410" selection-start-column="28" selection-end-line="410" selection-end-column="28" />
+                  <folding>
+                    <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/cart-page.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3298">
+                  <caret line="316" column="92" selection-start-line="316" selection-start-column="92" selection-end-line="316" selection-end-column="92" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../jl/jiangli/AJAX/2-14day04/Ajaxdemo04/app.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="382">
+                  <caret line="130" column="35" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="418">
+                  <caret line="17" selection-start-line="17" selection-end-line="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../jl/jiangli/flask/1-30day07/FlaskDemo07/run.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <folding>
+                    <element signature="e#0#49#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/shop.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret selection-end-column="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/cart-page.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="224">
+                  <caret line="314" column="74" selection-start-line="314" selection-start-column="74" selection-end-line="314" selection-end-column="74" />
+                  <folding>
+                    <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/index.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="546">
+                  <caret line="349" column="59" selection-start-line="349" selection-start-column="59" selection-end-line="349" selection-end-column="59" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>apply</find>
+      <find>Goods_info</find>
+      <find>shop_id</find>
+      <find>form</find>
+      <find>goods_id</find>
+      <find>json</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -75,27 +164,68 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/client/templates/index2.html" />
+        <option value="$PROJECT_DIR$/client/main/views.py" />
+        <option value="$PROJECT_DIR$/client/assets/js/cart-count.js" />
+        <option value="$PROJECT_DIR$/client/templates/cart-page.html" />
+        <option value="$PROJECT_DIR$/client/assets/js/main.js" />
         <option value="$PROJECT_DIR$/client/index.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="13" />
-    <option name="y" value="26" />
-    <option name="width" value="1006" />
-    <option name="height" value="908" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="978" />
+    <option name="y" value="66" />
+    <option name="width" value="961" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -162,6 +292,8 @@
       <workItem from="1549469291626" duration="4785000" />
       <workItem from="1549771157900" duration="7555000" />
       <workItem from="1549884539455" duration="3054000" />
+      <workItem from="1550159658875" duration="9316000" />
+      <workItem from="1550281280070" duration="26146000" />
     </task>
     <task id="LOCAL-00001" summary="数据库类基本建立完毕">
       <created>1549879120696</created>
@@ -174,7 +306,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32124000" />
+    <option name="totallyTimeSpent" value="67586000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -186,10 +318,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="13" y="26" width="1006" height="908" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.34111544" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.19903433" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -203,14 +335,14 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32978722" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.19015957" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32978722" />
-      <window_info anchor="bottom" id="调试" order="13" weight="0.35239363" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.40333334" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3288889" />
+      <window_info active="true" anchor="bottom" id="调试" order="13" visible="true" weight="0.3888889" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.32980332" />
-      <window_info anchor="right" id="SciView" order="4" weight="0.040685225" />
+      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.040236052" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,28 +374,67 @@
         <state relative-caret-position="-289" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/index.py">
+    <entry file="file://$PROJECT_DIR$/client/main/views.py" />
+    <entry file="file://$PROJECT_DIR$/../jl/jiangli/flask/1-30day07/FlaskDemo07/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5280">
-          <caret line="38" column="36" lean-forward="true" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="41" />
+        <state>
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/shop.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/assets/js/cart-count.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="31" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../jl/jiangli/AJAX/2-14day04/Ajaxdemo04/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="130" column="35" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/cart-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3298">
+          <caret line="316" column="92" selection-start-line="316" selection-start-column="92" selection-end-line="316" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/assets/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="410" column="28" selection-start-line="410" selection-start-column="28" selection-end-line="410" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="418">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../jl/jiangli/flask/1-30day07/FlaskDemo07/run.py">
+    <entry file="file://$PROJECT_DIR$/client/index.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="546">
+          <caret line="349" column="59" selection-start-line="349" selection-start-column="59" selection-end-line="349" selection-end-column="59" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
