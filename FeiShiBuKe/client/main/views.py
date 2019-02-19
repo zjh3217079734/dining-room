@@ -199,8 +199,8 @@ def checkuname():
 # -----------------------------------------------------------
 # yanfeilong
 
-@main.route(/checkout.html)
+@main.route('/checkout.html')
 def checkout():
     user_id = session['id']
-    order = db.session.filter_by(user_id=id).all()
+    order = db.session.filter_by(user_id=user_id).all()
     print(order[0].order_id)
