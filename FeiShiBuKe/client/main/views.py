@@ -1,27 +1,31 @@
 # 处理与客户相关的路由和视图
 from . import main
-from .. import db
-from ..models import *
 from flask import Flask, render_template, request, session, redirect
 from datetime import datetime
 import os
+import json
 import pymysql
-from sqlalchemy import or_, func
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_migrate import Migrate, MigrateCommand
-from flask_script import Manager
+from ..models import *
+from .. import db
+# -*- coding: utf-8 -*-
+import httplib2
+from urllib.parse import urlencode  # python3
+# from urllib import urlencode #python2
 
-# ---------------------------------------------
-# localhost:5000/
-# 主页部分
+
+@main.route("/SelectCity")
+def SelectCity():
+    city = request.args["city"]
+    return city
 
 
 @main.route("/")
 @main.route("/<name>")
 def html(name=None):
-    if name is None:
-        return render_template("index.html")
-    return render_template(name)
+    if name is None or name == "index":
+        return render_template("index.html", params=locals())
+    return render_template(name, params=locals())
 # -------------------------------------------
 
 # ----------------------------------------

@@ -23,11 +23,13 @@ def Create_App():
     app.config['DEBUG'] = True
 
     # 为app指定数据库的配置
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:admin@localhost:3306/client"
+    # 账号:root,密码:123456,数据库:project
+    # 如果你的配置不一样,请输入自己的配置
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@localhost:3306/project"
     app.config['SQLALCHEMY_COMMIT_ON_TEAROWN'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     # 配置session所需要的secret_key
-    app.config['SECRET_KEY'] = "zjh"
+    app.config['SECRET_KEY'] = "FeiShiBuKe"
     # 关联db以及app
     db.init_app(app)
     # 并将main蓝图与app关联到一起(让app托管main)

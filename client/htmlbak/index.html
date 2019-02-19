@@ -28,32 +28,32 @@
 		<script src="../assets/js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$.ajax({
-				// 'url': 'http://api.ip138.com/query/',
+				// 'url': 'https://restapi.amap.com/v3/ip',
+				// https://restapi.amap.com/v3/ip?key=3e6b87028081f58e8f378de61182e572
 				'data': { //默认自动添加callback参数
 					// 'ip': '123.125.71.38', //为空即为当前iP地址,当前这个是北京的一个
-					'ip': '', //为空即为当前iP地址
-					'oid': '21392',
-					'mid': '84052',
-					'token': '5d60c2e5787b37c1bd15c5b45615111d', //不安全，请定期刷新token，建议进行文件压缩
+					// 'ip': '', //为空即为当前iP地址
+					'key': '3e6b87028081f58e8f378de61182e572', //不安全，请定期刷新token，建议进行文件压缩
 				},
 				'dataType': 'jsonp',
 				'success': function(json) {
-					// console.log(json);
-					// console.log("省", json.data[1]);//在控制台显示省份
-					// console.log("市", json.data[2]);//在控制台显示出来市
-					city = json.data[2]
-					document.getElementById("area_city").innerHTML = json.data[2];
+					// console.log(json);//{"status":"1","info":"OK","infocode":"10000","province":"浙江省","city":"杭州市","adcode":"330100","rectangle":"119.8824799,29.95931271;120.5552208,30.52048536"}
+					// console.log(json['city']);
+					document.getElementById("area_city").innerHTML = json['city'];
+					city = json['city'];
+					
 				}
 			});
-			$.ajax(
-				type: 'POST',
-				url: "/SelectCity",
-				data: JSON.stringify(city), //转化字符串 
-				contentType: 'application/json; charset=UTF-8',
-				success: function(data) { //成功的话，得到消息
-					console.log(data);
-				}
-			);
+			// 			$.ajax(
+			// 				type: 'POST',
+			// 				url: "/SelectCity",
+			// 				data: JSON.stringify(city), //转化字符串 
+			// 				contentType: 'application/json; charset=UTF-8',
+			// 				success: function(data) { //成功的话，得到消息
+			// 					console.log(data);
+			// 				}
+			// 			);
+
 		</script>
 	</head>
 
@@ -79,7 +79,7 @@
 											<i class="icon-user icons"></i>
 										</div>
 										<div class="login-text-content">
-											<p>登录 <br> or <span>注册</span></p>
+											<p>登录 <br> or <span id="zhuce">注册</span></p>
 										</div>
 									</a>
 								</div>
@@ -89,7 +89,8 @@
 											<i class="icon-direction icons"></i>
 										</div>
 										<div class="wishlist-text">
-											<p>所在城市<br><span id="area_city">未知</span></p>
+											<p>所在城市<br>
+											<span id="area_city2">未知</span></p>
 										</div>
 									</a>
 								</div>
