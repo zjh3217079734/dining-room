@@ -23,10 +23,10 @@
     });
 
     /* jQuery MeanMenu */
-    $('#mobile-menu-active').meanmenu({
-        meanScreenWidth: "991",
-        meanMenuContainer: ".mobile-menu-area .mobile-menu",
-    });
+//     $('#mobile-menu-active').meanmenu({
+//         meanScreenWidth: "991",
+//         meanMenuContainer: ".mobile-menu-area .mobile-menu",
+//     });
 
 
     /* Slider active */
@@ -112,7 +112,6 @@
     })
 
 
-
     /* Testimonial active */
     $('.testimonial-active').owlCarousel({
         loop: true,
@@ -133,7 +132,7 @@
                 items: 1
             }
         }
-    })
+    });
 
     /* Brand logo active */
     $('.brand-logo-active').owlCarousel({
@@ -165,6 +164,7 @@
             }
         }
     })
+})(jQuery);
 
 
     /*---------------------
@@ -220,12 +220,12 @@
         prevArrow: '<span class="product-dec-icon product-dec-prev"><i class="fa fa-angle-left"></i></span>',
         nextArrow: '<span class="product-dec-icon product-dec-next"><i class="fa fa-angle-right"></i></span>',
         responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+        },
             {
                 breakpoint: 480,
                 settings: {
@@ -252,6 +252,7 @@
         time: 1000
     });
 
+
     /*----------------------------
         Cart Plus Minus Button
         购物车增减及小计功能函数
@@ -275,6 +276,7 @@
         }
         //文本框赋值
         $button.parent().find("input").val(newVal);
+        window.newVal = newVal;
         //取出单价
         var priceStr = $(this).parent(".cart-plus-minus").parent(".product-quantity").prev('.product-price-cart').find(".amount").html();
         // console.log(priceStr)
@@ -334,13 +336,13 @@
             window.allPrice = allPrice
         })
         $("#dbcj").each(function () {
-            if ($("input[name='dbcj']:checked").val() == "on") {
+            if ($("input[name='dbcj']:checked").val() === "on") {
                 allPrice += 20;
                 // console.log(allPrice)
             }
         })
         $("#kpf").each(function () {
-            if ($("input[name='kpf']:checked").val() == "on") {
+            if ($("input[name='kpf']:checked").val() === "on") {
                 allPrice += 30;
             }
         })
@@ -353,6 +355,7 @@
         不要把问题想得太复杂,就是加或者还原
         ------------------------------ */
     }
+
     var isChicked = false
     var isChicked2 = false
     $("#dbcj").click(function () {
@@ -394,134 +397,213 @@
             // window.allPrice = allPrice
             // console.log(allPrice)
         }
-    })
-
-
-
-    /*-------------------------------------
-        Thumbnail Product activation
-    --------------------------------------*/
-    $('.thumb-menu').owlCarousel({
-        loop: true,
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        margin: 15,
-        smartSpeed: 1000,
-        nav: true,
-        dots: false,
-        responsive: {
-            0: {
-                items: 3,
-                autoplay: true,
-                smartSpeed: 300
-            },
-            576: {
-                items: 2
-            },
-            768: {
-                items: 3
-            },
-            1000: {
-                items: 3
-            }
-        }
-    })
-    $('.thumb-menu a').on('click', function () {
-        $('.thumb-menu a').removeClass('active');
-    })
-
-
-    /*---------------------
-    shop grid list
-    --------------------- */
-    $('.view-mode li a').on('click', function () {
-        var $proStyle = $(this).data('view');
-        $('.view-mode li').removeClass('active');
-        $(this).parent('li').addClass('active');
-        $('.product-view').removeClass('product-grid product-list').addClass($proStyle);
-    })
-
-    /* blog gallery slider */
-    $('.blog-gallery-slider').owlCarousel({
-        loop: true,
-        nav: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        navText: ['<i class="ion-chevron-left"></i>', '<i class="ion-chevron-right"></i>'],
-        item: 1,
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-
-    /*--------------------------
-        Product Zoom
-	---------------------------- */
-    $(".zoompro").elevateZoom({
-        gallery: "gallery",
-        galleryActiveClass: "active",
-        zoomWindowWidth: 300,
-        zoomWindowHeight: 100,
-        scrollZoom: false,
-        zoomType: "inner",
-        cursor: "crosshair"
     });
+     /*----------------------------
+    // 表单数据json获取测试
+    ------------------------------ */
+    var a = JSON.parse("{\"title\":\"\",\"data\":[]}");
+    
+    function getJson() {
+        var arr = new Activerray();
+        $("#caidan tbody tr").each(function (i, e) {//每一行,选择器自己修改
+            var orderObj = {
+                good_info_id: "",
+                goods_image: "",
+                goods_name: "",
+                goods_price: "",
+                count_money: "",
+                goods_num:"",
+                pay_money:"",
+                remark: ""
+            };
 
+            var row = {};
+            $(e).find("input").each(function (ii, ee) {
+                //每行里面需要提交的数据 遍历每一行的数据 寻找每一行内的标签
+                    var inputs = $(ee);
+                    var obj = {};
+                    // inputs.val 每一行的数据
+                    obj = inputs.val();
+                    // 截断字符串 取每一行的属性name名字
+                    var sliceStr = inputs.attr("name");
+                    if (sliceStr !== undefined && sliceStr !=='undefined' && sliceStr !== null) {// 寻找每一行的数据的属性 因为每行的name属性 如 同一个属性 属性name名多条数据是多个 goods_name/info_id/price/image/num
+                        if(sliceStr.substring(0,sliceStr.length-1) ==='good_info_id'){
+                            orderObj.good_info_id=inupts.val();
+                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_name'){
+                            orderObj.goods_name = inputs.val();
+                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_image'){
+                            orderObj.goods_image = inputs.val();
+                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_price'){
+                            orderObj.goods_price =inputs.val();
+                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='qtybutton'){
+                            orderObj.goods_num = newVal;
+                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='quzhifu'){
+                            orderObj.pay_money = allPrice;
+                        }else if (sliceStr.substring(0,sliceStr.length-1)==='test'){
+                            orderObj.remark = textarea.val()
+                        }
 
-    $('.testimonial-2-active').owlCarousel({
-        loop: true,
-        margin: 20,
-        nav: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        items: 2,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            800: {
-                items: 1
-            },
-            992: {
-                items: 2
-            },
-            1024: {
-                items: 2
-            },
-            1200: {
-                items: 2
-            },
-            1400: {
-                items: 2
-            },
-            1920: {
-                items: 2
-            }
+                    }
+                    row[inputs.attr("name")]=obj;
+
+                    });
+
+                    arr.push(row);
+                    // 向JSON数组添加JSON对象的方法；很关键
+                    a.data.push(orderObj);
+                });
+                // 格式化数据 JSON对象转化为JSON字符串
+
+            console(JSON.stringify(a))
+            return JSON.stringify(a)
         }
+
+     /*----------------------------
+    // 购物车表单提交,绑定click()
+    ------------------------------ */
+    $('#quzhifu').click(function () {
+        var obj = getJson();
+         <!--提交表单-->
+     // 这里换成ajaxSubmit 同时提交table封装的多条json数据 obj ajaxSubmit还可以提交上面的Form表单数据
+        $.ajax({
+            type: "POST",
+            url:"http://127.0.0.1:5000/cart-post",
+            dataType:"json",
+            // cache:true,
+            async:true,
+            data:{'param':obj},
+            success:function () {
+                alert("数据提交成功")
+            },
+            error:function () {
+                alertMsg(null, false, null, null, "调用接口失败，请稍后重试!");
+            }
+        })
     });
+     
+        /*-------------------------------------
+            Thumbnail Product activation
+        --------------------------------------*/
+        $('.thumb-menu').owlCarousel({
+            loop: true,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            margin: 15,
+            smartSpeed: 1000,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 3,
+                    autoplay: true,
+                    smartSpeed: 300
+                },
+                576: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+        $('.thumb-menu a').on('click', function () {
+            $('.thumb-menu a').removeClass('active');
+        })
 
 
-    /* magnificPopup video popup */
-    $('.video-popup').magnificPopup({
-        type: 'iframe'
-    });
+        /*---------------------
+        shop grid list
+        --------------------- */
+        $('.view-mode li a').on('click', function () {
+            var $proStyle = $(this).data('view');
+            $('.view-mode li').removeClass('active');
+            $(this).parent('li').addClass('active');
+            $('.product-view').removeClass('product-grid product-list').addClass($proStyle);
+        })
 
-    countItem();
+        /* blog gallery slider */
+        $('.blog-gallery-slider').owlCarousel({
+            loop: true,
+            nav: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
+            navText: ['<i class="ion-chevron-left"></i>', '<i class="ion-chevron-right"></i>'],
+            item: 1,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
 
-})(jQuery);
+        /*--------------------------
+            Product Zoom
+        ---------------------------- */
+        $(".zoompro").elevateZoom({
+            gallery: "gallery",
+            galleryActiveClass: "active",
+            zoomWindowWidth: 300,
+            zoomWindowHeight: 100,
+            scrollZoom: false,
+            zoomType: "inner",
+            cursor: "crosshair"
+        });
 
-    //显示限制输入字符method
+
+        $('.testimonial-2-active').owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: true,
+            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            items: 2,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                800: {
+                    items: 1
+                },
+                992: {
+                    items: 2
+                },
+                1024: {
+                    items: 2
+                },
+                1200: {
+                    items: 2
+                },
+                1400: {
+                    items: 2
+                },
+                1920: {
+                    items: 2
+                }
+            }
+        });
+
+
+        /* magnificPopup video popup */
+        $('.video-popup').magnificPopup({
+            type: 'iframe'
+        });
+
+        countItem();
+
+
+//显示限制输入字符method
     function textAreaChange(obj) {
         var $this = $(obj);
         var count_total = $this.next().children('span').text();
@@ -535,10 +617,12 @@
             count_input.text(count_total - area_val.len()); //显示可输入数
         }
     }
+
     //得到字符串的字节长度
     String.prototype.len = function () {
         return this.replace(/[^\x00-\xff]/g, "xx").length;
     };
+
     /*
      * 处理过长的字符串，截取并添加省略号
      * 注：半角长度为1，全角长度为2
@@ -552,6 +636,7 @@
         var _cutStringn = _ret.cutstring;
         return _cutStringn;
     }
+
     /*
      * 取得指定长度的字符串
      * 注：半角长度为1，全角长度为2
@@ -583,7 +668,7 @@
                     _cutString = pStr.substring(0, i);
                     _ret = true;
                     break;
-                } else if (_lenCount == pLen) {
+                } else if (_lenCount === pLen) {
                     _cutString = pStr.substring(0, i + 1);
                     _ret = true;
                     break;
@@ -594,7 +679,7 @@
             _cutString = pStr;
             _ret = true;
         }
-        if (_cutString.length == _strLen) {
+        if (_cutString.length === _strLen) {
             _cutFlag = "0";
         }
         return {
@@ -602,6 +687,7 @@
             "cutflag": _cutFlag
         };
     }
+
     /*
      * 判断是否为全角
      *

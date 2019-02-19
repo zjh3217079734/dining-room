@@ -65,30 +65,43 @@
 
 <body>
 
-	<!-- 顶部导航栏开始 -->
-	<header class="header-area">
-		<div class="header-middle">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-4 col-12 col-sm-4">
-						<div class="logo">
-							<a href="index.html">
-								<img alt="" src="../assets/img/logo/logo.png">
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-9 col-md-8 col-12 col-sm-8">
-						<div class="header-middle-right f-right">
-							<div class="header-login">
-								<a href="login-register.html">
-									<div class="header-icon-style">
-										<i class="icon-user icons"></i>
-									</div>
-									<div class="login-text-content">
-										<p>登录 <br> or <span>注册</span></p>
-									</div>
-								</a>
-							</div>
+    <!-- 顶部导航栏开始 -->
+    <header class="header-area">
+        <div class="header-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-12 col-sm-4">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img alt="" src="../assets/img/logo/logo.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-12 col-sm-8">
+                        <div class="header-middle-right f-right">
+                            <div class="header-login">
+                                <a href="login-register.html">
+                                    <div class="header-icon-style">
+                                        <i class="icon-user icons"></i>
+                                    </div>
+                                    <div class="login-text-content">
+                                        <p>
+                                            {% if params.username %}
+                                                <span>
+                                                    欢迎:{{ params.username }}
+                                                    <a href="/logout">退出</a> /
+                                            {% else %}
+                                                    <a href="/login">登录</a>
+                                                </span>
+                                            {% endif %}
+                                            <br> or
+                                            <span>
+                                                <a href="/register">注册</a>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
 							<div class="header-wishlist">
 								<a>
 									<div class="header-icon-style">
@@ -101,21 +114,21 @@
 									</div>
 								</a>
 							</div>
-							<div class="header-cart">
-								<a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">
-									<div class="header-icon-style">
-										<i class="icon-handbag icons"></i>
-										<!-- 商品数量标识 -->
-										<span class="count-style">3+</span>
-										<!-- 商品数量标识,数量后面跟+ -->
-									</div>
-									<div class="cart-text">
-										<span class="digit">购物车</span>
-										<!-- 当前购物车的统计 -->
-										<span class="cart-digit-bold">$209.00</span>
-									</div>
-								</a>
-								<!-- <div class="shopping-cart-content">
+                            <div class="header-cart">
+                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">
+                                    <div class="header-icon-style">
+                                        <i class="icon-handbag icons"></i>
+                                        <!-- 商品数量标识 -->
+                                        <span class="count-style">3+</span>
+                                        <!-- 商品数量标识,数量后面跟+ -->
+                                    </div>
+                                    <div class="cart-text">
+                                        <span class="digit">购物车</span>
+                                        <!-- 当前购物车的统计 -->
+                                        <span class="cart-digit-bold">$209.00</span>
+                                    </div>
+                                </a>
+                                <!-- <div class="shopping-cart-content">
                                         <ul>
                                             <li class="single-shopping-cart">
                                                 <div class="shopping-cart-img">
