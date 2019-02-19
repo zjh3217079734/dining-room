@@ -131,4 +131,76 @@ def checkuname():
     else:
         return "0"
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # -----------------------------------------------------------
+# yanfeilong
+
+@main.route(/checkout.html)
+def checkout():
+    user_id = session['id']
+    order = db.session.filter_by(user_id=id).all()
+    print(order[0].order_id)
