@@ -23,7 +23,7 @@ class Apply(db.Model):
     status = db.Column(db.SmallInteger, nullable=False)
     # 申请备注
     remark = db.Column(db.String(255), nullable=True)
-    pass
+    
 
 # ........................................
 # 地区表
@@ -37,7 +37,7 @@ class Area(db.Model):
     area_name = db.Column(db.String(255), nullable=True)
     # 父地区id
     area_pid = db.Column(db.Integer, nullable=True)
-    pass
+    
 
 
 # ........................................
@@ -49,7 +49,7 @@ class Category_goods(db.Model):
     category_name = db.Column(db.String(255), nullable=True)
     # 门店id
     shop_id = db.Column(db.Integer, nullable=True)
-    pass
+    
 
 
 # ........................................
@@ -69,7 +69,7 @@ class Goods_info(db.Model):
     goods_type = db.Column(db.Integer, nullable=False)
     # 商品备注；也就是商品简介
     goods_notes = db.Column(db.String(255), nullable=True)
-    pass
+    
 
 
 # ........................................
@@ -81,7 +81,7 @@ class Goods_type(db.Model):
     type_name = db.Column(db.String(255), nullable=True)
     # 门店id
     shop_id = db.Column(db.Integer)
-    pass
+    
 
 
 # ........................................
@@ -94,7 +94,7 @@ class Merchant(db.Model):
     # 商家版状态（0：商家主账号，1：子帐号，2：不开启)
     merchant_status = db.Column(db.Integer, primary_key=True)
     merchant_phone = db.Column(db.String(11), nullable=True)
-    pass
+    
 
 
 # ........................................
@@ -104,7 +104,7 @@ class Merchant_shop(db.Model):
     merchant_id = db.Column(db.Integer, primary_key=True)
     shop_id = db.Column(db.Integer, nullable=False)
     remake_name = db.Column(db.String(255), nullable=True)
-    pass
+    
 
 
 # ........................................
@@ -201,7 +201,7 @@ class Shop_info(db.Model):
     shop_intro = db.Column(db.String(255), nullable=True)
     # 所属地区
     area = db.Column(db.Integer, nullable=True)
-    pass
+    
 
 
 # ........................................
@@ -211,7 +211,7 @@ class type(db.Model):
     __tablename__ = "type"
     id = db.Column(db.Integer, primary_key=True)
     type_name = db.Column(db.String(10), nullable=True)
-    pass
+    
 
 # ........................................
 # 类型和门店关联的表；
@@ -224,7 +224,7 @@ class type_shop(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     type_id = db.Column(db.Integer, nullable=False)
     shop_id = db.Column(db.Integer, nullable=False)
-    pass
+    
 
 # ........................................
 # 用户信息表
@@ -251,7 +251,7 @@ class user_info(db.Model):
     create_time = db.Column(db.DATETIME, nullable=True)
     # 更新时间
     update_time = db.Column(db.DATETIME, nullable=True)
-    pass
+    
 
 # ........................................
 # +++++++++++++++++++++++++++++++++++++++++

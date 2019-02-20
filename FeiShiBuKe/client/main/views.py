@@ -20,12 +20,15 @@ def SelectCity():
     city = request.args["city"]
     return city
 
+@main.route('/')
+def index_views():
+    if 'username' in request.cookies:
+        username = request.cookies['username']
+    return render_template('index.html', params=locals())
 
-@main.route("/")
+
 @main.route("/<name>")
 def html(name=None):
-    if name is None or name == "index":
-        return render_template("index.html", params=locals())
     return render_template(name, params=locals())
 # -------------------------------------------
 
@@ -34,13 +37,13 @@ def html(name=None):
 # 购物车后台部分
 
 
-@main.route('/cart-page')
-def cart_page_viwes():
-    # # 1. 获取当前订单号
-    # order_id = request.args['order_id']
-    # # 2. 根据订单号,查询出订单下菜品详情
-    # goods = db.session.query(order_details)
-    pass
+# @main.route('/cart-page')
+# def cart_page_viwes():
+#     # # 1. 获取当前订单号
+#     # order_id = request.args['order_id']
+#     # # 2. 根据订单号,查询出订单下菜品详情
+#     # goods = db.session.query(order_details)
+#     pass
 
 # -----------------------------------------------------------
 # 应巧
