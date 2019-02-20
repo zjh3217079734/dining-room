@@ -1,9 +1,8 @@
 # 启动和管理项目的相关代码
-from client import db, Create_App
-from client.models import *
+from FeiShiBuKe.client import db, Create_App
+from client import *
 from flask_script import Manager
 from flask_migrate import MigrateCommand, Migrate
-
 
 # 导入所有的实体类方便实用db指令
 # from .client.main.views import models, Create_App, db
