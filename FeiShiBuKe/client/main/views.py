@@ -17,12 +17,12 @@ from flask_script import Manager
 # 主页部分
 
 
-@main.route("/")
-@main.route("/<name>")
-def html(name=None):
-    if name is None:
-        return render_template("index.html")
-    return render_template(name)
+# @main.route("/")
+# @main.route("/<name>")
+# def html(name=None):
+#     if name is None:
+#         return render_template("index.html")
+#     return render_template(name)
 # 首页需要判断cookies中是否有登录信息,不然会报错
 
 # -------------------------------------------
@@ -32,13 +32,13 @@ def html(name=None):
 # 购物车后台部分
 
 
-@main.route('/cart-page')
-def cart_page_viwes():
-    # # 1. 获取当前订单号
-    # order_id = request.args['order_id']
-    # # 2. 根据订单号,查询出订单下菜品详情
-    # goods = db.session.query(order_details)
-    pass
+# @main.route('/cart-page')
+# def cart_page_viwes():
+#     # # 1. 获取当前订单号
+#     # order_id = request.args['order_id']
+#     # # 2. 根据订单号,查询出订单下菜品详情
+#     # goods = db.session.query(order_details)
+#     pass
 
 # -----------------------------------------------------------
 # 应巧
