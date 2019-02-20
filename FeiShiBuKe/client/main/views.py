@@ -132,3 +132,67 @@ def checkuname():
         return "0"
 
 # -----------------------------------------------------------
+@main.route('/cart-page', methods=["GET", "POST"])
+def cart_page_viwes():
+    if request.method == "GET":
+        # 先判断是否登录
+        # if 'id' in session and 'lognname' in session:
+        # 1. 获取当前订单号,及订单里的数据
+        # order_id = session['order_id']
+        # goods_id = session["goods_id"]
+        goodsid = [10001, 10002, 10003, 10004]
+        goods = []
+        i = 1
+        for g in goodsid:
+            good = Goods_info().query.filter_by(id=g).all()
+            goods.append(good)
+            i += 1
+        # 2.传送到页面上
+        numcount = i
+
+        return render_template('cart-page.html', params=locals())
+    else:
+        shop_id = session['shop_id']
+        user_id = session['user_id']
+        order_id = session['order_id']
+        order = Order()
+        order_details = Order_details()
+        create_time = datetime.now().strftime('%Y-%m-%d %H%M%S')
+        create_a = datetime.now().strftime('%Y%m%d')
+        create_b = datetime.now().strftime('%H%M%S')
+        list = request.form
+
+        dict = list.to_dict(flat=False)
+        goods_id = dict['good_info_id']
+        goods_num = dict['qtybutton']
+        remark = dict['test']
+        print(goods_id, goods_num)
+        i = 0
+        pay_money =0
+        for id in goods_id:
+            # 插入表中A-order_details
+            # 循环插入
+            # order_id goods_id,goods_name,image_url,price,num,count_money
+            goodsinfo = Goods_info.query.filter_by(id=id).all()
+            order_details.order_id = order_id
+            order_details.goods_id = goodsinfo.id
+            order_details.goods_name = goodsinfo.goods_name
+            order_details.image_url = goodsinfo.goods_image
+            order_details.price =goodsinfo.goods_price
+            order_details.num =goods_num[i]
+            order_details.count_money = goods_num[i]*goodsinfo.goods_price
+            pay_money+=goods_num[i]*goodsinfo.goods_price
+            i += 1
+            db.session.add(order_details)
+            db.session.commit()
+        # 插入表中B-order表
+        # order_id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
+        # shop_id,user_id,pay_money,create_time
+        order.order_id =order_id
+        order.shop_id =shop_id
+        order.pay_money=pay_money
+        order.create_time =create_time
+        db.session.add(order)
+        db.session.commit()
+
+        return redirect('/checkout')

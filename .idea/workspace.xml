@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05459d70-2ab2-4a95-8e1a-7c5f49783465" name="Default Changelist" comment="数据库类基本建立完毕">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeiShiBuKe/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeiShiBuKe/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/assets/js/ajax-mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/js/ajax-mail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/assets/js/cart-count.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/js/cart-count.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/templates/cart-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/templates/cart-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FeiShiBuKe/client/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeiShiBuKe/client/main/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +35,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/cart-page.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="424">
+                <state relative-caret-position="4554">
                   <caret line="207" column="93" selection-start-line="207" selection-start-column="93" selection-end-line="207" selection-end-column="93" />
                 </state>
               </provider>
@@ -49,11 +44,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/assets/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="227">
+                <state relative-caret-position="798">
                   <caret line="409" column="44" selection-start-line="403" selection-end-line="409" selection-end-column="44" />
-                  <folding>
-                    <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -61,7 +53,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../jl/jiangli/AJAX/2-14day04/Ajaxdemo04/app.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="539">
+                <state relative-caret-position="2750">
                   <caret line="130" column="35" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
                 </state>
               </provider>
@@ -94,7 +86,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/assets/js/cart-count.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="644">
+                <state relative-caret-position="990">
                   <caret line="47" column="2" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
                 </state>
               </provider>
@@ -103,7 +95,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/assets/js/ajax-mail.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-434">
+                <state>
                   <caret selection-end-line="48" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -115,7 +107,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/cart-page.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="278">
+                <state relative-caret-position="6204">
                   <caret line="282" column="109" selection-start-line="282" selection-start-column="109" selection-end-line="282" selection-end-column="109" />
                 </state>
               </provider>
@@ -124,17 +116,26 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../Python/Lib/site-packages/werkzeug/wrappers.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
+                <state relative-caret-position="10054">
                   <caret line="484" column="42" selection-start-line="484" selection-start-column="42" selection-end-line="484" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FeiShiBuKe/manage.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="22">
+                  <caret line="1" selection-start-line="1" selection-end-line="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/index.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="632">
-                  <caret line="386" column="34" selection-start-line="386" selection-start-column="34" selection-end-line="386" selection-end-column="34" />
+                <state relative-caret-position="7106">
+                  <caret line="323" selection-start-line="323" selection-end-line="386" selection-end-column="36" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
                   </folding>
@@ -147,6 +148,18 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="154">
                   <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/FeiShiBuKe/client/main/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-89">
+                  <caret line="161" column="27" selection-start-line="161" selection-start-column="27" selection-end-line="161" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#16#34#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -184,16 +197,16 @@
         <option value="$PROJECT_DIR$/client/templates/index2.html" />
         <option value="$PROJECT_DIR$/client/main/views.py" />
         <option value="$PROJECT_DIR$/FeiShiBuKe/manage.py" />
-        <option value="$PROJECT_DIR$/FeiShiBuKe/client/main/views.py" />
         <option value="$PROJECT_DIR$/client/assets/js/ajax-mail.js" />
         <option value="$PROJECT_DIR$/client/assets/js/cart-count.js" />
         <option value="$PROJECT_DIR$/client/templates/cart-page.html" />
         <option value="$PROJECT_DIR$/client/assets/js/main.js" />
         <option value="$PROJECT_DIR$/client/index.py" />
+        <option value="$PROJECT_DIR$/FeiShiBuKe/client/main/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="64" />
     <option name="y" value="-11" />
     <option name="width" value="1217" />
@@ -211,24 +224,6 @@
             <path>
               <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
               <item name="dining-room" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dining-room" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dining-room" type="b2602c69:ProjectViewProjectNode" />
@@ -332,7 +327,8 @@
       <workItem from="1550469028423" duration="260000" />
       <workItem from="1550469301796" duration="2759000" />
       <workItem from="1550472831381" duration="12136000" />
-      <workItem from="1550500151141" duration="28386000" />
+      <workItem from="1550500151141" duration="28911000" />
+      <workItem from="1550623400317" duration="131000" />
     </task>
     <task id="LOCAL-00001" summary="数据库类基本建立完毕">
       <created>1549879120696</created>
@@ -345,7 +341,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92086000" />
+    <option name="totallyTimeSpent" value="92742000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -360,7 +356,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2247854" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22800429" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -376,7 +372,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.40333334" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3288889" />
-      <window_info active="true" anchor="bottom" id="调试" order="13" visible="true" weight="0.14333333" />
+      <window_info anchor="bottom" id="调试" order="13" weight="0.14333333" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -479,29 +475,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FeiShiBuKe/client/main/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-352">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding>
-            <element signature="e#16#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/htmlbak/cart-page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4886" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeiShiBuKe/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#15#59#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../jl/jiangli/AJAX/2-11day01/AjaxDemo01/app.py">
@@ -536,20 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Python/Lib/site-packages/flask/wrappers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python/Lib/site-packages/werkzeug/wrappers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="484" column="42" selection-start-line="484" selection-start-column="42" selection-end-line="484" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FeiShiBuKe/client/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3482">
@@ -557,17 +519,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../jl/jiangli/AJAX/2-14day04/Ajaxdemo04/app.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="130" column="35" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
+        <state relative-caret-position="418">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/shop.html">
+    <entry file="file://$PROJECT_DIR$/../jl/jiangli/AJAX/2-14day04/Ajaxdemo04/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="9" />
+        <state relative-caret-position="2750">
+          <caret line="130" column="35" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -580,33 +542,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/shop.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/assets/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
+        <state relative-caret-position="798">
           <caret line="409" column="44" selection-start-line="403" selection-end-line="409" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+    <entry file="file://$PROJECT_DIR$/client/assets/js/cart-count.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/cart-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="282" column="109" selection-start-line="282" selection-start-column="109" selection-end-line="282" selection-end-column="109" />
+        <state relative-caret-position="990">
+          <caret line="47" column="2" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/assets/js/ajax-mail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-434">
+        <state>
           <caret selection-end-line="48" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -614,19 +573,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/assets/js/cart-count.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/cart-page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="47" column="2" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+        <state relative-caret-position="6204">
+          <caret line="282" column="109" selection-start-line="282" selection-start-column="109" selection-end-line="282" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Python/Lib/site-packages/werkzeug/wrappers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10054">
+          <caret line="484" column="42" selection-start-line="484" selection-start-column="42" selection-end-line="484" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/index.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="386" column="34" selection-start-line="386" selection-start-column="34" selection-end-line="386" selection-end-column="34" />
+        <state relative-caret-position="7106">
+          <caret line="323" selection-start-line="323" selection-end-line="386" selection-end-column="36" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Python/Lib/site-packages/flask/wrappers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FeiShiBuKe/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FeiShiBuKe/client/main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-89">
+          <caret line="161" column="27" selection-start-line="161" selection-start-column="27" selection-end-line="161" selection-end-column="27" />
+          <folding>
+            <element signature="e#16#34#0" expanded="true" />
           </folding>
         </state>
       </provider>

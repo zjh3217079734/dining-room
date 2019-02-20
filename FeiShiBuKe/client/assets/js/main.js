@@ -583,7 +583,7 @@
                     _cutString = pStr.substring(0, i);
                     _ret = true;
                     break;
-                } else if (_lenCount == pLen) {
+                } else if (_lenCount === pLen) {
                     _cutString = pStr.substring(0, i + 1);
                     _ret = true;
                     break;
@@ -594,7 +594,7 @@
             _cutString = pStr;
             _ret = true;
         }
-        if (_cutString.length == _strLen) {
+        if (_cutString.length === _strLen) {
             _cutFlag = "0";
         }
         return {
