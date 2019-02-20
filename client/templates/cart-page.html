@@ -205,10 +205,11 @@
 
                             <tr>
                                 <td style="display: none">
-                                    <input type="text" value="{{ g.id }}" name="good_info_id">
-                                    <input type="text" value="{{ g.good_name }}" name="goods_name">
-                                    <input type="text" value="{{ g.goods_image }}" name="goods_image">
-                                    <input type="text" value="{{ g.goods_price }}" name="goods_price">
+                                    <input type="text" id="numcount" value={{ params.numcount }}>
+                                    <input type="text" value="{{ g.id }}" name="good_info_id" id="good_info_id">
+                                    <input type="text" value="{{ g.good_name }}" name="goods_name" id="goods_name">
+                                    <input type="text" value="{{ g.goods_image }}" name="goods_image" id="goods_image">
+                                    <input type="text" value="{{ g.goods_price }}" name="goods_price" id="goods_price">
 
                                 </td>
                                 <td class="product-thumbnail">
@@ -218,7 +219,7 @@
                                 <td class="product-price-cart"><span class="amount">¥{{ g.goods_price }}</span></td>
                                 <td class="product-quantity">
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value=1>
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" id="qtybutton" value=1>
                                     </div>
                                 </td>
                                 <td class="product-subtotal">&yen;{{g.goods_price }}</td>
@@ -229,40 +230,7 @@
                             </tr>
                                 {% endfor %}
                                 {% endfor %}
-                            <!-- <tr>
-                                <td class="product-thumbnail">
-                                    <a href="#"><img src="../assets/img/cart/tusixiangcaozhilaohuxie.jpg" alt=""></a>
-                                </td>
-                                <td class="product-name"><a href="#">土司香草汁老虎蟹 </a></td>
-                                <td class="product-price-cart"><span class="amount">¥150.00</span></td>
-                                <td class="product-quantity">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                    </div>
-                                </td>
-                                <td class="product-subtotal">&yen;150</td>
-                                <td class="product-remove">
-                                    <a><i class="fa fa-pencil"></i></a>
-                                    <a href="#"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="product-thumbnail">
-                                    <a href="#"><img src="../assets/img/cart/suancaiyuner.jpg" alt=""></a>
-                                </td>
-                                <td class="product-name"><a href="#">酸菜云耳 </a></td>
-                                <td class="product-price-cart"><span class="amount">¥70.00</span></td>
-                                <td class="product-quantity">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                    </div>
-                                </td>
-                                <td class="product-subtotal">&yen;70</td>
-                                <td class="product-remove">
-                                    <a><i class="fa fa-pencil"></i></a>
-                                    <a href="#"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr> -->
+
                             </tbody>
                         </table>
                     </div>
@@ -312,7 +280,7 @@
                                 </div>
                                 <h4 class="grand-totall-title">菜单总价 <span></span></h4>
 
-                                <input type="submit" name="quzhifu" id="quzhifu" value="去支付" >
+                                <input type="submit" name="quzhifu" id="quzhifu"  href="/checkout" value="去支付">
                             </div>
                             <!-- </div> -->
                         </div>
@@ -320,79 +288,10 @@
                 </form>
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
-                        <!--<div class="cart-tax">
 
-                             <div class="title-wrap">
-                                <h4 class="cart-bottom-title section-bg-gray">Estimate Shipping And Tax</h4>
-                            </div>
-                            <div class="tax-wrapper">
-                                <p>Enter your destination to get a shipping estimate.</p>
-                                <div class="tax-select-wrapper">
-                                    <div class="tax-select">
-                                        <label>
-                                            * Country
-                                        </label>
-                                        <select class="email s-email s-wid">
-                                            <option>Bangladesh</option>
-                                            <option>Albania</option>
-                                            <option>Åland Islands</option>
-                                            <option>Afghanistan</option>
-                                            <option>Belgium</option>
-                                        </select>
-                                    </div>
-                                    <div class="tax-select">
-                                        <label>
-                                            * Region / State
-                                        </label>
-                                        <select class="email s-email s-wid">
-                                            <option>Bangladesh</option>
-                                            <option>Albania</option>
-                                            <option>Åland Islands</option>
-                                            <option>Afghanistan</option>
-                                            <option>Belgium</option>
-                                        </select>
-                                    </div>
-                                    <div class="tax-select">
-                                        <label>
-                                            * Zip/Postal Code
-                                        </label>
-                                        <input type="text">
-                                    </div>
-                                    <button class="cart-btn-2" type="submit">Get A Quote</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                        <!-- <div class="col-lg-4 col-md-6">
-                        <div class="discount-code-wrapper">
-                            <div class="title-wrap">
-                                <h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
-                            </div>
-                            <div class="discount-code">
-                                <p>Enter your coupon code if you have one.</p>
-                                <form>
-                                    <input type="text" required="" name="name">
-                                    <button class="cart-btn-2" type="submit">Apply Coupon</button>
-                                </form>z
-                            </div>
-                        </div> -->
                     </div>
                     <div class="col-lg-4 col-md-12">
-                        <!-- <div class="grand-totall">
-                            <div class="title-wrap">
-                                <h4 class="cart-bottom-title section-bg-gary-cart">菜品清单</h4>
-                            </div>
-                            <h5 class="grand-totall-number">菜品总数 <span>0</span></h5>
-                            <div class="total-shipping">
-                                <h5>有偿提供</h5>
-                                <ul>
-                                    <li><input type="checkbox" id="dbcj" name='dbcj'> 打包餐具 <span>¥20.00</span></li>
-                                    <li><input type="checkbox" id="kpf" name='kpf'> 开瓶费 <span>¥30.00</span></li>
-                                </ul>
-                            </div>
-                            <h4 class="grand-totall-title">菜单总价 <span>¥280.00</span></h4>
-                            <a href="#">去支付</a>
-                        </div> -->
+
                     </div>
                 </div>
             </div>

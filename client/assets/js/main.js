@@ -398,88 +398,114 @@
             // console.log(allPrice)
         }
     });
-     /*----------------------------
-    // 表单数据json获取测试
-    ------------------------------ */
-    var a = JSON.parse("{\"title\":\"\",\"data\":[]}");
-    
-    function getJson() {
-        var arr = new Activerray();
-        $("#caidan tbody tr").each(function (i, e) {//每一行,选择器自己修改
-            var orderObj = {
-                good_info_id: "",
-                goods_image: "",
-                goods_name: "",
-                goods_price: "",
-                count_money: "",
-                goods_num:"",
-                pay_money:"",
-                remark: ""
-            };
+    //  /*----------------------------
+    // // 表单数据json获取测试
+    // ------------------------------ */
 
-            var row = {};
-            $(e).find("input").each(function (ii, ee) {
-                //每行里面需要提交的数据 遍历每一行的数据 寻找每一行内的标签
-                    var inputs = $(ee);
-                    var obj = {};
-                    // inputs.val 每一行的数据
-                    obj = inputs.val();
-                    // 截断字符串 取每一行的属性name名字
-                    var sliceStr = inputs.attr("name");
-                    if (sliceStr !== undefined && sliceStr !=='undefined' && sliceStr !== null) {// 寻找每一行的数据的属性 因为每行的name属性 如 同一个属性 属性name名多条数据是多个 goods_name/info_id/price/image/num
-                        if(sliceStr.substring(0,sliceStr.length-1) ==='good_info_id'){
-                            orderObj.good_info_id=inupts.val();
-                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_name'){
-                            orderObj.goods_name = inputs.val();
-                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_image'){
-                            orderObj.goods_image = inputs.val();
-                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_price'){
-                            orderObj.goods_price =inputs.val();
-                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='qtybutton'){
-                            orderObj.goods_num = newVal;
-                        }else if (sliceStr.substring(0,sliceStr.length-1) ==='quzhifu'){
-                            orderObj.pay_money = allPrice;
-                        }else if (sliceStr.substring(0,sliceStr.length-1)==='test'){
-                            orderObj.remark = textarea.val()
-                        }
-
-                    }
-                    row[inputs.attr("name")]=obj;
-
-                    });
-
-                    arr.push(row);
-                    // 向JSON数组添加JSON对象的方法；很关键
-                    a.data.push(orderObj);
-                });
-                // 格式化数据 JSON对象转化为JSON字符串
-
-            console(JSON.stringify(a))
-            return JSON.stringify(a)
-        }
-
-     /*----------------------------
-    // 购物车表单提交,绑定click()
-    ------------------------------ */
-    $('#quzhifu').click(function () {
-        var obj = getJson();
-         <!--提交表单-->
-     // 这里换成ajaxSubmit 同时提交table封装的多条json数据 obj ajaxSubmit还可以提交上面的Form表单数据
-        $.ajax({
-            type: "POST",
-            url:"http://127.0.0.1:5000/cart-post",
-            dataType:"json",
-            // cache:true,
-            async:true,
-            data:{'param':obj},
-            success:function () {
-                alert("数据提交成功")
-            },
-            error:function () {
-                alertMsg(null, false, null, null, "调用接口失败，请稍后重试!");
-            }
-        })
-    });
+    // $("#quzhifu").click(function () {
+    //     var goodsinfo= new Array();
+    //     for(var i=0;i<$('#numcount');i++){
+    //        var params={
+    //             "goods_id" : $("#good_info_id").val(),
+    //            "goods_num" : $("#qtybutton").val()
+    //         };
+    //         goodsinfo.push(params)
+    //     }
+    //     $.ajax({
+    //         "url":"/cart-page",
+    //         "type":"post",
+    //         "data": goodsinfo,
+    //         "async": false,
+    //         "success" : function (data) {
+    //             //表示响应回来的数据
+    //             alert(data)
+    //         },
+    //         "error":function () {
+    //             alert("程序内部错误")
+    //         }
+    //     })
+    // });
+    // var a = JSON.parse("{\"title\":\"\",\"data\":[]}");
+    //
+    // function getJson() {
+    //     var arr = new Array();
+    //     $("#caidan").each(function (i, e) {//每一行,选择器自己修改
+    //         var orderObj = {
+    //             good_info_id: "",
+    //             goods_image: "",
+    //             goods_name: "",
+    //             goods_price: "",
+    //             count_money: "",
+    //             goods_num:"",
+    //             pay_money:"",
+    //             remark: ""
+    //             };
+    //
+    //         var row = {};
+    //         $(e).find("input").each(function (ii, ee) {
+    //             //每行里面需要提交的数据 遍历每一行的数据 寻找每一行内的标签
+    //                 var inputs = $(ee);
+    //                 var obj = {};
+    //                 // inputs.val 每一行的数据
+    //                 obj = inputs.val();
+    //                 // 截断字符串 取每一行的属性name名字
+    //                 var sliceStr = inputs.attr("name");
+    //                 if (sliceStr !== undefined && sliceStr !=='undefined' && sliceStr !== null) {// 寻找每一行的数据的属性 因为每行的name属性 如 同一个属性 属性name名多条数据是多个 goods_name/info_id/price/image/num
+    //                     if(sliceStr.substring(0,sliceStr.length-1) ==='good_info_id'){
+    //                         orderObj.good_info_id=inupts.val();
+    //                     }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_name'){
+    //                         orderObj.goods_name = inputs.val();
+    //                     }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_image'){
+    //                         orderObj.goods_image = inputs.val();
+    //                     }else if (sliceStr.substring(0,sliceStr.length-1) ==='goods_price'){
+    //                         orderObj.goods_price =inputs.val();
+    //                     }else if (sliceStr.substring(0,sliceStr.length-1) ==='qtybutton'){
+    //                         orderObj.goods_num = newVal;
+    //                     }else if (sliceStr.substring(0,sliceStr.length-1) ==='quzhifu'){
+    //                         orderObj.pay_money = allPrice;
+    //                     }else if (sliceStr.substring(0,sliceStr.length-1)==='test'){
+    //                         orderObj.remark = textarea.val()
+    //                     }
+    //
+    //                 }
+    //                 row[inputs.attr("name")]=obj;
+    //
+    //
+    //                 });
+    //
+    //                 arr.push(row);
+    //                 // 向JSON数组添加JSON对象的方法；很关键
+    //                // a.data.push(orderObj);
+    //             });
+    //             // 格式化数据 JSON对象转化为JSON字符串
+    //
+    //         return json.obj;
+    //         //return JSON.stringify(a)
+    //     }
+    //
+    //  /*----------------------------
+    // // 购物车表单提交,绑定click()
+    // ------------------------------ */
+    // $('#quzhifu').click(function () {
+    //     var obj = getJson();
+    //      <!--提交表单-->
+    //  // 这里换成ajaxSubmit 同时提交table封装的多条json数据 obj ajaxSubmit还可以提交上面的Form表单数据
+    //     $.ajax({
+    //         type: "POST",
+    //         url:"http://127.0.0.1:5000/cart-page",
+    //         dataType:"json",
+    //         // cache:true,
+    //         async:true,
+    //         data:{'param':obj,
+    //         },
+    //         success:function () {
+    //             alert("数据提交成功")
+    //         },
+    //         error:function () {
+    //             alertMsg(null, false, null, null, "调用接口失败，请稍后重试!");
+    //         }
+    //     })
+    // });
      
         /*-------------------------------------
             Thumbnail Product activation

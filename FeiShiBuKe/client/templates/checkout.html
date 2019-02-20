@@ -206,44 +206,132 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            {% for good in list.goodlist %}
+                                                            <% for good in goodlist %>
                                                             <tr>
                                                                 <td>
                                                                     <div class="o-pro-dec">
-                                                                        <p>{{good.name}}</p>
+                                                                        <p>{{good['name']}}</p>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="o-pro-price">
-                                                                        <p>{{good.price}}</p>
+                                                                        <p>{{good['price']}}</p>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="o-pro-qty">
-                                                                        <p>{{good.num}}</p>
+                                                                        <p>{{good['num']}}</p>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="o-pro-subtotal">
-                                                                        <p>{{good.price * good.num}}</p>
+                                                                        <p>{{good['name'] * good['num']}}</p>
                                                                     </div>
                                                                 </td>
                                                             <tr>
-                                                                {% endfor %}
+                                                                <% endfor %>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="o-pro-dec">
+                                                                        <p>Fusce aliquam</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-price">
+                                                                        <p>$236.00</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-qty">
+                                                                        <p>2</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-subtotal">
+                                                                        <p>$236.00</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="o-pro-dec">
+                                                                        <p>Primis in faucibus</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-price">
+                                                                        <p>$265.00</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-qty">
+                                                                        <p>3</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-subtotal">
+                                                                        <p>$265.00</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="o-pro-dec">
+                                                                        <p>Etiam gravida</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-price">
+                                                                        <p>$363.00</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-qty">
+                                                                        <p>2</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-subtotal">
+                                                                        <p>$363.00</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="o-pro-dec">
+                                                                        <p>Quisque in arcu</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-price">
+                                                                        <p>$328.00</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-qty">
+                                                                        <p>2</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="o-pro-subtotal">
+                                                                        <p>$328.00</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
                                                         </tbody>
                                                         <tfoot>
 
                                                             <tr>
-                                                                <td colspan="3">总价</td>
-                                                                <td colspan="1">{{list.total}}</td>
+                                                                <td colspan="3">Subtotal </td>
+                                                                <td colspan="1">$4,001.00</td>
                                                             </tr>
                                                             <tr class="tr-f">
-                                                                <td colspan="3">优惠</td>
-                                                                <td colspan="1">{{list.discounts}}</td>
+                                                                <td colspan="3">Shipping & Handling (Flat Rate - Fixed</td>
+                                                                <td colspan="1">$45.00</td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="3">需支付</td>
-                                                                <td colspan="1">{{list.payment}}</td>
+                                                                <td colspan="3">Grand Total</td>
+                                                                <td colspan="1">$4,722.00</td>
                                                             </tr>
                                                         </tfoot>
                                                     </table>
@@ -255,7 +343,7 @@
 
                                                     </span>
                                                     <div class="billing-btn">
-                                                        <button type="submit">支付</button>
+                                                        <button type="submit">Continue</button>
                                                     </div>
                                                 </div>
                                             </div>
