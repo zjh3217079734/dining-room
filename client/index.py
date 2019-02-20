@@ -1,13 +1,10 @@
 import datetime
-import json
 
-from flask import Flask, request, render_template, session
+from flask import Flask, request, render_template, session, redirect
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
-
 from werkzeug.security import generate_password_hash, check_password_hash
-
 
 app = Flask(__name__,
             # template_folder="",  # 指定存放模板的文件夹名称
@@ -187,8 +184,8 @@ class Order(db.Model):
 
     orders_id = db.relationship(
         'Order_details',
-        backref = 'order',
-        lazy ='dynamic')
+        backref='order',
+        lazy='dynamic')
 
 
 # ........................................
@@ -296,11 +293,11 @@ class user_info(db.Model):
 # localhost:5000/
 # 主页部分
 @app.route("/")
-@app.route("/<name>")
+@app.route("/index")
 def html(name=None):
-    if name is None:
-        return render_template("index.html")
-    return render_template(name)
+    # if name is None:
+    return render_template("index.html")
+    # return render_template(name)
 
 
 # -------------------------------------------
@@ -334,34 +331,62 @@ def cart_page_viwes():
         # goods_id = session["goods_id"]
         goodsid = [10001, 10002, 10003, 10004]
         goods = []
+        i = 1
         for g in goodsid:
             good = Goods_info().query.filter_by(id=g).all()
             goods.append(good)
+            i += 1
         # 2.传送到页面上
+        numcount = i
 
         return render_template('cart-page.html', params=locals())
+    else:
+        shop_id = session['shop_id']
+        user_id = session['user_id']
+        order_id = session['order_id']
+        order = Order()
+        order_details = Order_details()
+        create_time = datetime.datetime.now().strftime('%Y-%m-%d %H%M%S')
+        create_a = datetime.datetime.now().strftime('%Y%m%d')
+        create_b = datetime.datetime.now().strftime('%H%M%S')
+        list = request.form
+
+        dict = list.to_dict(flat=False)
+        goods_id = dict['good_info_id']
+        goods_num = dict['qtybutton']
+        remark = dict['test']
+        print(goods_id, goods_num)
+        i = 0
+        pay_money =0
+        for id in goods_id:
+            # 插入表中A-order_details
+            # 循环插入
+            # order_id goods_id,goods_name,image_url,price,num,count_money
+            goodsinfo = Goods_info.query.filter_by(id=id).all()
+            order_details.order_id = order_id
+            order_details.goods_id = goodsinfo.id
+            order_details.goods_name = goodsinfo.goods_name
+            order_details.image_url = goodsinfo.goods_image
+            order_details.price =goodsinfo.goods_price
+            order_details.num =goods_num[i]
+            order_details.count_money = goods_num[i]*goodsinfo.goods_price
+            pay_money+=goods_num[i]*goodsinfo.goods_price
+            i += 1
+            db.session.add(order_details)
+            db.session.commit()
+        # 插入表中B-order表
+        # order_id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
+        # shop_id,user_id,pay_money,create_time
+        order.order_id =order_id
+        order.shop_id =shop_id
+        order.pay_money=pay_money
+        order.create_time =create_time
+        db.session.add(order)
+        db.session.commit()
+
+        return redirect('/checkout')
 
 
-@app.route('/cart-post', methods=["POST"])
-def cart_post_views():
-    # 收集以下数据:shop_id,user_id order_id 所有的goods_id\name\img\price,num,单个小计count_money,总价pay_many,创建时间create_time,备注remark
-    # shop_id = session['shop_id']
-    # user_id = session['user_id']
-    # order_id = session['order_id']
-    create_time = datetime.datetime.now().strftime('%Y-%m-%d %H%M%S')
-    param = request.get_json()
-    print(param)
-
-    # goods_ids =[]
-    # for g in request.form[]
-    # 插入表中A-order表
-    # order_id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
-    # shop_id,user_id,pay_money,create_time
-
-    # 插入表中B-order_details
-    # 循环插入
-    # order_id goods_id,goods_name,image_url,price,num,count_money
-    return render_template('cart-page.html')
 
 
 # ---------------------------------------
@@ -385,7 +410,6 @@ def login_views():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_views():
-
     if request.method == 'GET':
         return render_template('login-register.html')
     else:
