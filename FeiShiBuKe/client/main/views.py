@@ -20,12 +20,6 @@ def SelectCity():
     city = request.args["city"]
     return city
 
-@main.route('/')
-def index_views():
-    if 'username' in request.cookies:
-        username = request.cookies['username']
-    return render_template('index.html', params=locals())
-
 
 @main.route("/<name>")
 def html(name=None):
