@@ -4,7 +4,7 @@ from . import db
 
 class Apply(db.Model):
     __tablename__ = "apply"
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True,nullable=False)
     # 门店id
     shop_id = db.Column(db.Integer, nullable=False)
     # 门店名称
@@ -34,9 +34,9 @@ class Area(db.Model):
     # 二级地区id
     area_id = db.Column(db.Integer, primary_key=True)
     # 二级地区名称
-    area_name = db.Column(db.String(255), nullable=True)
+    area_name = db.Column(db.String(255), nullable=False)
     # 父地区id
-    area_pid = db.Column(db.Integer, nullable=True)
+    area_pid = db.Column(db.Integer, nullable=False)
     pass
 
 
@@ -46,9 +46,9 @@ class Category_goods(db.Model):
     __tablename__ = "category_goods"
     id = db.Column(db.Integer, primary_key=True)
     # 商品种类
-    category_name = db.Column(db.String(255), nullable=True)
+    category_name = db.Column(db.String(255), nullable=False)
     # 门店id
-    shop_id = db.Column(db.Integer, nullable=True)
+    shop_id = db.Column(db.Integer, nullable=False)
     pass
 
 
@@ -60,7 +60,7 @@ class Goods_info(db.Model):
     # 商品名称
     goods_name = db.Column(db.String(255), nullable=False)
     # 商品图片
-    goods_image = db.Column(db.String(255), nullable=True)
+    goods_image = db.Column(db.String(255), nullable=False)
     # 商品单价
     goods_price = db.Column(db.Float(2), nullable=False)
     # 商品状态（默认为1：开启，0：未开启）
@@ -78,7 +78,7 @@ class Goods_type(db.Model):
     __tablename__ = "goods_type"
     id = db.Column(db.Integer, primary_key=True)
     # 商品种类
-    type_name = db.Column(db.String(255), nullable=True)
+    type_name = db.Column(db.String(255), nullable=False)
     # 门店id
     shop_id = db.Column(db.Integer)
     pass
@@ -113,7 +113,7 @@ class Order(db.Model):
     __tablename__ = "order"
     id = db.Column(db.Integer, primary_key=True)
     # 订单id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
-    order_id = db.Column(db.CHAR(20),
+    order_id = db.Column(db.String(30),
                          nullable=False,
                          primary_key=True,
                          )
@@ -148,8 +148,8 @@ class Order(db.Model):
     # 买家/用户昵称（不得超过20个字符
     nick = db.Column(db.String(20), nullable=True)
     # 一 对 order_details('多')
-    orders_id = db.relationship(
-        'Order',
+    oid = db.relationship(
+        'Order_details',
         backref='order',
         lazy='dynamic'
     )
@@ -161,17 +161,17 @@ class Order_details(db.Model):
     __tablename__ = "order_details"
     id = db.Column(db.Integer, primary_key=True)
     # 订单Id 增加外键,引用自order表的order_id主键
-    order_id = db.Column(db.Integer,
+    order_id = db.Column(db.String(30),
                          db.ForeignKey('order.order_id'),
-                         nullable=True,)
+                         nullable=False,)
     # 商品id
-    goods_id = db.Column(db.Integer, nullable=True)
+    goods_id = db.Column(db.Integer, nullable=False)
     # 商品名称
-    goods_name = db.Column(db.VARCHAR(255), nullable=True)
+    goods_name = db.Column(db.VARCHAR(255), nullable=False)
     # 图片url地址
-    image_url = db.Column(db.VARCHAR(255), nullable=True)
+    image_url = db.Column(db.VARCHAR(255), nullable=False)
     # 单价
-    price = db.Column(db.Float, nullable=True)
+    price = db.Column(db.Float, nullable=False)
     # 商品数量 不为空
     num = db.Column(db.Integer, nullable=False)
     # 订单总价
@@ -184,7 +184,7 @@ class Shop_info(db.Model):
     __tablename__ = "shop_info"
     id = db.Column(db.Integer, primary_key=True)
     # 门店名称
-    shop_name = db.Column(db.String(255), nullable=True)
+    shop_name = db.Column(db.String(255), nullable=False)
     # 门店图片
     shop_img = db.Column(db.String(255), nullable=True)
     # 门店电话：默认为11位手机号，可以为空
@@ -200,17 +200,17 @@ class Shop_info(db.Model):
     # 门店简介
     shop_intro = db.Column(db.String(255), nullable=True)
     # 所属地区
-    area = db.Column(db.Integer, nullable=True)
-    pass
+    area = db.Column(db.Integer, nullable=False)
+
 
 
 # ........................................
 # 用来区分门店的类型
 # 例如：中餐，西餐，汉堡，披萨，炸鸡
-class type(db.Model):
+class Type(db.Model):
     __tablename__ = "type"
     id = db.Column(db.Integer, primary_key=True)
-    type_name = db.Column(db.String(10), nullable=True)
+    type_name = db.Column(db.String(10), nullable=False)
     pass
 
 # ........................................
@@ -219,7 +219,7 @@ class type(db.Model):
 # 例如：汉堡王，可以是汉堡，也可以是西餐
 
 
-class type_shop(db.Model):
+class Type_shop(db.Model):
     __tablename__ = "type_shop"
     id = db.Column(db.Integer, primary_key=True)
     type_id = db.Column(db.Integer, nullable=False)
@@ -230,7 +230,7 @@ class type_shop(db.Model):
 # 用户信息表
 
 
-class user_info(db.Model):
+class User_info(db.Model):
     __tablename__ = "user_info"
     id = db.Column(db.Integer, primary_key=True)
     # 用户账号；默认用手机号，不得超过11位长度.并且不可重复
@@ -246,12 +246,12 @@ class user_info(db.Model):
     # 用户头像
     image = db.Column(db.String(255), nullable=True)
     # 用户所在区域
-    user_area = db.Column(db.Integer, nullable=True)
+    user_area = db.Column(db.Integer, nullable=False)
     # 创建时间
     create_time = db.Column(db.DATETIME, nullable=True)
     # 更新时间
     update_time = db.Column(db.DATETIME, nullable=True)
-    pass
+
 
 # ........................................
 # +++++++++++++++++++++++++++++++++++++++++

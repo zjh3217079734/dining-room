@@ -17,36 +17,24 @@ from flask_script import Manager
 # 主页部分
 
 
-@main.route("/")
-@main.route("/<name>")
-def html(name=None):
-    if name is None:
-        return render_template("index.html")
-    return render_template(name)
+# @main.route("/")
+# @main.route("/<name>")
+# def html(name=None):
+#     if name is None:
+#         return render_template("index.html")
+#     return render_template(name)
 # 首页需要判断cookies中是否有登录信息,不然会报错
 
 # -------------------------------------------
-
-# ----------------------------------------
-# localhost:5000/cart-page.html
-# 购物车后台部分
-
-
-@main.route('/cart-page')
-def cart_page_viwes():
-    # # 1. 获取当前订单号
-    # order_id = request.args['order_id']
-    # # 2. 根据订单号,查询出订单下菜品详情
-    # goods = db.session.query(order_details)
-    pass
-
 # -----------------------------------------------------------
 # 应巧
 @main.route('/')
 def index_views():
     if 'username' in request.cookies:
         username = request.cookies['username']
-    return render_template('index.html', params=locals())
+        return render_template('index.html', params=locals())
+    else:
+        return render_template('index.html',params=None)
 
 
 @main.route('/login', methods=['POST', 'GET'])
@@ -60,7 +48,7 @@ def login_views():
         else:
             if 'username' in request.cookies:
                 username = request.cookies['username']
-                users = user_info.query.all()
+                users = User_info.query.all()
                 if username in users:
                     session['username'] = username
                     return redirect(url)
@@ -76,7 +64,7 @@ def login_views():
     else:
         username = request.form['username']
         password = request.form['password']
-        user = user_info.query.filter_by(
+        user = User_info.query.filter_by(
             user_name=username, password=password).first()
         if user:
             session['id'] = user.id
@@ -100,7 +88,7 @@ def register_views():
         password = request.form['upwd']
         phone = request.form['uphone']
 
-        user = user_info()
+        user = User_info()
         user.user_name = username
         user.password = password
         user.phone = phone
@@ -125,7 +113,7 @@ def logout_views():
 @main.route('/register/checkuname')
 def checkuname():
     uname = request.args['uname']
-    users = user_info.query.filter_by(user_name=uname).all()
+    users = User_info.query.filter_by(user_name=uname).all()
     if users:
         return "1"
     else:
@@ -152,14 +140,20 @@ def cart_page_viwes():
 
         return render_template('cart-page.html', params=locals())
     else:
-        shop_id = session['shop_id']
-        user_id = session['user_id']
-        order_id = session['order_id']
+        create_time = datetime.now().strftime('%Y-%m-%d %H%M%S')
+
+        # shop_id = session['shop_id']
+        shop_id=12345
+        user_id=11
+        # user_id = session['user_id']
+        # order_id = session['order_id']
         order = Order()
         order_details = Order_details()
-        create_time = datetime.now().strftime('%Y-%m-%d %H%M%S')
-        create_a = datetime.now().strftime('%Y%m%d')
-        create_b = datetime.now().strftime('%H%M%S')
+        today = datetime.now().strftime('%Y-%m-%d')
+        boday = '2019-01-16'
+        todaynum = db.session.query(Order.order_id).filter(Order.create_time.like("%"+today+"%")).count()+1
+        order_id =create_time+str(shop_id)+str(todaynum)
+        print(order_id)
         list = request.form
 
         dict = list.to_dict(flat=False)
@@ -173,7 +167,7 @@ def cart_page_viwes():
             # 插入表中A-order_details
             # 循环插入
             # order_id goods_id,goods_name,image_url,price,num,count_money
-            goodsinfo = Goods_info.query.filter_by(id=id).all()
+            goodsinfo = Goods_info.query.filter_by(id=id).first()
             order_details.order_id = order_id
             order_details.goods_id = goodsinfo.id
             order_details.goods_name = goodsinfo.goods_name
@@ -195,4 +189,5 @@ def cart_page_viwes():
         db.session.add(order)
         db.session.commit()
 
-        return redirect('/checkout')
+        # return redirect('/checkout')
+        return '接收成功'
