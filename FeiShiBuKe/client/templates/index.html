@@ -52,8 +52,8 @@
                                         <p>
                                             {% if params.username %}
                                                 <span>
-                                                    欢迎:{{ params.username }}
-                                                    <a href="/logout">退出</a> /
+                                                    欢迎:**{{ params.username }}**
+                                                    <a href="/logout">退出</a>
                                             {% else %}
                                                     <a href="/login">登录</a>
                                                 </span>
@@ -61,7 +61,7 @@
                                             <br> or
                                             <span>
                                                 <a href="/register">注册</a>
-                                            </span>
+                                            </span>                                            
                                         </p>
                                     </div>
                                 </a>
