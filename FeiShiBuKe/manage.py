@@ -2,6 +2,7 @@
 from client import db, Create_App
 from flask_script import Manager
 from flask_migrate import MigrateCommand, Migrate
+from client.models import *
 
 # 调用create_app得到app实例
 app = Create_App()
