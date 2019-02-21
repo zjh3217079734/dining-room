@@ -140,11 +140,11 @@ def cart_page_viwes():
 
         return render_template('cart-page.html', params=locals())
     else:
-        create_time = datetime.now().strftime('%Y-%m-%d %H%M%S')
+        create_time = datetime.now().strftime('%Y%m%d%H%M%S')
 
         # shop_id = session['shop_id']
-        shop_id=12345
-        user_id=11
+        shop_id=1010
+        user_id=2
         # user_id = session['user_id']
         # order_id = session['order_id']
         order = Order()
@@ -164,30 +164,35 @@ def cart_page_viwes():
         i = 0
         pay_money =0
         for id in goods_id:
+            # 插入表中B-order表
+            # order_id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
+            # shop_id,user_id,pay_money,create_time
+            order.order_id = order_id
+            order.shop_id = shop_id
+            order.user_id = user_id
+            order.pay_money = pay_money
+            order.create_time = create_time
+
+            db.session.add(order)
+            db.session.commit()
             # 插入表中A-order_details
             # 循环插入
             # order_id goods_id,goods_name,image_url,price,num,count_money
             goodsinfo = Goods_info.query.filter_by(id=id).first()
             order_details.order_id = order_id
+
             order_details.goods_id = goodsinfo.id
             order_details.goods_name = goodsinfo.goods_name
             order_details.image_url = goodsinfo.goods_image
             order_details.price =goodsinfo.goods_price
+            print(goodsinfo.goods_price)
             order_details.num =goods_num[i]
-            order_details.count_money = goods_num[i]*goodsinfo.goods_price
-            pay_money+=goods_num[i]*goodsinfo.goods_price
-            i += 1
+            print(goods_num[i])
+            order_details.count_money = int(goods_num[i])*int(goodsinfo.goods_price)
+            pay_money+=order_details.count_money
             db.session.add(order_details)
             db.session.commit()
-        # 插入表中B-order表
-        # order_id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
-        # shop_id,user_id,pay_money,create_time
-        order.order_id =order_id
-        order.shop_id =shop_id
-        order.pay_money=pay_money
-        order.create_time =create_time
-        db.session.add(order)
-        db.session.commit()
 
+            i+=1
         # return redirect('/checkout')
         return '接收成功'
