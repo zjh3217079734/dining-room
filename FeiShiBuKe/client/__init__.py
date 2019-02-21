@@ -5,6 +5,7 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.dialects.mysql import FLOAT
 
 # 声明SQLAlchemy的实例
 db = SQLAlchemy()  # 原来是:db = SQLAlchemy()
@@ -23,7 +24,7 @@ def Create_App():
     app.config['DEBUG'] = True
 
     # 为app指定数据库的配置
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@localhost:3306/project"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://zjh:123456@localhost:3306/client2"
     app.config['SQLALCHEMY_COMMIT_ON_TEAROWN'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     # 配置session所需要的secret_key
