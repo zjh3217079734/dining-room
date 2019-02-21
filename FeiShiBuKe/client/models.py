@@ -115,22 +115,21 @@ class Order(db.Model):
     # 订单id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
     order_id = db.Column(db.String(30),
                          nullable=False,
-                         primary_key=True,
                          )
     # 门店id
-    shop_id = db.Column(db.Integer, nullable=False)
+    shop_id = db.Column(db.Integer, db.ForeignKey('shop_info.id'),nullable=False)
     # userid
-    user_id = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user_info.id'),nullable=False)
     # 支付金额
     pay_money = db.Column(db.Float(2), nullable=False)
     # 支付类型
-    pay_type = db.Column(db.SmallInteger, nullable=False)
+    pay_type = db.Column(db.SmallInteger, nullable=True)
     # 订单交易状态
-    status = db.Column(db.SmallInteger, nullable=False)
+    status = db.Column(db.SmallInteger, nullable=True)
     # 订单创建时间
-    create_time = db.Column(db.DATETIME, nullable=False)
+    create_time = db.Column(db.DATETIME, nullable=True)
     # 订单更新时间
-    update_taime = db.Column(db.DATETIME, nullable=False)
+    update_time = db.Column(db.DATETIME, nullable=True)
     # 付款时间
     pay_time = db.Column(db.DATETIME, nullable=True)
     # 订单备注
@@ -138,7 +137,7 @@ class Order(db.Model):
     # 桌号 0 外带；其他号码：桌号
     table_id = db.Column(db.Integer, nullable=True)
     # 评价状态；0：未评价，1：已评价，2：删除评价
-    appraise_status = db.Column(db.Integer, nullable=False)
+    appraise_status = db.Column(db.Integer, nullable=True)
     # 评价内容
     appraise = db.Column(db.String(255), nullable=True)
     # 评分数值/获赞数值
@@ -148,7 +147,7 @@ class Order(db.Model):
     # 买家/用户昵称（不得超过20个字符
     nick = db.Column(db.String(20), nullable=True)
     # 一 对 order_details('多')
-    oid = db.relationship(
+    order_details = db.relationship(
         'Order_details',
         backref='order',
         lazy='dynamic'
@@ -162,7 +161,7 @@ class Order_details(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # 订单Id 增加外键,引用自order表的order_id主键
     order_id = db.Column(db.String(30),
-                         db.ForeignKey('order.order_id'),
+                         db.ForeignKey('order.id'),
                          nullable=False,)
     # 商品id
     goods_id = db.Column(db.Integer, nullable=False)
@@ -201,8 +200,11 @@ class Shop_info(db.Model):
     shop_intro = db.Column(db.String(255), nullable=True)
     # 所属地区
     area = db.Column(db.Integer, nullable=False)
-
-
+    order_id = db.relationship(
+        'Order',
+        backref='shop_info',
+        lazy='dynamic'
+    )
 
 # ........................................
 # 用来区分门店的类型
@@ -248,10 +250,15 @@ class User_info(db.Model):
     # 用户所在区域
     user_area = db.Column(db.Integer, nullable=False)
     # 创建时间
-    create_time = db.Column(db.DATETIME, nullable=True)
+    create_time = db.Column(db.DateTime, nullable=True)
     # 更新时间
     update_time = db.Column(db.DATETIME, nullable=True)
+    order_user_id = db.relationship(
+        'Order',
+        backref='user_info',
+        lazy='dynamic'
 
+    )
 
 # ........................................
 # +++++++++++++++++++++++++++++++++++++++++
