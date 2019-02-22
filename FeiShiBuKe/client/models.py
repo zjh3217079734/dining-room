@@ -77,7 +77,6 @@ class Shop(db.Model):
     #    '所属地区',
     area = db.Column(
         db.String(10), nullable=True)
-
     # ----------下面都是关系映射------------------
     # "与菜单的外键关联映射"
     shop_meun = db.relationship(
@@ -351,8 +350,7 @@ class Order_details(db.Model):
 
     # # '订单id；格式：年月日(8)+时分秒(6)+商家id(6)+订单号(4)',
     # 商家id不够6位的前面填充0
-    order_id = db.Column(db.Integer, db.ForeignKey("order.id"))
-
+    order_id = db.Column(db.String(24), db.ForeignKey("order.order_id"))
     # #   '门店id',
     goods_id = db.Column(db.Integer, db.ForeignKey("goods.id"))
 
