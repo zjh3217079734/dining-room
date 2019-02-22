@@ -1,4 +1,5 @@
 # 处理与客户相关的路由和视图
+
 from . import main
 from .. import db
 from ..models import *
@@ -11,8 +12,9 @@ from sqlalchemy import or_, func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-from flask_paginate import Pagination, get_page_parameter
+# from flask_paginate import Pagination, get_page_parameter
 import json
+
 
 # ---------------------------------------------
 # localhost:5000/
@@ -25,6 +27,8 @@ import json
 #     if name is None:
 #         return render_template("index.html")
 #     return render_template(name)
+
+
 # 首页需要判断cookies中是否有登录信息,不然会报错
 
 
@@ -37,6 +41,7 @@ def SelectCity():
     cityid = Area.query.filter_by(area_name=city).all()
     print("cityid:", cityid)
     return city
+
 
 # -------------------------------------------
 # -----------------------------------------------------------
@@ -107,9 +112,9 @@ def register_views():
         user.user_name = username
         user.password = password
         user.phone = phone
-        user.sex='M'
-        user.create_time=datetime.now()
-        user.update_time=datetime.now()
+        user.sex = 'M'
+        user.create_time = datetime.now()
+        user.update_time = datetime.now()
         try:
             db.session.add(user)
             db.session.commit()
@@ -128,14 +133,14 @@ def logout_views():
     return resp
 
 
-@main.route('/register/checkuname')
-def checkuname():
-    uname = request.args['uname']
-    users = User.query.filter_by(user_name=uname).all()
-    if users:
-        return "1"
-    else:
-        return "0"
+# @main.route('/register/checkuname')
+# def checkuname():
+#     uname = request.args['uname']
+#     users = User.query.filter_by(user_name=uname).all()
+#     if users:
+#         return "1"
+#     else:
+#         return "0"
 
 # -----------------------------------------------------------
 
@@ -161,27 +166,25 @@ def cart_page_viwes():
         return render_template('cart-page.html', params=locals())
     else:
         create_time = datetime.now().strftime('%Y%m%d%H%M%S')
-
         # shop_id = session['shop_id']
-        shop_id = 2
-        user_id = 2
         # user_id = session['user_id']
         # order_id = session['order_id']
+        shop_id = 2
+        user_id = 2
         order = Order()
         order_details = Order_details()
         today = datetime.now().strftime('%Y-%m-%d')
         boday = '2019-01-16'
         todaynum = db.session.query(Order.create_time).filter(
-            Order.create_time.like("%"+today+"%")).count()+1
-        order_id = create_time+str(shop_id)+str(todaynum)
-        print(order_id)
+            Order.create_time.like("%" + today + "%")).count() + 1
+        order_id = create_time + str(shop_id) + str(todaynum)
+        # 获取表单数据并处理
         list = request.form
-
         dict = list.to_dict(flat=False)
         goods_id = dict['good_info_id']
         goods_num = dict['qtybutton']
         remark = dict['test']
-        print(goods_id, goods_num)
+
         i = 0
         pay_money = 0
         # 插入表中B-order表
@@ -191,37 +194,31 @@ def cart_page_viwes():
         order.shop_id = shop_id
         order.user_id = user_id
         order.pay_money = pay_money
-        order.update_time= create_time
+        order.update_time = create_time
         order.create_time = create_time
-
         db.session.add(order)
         db.session.commit()
         for gid in goods_id:
-            # db.session.flush()
+            order_details = Order_details()
+
             # 插入表中A-order_details
             # 循环插入
             # order_id goods_id,goods_name,image_url,price,num,count_money
             goodsinfo = Goods.query.filter_by(id=gid).first()
-            # last = db.session.query(Order_details).order_by(Order_details.id.desc()).first()
-            # print(last.id)
-            # order_details.id = last.id+1
+            last = db.session.query(Order_details).order_by(Order_details.id.desc()).first()
+            order_details.id = last.id + 1
             order_details.order_id = order_id
             order_details.goods_id = goodsinfo.id
             order_details.goods_name = goodsinfo.goods_name
             order_details.image_url = goodsinfo.goods_image
             order_details.price = goodsinfo.goods_price
-            print(goodsinfo.goods_price)
             order_details.num = goods_num[i]
-            print(goods_num[i])
-            order_details.count_money = int(
-                goods_num[i])*int(goodsinfo.goods_price)
+            order_details.count_money = int(goods_num[i]) * int(goodsinfo.goods_price)
             pay_money += order_details.count_money
-            order.pay_money=pay_money
+            order.pay_money = pay_money
             db.session.add(order)
-
             db.session.add(order_details)
             db.session.commit()
-
             i += 1
         # return redirect('/checkout')
         return '接收成功'
@@ -237,7 +234,7 @@ def release_views():
         return render_template("index.html")
 
 
-@main.route("/shops", methods=["GET", "POST"])
+@main.route("/shop", methods=["GET", "POST"])
 def shops_views():
     page = request.args.get('page', 1, type=int)
     if request.args.get("shop_id"):
@@ -249,7 +246,7 @@ def shops_views():
     return render_template("index.html", pagination=pagination, shops=shops)
 
 
-@main.route("/rightSideTag", methoss=["GET", "POST"])
+@main.route("/rightSideTag", methods=["GET", "POST"])
 def tag_views():
     menus = db.session.query(Menu).all()
     counts = menus.count()
@@ -257,17 +254,17 @@ def tag_views():
     return render_template("/index.html", params=locals())
 
 
-@main.route("/search", methos=["GET", "POST"])
+@main.route("/search", methods=["GET", "POST"])
 def search_views():
     l = []
     kws = request.args.get("kws", "")
     if kws != '':
         results1 = db.session.query(Goods.goods_name).filter(
-            Goods.goods_name.like("%"+kws+"%")).all()
+            Goods.goods_name.like("%" + kws + "%")).all()
         results2 = db.session.query(Menu.menu_name).filter(
-            Menu.menu_name.like("%"+kws+"%")).all()
+            Menu.menu_name.like("%" + kws + "%")).all()
         results3 = db.session.query(Shop.shop_name).filter(
-            Shop.shop_name.like("%"+kws+"%")).all()
+            Shop.shop_name.like("%" + kws + "%")).all()
         for result in [results1, results2, results3]:
             for r in result:
                 l.append(r[0])
