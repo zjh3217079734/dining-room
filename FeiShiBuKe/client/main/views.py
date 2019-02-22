@@ -67,7 +67,7 @@ def login_views():
         user = User.query.filter_by(
             user_name=username, password=password).first()
         if user:
-            session['id'] = user.id
+            session['id'] = user.user_id
             session['username'] = username
             url = session['url']
             resp = redirect(url)
@@ -92,6 +92,9 @@ def register_views():
         user.user_name = username
         user.password = password
         user.phone = phone
+        user.sex='M'
+        user.create_time=datetime.now()
+        user.update_time=datetime.now()
         try:
             db.session.add(user)
             db.session.commit()
