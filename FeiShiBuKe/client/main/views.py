@@ -11,7 +11,7 @@ from sqlalchemy import or_, func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-from flask_paginate import Pagination,get_page_parameter
+from flask_paginate import Pagination, get_page_parameter
 import json
 
 # ---------------------------------------------
@@ -27,16 +27,29 @@ import json
 #     return render_template(name)
 # 首页需要判断cookies中是否有登录信息,不然会报错
 
+
+# 根据网络ip获取所在城市
+@main.route("/SelectCity")
+def SelectCity():
+    city = request.args["city"]
+    print(city)
+    print("leixing :", type(city))
+    cityid = Area.query.filter_by(area_name=city).all()
+    print("cityid:", cityid)
+    return city
+
 # -------------------------------------------
 # -----------------------------------------------------------
 # 应巧
+
+
 @main.route('/')
 def index_views():
     if 'username' in request.cookies:
         username = request.cookies['username']
         return render_template('index.html', params=locals())
     else:
-        return render_template('index.html',params=None)
+        return render_template('index.html', params=None)
 
 
 @main.route('/login', methods=['POST', 'GET'])
@@ -50,7 +63,7 @@ def login_views():
         else:
             if 'username' in request.cookies:
                 username = request.cookies['username']
-                users = User_info.query.all()
+                users = User.query.all()
                 if username in users:
                     session['username'] = username
                     return redirect(url)
@@ -66,7 +79,7 @@ def login_views():
     else:
         username = request.form['username']
         password = request.form['password']
-        user = User_info.query.filter_by(
+        user = User.query.filter_by(
             user_name=username, password=password).first()
         if user:
             session['id'] = user.id
@@ -90,7 +103,7 @@ def register_views():
         password = request.form['upwd']
         phone = request.form['uphone']
 
-        user = User_info()
+        user = User()
         user.user_name = username
         user.password = password
         user.phone = phone
@@ -115,13 +128,15 @@ def logout_views():
 @main.route('/register/checkuname')
 def checkuname():
     uname = request.args['uname']
-    users = User_info.query.filter_by(user_name=uname).all()
+    users = User.query.filter_by(user_name=uname).all()
     if users:
         return "1"
     else:
         return "0"
 
 # -----------------------------------------------------------
+
+
 @main.route('/cart-page', methods=["GET", "POST"])
 def cart_page_viwes():
     if request.method == "GET":
@@ -145,16 +160,17 @@ def cart_page_viwes():
         create_time = datetime.now().strftime('%Y%m%d%H%M%S')
 
         # shop_id = session['shop_id']
-        shop_id=1010
-        user_id=2
+        shop_id = 1010
+        user_id = 2
         # user_id = session['user_id']
         # order_id = session['order_id']
         order = Order()
         order_details = Order_details()
         today = datetime.now().strftime('%Y-%m-%d')
         boday = '2019-01-16'
-        todaynum = db.session.query(Order.order_id).filter(Order.create_time.like("%"+today+"%")).count()+1
-        order_id =create_time+str(shop_id)+str(todaynum)
+        todaynum = db.session.query(Order.order_id).filter(
+            Order.create_time.like("%"+today+"%")).count()+1
+        order_id = create_time+str(shop_id)+str(todaynum)
         print(order_id)
         list = request.form
 
@@ -164,7 +180,7 @@ def cart_page_viwes():
         remark = dict['test']
         print(goods_id, goods_num)
         i = 0
-        pay_money =0
+        pay_money = 0
         for id in goods_id:
             # 插入表中B-order表
             # order_id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
@@ -186,60 +202,64 @@ def cart_page_viwes():
             order_details.goods_id = goodsinfo.id
             order_details.goods_name = goodsinfo.goods_name
             order_details.image_url = goodsinfo.goods_image
-            order_details.price =goodsinfo.goods_price
+            order_details.price = goodsinfo.goods_price
             print(goodsinfo.goods_price)
-            order_details.num =goods_num[i]
+            order_details.num = goods_num[i]
             print(goods_num[i])
-            order_details.count_money = int(goods_num[i])*int(goodsinfo.goods_price)
-            pay_money+=order_details.count_money
+            order_details.count_money = int(
+                goods_num[i])*int(goodsinfo.goods_price)
+            pay_money += order_details.count_money
             db.session.add(order_details)
             db.session.commit()
 
-            i+=1
+            i += 1
         # return redirect('/checkout')
         return '接收成功'
 
 
 # -----------------------------------------------------------------------------
-@main.route("/release", methods=["GET","POST"])
+@main.route("/release", methods=["GET", "POST"])
 def release_views():
     if request.method == "GET":
-        if "id" in session and "loginname" in session :
+        if "id" in session and "loginname" in session:
             loginname = session["loginname"]
-            return render_template(("index.html"),params=locals())
+            return render_template(("index.html"), params=locals())
         return render_template("index.html")
 
-@main.route("/shops",methods=["GET","POST"])
+
+@main.route("/shops", methods=["GET", "POST"])
 def shops_views():
-    page = request.args.get('page',1,type=int)
+    page = request.args.get('page', 1, type=int)
     if request.args.get("shop_id"):
-        pagination = db.session.query(Shop).filter_by(shop_id=id).paginate(page,per_page=10)
+        pagination = db.session.query(Shop).filter_by(
+            shop_id=id).paginate(page, per_page=10)
     else:
         pagination = db.session.query(Shop).paginate(page, per_page=10)
     shops = pagination.items
-    return render_template("index.html",pagination=pagination,shops=shops)
+    return render_template("index.html", pagination=pagination, shops=shops)
 
-@main.route("/rightSideTag",methoss=["GET","POST"])
+
+@main.route("/rightSideTag", methoss=["GET", "POST"])
 def tag_views():
     menus = db.session.query(Menu).all()
     counts = menus.count()
     goods = db.session.query(Goods).limit(7).all()
-    return render_template("/index.html",params=locals())
+    return render_template("/index.html", params=locals())
 
-@main.route("/search",methos=["GET","POST"])
+
+@main.route("/search", methos=["GET", "POST"])
 def search_views():
-    l =[]
-    kws = request.args.get("kws","")
+    l = []
+    kws = request.args.get("kws", "")
     if kws != '':
-        results1 = db.session.query(Goods.goods_name).filter(Goods.goods_name.like("%"+kws+"%")).all()
-        results2 = db.session.query(Menu.menu_name).filter(Menu.menu_name.like("%"+kws+"%")).all()
-        results3 = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%"+kws+"%")).all()
-        for result in [results1,results2,results3]:
+        results1 = db.session.query(Goods.goods_name).filter(
+            Goods.goods_name.like("%"+kws+"%")).all()
+        results2 = db.session.query(Menu.menu_name).filter(
+            Menu.menu_name.like("%"+kws+"%")).all()
+        results3 = db.session.query(Shop.shop_name).filter(
+            Shop.shop_name.like("%"+kws+"%")).all()
+        for result in [results1, results2, results3]:
             for r in result:
-                 l.append(r[0])
+                l.append(r[0])
     jsonStr = json.dumps(l)
     return jsonStr
-
-
-
-
