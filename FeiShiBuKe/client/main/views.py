@@ -13,19 +13,15 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_paginate import Pagination, get_page_parameter
 import json
-
 # ---------------------------------------------
 # localhost:5000/
 # 主页部分
 
 
-# @main.route("/")
+#这行代码是: 你给我什么,我重新把路由地址给你,不管你是什么东西
 # @main.route("/<name>")
 # def html(name=None):
-#     if name is None:
-#         return render_template("index.html")
 #     return render_template(name)
-# 首页需要判断cookies中是否有登录信息,不然会报错
 
 
 # 根据网络ip获取所在城市
@@ -41,6 +37,7 @@ def SelectCity():
 # -------------------------------------------
 # -----------------------------------------------------------
 # 应巧
+# 首页需要判断cookies中是否有登录信息,不然会报错
 
 
 @main.route('/')
@@ -107,9 +104,9 @@ def register_views():
         user.user_name = username
         user.password = password
         user.phone = phone
-        user.sex='M'
-        user.create_time=datetime.now()
-        user.update_time=datetime.now()
+        user.sex = 'M'
+        user.create_time = datetime.now()
+        user.update_time = datetime.now()
         try:
             db.session.add(user)
             db.session.commit()
@@ -191,7 +188,7 @@ def cart_page_viwes():
         order.shop_id = shop_id
         order.user_id = user_id
         order.pay_money = pay_money
-        order.update_time= create_time
+        order.update_time = create_time
         order.create_time = create_time
 
         db.session.add(order)
@@ -216,7 +213,7 @@ def cart_page_viwes():
             order_details.count_money = int(
                 goods_num[i])*int(goodsinfo.goods_price)
             pay_money += order_details.count_money
-            order.pay_money=pay_money
+            order.pay_money = pay_money
             db.session.add(order)
 
             db.session.add(order_details)
@@ -249,7 +246,7 @@ def shops_views():
     return render_template("index.html", pagination=pagination, shops=shops)
 
 
-@main.route("/rightSideTag", methoss=["GET", "POST"])
+@main.route("/rightSideTag", methods=["GET", "POST"])
 def tag_views():
     menus = db.session.query(Menu).all()
     counts = menus.count()
@@ -257,7 +254,7 @@ def tag_views():
     return render_template("/index.html", params=locals())
 
 
-@main.route("/search", methos=["GET", "POST"])
+@main.route("/search", methods=["GET", "POST"])
 def search_views():
     l = []
     kws = request.args.get("kws", "")
