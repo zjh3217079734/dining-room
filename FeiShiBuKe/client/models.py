@@ -97,6 +97,11 @@ class Shop(db.Model):
         backref='apply_shop',
         lazy='dynamic'
     )
+    shop_order = db.relationship(
+        'Order',
+        backref='order_shop',
+        lazy ='dynamic',
+    )
     # 实现与Classify的关联关系(多对多,中间借助classify_shop关联表进行关联)
 
     def __repr__(self):
