@@ -1,992 +1,363 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>非食不可-点餐</title>
-    <meta name="description" content="">
-    <meta name="robots" content="noindex, follow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.png">
-
-
-    <!-- all css here -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/animate.css">
-    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/css/slick.css">
-    <link rel="stylesheet" href="../assets/css/chosen.min.css">
-    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/css/simple-line-icons.css">
-    <link rel="stylesheet" href="../assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
-    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
-
-<body>
-
-    <!-- 顶部导航栏开始 -->
-    <header class="header-area">
-        <div class="header-middle">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-12 col-sm-4">
-                        <div class="logo">
-                            <a href="index">
-                                <img alt="" src="../assets/img/logo/logo.png">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-8 col-12 col-sm-8">
-                        <div class="header-middle-right f-right">
-                            <div class="header-login">
-                                <a href="login-register">
-                                    <div class="header-icon-style">
-                                        <i class="icon-user icons"></i>
-                                    </div>
-                                    <div class="login-text-content">
-                                        <p>登录 <br> or <span>注册</span></p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="header-wishlist">
-                            </div>
-                            <div class="header-cart">
-                                <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
-                                    <div class="header-icon-style">
-                                        <i class="icon-handbag icons"></i>
-                                        <!-- 商品数量标识 -->
-                                        <span class="count-style">3+</span>
-                                        <!-- 商品数量标识,数量后面跟+ -->
-                                    </div>
-                                    <div class="cart-text">
-                                        <span class="digit">购物车</span>
-                                        <!-- 当前购物车的统计 -->
-                                        <span class="cart-digit-bold">$209.00</span>
-                                    </div>
-                                </a>
-                                <!-- <div class="shopping-cart-content">
-                                        <ul>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="cart-page"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="cart-page">Phantom Remote </a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="cart-page"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="cart-page">Phantom Remote</a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    // ion是删除图标,做成动态删除数据就好了
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="shopping-cart-total">
-                                            <h4>Shipping : <span>$20.00</span></h4>
-                                            <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-btn">
-                                            <a onclick="window.location = 'cart-page'" href="javascript:void(0);">view
-                                                cart</a>
-                                            <a onclick="window.location = 'checkout'" href="javascript:void(0);">checkout</a>
-                                        </div>
-                                    </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-bottom transparent-bar black-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12">
-                        <div class="main-menu">
-                            <nav>
-                                <ul>
-                                    <li class="mega-menu-position top-hover"><a href="index">首页</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="shop">发现商家</a></li>
-                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
-                                    <li class="mega-menu-position top-hover"><a href="cart-page">购物车</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="checkout">提交订单</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="my-account">个人信息</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>
-                                    <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-menu-area-start -->
-        <!-- 下面是移动端的内容 -->
-        <div class="mobile-menu-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mobile-menu">
-                            <nav id="mobile-menu-active">
-                                <ul class="menu-overflow" id="nav">
-                                    <li><a href="index">首页</a></li>
-                                    <li><a href="shop">发现商家</a></li>
-                                    <!-- <li><a href="shop-list">点菜</a></li> -->
-                                    <li><a href="cart-page">购物车</a></li>
-                                    <li><a href="checkout">提交订单</a></li>
-                                    <li><a href="about-us">关于我们</a></li>
-                                    <!-- <li><a href="contact">联系我们</a></li> -->
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-menu-area-end -->
-    </header>
-    <!-- 顶部导航栏结束 -->
-
-
-
-    <div class="breadcrumb-area gray-bg">
-        <div class="container">
-            <div class="breadcrumb-content">
-                <ul>
-                    <li><a href="index">首页</a></li>
-                    <li class="active"> 川菜馆 </li>
-                </ul>
-            </div>
+{% extends "index.html" %}
+{% block content %}
+<div class="breadcrumb-area gray-bg">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li class="active"> {{params.shop.shop_name}} </li>
+            </ul>
         </div>
     </div>
-    <div class="shop-page-area pt-100 pb-100">
-        <div class="container">
-            <div class="row flex-row-reverse">
-                <div class="col-lg-9">
-                    <!-- <div class="banner-area pb-30">
-                        <a href="product-details"><img alt="" src="../assets/img/banner/banner-4.jpg"></a>
-                    </div> -->
-                    <!-- <div class="shop-topbar-wrapper">
-                        <div class="shop-topbar-left">
-                            <ul class="view-mode">
-                                <li class="active"><a href="#product-grid" data-view="product-grid"><i class="fa fa-th"></i></a></li>
-                                <li><a href="#product-list" data-view="product-list"><i class="fa fa-list-ul"></i></a></li>
-                            </ul>
-                            <p>Showing 1 - 20 of 30 results </p>
+</div>
+<div class="shop-page-area pt-100 pb-100">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div class="col-lg-9">
+                <!-- <div class="banner-area pb-30">
+                    <a href="product-details.html"><img alt="" src="../assets/img/banner/banner-4.jpg"></a>
+                </div> -->
+                <!-- <div class="shop-topbar-wrapper">
+                    <div class="shop-topbar-left">
+                        <ul class="view-mode">
+                            <li class="active"><a href="#product-grid" data-view="product-grid"><i class="fa fa-th"></i></a></li>
+                            <li><a href="#product-list" data-view="product-list"><i class="fa fa-list-ul"></i></a></li>
+                        </ul>
+                        <p>Showing 1 - 20 of 30 results </p>
+                    </div>
+                    <div class="product-sorting-wrapper">
+                        <div class="product-shorting shorting-style">
+                            <label>View:</label>
+                            <select>
+                                <option value=""> 20</option>
+                                <option value=""> 23</option>
+                                <option value=""> 30</option>
+                            </select>
                         </div>
-                        <div class="product-sorting-wrapper">
-                            <div class="product-shorting shorting-style">
-                                <label>View:</label>
-                                <select>
-                                    <option value=""> 20</option>
-                                    <option value=""> 23</option>
-                                    <option value=""> 30</option>
-                                </select>
-                            </div>
-                            <div class="product-show shorting-style">
-                                <label>Sort by:</label>
-                                <select>
-                                    <option value="">Default</option>
-                                    <option value=""> Name</option>
-                                    <option value=""> price</option>
-                                </select>
-                            </div>
+                        <div class="product-show shorting-style">
+                            <label>Sort by:</label>
+                            <select>
+                                <option value="">Default</option>
+                                <option value=""> Name</option>
+                                <option value=""> price</option>
+                            </select>
                         </div>
-                    </div> -->
-                    <div class="grid-list-product-wrapper">
-                        <div class="product-grid product-view pb-20">
-                            <div class="row">
-                                <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <!-- <a href="product-details"> -->
-                                                <img src="../assets/img/goods/niuroumian.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <!-- 此处需要将数据传送至购物车页面,并在右上角购物车图标的数字加1 -->
-                                                    <a title="添加至购物车" href="#"><i class="ion-android-cart"></i>
-                                                        添加至购物车</a>
-                                                </div>
-                                                <!-- 此div 为商品详情弹窗和许愿清单添加,均不需要 -->
-                                                <!-- <div class="pro-action-right">
-                                                    <a title="收藏" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div> -->
+                    </div>
+                </div> -->
+                <div class="grid-list-product-wrapper">
+                    <div class="product-grid product-view pb-20">
+                        <div class="row">
+                            {% for good in params.goods %}
+                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
+                                <div class="product-wrapper">
+                                    <div class="product-img">
+                                        <a href="product-details.html">
+                                            <img src="../assets/img/goods/{{good.goods_image}}" alt="">
+                                        </a>
+                                        <div class="product-action">
+                                            <div class="pro-action-left">
+                                                <a title="添加至购物车" href="" id="tjgwc"><i class="ion-android-cart"></i>
+                                                    添加至购物车</a>
+                                                    
                                             </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">炸酱面 </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>&yen;15.00</span>
-                                                <!-- <span class="product-price-old">$120.00 </span> -->
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <!-- 喜欢 -->
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <!-- 添加到购物车 -->
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
+                                            <div class="pro-action-right">
+                                                <a title="收藏" href="wishlist.html"><i class="ion-ios-heart-outline"></i></a>
+                                                <!-- <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
+                                                    href="#"><i class="ion-android-open"></i></a> -->
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/goods/niuroumian.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <!-- 此处需要将数据传送至购物车页面,并在右上角购物车图标的数字加1 -->
-                                                    <a title="添加至购物车" href="#"><i class="ion-android-cart"></i>
-                                                        添加至购物车</a>
-                                                </div>
-                                                <!-- 此div 为商品详情弹窗和许愿清单添加,均不需要 -->
-                                                <!-- <div class="pro-action-right">
-                                                    <a title="收藏" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">炸酱面 </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>&yen;15.00</span>
-                                                <!-- <span class="product-price-old">$120.00 </span> -->
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <!-- 喜欢 -->
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <!-- 添加到购物车 -->
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
+                                    <div class="product-content">
+                                        <h4>
+                                            <a href="{{good.goods_i}}">{{good.goods_name}} </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>&yen;{{good.goods_price}}</span>
+                                            <!-- <span class="product-price-old">$120.00 </span> -->
                                         </div>
                                     </div>
-                                </div>
-                                <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-3.jpg" alt="">
+                                    <div class="product-list-details">
+                                        <h4>
+                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>$100.00</span>
+                                            <span class="product-price-old">$120.00 </span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
+                                            labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                        <div class="shop-list-cart-wishlist">
+                                            <!-- 喜欢 -->
+                                            <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
+                                            <!-- 添加到购物车 -->
+                                            <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
+                                            <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
+                                                <i class="ion-android-open"></i>
                                             </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$90.00</span>
-                                                <span class="product-price-old">$100.00 </span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p> exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-4.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$50.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-5.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$60.00</span>
-                                                <span class="product-price-old">$70.00 </span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width pro-list-none col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-6.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$190.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width pro-list-none col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-7.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$150.00</span>
-                                                <span class="product-price-old">$170.00 </span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width pro-list-none col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-8.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$80.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width pro-list-none col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-9.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$180.00</span>
-                                                <span class="product-price-old">$190.00 </span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width pro-list-none col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-10.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$70.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width pro-list-none col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-1.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-width pro-list-none col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/img/product/product-2.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
-                                                        Add Tto Cart</a>
-                                                </div>
-                                                <div class="pro-action-right">
-                                                    <a title="Wishlist" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$200.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-details">
-                                            <h4>
-                                                <a href="product-details">PRODUCTS NAME HERE </a>
-                                            </h4>
-                                            <div class="product-price-wrapper">
-                                                <span>$100.00</span>
-                                                <span class="product-price-old">$120.00 </span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                                                labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                            <div class="shop-list-cart-wishlist">
-                                                <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
-                                                    <i class="ion-android-open"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pagination-total-pages">
-                            <div class="pagination-style">
-                                <ul>
-                                    <li><a class="prev-next prev" href="#"><i class="ion-ios-arrow-left"></i> 上一页</a></li>
-                                    <li><a class="active" href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">...</a></li>
-                                    <li><a href="#">10</a></li>
-                                    <li><a class="prev-next next" href="#">下一页<i class="ion-ios-arrow-right"></i> </a></li>
-                                </ul>
+                            <script>
+                                    $("#tjgwc").click(function(){
+                                        $.get('/gouwuche',goods_id={{good.goods_id}},function(){
+                                            alert({{good.goods_name}}+"添加到购物车成功")
+                                        })
+                                    })
+                            </script>
+                            {% endfor %}
+                            
+                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
+                                <div class="product-wrapper">
+                                    <div class="product-img">
+                                        <a href="product-details.html">
+                                            <img src="../assets/img/goods/niuroumian.jpg" alt="">
+                                        </a>
+                                        <div class="product-action">
+                                            <div class="pro-action-left">
+                                                <a title="添加至购物车" href="#"><i class="ion-android-cart"></i>
+                                                    添加至购物车</a>
+                                            </div>
+                                            <div class="pro-action-right">
+                                                <a title="收藏" href="wishlist.html"><i class="ion-ios-heart-outline"></i></a>
+                                                <!-- <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
+                                                    href="#"><i class="ion-android-open"></i></a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <h4>
+                                            <a href="product-details.html">炸酱面 </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>&yen;15.00</span>
+                                            <!-- <span class="product-price-old">$120.00 </span> -->
+                                        </div>
+                                    </div>
+                                    <div class="product-list-details">
+                                        <h4>
+                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>$100.00</span>
+                                            <span class="product-price-old">$120.00 </span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
+                                            labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                        <div class="shop-list-cart-wishlist">
+                                            <!-- 喜欢 -->
+                                            <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
+                                            <!-- 添加到购物车 -->
+                                            <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
+                                            <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
+                                                <i class="ion-android-open"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="total-pages">
-                                <!-- <p>Showing 1 - 20 of 30 results </p> -->
+                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
+                                <div class="product-wrapper">
+                                    <div class="product-img">
+                                        <a href="product-details.html">
+                                            <img src="../assets/img/product/product-3.jpg" alt="">
+                                        </a>
+                                        <div class="product-action">
+                                            <div class="pro-action-left">
+                                                <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
+                                                    Add Tto Cart</a>
+                                            </div>
+                                            <div class="pro-action-right">
+                                                <a title="Wishlist" href="wishlist.html"><i class="ion-ios-heart-outline"></i></a>
+                                                <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
+                                                    href="#"><i class="ion-android-open"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <h4>
+                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>$90.00</span>
+                                            <span class="product-price-old">$100.00 </span>
+                                        </div>
+                                    </div>
+                                    <div class="product-list-details">
+                                        <h4>
+                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>$100.00</span>
+                                            <span class="product-price-old">$120.00 </span>
+                                        </div>
+                                        <p> exercitation ullamco laboris nisi ut aliquip.</p>
+                                        <div class="shop-list-cart-wishlist">
+                                            <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
+                                            <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
+                                            <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
+                                                <i class="ion-android-open"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
+                                <div class="product-wrapper">
+                                    <div class="product-img">
+                                        <a href="product-details.html">
+                                            <img src="../assets/img/product/product-4.jpg" alt="">
+                                        </a>
+                                        <div class="product-action">
+                                            <div class="pro-action-left">
+                                                <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
+                                                    Add Tto Cart</a>
+                                            </div>
+                                            <div class="pro-action-right">
+                                                <a title="Wishlist" href="wishlist.html"><i class="ion-ios-heart-outline"></i></a>
+                                                <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
+                                                    href="#"><i class="ion-android-open"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <h4>
+                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>$50.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-list-details">
+                                        <h4>
+                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>$100.00</span>
+                                            <span class="product-price-old">$120.00 </span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
+                                            labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                        <div class="shop-list-cart-wishlist">
+                                            <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
+                                            <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
+                                            <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
+                                                <i class="ion-android-open"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
+                                <div class="product-wrapper">
+                                    <div class="product-img">
+                                        <a href="product-details.html">
+                                            <img src="../assets/img/product/product-5.jpg" alt="">
+                                        </a>
+                                        <div class="product-action">
+                                            <div class="pro-action-left">
+                                                <a title="Add Tto Cart" href="#"><i class="ion-android-cart"></i>
+                                                    Add Tto Cart</a>
+                                            </div>
+                                            <div class="pro-action-right">
+                                                <a title="Wishlist" href="wishlist.html"><i class="ion-ios-heart-outline"></i></a>
+                                                <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
+                                                    href="#"><i class="ion-android-open"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <h4>
+                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>$60.00</span>
+                                            <span class="product-price-old">$70.00 </span>
+                                        </div>
+                                    </div>
+                                    <div class="product-list-details">
+                                        <h4>
+                                            <a href="product-details.html">PRODUCTS NAME HERE </a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span>$100.00</span>
+                                            <span class="product-price-old">$120.00 </span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
+                                            labor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                        <div class="shop-list-cart-wishlist">
+                                            <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
+                                            <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
+                                            <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
+                                                <i class="ion-android-open"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <!-- 左侧菜单项 -->
-                    <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
-                        <div class="shop-widget">
-                            <h4 class="shop-sidebar-title">商品分类</h4>
-                            <div class="shop-catigory">
-                                <ul id="faq">
-                                    <li> <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-1">面食
-                                            <i class="ion-ios-arrow-down"></i></a>
-                                        <ul id="shop-catigory-1" class="panel-collapse collapse show">
-                                            <li><a href="#">炸酱面 </a></li>
-                                            <li><a href="#">牛肉面</a></li>
-                                            <li><a href="#">炒面</a></li>
-                                            <li><a href="#">烩面</a></li>
-                                            <li><a href="#">拌面</a></li>
-                                        </ul>
-                                    </li>
-                                    <li> <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-2">川菜
-                                            <i class="ion-ios-arrow-down"></i></a>
-                                        <ul id="shop-catigory-2" class="panel-collapse collapse">
-                                            <li><a href="#">素菜</a></li>
-                                            <li><a href="#">荤菜</a></li>
-                                            <li><a href="#">凉菜</a></li>
-                                            <li><a href="#">鱼类</a></li>
-                                            <li><a href="#"></a></li>
-                                        </ul>
-                                    </li>
-                                    <li> <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-3">饮品
-                                            <i class="ion-ios-arrow-down"></i></a>
-                                        <ul id="shop-catigory-3" class="panel-collapse collapse">
-                                            <li><a href="#">饮料</a></li>
-                                            <li><a href="#">农夫山泉</a></li>
-                                            <li><a href="#">啤酒</a></li>
-                                            <li><a href="#">白酒</a></li>
-                                            <li><a href="#"></a></li>
-                                        </ul>
-                                    </li>
-                                    <li> <a href="#">烤鸭</a> </li>
-                                    <li> <a href="#">主食</a></li>
-                                    <li> <a href="#"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="shop-price-filter mt-40 shop-sidebar-border pt-35">
-                            <h4 class="shop-sidebar-title">价格选择</h4>
-                            <div class="price_filter mt-25">
-                                <span>范围: &yen 0.00 - 200.00 </span>
-                                <div id="slider-range"></div>
-                                <div class="price_slider_amount">
-                                    <div class="label-input">
-                                        <input type="text" id="amount" name="price" placeholder="Add Your Price" />
-                                    </div>
-                                    <button type="button">确定</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="shop-widget mt-40 shop-sidebar-border pt-35">
-                            <h4 class="shop-sidebar-title">Popular Tags</h4>
-                            <div class="shop-tags mt-25">
-                                <ul>
-                                    <li><a href="#">All</a></li>
-                                    <li><a href="#">Cheesy</a></li>
-                                    <li><a href="#"> 主食</a></li>
-                                    <li><a href="#">French Fries</a></li>
-                                    <li><a href="#">Hamburger </a></li>
-                                    <li><a href="#">Pizza</a></li>
-                                    <li><a href="#">Red Meat</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 底部导航栏 -->
-    <div class="footer-area black-bg-2 pt-70">
-        <div class="footer-top-area pb-18">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="footer-about mb-40">
-                            <div class="footer-logo">
-                                <a href="index">
-                                    <img src="../assets/img/logo/footer-logo.png" alt="">
-                                </a>
-                            </div>
-                            <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
-                            <div class="payment-img">
-                                <a href="#">
-                                    <img src="../assets/img/icon-img/payment.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="footer-widget mb-40">
-                            <div class="footer-title mb-22">
-                                <h4>帮助中心</h4>
-                            </div>
-                            <div class="footer-content">
-                                <ul>
-                                    <li><a href="about-us">关于我们</a></li>
-                                    <li><a href="#">配送信息</a></li>
-                                    <li><a href="#">隐私政策</a></li>
-                                    <li><a href="#">条款和条件</a></li>
-                                    <li><a href="#">客户服务</a></li>
-                                    <li><a href="#">改进意见</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="footer-widget mb-40">
-                            <div class="footer-title mb-22">
-                                <h4>个人账户</h4>
-                            </div>
-                            <div class="footer-content">
-                                <ul>
-                                    <li><a href="my-account">我的账户</a></li>
-                                    <li><a href="#">历史订单</a></li>
-                                    <li><a href="wishlist">愿望清单</a></li>
-                                    <li><a href="#">个人信息</a></li>
-                                    <li><a href="#">历史订单</a></li>
-                                    <li><a href="#">国际订单</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="footer-widget mb-40">
-                            <div class="footer-title mb-22">
-                                <h4>关于我们</h4>
-                            </div>
-                            <div class="footer-contact">
-                                <ul>
-                                    <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
-                                    <li>电话咨询: 400-100-6789</li>
-                                    <li>电子邮件: <a href="#">Info@example.com</a></li>
-                                </ul>
-                            </div>
-                            <div class="mt-35 footer-title mb-22">
-                                <h4>服务支持</h4>
-                            </div>
-                            <div class="footer-time">
-                                <ul>
-                                    <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
-                                    <li>周一 - 周日: <span>营业</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom-area border-top-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-7">
-                        <div class="copyright">
-                            <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-5">
-                        <div class="footer-social">
+                    <div class="pagination-total-pages">
+                        <div class="pagination-style">
                             <ul>
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                                <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
+                                <li><a class="prev-next prev" href="/goods?page=1"><i class="ion-ios-arrow-left"></i> 首页 </a></li>
+                                <li><a class="active" href="/goods?page={{params.prevPage}}">上一页</a></li>
+                                <li><a href="/goods?page=1"></a>1</li>
+                                <li><a href="/goods?page=2">2</a></li>
+                                <li><a href="#">...</a></li>
+                                <li><a href="/goods?page={{ params.nextPage }}">下一页</a></li>
+                                <li><a class="prev-next next" href="/goods?page={{params.lastPage}}"> 尾页 <i class="ion-ios-arrow-right"></i> </a></li>
+                            </ul>
+                        </div>
+                        <div class="total-pages">
+                            <!-- <p>Showing 1 - 20 of 30 results </p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <!-- 左侧菜单项 -->
+                <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
+                    <div class="shop-widget">
+                        <h4 class="shop-sidebar-title">商品分类</h4>
+                        <div class="shop-catigory">
+                            
+                            <ul id="shop-catigory-1" class="panel-collapse collapse show">
+                                {% for menu in params.menus %}
+                                <li><a href="/goods?shop_id={{menu.shop_id}}&menu={{menu.id}}">{{menu.menu_name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shop-price-filter mt-40 shop-sidebar-border pt-35">
+                        <h4 class="shop-sidebar-title">价格选择</h4>
+                        <div class="price_filter mt-25">
+                            <span>范围: &yen 0.00 - 200.00 </span>
+                            <div id="slider-range"></div>
+                            <div class="price_slider_amount">
+                                <div class="label-input">
+                                    <input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                                </div>
+                                <button type="button">确定</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-widget mt-40 shop-sidebar-border pt-35">
+                        <h4 class="shop-sidebar-title">Popular Tags</h4>
+                        <div class="shop-tags mt-25">
+                            <ul>
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Cheesy</a></li>
+                                <li><a href="#"> 主食</a></li>
+                                <li><a href="#">French Fries</a></li>
+                                <li><a href="#">Hamburger </a></li>
+                                <li><a href="#">Pizza</a></li>
+                                <li><a href="#">Red Meat</a></li>
                             </ul>
                         </div>
                     </div>
@@ -994,113 +365,5 @@
             </div>
         </div>
     </div>
-    <!-- 底部导航栏结束 -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12">
-                            <!-- Thumbnail Large Image start -->
-                            <div class="tab-content">
-                                <div id="pro-1" class="tab-pane fade show active">
-                                    <img src="../assets/img/product-details/product-detalis-l1.jpg" alt="">
-                                </div>
-                                <div id="pro-2" class="tab-pane fade">
-                                    <img src="../assets/img/product-details/product-detalis-l2.jpg" alt="">
-                                </div>
-                                <div id="pro-3" class="tab-pane fade">
-                                    <img src="../assets/img/product-details/product-detalis-l3.jpg" alt="">
-                                </div>
-                                <div id="pro-4" class="tab-pane fade">
-                                    <img src="../assets/img/product-details/product-detalis-l4.jpg" alt="">
-                                </div>
-                            </div>
-                            <!-- Thumbnail Large Image End -->
-                            <!-- Thumbnail Image End -->
-                            <div class="product-thumbnail">
-                                <div class="thumb-menu owl-carousel nav nav-style" role="tablist">
-                                    <a class="active" data-toggle="tab" href="#pro-1"><img src="../assets/img/product-details/product-detalis-s1.jpg"
-                                            alt=""></a>
-                                    <a data-toggle="tab" href="#pro-2"><img src="../assets/img/product-details/product-detalis-s2.jpg"
-                                            alt=""></a>
-                                    <a data-toggle="tab" href="#pro-3"><img src="../assets/img/product-details/product-detalis-s3.jpg"
-                                            alt=""></a>
-                                    <a data-toggle="tab" href="#pro-4"><img src="../assets/img/product-details/product-detalis-s4.jpg"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                            <!-- Thumbnail image end -->
-                        </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12">
-                            <div class="modal-pro-content">
-                                <h3>PRODUCTS NAME HERE </h3>
-                                <div class="product-price-wrapper">
-                                    <span>$120.00</span>
-                                    <span class="product-price-old">$162.00 </span>
-                                </div>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>
-                                <div class="quick-view-select">
-                                    <div class="select-option-part">
-                                        <label>Size*</label>
-                                        <select class="select">
-                                            <option value="">S</option>
-                                            <option value="">M</option>
-                                            <option value="">L</option>
-                                        </select>
-                                    </div>
-                                    <div class="quickview-color-wrap">
-                                        <label>Color*</label>
-                                        <div class="quickview-color">
-                                            <ul>
-                                                <li class="blue">b</li>
-                                                <li class="red">r</li>
-                                                <li class="pink">p</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-quantity">
-                                    <!-- 商品详细信息页面 -->
-                                    <div class="cart-plus-minus">
-                                        <!-- 商品数量 -->
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                    </div>
-                                    <button>Add to cart</button>
-                                </div>
-                                <span><i class="fa fa-check"></i> In stock</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal end -->
-
-
-
-
-
-
-
-
-    <!-- all js here -->
-    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="../assets/js/popper.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="../assets/js/isotope.pkgd.min.js"></script>
-    <script src="../assets/js/ajax-mail.js"></script>
-    <script src="../assets/js/owl.carousel.min.js"></script>
-    <script src="../assets/js/plugins.js"></script>
-    <script src="../assets/js/main.js"></script>
-</body>
-
-</html>
+</div>
+{% endblock %}
