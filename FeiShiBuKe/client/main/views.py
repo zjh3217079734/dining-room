@@ -50,7 +50,7 @@ def login_views():
         else:
             if 'username' in request.cookies:
                 username = request.cookies['username']
-                users = User.query.all()
+                users = User_info.query.all()
                 if username in users:
                     session['username'] = username
                     return redirect(url)
@@ -66,7 +66,7 @@ def login_views():
     else:
         username = request.form['username']
         password = request.form['password']
-        user = User.query.filter_by(
+        user = User_info.query.filter_by(
             user_name=username, password=password).first()
         if user:
             session['id'] = user.id
@@ -90,7 +90,7 @@ def register_views():
         password = request.form['upwd']
         phone = request.form['uphone']
 
-        user = User()
+        user = User_info()
         user.user_name = username
         user.password = password
         user.phone = phone
@@ -115,7 +115,7 @@ def logout_views():
 @main.route('/register/checkuname')
 def checkuname():
     uname = request.args['uname']
-    users = User.query.filter_by(user_name=uname).all()
+    users = User_info.query.filter_by(user_name=uname).all()
     if users:
         return "1"
     else:
