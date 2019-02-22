@@ -15,7 +15,17 @@ from flask_script import Manager
 # ---------------------------------------------
 # localhost:5000/
 # 主页部分
+# 获取用户所在城市
 
+
+@main.route("/SelectCity")
+def SelectCity():
+    city = request.args["city"]
+    print(city)
+    print("leixing :",type(city))
+    cityid = Area.query.filter_by(area_name=city).all()
+    print("cityid:", cityid)
+    return city
 
 # @main.route("/")
 # @main.route("/<name>")
@@ -28,13 +38,15 @@ from flask_script import Manager
 # -------------------------------------------
 # -----------------------------------------------------------
 # 应巧
+
+
 @main.route('/')
 def index_views():
     if 'username' in request.cookies:
         username = request.cookies['username']
         return render_template('index.html', params=locals())
     else:
-        return render_template('index.html',params=None)
+        return render_template('index.html', params=None)
 
 
 @main.route('/login', methods=['POST', 'GET'])
@@ -48,7 +60,7 @@ def login_views():
         else:
             if 'username' in request.cookies:
                 username = request.cookies['username']
-                users = User_info.query.all()
+                users = User.query.all()
                 if username in users:
                     session['username'] = username
                     return redirect(url)
@@ -64,7 +76,7 @@ def login_views():
     else:
         username = request.form['username']
         password = request.form['password']
-        user = User_info.query.filter_by(
+        user = User.query.filter_by(
             user_name=username, password=password).first()
         if user:
             session['id'] = user.id
@@ -88,7 +100,7 @@ def register_views():
         password = request.form['upwd']
         phone = request.form['uphone']
 
-        user = User_info()
+        user = User()
         user.user_name = username
         user.password = password
         user.phone = phone
@@ -113,13 +125,15 @@ def logout_views():
 @main.route('/register/checkuname')
 def checkuname():
     uname = request.args['uname']
-    users = User_info.query.filter_by(user_name=uname).all()
+    users = User.query.filter_by(user_name=uname).all()
     if users:
         return "1"
     else:
         return "0"
 
 # -----------------------------------------------------------
+
+
 @main.route('/cart-page', methods=["GET", "POST"])
 def cart_page_viwes():
     if request.method == "GET":
@@ -143,16 +157,17 @@ def cart_page_viwes():
         create_time = datetime.now().strftime('%Y%m%d%H%M%S')
 
         # shop_id = session['shop_id']
-        shop_id=1010
-        user_id=2
+        shop_id = 1010
+        user_id = 2
         # user_id = session['user_id']
         # order_id = session['order_id']
         order = Order()
         order_details = Order_details()
         today = datetime.now().strftime('%Y-%m-%d')
         boday = '2019-01-16'
-        todaynum = db.session.query(Order.order_id).filter(Order.create_time.like("%"+today+"%")).count()+1
-        order_id =create_time+str(shop_id)+str(todaynum)
+        todaynum = db.session.query(Order.order_id).filter(
+            Order.create_time.like("%"+today+"%")).count()+1
+        order_id = create_time+str(shop_id)+str(todaynum)
         print(order_id)
         list = request.form
 
@@ -162,7 +177,7 @@ def cart_page_viwes():
         remark = dict['test']
         print(goods_id, goods_num)
         i = 0
-        pay_money =0
+        pay_money = 0
         for id in goods_id:
             # 插入表中B-order表
             # order_id；格式：年月日(8)+商家id(4)+时分秒(6)+订单号(2)
@@ -184,15 +199,16 @@ def cart_page_viwes():
             order_details.goods_id = goodsinfo.id
             order_details.goods_name = goodsinfo.goods_name
             order_details.image_url = goodsinfo.goods_image
-            order_details.price =goodsinfo.goods_price
+            order_details.price = goodsinfo.goods_price
             print(goodsinfo.goods_price)
-            order_details.num =goods_num[i]
+            order_details.num = goods_num[i]
             print(goods_num[i])
-            order_details.count_money = int(goods_num[i])*int(goodsinfo.goods_price)
-            pay_money+=order_details.count_money
+            order_details.count_money = int(
+                goods_num[i])*int(goodsinfo.goods_price)
+            pay_money += order_details.count_money
             db.session.add(order_details)
             db.session.commit()
 
-            i+=1
+            i += 1
         # return redirect('/checkout')
         return '接收成功'
