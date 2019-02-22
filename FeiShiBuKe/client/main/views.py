@@ -11,6 +11,8 @@ from sqlalchemy import or_, func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
+from flask_paginate import Pagination,get_page_parameter
+import json
 
 # ---------------------------------------------
 # localhost:5000/
@@ -196,3 +198,48 @@ def cart_page_viwes():
             i+=1
         # return redirect('/checkout')
         return '接收成功'
+
+
+# -----------------------------------------------------------------------------
+@main.route("/release", methods=["GET","POST"])
+def release_views():
+    if request.method == "GET":
+        if "id" in session and "loginname" in session :
+            loginname = session["loginname"]
+            return render_template(("index.html"),params=locals())
+        return render_template("index.html")
+
+@main.route("/shops",methods=["GET","POST"])
+def shops_views():
+    page = request.args.get('page',1,type=int)
+    if request.args.get("shop_id"):
+        pagination = db.session.query(Shop).filter_by(shop_id=id).paginate(page,per_page=10)
+    else:
+        pagination = db.session.query(Shop).paginate(page, per_page=10)
+    shops = pagination.items
+    return render_template("index.html",pagination=pagination,shops=shops)
+
+@main.route("/rightSideTag",methoss=["GET","POST"])
+def tag_views():
+    menus = db.session.query(Menu).all()
+    counts = menus.count()
+    goods = db.session.query(Goods).limit(7).all()
+    return render_template("/index.html",params=locals())
+
+@main.route("/search",methos=["GET","POST"])
+def search_views():
+    l =[]
+    kws = request.args.get("kws","")
+    if kws != '':
+        results1 = db.session.query(Goods.goods_name).filter(Goods.goods_name.like("%"+kws+"%")).all()
+        results2 = db.session.query(Menu.menu_name).filter(Menu.menu_name.like("%"+kws+"%")).all()
+        results3 = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%"+kws+"%")).all()
+        for result in [results1,results2,results3]:
+            for r in result:
+                 l.append(r[0])
+    jsonStr = json.dumps(l)
+    return jsonStr
+
+
+
+
