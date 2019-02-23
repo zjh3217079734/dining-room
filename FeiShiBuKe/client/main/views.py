@@ -2,7 +2,7 @@
 from . import main
 from .. import db
 from ..models import *
-from flask import Flask, render_template, request, session, redirect, make_response
+from flask import Flask, render_template, request, session, redirect, make_response,url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
@@ -270,3 +270,44 @@ def search_views():
                 l.append(r[0])
     jsonStr = json.dumps(l)
     return jsonStr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# -----------------------------------------------------------
+# 颜飞龙
+
+@main.route('/checkout')
+def checkout():
+    session['id'] = 1
+    if 'id' in session:
+        uid = session['id']
+        order = Order.query.filter_by(user_id=uid).all()
+        odds = {}
+        shops = {}
+        for od in order:
+            shop = Shop.query.filter_by(id=od.shop_id).first()
+            order_details = Order_details.query.filter_by(order_id=od.order_id).all()
+            odds[od.order_id] = order_details
+            shops[od.order_id] = shop
+        print(shops)
+        return render_template('checkout.html',list=locals())
+    else:
+        redirect(url_for('login_views'))
