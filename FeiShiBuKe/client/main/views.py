@@ -177,7 +177,9 @@ def cart_page_viwes():
         boday = '2019-01-16'
         todaynum = db.session.query(Order.create_time).filter(
             Order.create_time.like("%" + today + "%")).count() + 1
-        order_id = create_time + str(shop_id) + str(todaynum)
+        tm=("%04d"%todaynum)
+        sd=("%06d"%shop_id)
+        order_id = create_time + sd + tm
         # 获取表单数据并处理
         list = request.form
         dict = list.to_dict(flat=False)
@@ -205,8 +207,8 @@ def cart_page_viwes():
             # 循环插入
             # order_id goods_id,goods_name,image_url,price,num,count_money
             goodsinfo = Goods.query.filter_by(id=gid).first()
-            last = db.session.query(Order_details).order_by(Order_details.id.desc()).first()
-            order_details.id = last.id + 1
+            # last = db.session.query(Order_details).order_by(Order_details.id.desc()).first()
+            # order_details.id = last.id + 1
             order_details.order_id = order_id
             order_details.goods_id = goodsinfo.id
             order_details.goods_name = goodsinfo.goods_name
