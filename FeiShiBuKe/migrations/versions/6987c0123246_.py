@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: dc8288d34999
+Revision ID: 6987c0123246
 Revises: 
-Create Date: 2019-02-22 20:22:13.503261
+Create Date: 2019-02-21 20:13:15.570322
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import mysql
 
 # revision identifiers, used by Alembic.
-revision = 'dc8288d34999'
+revision = '6987c0123246'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -140,7 +140,7 @@ def upgrade():
     op.create_index(op.f('ix_order_order_id'), 'order', ['order_id'], unique=True)
     op.create_table('order_details',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('order_id', sa.String(length=24), nullable=True),
+    sa.Column('order_id', sa.Integer(), nullable=True),
     sa.Column('goods_id', sa.Integer(), nullable=True),
     sa.Column('goods_name', sa.String(length=20), nullable=False),
     sa.Column('image_url', sa.String(length=100), nullable=True),
@@ -148,7 +148,7 @@ def upgrade():
     sa.Column('num', sa.Integer(), nullable=False),
     sa.Column('count_money', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['goods_id'], ['goods.id'], ),
-    sa.ForeignKeyConstraint(['order_id'], ['order.order_id'], ),
+    sa.ForeignKeyConstraint(['order_id'], ['order.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

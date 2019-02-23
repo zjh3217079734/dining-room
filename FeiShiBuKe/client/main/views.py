@@ -1,8 +1,10 @@
 # 处理与客户相关的路由和视图
+
 from . import main
 from .. import db
+from hashlib import sha1
 from ..models import *
-from flask import Flask, render_template, request, session, redirect, make_response,url_for
+from flask import Flask, render_template, request, session, redirect, make_response
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
@@ -11,17 +13,24 @@ from sqlalchemy import or_, func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-from flask_paginate import Pagination, get_page_parameter
+# from flask_paginate import Pagination, get_page_parameter
 import json
+
+
 # ---------------------------------------------
 # localhost:5000/
 # 主页部分
 
 
-#这行代码是: 你给我什么,我重新把路由地址给你,不管你是什么东西
+# @main.route("/")
 # @main.route("/<name>")
 # def html(name=None):
+#     if name is None:
+#         return render_template("index.html")
 #     return render_template(name)
+
+
+# 首页需要判断cookies中是否有登录信息,不然会报错
 
 
 # 根据网络ip获取所在城市
@@ -34,10 +43,10 @@ def SelectCity():
     print("cityid:", cityid)
     return city
 
+
 # -------------------------------------------
 # -----------------------------------------------------------
 # 应巧
-# 首页需要判断cookies中是否有登录信息,不然会报错
 
 
 @main.route('/')
@@ -125,14 +134,14 @@ def logout_views():
     return resp
 
 
-@main.route('/register/checkuname')
-def checkuname():
-    uname = request.args['uname']
-    users = User.query.filter_by(user_name=uname).all()
-    if users:
-        return "1"
-    else:
-        return "0"
+# @main.route('/register/checkuname')
+# def checkuname():
+#     uname = request.args['uname']
+#     users = User.query.filter_by(user_name=uname).all()
+#     if users:
+#         return "1"
+#     else:
+#         return "0"
 
 # -----------------------------------------------------------
 
@@ -158,27 +167,27 @@ def cart_page_viwes():
         return render_template('cart-page.html', params=locals())
     else:
         create_time = datetime.now().strftime('%Y%m%d%H%M%S')
-
         # shop_id = session['shop_id']
-        shop_id = 2
-        user_id = 2
         # user_id = session['user_id']
         # order_id = session['order_id']
+        shop_id = 2
+        user_id = 2
         order = Order()
         order_details = Order_details()
         today = datetime.now().strftime('%Y-%m-%d')
         boday = '2019-01-16'
         todaynum = db.session.query(Order.create_time).filter(
-            Order.create_time.like("%"+today+"%")).count()+1
-        order_id = create_time+str(shop_id)+str(todaynum)
-        print(order_id)
+            Order.create_time.like("%" + today + "%")).count() + 1
+        tm=("%04d"%todaynum)
+        sd=("%06d"%shop_id)
+        order_id = create_time + sd + tm
+        # 获取表单数据并处理
         list = request.form
-
         dict = list.to_dict(flat=False)
         goods_id = dict['good_info_id']
         goods_num = dict['qtybutton']
         remark = dict['test']
-        print(goods_id, goods_num)
+
         i = 0
         pay_money = 0
         # 插入表中B-order表
@@ -190,38 +199,94 @@ def cart_page_viwes():
         order.pay_money = pay_money
         order.update_time = create_time
         order.create_time = create_time
-
         db.session.add(order)
         db.session.commit()
         for gid in goods_id:
-            # db.session.flush()
+            order_details = Order_details()
+
             # 插入表中A-order_details
             # 循环插入
             # order_id goods_id,goods_name,image_url,price,num,count_money
             goodsinfo = Goods.query.filter_by(id=gid).first()
             # last = db.session.query(Order_details).order_by(Order_details.id.desc()).first()
-            # print(last.id)
-            # order_details.id = last.id+1
+            # order_details.id = last.id + 1
             order_details.order_id = order_id
             order_details.goods_id = goodsinfo.id
             order_details.goods_name = goodsinfo.goods_name
             order_details.image_url = goodsinfo.goods_image
             order_details.price = goodsinfo.goods_price
-            print(goodsinfo.goods_price)
             order_details.num = goods_num[i]
-            print(goods_num[i])
-            order_details.count_money = int(
-                goods_num[i])*int(goodsinfo.goods_price)
+            order_details.count_money = int(goods_num[i]) * int(goodsinfo.goods_price)
             pay_money += order_details.count_money
             order.pay_money = pay_money
             db.session.add(order)
-
             db.session.add(order_details)
             db.session.commit()
-
             i += 1
         # return redirect('/checkout')
         return '接收成功'
+
+# +---------------------
+@main.route("/my-account",methods=["GET","POST"])
+def account_views():
+    if request.method == "GET":
+        user = User.query.filter_by(user_name="zhao").first()
+        return render_template("my-account.html",user=user)
+        #判断是否登录成功
+        # if 'id' in session and 'loginname' in session:
+        #     user = User.query.filter_by(user_id=session['id']).first()
+        #     return render_template('my-acount.html',user)
+        # url= request.headers.get('Referer', '/')
+        # return redirect(url)
+    else:
+        hidden=request.form.get('hid','')
+        print(hidden)
+        if hidden == "Q":
+            print('你好我们')
+            name= request.form.get('uname','')
+            sex = request.form.get('usex','')
+            nick= request.form.get('unick','')
+            print(name)
+            phone=request.form.get('uphone','')
+            # email=request.form.get('uphone','')
+            #Email 和 quest.form.get('uemail','')
+            # address=request.form.get('address','')
+            #创建user 对象 修改数据
+            #user=Users.query.filter_by(user_id=session['id'])
+            user=User.query.filter_by(user_name=name).first()
+            user.user_name=name
+            user.nick=nick
+            user.phone=phone
+            user.sex=sex
+            # db.session.add(user)
+            db.session.commit()
+            return redirect('/my-account')
+            # return "QueryOK"
+        else:
+            pwd1=request.form.get('upwd1','')
+            pwd2=request.form.get('upwd1','')
+            # 判断密码是否一致
+            #result = check_password_hash(password, '123456')
+            # print('这是测试的:',hidden)
+            if pwd1 == pwd2:
+                user=User()
+                # sha1加密
+                s = sha1()
+                s.update(pwd1.encode())
+                password = s.hexdigest()
+                # password=hashlib.sha1(pwd1).hexdigest()
+                #前端加密方式
+                # password = generate_password_hash(pwd1)
+                user=User.query.filter_by(user_name='zhao').first()
+                user.password=password
+                #添加 add  报错 数据库关系映射出错
+                db.session.add(user)
+                db.session.commit()
+                return redirect('/my-account')
+                # return "你好哈哈"
+
+
+
 
 
 # -----------------------------------------------------------------------------
@@ -234,7 +299,7 @@ def release_views():
         return render_template("index.html")
 
 
-@main.route("/shops", methods=["GET", "POST"])
+@main.route("/shop", methods=["GET", "POST"])
 def shops_views():
     page = request.args.get('page', 1, type=int)
     if request.args.get("shop_id"):
@@ -260,16 +325,17 @@ def search_views():
     kws = request.args.get("kws", "")
     if kws != '':
         results1 = db.session.query(Goods.goods_name).filter(
-            Goods.goods_name.like("%"+kws+"%")).all()
+            Goods.goods_name.like("%" + kws + "%")).all()
         results2 = db.session.query(Menu.menu_name).filter(
-            Menu.menu_name.like("%"+kws+"%")).all()
+            Menu.menu_name.like("%" + kws + "%")).all()
         results3 = db.session.query(Shop.shop_name).filter(
-            Shop.shop_name.like("%"+kws+"%")).all()
+            Shop.shop_name.like("%" + kws + "%")).all()
         for result in [results1, results2, results3]:
             for r in result:
                 l.append(r[0])
     jsonStr = json.dumps(l)
     return jsonStr
+<<<<<<< HEAD
 
 
 
@@ -357,3 +423,5 @@ def goods_views():
     return render_template('/shop.html',params=locals())
 #-------------------------------------------------------------------
 
+=======
+>>>>>>> 88c8b32e60dfaf78d043e1e90e57209ae1cdfe72
