@@ -271,7 +271,6 @@ def search_views():
     jsonStr = json.dumps(l)
     return jsonStr
 
-<<<<<<< HEAD
 
 
 
@@ -298,6 +297,9 @@ def search_views():
 @main.route('/checkout')
 def checkout():
     session['id'] = 1
+    if 'username' in request.cookies:
+        username = request.cookies['username']
+
     if 'id' in session:
         uid = session['id']
         order = Order.query.filter_by(user_id=uid).all()
@@ -308,11 +310,15 @@ def checkout():
             order_details = Order_details.query.filter_by(order_id=od.order_id).all()
             odds[od.order_id] = order_details
             shops[od.order_id] = shop
-        print(shops)
-        return render_template('checkout.html',list=locals())
+        return render_template('checkout.html',params=locals())
     else:
         redirect(url_for('login_views'))
-=======
+
+@main.route('/remove')
+def remove():
+    pass
+
+
 #------------------------------------------------------------
 #刘光辉 商品分类
 @main.route('/goods')
@@ -351,4 +357,3 @@ def goods_views():
     return render_template('/shop.html',params=locals())
 #-------------------------------------------------------------------
 
->>>>>>> d75de6f66611ffffeaecde169eb9e20d22c2d7b3
