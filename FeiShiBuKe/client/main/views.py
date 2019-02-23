@@ -335,7 +335,6 @@ def search_views():
                 l.append(r[0])
     jsonStr = json.dumps(l)
     return jsonStr
-<<<<<<< HEAD
 
 
 
@@ -423,5 +422,3 @@ def goods_views():
     return render_template('/shop.html',params=locals())
 #-------------------------------------------------------------------
 
-=======
->>>>>>> 88c8b32e60dfaf78d043e1e90e57209ae1cdfe72
