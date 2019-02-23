@@ -1,6 +1,7 @@
 # 处理与客户相关的路由和视图
 from . import main
 from .. import db
+from hashlib import sha1
 from ..models import *
 from flask import Flask, render_template, request, session, redirect, make_response
 from flask_sqlalchemy import SQLAlchemy
@@ -196,3 +197,65 @@ def cart_page_viwes():
             i+=1
         # return redirect('/checkout')
         return '接收成功'
+
+@main.route("/my-account",methods=["GET","POST"])
+def account_views():
+    if request.method == "GET":
+        user = User.query.filter_by(user_name="zhao").first()
+        return render_template("my-account.html",user=user)
+        #判断是否登录成功
+        # if 'id' in session and 'loginname' in session:
+        #     user = User.query.filter_by(user_id=session['id']).first()
+        #     return render_template('my-acount.html',user)
+        # url= request.headers.get('Referer', '/')
+        # return redirect(url)
+    else:
+        hidden=request.form.get('hid','')
+        print(hidden)
+        if hidden == "Q":
+            print('你好我们')
+            name= request.form.get('uname','')
+            sex = request.form.get('usex','')
+            nick= request.form.get('unick','')
+            print(name)
+            phone=request.form.get('uphone','')
+            # email=request.form.get('uphone','')
+            #Email 和 quest.form.get('uemail','')
+            # address=request.form.get('address','')
+            #创建user 对象 修改数据
+            #user=Users.query.filter_by(user_id=session['id'])
+            user=User.query.filter_by(user_name=name).first()
+            user.user_name=name
+            user.nick=nick
+            user.phone=phone
+            user.sex=sex
+            # db.session.add(user)
+            db.session.commit()
+            return redirect('/my-account')
+            # return "QueryOK"
+        else:
+            pwd1=request.form.get('upwd1','')
+            pwd2=request.form.get('upwd1','')
+            # 判断密码是否一致
+            #result = check_password_hash(password, '123456')
+            # print('这是测试的:',hidden)
+            if pwd1 == pwd2:
+                user=User()
+                # sha1加密
+                s = sha1()
+                s.update(pwd1.encode())
+                password = s.hexdigest()
+                # password=hashlib.sha1(pwd1).hexdigest()
+                #前端加密方式
+                # password = generate_password_hash(pwd1)
+                user=User.query.filter_by(user_name='zhao').first()
+                user.password=password
+                #添加 add  报错 数据库关系映射出错
+                db.session.add(user)
+                db.session.commit()
+                return redirect('/my-account')
+                # return "你好哈哈"
+
+
+
+
