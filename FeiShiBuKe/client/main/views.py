@@ -4,7 +4,7 @@ from . import main
 from .. import db
 from hashlib import sha1
 from ..models import *
-from flask import Flask, render_template, request, session, redirect, make_response
+from flask import Flask, render_template, request, session, redirect, make_response,url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
@@ -361,27 +361,45 @@ def search_views():
 
 @main.route('/checkout')
 def checkout():
+    #检测用户登录
     session['id'] = 1
     if 'username' in request.cookies:
         username = request.cookies['username']
 
     if 'id' in session:
         uid = session['id']
+        #订单列表
         order = Order.query.filter_by(user_id=uid).all()
+        #订单列表字典,键为订单id
         odds = {}
+        #商店字典,键为订单id
         shops = {}
+
         for od in order:
             shop = Shop.query.filter_by(id=od.shop_id).first()
             order_details = Order_details.query.filter_by(order_id=od.order_id).all()
             odds[od.order_id] = order_details
             shops[od.order_id] = shop
         return render_template('checkout.html',params=locals())
+
     else:
         redirect(url_for('login_views'))
 
-@main.route('/remove')
+@main.route('/remove',methods=['POST'])
 def remove():
-    pass
+    order_id = request.form['remove']
+    order = Order.query.filter_by(order_id=order_id).first()
+    order.status = 4
+    db.session.commit()
+    return redirect(url_for('main.checkout'))
+
+@main.route('/zhifu',methods=['POST'])
+def zhifu():
+    order_id = request.form['zhifu']
+    order = Order.query.filter_by(order_id=order_id).first()
+    order.status = 1
+    db.session.commit()
+    return redirect(url_for('main.checkout'))
 
 
 #------------------------------------------------------------

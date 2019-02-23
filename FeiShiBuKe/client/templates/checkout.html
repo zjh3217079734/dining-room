@@ -28,26 +28,27 @@
                                 <div class="panel-heading">
                                     <h5 class="panel-title">
                                         <a>
-                                        <p>订单号:{{ od.order_id }} 创建时间:{{od.create_time}} 金额:{{ od.pay_money }}
+                                        <p>
+                                            <span style="font-weight:bold;float:left;margin-right: 5px">订单号:</span>
+                                            <span style="float:left;margin-right: 20px">{{ od.order_id }} </span>
+
+                                            <span style="font-weight:bold;float:left;margin-right: 5px">创建时间:</span>
+                                            <span style="float:left;margin-right: 10px">{{od.create_time}} </span>
+
+                                        <span style="float:right" >
+                                            <span style="font-weight:bold;float:left;margin-right: 5px">金额:</span>
+                                            <span style="float:left;margin-right: 10px">{{ od.pay_money }}元</span>
+                                                
                                         </span>
-                                        {% if od.status == 0 %}
-                                        <span style="float:right">未付款</span>
-                                        {% elif od.status == 1 %}
-                                        <span style="float:right">已付款</span>
-                                        {% elif od.status == 2 %}
-                                        <span style="float:right">已完成</span>
-                                        {% elif od.status == 3 %}
-                                        <span style="float:right">取消</span>
-                                        {% endif %}
-                                        <span>
-                                            
-                                            
+  
                                         </p>
                                     </a>
                                         <a data-toggle="collapse" data-parent="#faq" href="#{{od.id}}">
+                                            
                                             <img src="{{params.shops[od.order_id].shop_img}}" width="40px"
                                                 height="40px">
-                                            <span>{{params.shops[od.order_id].shop_name}}</span>
+                                            
+                                            <span style="font-weight:bold;margin-right: 30px">{{params.shops[od.order_id].shop_name}}</span>
                                             <!-- {{ params.odds}} -->
                                             {% for good in params.odds[od.order_id] %}
                                             {% if loop.first %}
@@ -59,25 +60,42 @@
                                             {% endif %}
                                             {% endfor %}
 
-                                            
+                                            {% if od.status == 0 %}
+                                            <span style="float:right;font-weight:bold">未付款</span>
+                                            {% elif od.status == 1 %}
+                                            <span style="float:right;font-weight:bold">已付款</span>
+                                            {% elif od.status == 2 %}
+                                            <span style="float:right;font-weight:bold">已完成</span>
+                                            {% elif od.status == 3 %}
+                                            <span style="float:right;font-weight:bold">取消</span>
+                                            {% endif %}
                                                
                                             </span>
-                                            <!-- {% if od.status == 0 %}
-                                            <form method="POST" action="/remove" style="float:right" class="billing-btn">
-                                                <input type="text" value="{{od.order_id}} name="remove" hidden="hidden">
-                                                <button type="submit">支付</button>
-                                            </form>
-                                            {% elif od.status == 1 %}
-                                            <form method="POST" action="/remove" style="float:right" class="billing-btn">
-                                                <input type="text" value="{{od.order_id}} name="remove" hidden="hidden">
-                                                <button type="submit">取消订单</button>
-                                            </form>
-                                            {% endif %} -->
+
                                         </a>
-                                        
+                                        <div style="float:left;padding:15px 100px">
+                                            <span style="font-weight:bold;float:left;margin-right: 20px;margin-left: 100px">备注:</span>
+                                            <span style="font-weight:bold;float:left;margin-right: 5px;margin-left: 150px">{{ od.remark }}</span>
+                                            
+                                        </div>
+
+                                        {% if od.status == 0 %}
+                                        <form method="POST" action="/zhifu" style="float:right;border-style: solid;
+                                        border-color: darkkhaki;" class="billing-btn" >
+                                            <input type="text" value="{{od.order_id}}"" name="zhifu" hidden="hidden">
+                                            <button type="submit">支付</button>
+                                        </form>
+                                        {% elif od.status == 1 %}
+                                        <form method="POST" action="/remove" style="float:right;border-style: solid;
+                                        border-color: darkkhaki;" class="billing-btn">
+                                            <input type="text" value="{{od.order_id}}" name="remove" hidden="hidden">
+                                            <button type="submit">取消订单</button>
+                                        </form>
+                                        {% endif %}
                                     </h5>
 
                                 </div>
+                        
                                 <div id="{{od.id}}" class="panel-collapse collapse"
                                     style="border-bottom: 50px solid #ebebeb;">
                                     <div class="panel-body">
@@ -104,147 +122,37 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="o-pro-price">
-                                                                        <p>{{good['price']}}</p>
+                                                                        <p>{{good.price}}</p>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="o-pro-qty">
-                                                                        <p>{{good['num']}}</p>
+                                                                        <p>{{good.num}}</p>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="o-pro-subtotal">
-                                                                        <p>{{good['name'] * good['num']}}</p>
+                                                                        <p>{{good.count_money}}</p>
                                                                     </div>
                                                                 </td>
                                                             <tr>
-                                                                <% endfor %>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="o-pro-dec">
-                                                                        <p>Fusce aliquam</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-price">
-                                                                        <p>$236.00</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-qty">
-                                                                        <p>2</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-subtotal">
-                                                                        <p>$236.00</p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="o-pro-dec">
-                                                                        <p>Primis in faucibus</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-price">
-                                                                        <p>$265.00</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-qty">
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-subtotal">
-                                                                        <p>$265.00</p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="o-pro-dec">
-                                                                        <p>Etiam gravida</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-price">
-                                                                        <p>$363.00</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-qty">
-                                                                        <p>2</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-subtotal">
-                                                                        <p>$363.00</p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="o-pro-dec">
-                                                                        <p>Quisque in arcu</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-price">
-                                                                        <p>$328.00</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-qty">
-                                                                        <p>2</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-subtotal">
-                                                                        <p>$328.00</p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
+                                                            {% endfor %}
+                                                            
                                                         </tbody>
-                                                        <tfoot>
 
-                                                            <tr>
-                                                                <td colspan="3">Subtotal </td>
-                                                                <td colspan="1">$4,001.00</td>
-                                                            </tr>
-                                                            <tr class="tr-f">
-                                                                <td colspan="3">Shipping & Handling (Flat Rate - Fixed</td>
-                                                                <td colspan="1">$45.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="3">Grand Total</td>
-                                                                <td colspan="1">$4,722.00</td>
-                                                            </tr>
-                                                        </tfoot>
                                                     </table>
-                                                </div>
-                                                <div class="billing-back-btn">
-                                                    <span>
-                                                        Forgot an Item?
-                                                        <a href="#"> Edit Your Cart.</a>
-
-                                                    </span>
-                                                    <div class="billing-btn">
-                                                        <button type="submit">Continue</button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+     </div>
+</div>
 
     {% endblock %}
