@@ -124,13 +124,13 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li class="mega-menu-position top-hover"><a href="index.html">首页</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="shop.html">发现商家</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/">首页</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/shop">发现商家</a></li>
                                     <!-- <li class="mega-menu-position top-hover"><a href="shop-list.html">点菜</a></li> -->
-                                    <li class="mega-menu-position top-hover"><a href="cart-page.html">购物车</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="checkout.html">提交订单</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="my-account.html">个人信息</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="about-us.html">关于我们</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/cart-page">购物车</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/checkout">提交订单</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/about-us">关于我们</a></li>
                                     <!-- <li class="mega-menu-position top-hover"><a href="contact.html">联系我们</a></li> -->
                                 </ul>
                             </nav>
@@ -148,12 +148,12 @@
                         <div class="mobile-menu">
                             <nav id="mobile-menu-active">
                                 <ul class="menu-overflow" id="nav">
-                                    <li><a href="index.html">首页</a></li>
-                                    <li><a href="shop.html">发现商家</a></li>
+                                    <li><a href="/index">首页</a></li>
+                                    <li><a href="/shop">发现商家</a></li>
                                     <!-- <li><a href="shop-list.html">点菜</a></li> -->
-                                    <li><a href="cart-page.html">购物车</a></li>
-                                    <li><a href="checkout.html">提交订单</a></li>
-                                    <li><a href="about-us.html">关于我们</a></li>
+                                    <li><a href="/cart-page">购物车</a></li>
+                                    <li><a href="/checkout">提交订单</a></li>
+                                    <li><a href="/about-us">关于我们</a></li>
                                     <!-- <li><a href="contact.html">联系我们</a></li> -->
                                 </ul>
                             </nav>
@@ -170,7 +170,7 @@
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
-                    <li><a href="index.html"><b>首页</b></a></li>
+                    <li><a href="/index"><b>首页</b></a></li>
                     <li class="active"><b>我的账户</b></li>
                 </ul>
             </div>
@@ -183,11 +183,13 @@
                 <div class="ml-auto mr-auto col-lg-9">
                     <div class="checkout-wrapper">
                         <div id="faq" class="panel-group">
+							<form action="/my-account" method="post">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq"
                                             href="#my-account-1"><b>个人信息</b> </a></h5>
                                 </div>
+                                
                                 <div id="my-account-1" class="panel-collapse collapse show">
                                     <div class="panel-body">
                                         <div class="billing-information-wrapper">
@@ -201,83 +203,75 @@
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>用户名:</label>
-                                                        <input type="test">
+                                                        <input type="test" name="uname" value="{{user.user_name}}">
                                                     </div>
                                                 </div>
-                                                <!-- 姓名 -->
-                                                <!-- <div class="col-lg-6 col-md-6">
+                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
-                                                        <label>姓:</label>
-                                                        <input type="text">
+                                                        <label>昵&nbsp;&nbsp;&nbsp;称:</label>
+                                                        <input type="test" name="unick" value="{{user.nick}}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6">
+                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
-                                                        <label>名称:</label>
-                                                        <input type="text">
+                                                        <label>性&nbsp;&nbsp;&nbsp;别:</label>
+                                                        <input type="text" name="usex" placeholder="个人昵称" value="{{user.sex}}">
                                                     </div>
-                                                </div> -->
+                                                </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>电话号:</label>
-                                                        <input type="email" placeholder="请输入电话号">
+                                                        <input type="text" name="uphone" placeholder="请输入电话号" value="{{user.phone}}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
+
+                                                <!-- <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>支付宝:</label>
-                                                        <input type="test">
+                                                        <input type="text" name="zfbao" placeholder="请绑定支付宝账号" value="{{user.user_id}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>微&nbsp;&nbsp;&nbsp;信:</label>
-                                                        <input type="text">
+                                                        <input type="text" name="wxin" placeholder="微信账号" value="{{user.user_id}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>邮&nbsp;&nbsp;&nbsp;箱:</label>
-                                                        <input type="email" placeholder="个人邮箱">
+                                                        <input type="email" name="email" placeholder="个人邮箱" value="{{user.user_id}}">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>地&nbsp;&nbsp;&nbsp;址:</label>
-                                                        <input type="email" placeholder="店家地址">
-                                                    </div>
-                                                </div>
-
-                                                <!-- 取消原有电话号. 地址 -->
-                                                <!-- <div class="billing-info">
-                                                        <div class="col-lg-6 col-md-6">
-                                                        <label>电话号:</label>
-                                                        <input type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="billing-info">
-                                                        <label>地址:</label>
-                                                        <input type="text">
+                                                        <input type="text" name="address" placeholder="店家地址" value="{{user.user_id}}">
                                                     </div>
                                                 </div> -->
+                                                <input type="hidden" name="hid" value="Q">
+
                                             </div>
                                             <div class="billing-back-btn">
                                                 <div class="billing-btn">
                                                     <!-- 返回顶部改为 修改 -->
                                                     <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
-                                                    <button><b>修改</b></button>
-
+                                                    <!-- <input type="reset" value="重置" style="width: 60px;height: 30px;"> -->
+                                                    <a href="/my-account">重置</a>
                                                 </div>
                                                 <div class="billing-btn">
+                                                    <!-- <input type="submit" value="保存"> -->
                                                     <button type="submit"><b>保存</b></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                               
                             </div>
+							 </form>
+							<form action="/my-account" method="post">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq"
@@ -295,20 +289,22 @@
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>请输入密码</label>
-                                                        <input type="password" placeholder="请输入大于6位小于20位的组合密码">
+                                                        <input type="password" name="upwd1" placeholder="请输入大于6位小于20位的组合密码">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>请重新输入</label>
-                                                        <input type="password" placeholder="请输入大于6位小于20位的组合密码">
+                                                        <input type="password" name="upwd2" placeholder="请输入大于6位小于20位的组合密码">
                                                     </div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="hidden" value="{{user.user_name}}">
                                             <div class="billing-back-btn">
                                                 <div class="billing-btn">
-                                                    <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
-                                                    <button>修改</button>
+                                                     <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
+                                                   <!-- <input type="reset" value="重置" style="width: 60px;height: 30px;"> -->
+                                                    <a href="/my-account">重置</a>
                                                 </div>
                                                 <div class="billing-btn">
                                                     <button type="submit">保存</button>
@@ -317,7 +313,9 @@
                                         </div>
                                     </div>
                                 </div>
+                               
                             </div>
+							</form>
                             <!-- <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq"

@@ -4958,7 +4958,8 @@ h4.grand-totall-title span {
 /* #f9f9f9 */
 h5.panel-title {
     background-color:  #f9f9f9;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 55px solid #ebebeb;
+    border-top: 20px solid #ebebeb;
     color: #242424;
     font-size: 14px;
     font-weight: 500;
@@ -4970,7 +4971,18 @@ h5.panel-title {
 h5.panel-title a {
     color: #2f333a;
     display: block;
-    padding: 20px 55px;
+    padding: 5px 55px;
+    position: relative;
+}
+h5.panel-title p {
+    color: #2f333a;
+    display: block;
+    padding: 5px 55px;
+    position: relative;
+}
+
+h5.panel-title a span {
+    padding: 5px auto;
     position: relative;
 }
 
@@ -4980,7 +4992,7 @@ h5.panel-title a:hover {
 
 h5.panel-title a::before {
     color: #242424;
-    content: "";
+    content: "";
     display: inline-block;
     font-family: "微软雅黑";
     font-size: 15px;
@@ -4991,7 +5003,7 @@ h5.panel-title a::before {
 
 h5.panel-title a.collapsed::after {
     color: #666666;
-    content: "";
+    content: "";
     display: inline-block;
     font-family: "微软雅黑";
     font-size: 12px;
@@ -5009,7 +5021,6 @@ h5.panel-title span {
     font-size: 14px;
     left: 20px;
     position: absolute;
-    top: 20px;
 }
 
 .checkout-register h4.cart-bottom-title,

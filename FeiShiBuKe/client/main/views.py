@@ -2,8 +2,9 @@
 
 from . import main
 from .. import db
+from hashlib import sha1
 from ..models import *
-from flask import Flask, render_template, request, session, redirect, make_response
+from flask import Flask, render_template, request, session, redirect, make_response,url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
@@ -47,24 +48,71 @@ def SelectCity():
 # -----------------------------------------------------------
 # 应巧
 
-
 @main.route('/')
 def index_views():
     if 'username' in request.cookies:
         username = request.cookies['username']
         return render_template('index.html', params=locals())
+    elif 'username' in session:
+        username = session['username']
+        return render_template('index.html', params=locals())
     else:
-        return render_template('index.html', params=None)
+        return render_template('index.html',params={})
 
 
-@main.route('/login', methods=['POST', 'GET'])
+@main.route('/register', methods=['GET', 'POST'])
+def register_views():
+    if request.method == 'GET':
+        return render_template('login-register.html', params={})
+    else:
+        username = request.form['uname']
+        upwd = request.form['upwd']
+        s = sha1()
+        s.update(upwd.encode())
+        password = s.hexdigest()
+        phone = request.form['uphone']
+
+        user = User()
+        user.user_name = username
+        user.password = password
+        user.phone = phone
+        user.sex = 'M'
+        user.create_time = datetime.now()
+        user.update_time = datetime.now()
+
+        try:
+            db.session.add(user)
+            db.session.commit()
+            return render_template('index.html', params=locals())
+        except Exception as ex:
+            print(ex)
+            return "注册失败，请联系管理员！"
+
+
+@main.route('/logout')
+def logout_views():
+    url = request.headers.get('Referer', '/')
+    # print(url)
+    resp = redirect(url)
+    # print("resp:",resp)
+    # print(request.cookies)
+    if 'username' in request.cookies:
+        resp.delete_cookie('username')
+    elif 'username'in session:
+        session.clear()
+        # print(request.cookies)
+    return resp
+
+
+@main.route('/login', methods=['GET', 'POST'])
 def login_views():
     if request.method == 'GET':
         url = request.headers.get('Referer', '/')
         session['url'] = url
-        # return render_template('login-register.html')
         if 'username' in session:
             return redirect(url)
+            username = session['username']
+            return render_template('index.html', params=locals())
         else:
             if 'username' in request.cookies:
                 username = request.cookies['username']
@@ -83,64 +131,59 @@ def login_views():
                 return render_template('login-register.html', params={})
     else:
         username = request.form['username']
-        password = request.form['password']
+        upwd = request.form['password']
+        s = sha1()
+        s.update(upwd.encode())
+        password = s.hexdigest()
         user = User.query.filter_by(
             user_name=username, password=password).first()
+        # print(user)
+        # print(user.user_id)
         if user:
             session['id'] = user.user_id
             session['username'] = username
             url = session['url']
+            # print(url)
             resp = redirect(url)
+            # print(resp)
             if 'isSaved' in request.form:
                 resp.set_cookie('username', username, 60 * 60 * 24 * 365 * 10)
             return resp
         else:
             errMsg = "用户名或密码不正确"
-            return render_template('login-register.html', params=locals())
+            resp=make_response(render_template('login-register.html', params=locals()))
+            resp.delete_cookie('username')
+            return resp
 
 
-@main.route('/register', methods=['GET', 'POST'])
-def register_views():
+@main.route('/resetpwd', methods=['GET', 'POST'])
+def resetpwd_views():
     if request.method == 'GET':
-        return render_template('login-register.html', params={})
+        # print(1)
+        return render_template('ResetPwd.html', params={})
     else:
-        username = request.form['uname']
-        password = request.form['upwd']
-        phone = request.form['uphone']
+        username=request.form['username']
+        # print(username)
+        npwd=request.form['newpassword']
+        # print(npwd)
 
-        user = User()
-        user.user_name = username
-        user.password = password
-        user.phone = phone
-        user.sex = 'M'
-        user.create_time = datetime.now()
-        user.update_time = datetime.now()
-        try:
+        s=sha1()
+        s.update(npwd.encode())
+        password=s.hexdigest()
+        number=request.form['number']
+        user=User.query.filter_by(user_name=username,phone=number).first()
+        # print(user)
+        if user:
+            user.password=password
+            user.create_time=datetime.now()
+            user.update_time=datetime.now()
+
             db.session.add(user)
             db.session.commit()
-            return render_template('index.html', params=locals())
-        except Exception as ex:
-            print(ex)
-            return "注册失败，请联系管理员！"
+            return "密码修改成功，请重新登录"
+        else:
+            return "用户名和手机号不匹配，请重试"
 
-
-@main.route('/logout')
-def logout_views():
-    url = request.headers.get('Referer', '/')
-    resp = redirect(url)
-    if 'username' in request.cookies:
-        resp.delete_cookie('username')
-    return resp
-
-
-# @main.route('/register/checkuname')
-# def checkuname():
-#     uname = request.args['uname']
-#     users = User.query.filter_by(user_name=uname).all()
-#     if users:
-#         return "1"
-#     else:
-#         return "0"
 
 # -----------------------------------------------------------
 
@@ -224,6 +267,68 @@ def cart_page_viwes():
         # return redirect('/checkout')
         return '接收成功'
 
+# +---------------------
+@main.route("/my-account",methods=["GET","POST"])
+def account_views():
+    if request.method == "GET":
+        user = User.query.filter_by(user_name="zhao").first()
+        return render_template("my-account.html",user=user)
+        #判断是否登录成功
+        # if 'id' in session and 'loginname' in session:
+        #     user = User.query.filter_by(user_id=session['id']).first()
+        #     return render_template('my-acount.html',user)
+        # url= request.headers.get('Referer', '/')
+        # return redirect(url)
+    else:
+        hidden=request.form.get('hid','')
+        print(hidden)
+        if hidden == "Q":
+            print('你好我们')
+            name= request.form.get('uname','')
+            sex = request.form.get('usex','')
+            nick= request.form.get('unick','')
+            print(name)
+            phone=request.form.get('uphone','')
+            # email=request.form.get('uphone','')
+            #Email 和 quest.form.get('uemail','')
+            # address=request.form.get('address','')
+            #创建user 对象 修改数据
+            #user=Users.query.filter_by(user_id=session['id'])
+            user=User.query.filter_by(user_name=name).first()
+            user.user_name=name
+            user.nick=nick
+            user.phone=phone
+            user.sex=sex
+            # db.session.add(user)
+            db.session.commit()
+            return redirect('/my-account')
+            # return "QueryOK"
+        else:
+            pwd1=request.form.get('upwd1','')
+            pwd2=request.form.get('upwd1','')
+            # 判断密码是否一致
+            #result = check_password_hash(password, '123456')
+            # print('这是测试的:',hidden)
+            if pwd1 == pwd2:
+                user=User()
+                # sha1加密
+                s = sha1()
+                s.update(pwd1.encode())
+                password = s.hexdigest()
+                # password=hashlib.sha1(pwd1).hexdigest()
+                #前端加密方式
+                # password = generate_password_hash(pwd1)
+                user=User.query.filter_by(user_name='zhao').first()
+                user.password=password
+                #添加 add  报错 数据库关系映射出错
+                db.session.add(user)
+                db.session.commit()
+                return redirect('/my-account')
+                # return "你好哈哈"
+
+
+
+
 
 # -----------------------------------------------------------------------------
 @main.route("/release", methods=["GET", "POST"])
@@ -271,3 +376,108 @@ def search_views():
                 l.append(r[0])
     jsonStr = json.dumps(l)
     return jsonStr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# -----------------------------------------------------------
+# 颜飞龙
+
+@main.route('/checkout')
+def checkout():
+    #检测用户登录
+    session['id'] = 1
+    if 'username' in request.cookies:
+        username = request.cookies['username']
+
+    if 'id' in session:
+        uid = session['id']
+        #订单列表
+        order = Order.query.filter_by(user_id=uid).all()
+        #订单列表字典,键为订单id
+        odds = {}
+        #商店字典,键为订单id
+        shops = {}
+
+        for od in order:
+            shop = Shop.query.filter_by(id=od.shop_id).first()
+            order_details = Order_details.query.filter_by(order_id=od.order_id).all()
+            odds[od.order_id] = order_details
+            shops[od.order_id] = shop
+        return render_template('checkout.html',params=locals())
+
+    else:
+        redirect(url_for('login_views'))
+
+@main.route('/remove',methods=['POST'])
+def remove():
+    order_id = request.form['remove']
+    order = Order.query.filter_by(order_id=order_id).first()
+    order.status = 4
+    db.session.commit()
+    return redirect(url_for('main.checkout'))
+
+@main.route('/zhifu',methods=['POST'])
+def zhifu():
+    order_id = request.form['zhifu']
+    order = Order.query.filter_by(order_id=order_id).first()
+    order.status = 1
+    db.session.commit()
+    return redirect(url_for('main.checkout'))
+
+
+#------------------------------------------------------------
+#刘光辉 商品分类
+@main.route('/goods')
+def goods_views():
+    shop_id = request.args['shop_id']
+    shop = Shop.query.filter_by(id=shop_id).first()
+    #商品分类列表
+    menus = shop.shop_meun #Menu.query.filter_by(shop_id=shop_id).all()
+    #所有商品列表
+    l = []
+    # if request.args['goods_type']:
+    #    l.append(request.args['goods_type'])
+    # else:
+    for menu in menus:
+        l.append(menu.id)
+    # 商品分页
+    pageSize = 9
+    page = request.args.get('page','1')
+    page = int(page)
+
+    ost = (page-1) * pageSize
+    goods = db.session.query(Goods).filter(Goods.menu_id.in_(l),Goods.goods_status==1).limit(pageSize).offset(ost).all()
+    # 对应商店里能显示的商品总数
+    totalCount = db.session.query(Goods).filter(Goods.menu_id.in_(l),Goods.goods_status==1).count()
+    # 最后一页页码
+    lastPage = math.ceil(totalCount / pageSize)
+    # 设置上一页默认为 1
+    prevPage = 1
+    if page > 1:
+        prevPage = page - 1
+    
+    nextPage = lastPage
+    if page < lastPage:
+        nextpage = page +1
+
+    return render_template('/shop.html',params=locals())
+#-------------------------------------------------------------------
+
