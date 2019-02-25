@@ -1,0 +1,163 @@
+
+<div id="all">
+<div class="breadcrumb-area gray-bg">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li class="active"> 订单 </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- checkout-area start -->
+    
+    <div class="checkout-area pb-80 pt-10">
+            <div style="margin-left:150px;margin-bottom: 50px">
+                    <input id="btn1" type="button" value="未付款" style="height:25px;width:100px" onclick="checkoutpost1()">
+                    <input id="btn2" type="button" value="已付款" style="height:25px;width:100px" onclick="checkoutpost2()">
+                    <input id="btn3" type="button" value="历史订单" style="height:25px;width:100px" onclick="checkoutpost3()">
+                </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="checkout-wrapper">
+                        <div id="faq" class="panel-group">
+                            <!-- ------------------------------------------------------- -->
+                            {% for od in params.order %}
+                            {% if od.status == 4 %}
+                            <div class="panel panel-default" style="display:none">
+                            {% else %}
+                            <div class="panel panel-default">
+                            {% endif %}
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                            <a>
+                                            <p>
+                                                <span style="font-weight:bold;float:left;margin-right: 5px">订单号:</span>
+                                                <span style="float:left;margin-right: 20px">{{ od.order_id }} </span>
+    
+                                                <span style="font-weight:bold;float:left;margin-right: 5px">创建时间:</span>
+                                                <span style="float:left;margin-right: 10px">{{od.create_time}} </span>
+    
+                                            <span style="float:right" >
+                                                <span style="font-weight:bold;float:left;margin-right: 5px">金额:</span>
+                                                <span style="float:left;margin-right: 10px">{{ od.pay_money }}元</span>
+                                                    
+                                            </span>
+      
+                                            </p>
+                                        </a>
+                                            <a data-toggle="collapse" data-parent="#faq" href="#{{od.id}}">
+                                                
+                                                <img src="{{params.shops[od.order_id].shop_img}}" width="40px"
+                                                    height="40px">
+                                                
+                                                <span style="font-weight:bold;margin-right: 30px">{{params.shops[od.order_id].shop_name}}</span>
+                                                <!-- {{ params.odds}} -->
+                                                {% for good in params.odds[od.order_id] %}
+                                                {% if loop.first %}
+                                                {% if loop.length==1%}
+                                                <span>{{good.goods_name}}</span>
+                                                {% else %}
+                                                <span>{{good.goods_name}} 等{{loop.length}}件商品</span>
+                                                {% endif %}
+                                                {% endif %}
+                                                {% endfor %}
+    
+                                                {% if od.status == 0 %}
+                                                <span style="float:right;font-weight:bold">未付款</span>
+                                                {% elif od.status == 1 %}
+                                                <span style="float:right;font-weight:bold">已付款</span>
+                                                {% elif od.status == 2 %}
+                                                <span style="float:right;font-weight:bold">已完成</span>
+                                                {% elif od.status == 3 %}
+                                                <span style="float:right;font-weight:bold">取消</span>
+                                                {% endif %}
+                                                   
+                                                </span>
+    
+                                            </a>
+                                            <div style="float:left;padding:15px 100px">
+                                                <span style="font-weight:bold;float:left;margin-right: 20px;margin-left: 100px">备注:</span>
+                                                <span style="font-weight:bold;float:left;margin-right: 5px;margin-left: 150px">{{ od.remark }}</span>
+                                                
+                                            </div>
+    
+                                            {% if od.status == 0 %}
+                                            <form method="POST" action="/zhifu" style="float:right;border-style: solid;
+                                            border-color: darkkhaki;" class="billing-btn" >
+                                                <input type="text" value="{{od.order_id}}"" name="zhifu" hidden="hidden">
+                                                <button type="submit">支付</button>
+                                            </form>
+                                            {% elif od.status == 1 %}
+                                            <form method="POST" action="/remove" style="float:right;border-style: solid;
+                                            border-color: darkkhaki;" class="billing-btn">
+                                                <input type="text" value="{{od.order_id}}" name="remove" hidden="hidden">
+                                                <button type="submit">取消订单</button>
+                                            </form>
+                                            {% endif %}
+                                        </h5>
+    
+                                    </div>
+                            
+                                    <div id="{{od.id}}" class="panel-collapse collapse"
+                                        style="border-bottom: 50px solid #ebebeb;">
+                                        <div class="panel-body">
+                                            <div class="order-review-wrapper">
+                                                <div class="order-review">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="width-1">商品名</th>
+                                                                    <th class="width-2">单价</th>
+                                                                    <th class="width-3">数量</th>
+                                                                    <th class="width-4">价格</th>
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for good in params.odds[od.order_id] %}
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="o-pro-dec">
+                                                                            <p><img src="{{good.image_url}}" width="40px" height="40px">{{good.goods_name}}</p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="o-pro-price">
+                                                                            <p>{{good.price}}</p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="o-pro-qty">
+                                                                            <p>{{good.num}}</p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="o-pro-subtotal">
+                                                                            <p>{{good.count_money}}</p>
+                                                                        </div>
+                                                                    </td>
+                                                                <tr>
+                                                                {% endfor %}
+                                                                
+                                                            </tbody>
+    
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>

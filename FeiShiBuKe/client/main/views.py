@@ -401,7 +401,7 @@ def search_views():
 # -----------------------------------------------------------
 # 颜飞龙
 
-@main.route('/checkout')
+@main.route('/checkout.html')
 def checkout():
     #检测用户登录
     session['id'] = 1
@@ -426,6 +426,45 @@ def checkout():
 
     else:
         redirect(url_for('login_views'))
+
+@main.route('/checkoutajax',methods=['POST'])
+def checkoutajax():
+    status = request.form['status']
+    if status == '未付款':
+        status = 0
+    elif status == '已付款':
+        status = 1
+    else:
+        status = 2
+    print(status)
+    session['id'] = 1
+    if 'username' in request.cookies:
+        username = request.cookies['username']
+
+    if 'id' in session:
+        uid = session['id']
+        #订单列表
+        if status == 0:
+            order = Order.query.filter_by(user_id=uid,status=0).all()
+        elif status == 1:
+            order = Order.query.filter_by(user_id=uid,status=1).all()
+        else:
+            order = Order.query.filter(Order.user_id==uid,Order.status!=0,Order.status!=1).all()
+        #订单列表字典,键为订单id
+        odds = {}
+        #商店字典,键为订单id
+        shops = {}
+
+        for od in order:
+            shop = Shop.query.filter_by(id=od.shop_id).first()
+            order_details = Order_details.query.filter_by(order_id=od.order_id).all()
+            odds[od.order_id] = order_details
+            shops[od.order_id] = shop
+        return render_template('checkoutpost.html',params=locals())
+
+    else:
+        redirect(url_for('login_views'))
+
 
 @main.route('/remove',methods=['POST'])
 def remove():
