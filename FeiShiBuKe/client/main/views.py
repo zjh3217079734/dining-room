@@ -152,8 +152,8 @@ def cart_page_viwes():
         # if 'id' in session and 'lognname' in session:
         # 1. 获取当前订单号,及订单里的数据
         # order_id = session['order_id']
-        # goods_id = session["goods_id"]
-        goodsid = [10001, 10002, 10003, 10004]
+        goodsid = session["goods_id"]
+        # goodsid = [10001, 10002, 10003, 10004]
         goods = []
         i = 1
         for g in goodsid:
@@ -166,11 +166,10 @@ def cart_page_viwes():
         return render_template('cart-page.html', params=locals())
     else:
         create_time = datetime.now().strftime('%Y%m%d%H%M%S')
-        # shop_id = session['shop_id']
-        # user_id = session['user_id']
-        # order_id = session['order_id']
-        shop_id = 2
-        user_id = 2
+        shop_id = session['shop_id']
+        user_id = session['user_id']
+        # shop_id = 2
+        # user_id = 2
         order = Order()
         order_details = Order_details()
         today = datetime.now().strftime('%Y-%m-%d')
