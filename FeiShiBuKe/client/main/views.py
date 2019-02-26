@@ -337,6 +337,68 @@ def search_views():
     return jsonStr
 
 
+#-------------------------------------------------------------------
+#刘光辉 商品分类
+@main.route('/goods')
+def goods_views():
+    shop_id = request.args['shop_id']
+    shop = Shop.query.filter_by(id=shop_id).first()
+    #商品分类列表
+     #Menu.query.filter_by(shop_id=shop_id).all()
+        
+        
+    #所有商品列表
+
+    menu_id = request.args.get('menu_id','')
+    pageSize = 9
+    page = request.args.get('page','1')
+    page = int(page)
+    ost = (page-1) * pageSize
+    if menu_id:
+        menu = db.session.query(Menu).filter_by(id=menu_id).first()
+        goods = db.session.query(Goods).filter(Goods.menu_id==menu.id,Goods.goods_status==1).limit(pageSize).offset(ost).all()
+    # 对应商店里能显示的商品总数
+        totalCount = db.session.query(Goods).filter(Goods.menu_id==menu.id,Goods.goods_status==1).count()
+    else:
+        menus = shop.shop_meun
+        l = []
+   
+        for menu in menus:
+            l.append(menu.id)
+    # 商品分页
+        goods = db.session.query(Goods).filter(Goods.menu_id.in_(l),Goods.goods_status==1).limit(pageSize).offset(ost).all()
+    # 对应商店里能显示的商品总数
+        totalCount = db.session.query(Goods).filter(Goods.menu_id.in_(l),Goods.goods_status==1).count()
+    # 最后一页页码
+    lastPage = math.ceil(totalCount / pageSize)
+    # 设置上一页默认为 1
+    prevPage = 1
+    if page > 1:
+        prevPage = page - 1
+    
+    nextPage = lastPage
+    if page < lastPage:
+        nextpage = page +1
+
+    return render_template('/shop.html',params=locals())
+#-------------------------------------------------------------------
+# shop.html中的购物车按钮
+@main.route('/goodslookup')
+def gouwuche_views():
+    shop_id = request.args["shop_id"]
+    goods_id = request.args['goods_id']
+    goodids=[]
+    goodids.append(goods_id)
+    session["goods_id"] = goods_id
+    print(session)
+    print(goodids)
+    return "('添加购物车成功')"
+
+#----------------------------------------------------------------
+
+
+
+
 
 
 
