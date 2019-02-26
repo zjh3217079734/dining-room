@@ -376,7 +376,7 @@ def release_views():
             return render_template(("index.html"), params=locals())
         return render_template("index.html")
 
-<<<<<<< HEAD
+
 @main.route("/suggest",methods=["GET","POST"])
 def suggest_views():
     kws = request.args.get("kws","")
@@ -391,18 +391,7 @@ def keywords_views():
     kws1 = request.args.get("kws1","")
     if kws1:
         shops = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%"+kws1+"%")).all()
-=======
 
-@main.route("/shop", methods=["GET", "POST"])
-def shops_views():
-    page = request.args.get('page', 1, type=int)
-    if request.args.get("shop_id"):
-        pagination = db.session.query(Shop).filter_by(
-            shop_id=id).paginate(page, per_page=10)
->>>>>>> 3dc5ffdedf694a16a43eb2ac3b426a332b1bd411
-    else:
-        shops = []
-    return render_template("/pages",shops=shops)
 
 @main.route("/classify",methods=["GET","POST"])
 def classify_views():
@@ -467,26 +456,14 @@ def search_views():
     l = []
     kws = request.args.get("kws", "")
     if kws != '':
-<<<<<<< HEAD
         # results1 = db.session.query(Goods.goods_name).filter(
         #     Goods.goods_name.like("%"+kws+"%")).limit(4).all()
         results2 = db.session.query(Shop.shop_name).filter(
-            Shop.shop_name.like("%"+kws+"%")).limit(4).all()
+            Shop.shop_name.like("%" + kws + "%")).limit(4).all()
         for result in [results2]:
-=======
-        results1 = db.session.query(Goods.goods_name).filter(
-            Goods.goods_name.like("%" + kws + "%")).all()
-        results2 = db.session.query(Menu.menu_name).filter(
-            Menu.menu_name.like("%" + kws + "%")).all()
-        results3 = db.session.query(Shop.shop_name).filter(
-            Shop.shop_name.like("%" + kws + "%")).all()
-        for result in [results1, results2, results3]:
->>>>>>> 3dc5ffdedf694a16a43eb2ac3b426a332b1bd411
             for r in result:
                 l.append(r[0])
     jsonStr = json.dumps(l)
-    return jsonStr
-
 
 
 
