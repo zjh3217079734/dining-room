@@ -489,7 +489,7 @@ def search_views():
 @main.route('/checkout.html')
 def checkout():
     #检测用户登录
-    session['id'] = 1
+
     if 'username' in request.cookies:
         username = request.cookies['username']
 
@@ -527,7 +527,7 @@ def checkoutajax():
         username = request.cookies['username']
 
     if 'id' in session:
-        uid = session['id']
+
         #订单列表
         if status == 0:
             order = Order.query.filter_by(user_id=uid,status=0).all()
