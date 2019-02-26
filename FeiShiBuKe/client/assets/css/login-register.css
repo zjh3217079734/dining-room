@@ -1,18 +1,17 @@
+div.login-form-container{
+	width: 760px;
+}
+
 div.test-button-box{
 	position:relative;
 	right:200px;
 	left:200px;
 	margin-bottom:20px;
 }
+
 div.verification-content{
 	margin-left:5px;
-	margin-bottom:20px;
-}
-
-input.verification-input{
-	margin:2px;
-	width:120px;
-	height:30px;
+	margin-bottom:10px;
 }
 
 div.verification-content>span{
@@ -29,6 +28,91 @@ div.verification-PhoneNum>input,div.verification-CodeNum>input{
 	height:40px;
 }
 
-input{
-	width:100%;
+input.group-name,input.group-password,input.group-phone{
+	width:400px;
 }
+
+form.form-login{
+	width: 400px;
+	margin-left: 90px;
+}
+
+canvas#verifyCanvas{
+	position:relative;
+	left: 160px;
+	bottom: 72px;
+}
+
+input#code_input{
+	float: left;
+	width: 148px;
+	height: 44px;
+}
+
+button#my_button.submit-log{
+	margin: 30px;
+	left: 40px;
+	bottom: 5px;
+}
+
+button#my_button.submit{
+	position:relative;
+	margin: 25px;
+	right: 5px;
+	bottom: 5px;
+}
+
+button#btnReg,button#reSet{
+	margin-left: 200px;
+}
+
+button#reSet_button{
+	position:relative;
+	left: 40px;
+	bottom: 5px;
+	border: medium none;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+	padding: 11px 30px;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+	outline: medium none;
+	overflow: visible;
+	margin: 30px;
+	font-family: inherit;
+	touch-action: manipulation;
+	box-sizing: border-box;
+	text-align: left;
+	font-style: normal;
+}
+
+button#reSet_button:hover{
+	background-color: #e02c2b;
+	color: #fff;
+}
+
+.tips{
+	color: rgba(0, 0, 0, 0.5);
+	padding-left: 10px;
+}
+.tips_true,.tips_false{
+	padding-left: 10px;
+}
+.tips_true{
+	color: green;
+}
+.tips_false{
+	color: red;
+}
+
+label#remember-pwd:hover{
+	color: #e02c2b;
+	text-decoration: none;
+}
+
+/*span#divname.tips,span#divpassword1,span#divpassword2{*/
+	/*width: 150px;*/
+/*}*/

@@ -26,8 +26,11 @@
     <link rel="stylesheet" href="../assets/css/responsive.css">
 
     <link rel="stylesheet" href="../assets/css/login-register.css">
-
-    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/jquery-1.11.3.js"></script>
+    <script src="../assets/js/login-register.js"></script>
+    <script src="../assets/js/login-register2.js"></script>
+    <script src="../assets/js/gVerify.js"></script>
 </head>
 
 <body>
@@ -152,26 +155,19 @@
                                         </a>
                                     </div>
 
-                                    <form action="/resetpwd" method="post">
-                                        <input type="text" name="username" placeholder="用户名">
-                                        <input type="password" name="newpassword" placeholder="输入新密码">
-                                        <input type="password" name="newpassword" placeholder="再次确认密码">
+                                    <form action="/resetpwd" method="post" name="form2">
+                                        <input class="group-name" type="text" name="username" onblur="checkname()" placeholder="用户名"><span class="tips" id="divname">长度1~12个字符</span>
+                                        <input class="group-password" type="password" name="newpassword" onblur="checknpwd1()" placeholder="输入新密码"><span class="tips" id="divpassword1">密码必须由字母和数字组成</span>
+                                        <input class="group-password" type="password" name="newpassword1" onblur="checknpwd2()" placeholder="再次确认密码"><span class="tips" id="divpassword2">两次密码需要相同</span>
+                                        <input class="group-phone" type="text" name="number" placeholder="手机号码">
 
-                                        <div class="verification-msg">
-                                            <div class="verification-PhoneNum">
-                                                <input type="text" name="number" placeholder="手机号码">
-                                                <button type="button" class="send-verificationCode">获取短信验证码</button>
-                                            </div>
-                                            <div class="verification-CodeNum">
-                                                <input type="text" name="verifyCode" placeholder="验证码">
-                                                <button type="button" class="sub-btn">提交</button>
-                                            </div>
+                                        <div class="verification-content">
+                                            <input type="text" id="code_input" value="" placeholder="请输入验证码"/>
+                                            <div id="v_container" style="width:145px; height:40px;"></div>
                                         </div>
 
-                                        <div class="button-box" onclick="document.write('密码已修改!')">
-                                            <button type="submit">
-                                                <span>重置</span>
-                                            </button>
+                                        <div class="button-box">
+                                            <button id="reSet_button">重置</button>
                                         </div>
                                     </form>
 
@@ -302,5 +298,15 @@
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>
-
+	<script>
+		var verifyCode = new GVerify("v_container");
+		document.getElementById("my_button").onclick = function(){
+			var res = verifyCode.validate(document.getElementById("code_input").value);
+			if(res){
+				alert("验证正确");
+			}else{
+				alert("验证码错误");
+			}
+		}
+	</script>
 </html>
