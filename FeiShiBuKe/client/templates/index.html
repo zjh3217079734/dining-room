@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="../assets/js/shop.js"></script>
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
 </head>
 
@@ -226,13 +225,13 @@
                 <!-- 主体左侧商家展示区域开始 -->
                 <div class="col-lg-8 col-xl-9 col-md-8">
                     <!-- 商家介绍 -->
-                    {% for shop in shops %}
-                        <div class="row">
-                            <!-- 店家1 -->
-                            <div class="col-lg-12">
+                    {% for shop in params.shops %}
+                    <div class="row">
+                        <!-- 店家1 -->
+                        <div class="col-lg-12">
                             <div class="single-blog-wrapper mb-50">
                                 <div class="blog-img mb-20">
-                                    <a href="/goods?id={{ shop.shop_id }}">
+                                    <a href="/goods?id={{ shop.id }}">
                                         <img src="{{ shop.shop_img }}" alt="">
                                     </a>
                                     <!--
@@ -242,18 +241,21 @@
                                             -->
                                 </div>
                                 <div class="blog-content">
-                                    <h2><a href="/goods?id={{ shop.shop_id }}"> {{ shop.shop_name }} </a></h2>
+                                    <h2><a href="/goods?id={{ shop.id }}"> {{ shop.shop_name }} </a></h2>
                                     <div class="blog-date-categori">
                                         <ul>
-                                            <li><a href="/goods?id={{ shop.shop_id }}"><i class="fa fa-user"></i> ★★★★★ 5分 </a></li>
-                                            <li><a href="/goods?id={{ shop.shop_id }}"><i class="ion-heart"></i> 999+喜欢 </a></li>
-                                            <li><a href="/goods?id={{ shop.shop_id }}"><i class="fa fa-comment"></i> 999+条评论 </a></li>
+                                            <li><a href="/goods?id={{ shop.id }}"><i class="fa fa-user"></i> ★★★★★
+                                                    5分 </a></li>
+                                            <li><a href="/goods?id={{ shop.id }}"><i class="ion-heart"></i> 999+喜欢
+                                                </a></li>
+                                            <li><a href="/goods?id={{ shop.id }}"><i class="fa fa-comment"></i>
+                                                    999+条评论 </a></li>
                                         </ul>
                                     </div>
                                     <p> {{ shop.shop_intro }} </p>
                                 </div>
                                 <div class="blog-btn mt-30">
-                                    <a href="/goods?id={{ shop.shop_id }}">详情</a>
+                                    <a href="/goods?id={{ shop.id }}">详情</a>
                                 </div>
                             </div>
                         </div>
@@ -264,14 +266,23 @@
                     <div class="pagination-total-pages">
                         <div class="pagination-style">
                             <ul>
-                                <li><a class="prev-next next" href="/shop?page=1"><i class="ion-ios-arrow-left"></i> 首页</a></li>
-                                <li><a class="active" href="/shop?page={{ params.prevPage }}">上一页</a></li>
-                                <form action="/shops" method="post">
-                                    <li><input type="text" style="font:15px Arial;width: 80px;padding: 15px"></li>
-                                </form>
-                                <li><a class="active" href="/shop?page={{ params.nextPage }}">下一页</a></li>
-                                <li><a class="prev-next next" href="/shop?page={{ params.lastPage }}">尾页<i class="ion-ios-arrow-right"></i> </a></li>
+                                <li><a class="prev-next next" href="/shops?page=1"><i class="ion-ios-arrow-left"></i> 首页</a></li>
+                                <li><a class="active" href="/shops?page={{ params.prevPage }}">上一页</a></li>
+                                <li>
+                                    <input id="upage" type="text" style="width: 50px;height: 34px;
+                                           text-align: center" value={{ params.page }}>
+                                    <div id="show"></div>
+                                </li>
+                                <li><a class="active" href="/shops?page={{ params.nextPage }}">下一页</a></li>
+                                <li><a class="prev-next next" href="/shops?page={{ params.lastPage }}">尾页<i class="ion-ios-arrow-right"></i>
+                                    </a></li>
                             </ul>
+                            <script>
+                                $("#upage").blur(function () {
+                                    var url = "/shops?page="+$("#upage").val();
+                                    window.location.href = url
+                                });
+                            </script>
                         </div>
                         <div class="total-pages">
                             <p>Showing 1 - 20 of 30 results </p>
@@ -281,39 +292,87 @@
                 <!-- 主体左侧商家展示区域结束 -->
 
                 <!-- 主体右侧搜索标签区域开始 -->
+                <style>
+                    #showkws{
+                        width: 250px;
+                        height: 150px;
+                        border: 1px solid #E6E6E6;
+                        position: absolute;
+                        background: #fff;
+                        display: none;
+
+                    }
+                </style>
+                <script src="../assets/js/common.js"></script>
+                <script src="../assets/js/jquery-1.11.3.js"></script>
+                <script>
+                    $(function () {
+                        $("#id").keyup(function () {
+                            var xhr = createXhr();
+                            var url = "/search?kws="+this.value;
+                            xhr.open("get",url,true);
+                            xhr.onreadystatechange=function () {
+                                if(xhr.readyState==4&&xhr.status==200){
+                                    var arr = JSON.parse(xhr.responseText);
+                                    if(arr.length > 0){
+                                        $("#showkws").html("");
+                                        $("#showkws").css("display","block");
+                                        $.each(arr,function (i,obj) {
+                                            var $a=$("<p><a href="+"/shops?kws="+obj+">"+obj+"</a></p>");
+                                            $("#showkws").append($a);
+                                        });
+                                    }else{
+                                        $("#showkws").css("display","none");
+                                    }
+                                };
+                            };
+                            xhr.send(null);
+                        });
+                    });
+                </script>
+                <script>
+                    $(function () {
+                        $("#btnKws").click(function () {
+                            $.get("/shops",function (resText) {
+
+                            },"json");
+                        });
+                    });
+                </script>
                 <div class="col-lg-4 col-xl-3 col-md-4">
                     <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
                         <div class="sidebar-search">
-                            <form class="header-search-form" action="#">
-                                <input type="text" id="kws" placeholder="关键字">
-                                <button>
+                            <form class="header-search-form" action="/shops" method="get">
+                                <input type="text" id="id" placeholder="关键字" name="kws1">
+                                <div id="showkws"></div>
+                                <button id="btnKws">
                                     <i class="ion-android-search"></i>
                                 </button>
                             </form>
                         </div>
 
-                        <div class="shop-widget mt-25 shop-sidebar-border pt-25">
-                            <h4 class="shop-sidebar-title">猜你喜欢</h4>
-                            <div class="sidebar-list-style mt-20">
-                                <ul>
-                                    <li><a href="#"></a></li>
-                                    <li><a href="#">重庆麻辣烫</a></li>
-                                    <li><a href="#">东池便当</a></li>
-                                    <li><a href="#">嫂子粥铺</a></li>
-                                    <li><a href="#">沙县小吃</a></li>
-                                </ul>
-                            </div>
-                        </div>
+{#                        <div class="shop-widget mt-25 shop-sidebar-border pt-25">#}
+{#                            <h4 class="shop-sidebar-title">猜你喜欢</h4>#}
+{#                            <div class="sidebar-list-style mt-20">#}
+{#                                <ul>#}
+{#                                    {% for classify in classifies %}#}
+{#                                    <li><a href="/rightSideTag?id={{ classify.id }}">{{ classify.classify_name }}</a></li>#}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
 
                         <div class="shop-widget mt-30 shop-sidebar-border pt-25">
                             <h4 class="shop-sidebar-title">分类 </h4>
                             <div class="sidebar-list-style mt-20">
                                 <ul>
-                                    <li><a href="#">早点 <span>(10)</span></a></li>
-                                    <li><a href="#">西餐 <span>(3)</span></a></li>
-                                    <li><a href="#">沙拉 <span>(2)</span></a></li>
-                                    <li><a href="#">汤 <span>(6)</span></a></li>
-                                    <li><a href="#">火锅 <span>(5)</span></a></li>
+                                    {% for like in params.classifies %}
+                                        <div name="values" style="display: none">
+                                            <input type="text" value="{{ like.id }}">
+
+                                        </div>
+                                    <li><a href="/classify?id={{ like.id }}"> {{ like.classify_name }}</a></li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
@@ -321,8 +380,13 @@
                             <h4 class="shop-sidebar-title">热门标签</h4>
                             <div class="shop-tags mt-25">
                                 <ul>
-                                    {% for cate in params.categories %}
-                                    <li><a href="/shops?id={{ cate.shop_id }}">{{ cate.menu_name }}</a></li>
+                                    {% for good in params.goods %}
+                                        {% if  good %}
+                                            <div name="values" style="display: none">
+                                            <input type="text" value="{{ good.shop_id }}">
+                                            </div>
+                                            <li><a href="/hotTag?id={{ good.shop_id }}">{{ good.goods_name }}</a></li>
+                                        {% endif %}
                                     {% endfor %}
                                 </ul>
                             </div>
