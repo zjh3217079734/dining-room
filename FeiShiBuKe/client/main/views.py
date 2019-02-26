@@ -1,4 +1,5 @@
 # 处理与客户相关的路由和视图
+import math
 from . import main
 from .. import db
 from ..models import *
@@ -11,7 +12,6 @@ from sqlalchemy import or_, func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-from flask_paginate import Pagination, get_page_parameter
 import json
 # ---------------------------------------------
 # localhost:5000/
@@ -225,6 +225,43 @@ def cart_page_viwes():
 
 
 # -----------------------------------------------------------------------------
+@main.route("/shops",methods=["GET","POST"])
+def shops_views():
+    kws = request.args.get("kws", "")
+    if kws:
+        page = request.args.get("page", 1, type=int)
+        shops = db.session.query(Shop).filter_by(shop_name=kws).all()
+        totalCount = db.session.query(Shop).filter_by(shop_name=kws).count()
+    else:
+        page = request.args.get("page", 1, type=int)
+        shops = db.session.query(Shop).all()
+        totalCount = db.session.query(Shop).count()
+    kws1 = request.args.get("kws1","")
+    if kws1:
+        page = request.args.get("page", 1, type=int)
+        shops = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%"+kws1+"%")).all()
+        totalCount = db.session.query(Shop).filter(Shop.shop_name.like("%"+kws1+"%")).count()
+    else:
+        page = request.args.get("page", 1, type=int)
+        shops = db.session.query(Shop).all()
+        totalCount = db.session.query(Shop).count()
+
+    pageSize = 10
+    ost = (page - 1) * pageSize
+    lastPage = math.ceil(totalCount / pageSize)
+    prevPage = 1
+    if page > 1:
+        prevPage = page - 1
+        nextPage = lastPage
+    if page < lastPage:
+        nextPage = page + 1
+
+    likes = db.session.query(Shop).limit(10).all()
+    classifies = db.session.query(Classify).all()
+    goods = db.session.query(Goods.goods_name).group_by(
+        "goods_name").order_by(func.count(Goods.shop_id).desc()).all()
+    return render_template("index.html",params=locals())
+
 @main.route("/release", methods=["GET", "POST"])
 def release_views():
     if request.method == "GET":
@@ -233,39 +270,92 @@ def release_views():
             return render_template(("index.html"), params=locals())
         return render_template("index.html")
 
-
-@main.route("/shops", methods=["GET", "POST"])
-def shops_views():
-    page = request.args.get('page', 1, type=int)
-    if request.args.get("shop_id"):
-        pagination = db.session.query(Shop).filter_by(
-            shop_id=id).paginate(page, per_page=10)
+@main.route("/suggest",methods=["GET","POST"])
+def suggest_views():
+    kws = request.args.get("kws","")
+    if kws:
+        shops = db.session.query(Shop).filter_by(shop_name=kws).all()
     else:
-        pagination = db.session.query(Shop).paginate(page, per_page=10)
-    shops = pagination.items
-    return render_template("index.html", pagination=pagination, shops=shops)
+        shops = db.session.query(Shop).all()
+    return render_template("/pages",shops=shops)
 
+@main.route("/keywords",methods=["GET","POST"])
+def keywords_views():
+    kws1 = request.args.get("kws1","")
+    if kws1:
+        shops = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%"+kws1+"%")).all()
+    else:
+        shops = []
+    return render_template("/pages",shops=shops)
 
-@main.route("/rightSideTag", methods=["GET", "POST"])
+@main.route("/classify",methods=["GET","POST"])
+def classify_views():
+    likes = db.session.query(Shop).limit(10).all()
+    classifies = db.session.query(Classify).all()
+    goods = db.session.query(Goods.goods_name).group_by("goods_name").order_by(func.count(Goods.shop_id).desc()).all()
+    classify_id = request.args.get("id")
+    print(classify_id)
+    shopid = db.session.query(Classify_shop).filter_by(classify_id=classify_id).all()
+    print("shop_id:",shopid[0].shop_id)
+    shops = []
+    for si in shopid:
+        shop = db.session.query(Shop).filter_by(id=si.shop_id).first()
+        shops.append(shop)
+
+    totalCount = db.session.query(Shop).count()
+    page = request.args.get("page", 1, type=int)
+    pageSize = 10
+    ost = (page - 1) * pageSize
+    lastPage = math.ceil(totalCount / pageSize)
+    prevPage = 1
+    if page > 1:
+        prevPage = page - 1
+        nextPage = lastPage
+    if page < lastPage:
+        nextPage = page + 1
+    return render_template("index.html",params=locals())
+
+@main.route("/hotTag", methods=["GET", "POST"])
 def tag_views():
-    menus = db.session.query(Menu).all()
-    counts = menus.count()
-    goods = db.session.query(Goods).limit(7).all()
-    return render_template("/index.html", params=locals())
+    goods_name = request.args.get("goods","")
+    likes = db.session.query(Shop).limit(10).all()
+    classifies = db.session.query(Classify).all()
+    goods = db.session.query(Goods).group_by(
+        "goods_name").order_by(func.count(Goods.shop_id).desc()).all()
+    print(goods)
+    shop_id = request.args.get("id")
+    print(shop_id)
+    # shops = []
+    # for goodsname in goods:
+    #     shopsid = db.session.query(Goods.shop_id).filter_by(goods_name=goodsname[0]).all()
+    #     print(shopsid)
+    #     shop = db.session.query(Shop).filter_by(id=shop_id).all()
+    #     shops.append(shop)
+    totalCount = db.session.query(Shop).count()
+    page = request.args.get("page", 1, type=int)
+    pageSize = 10
+    ost = (page - 1) * pageSize
+    lastPage = math.ceil(totalCount / pageSize)
+    prevPage = 1
+    if page > 1:
+        prevPage = page - 1
+        nextPage = lastPage
+    if page < lastPage:
+        nextPage = page + 1
 
+
+    return render_template("/index.html", params=locals())
 
 @main.route("/search", methods=["GET", "POST"])
 def search_views():
     l = []
     kws = request.args.get("kws", "")
     if kws != '':
-        results1 = db.session.query(Goods.goods_name).filter(
-            Goods.goods_name.like("%"+kws+"%")).all()
-        results2 = db.session.query(Menu.menu_name).filter(
-            Menu.menu_name.like("%"+kws+"%")).all()
-        results3 = db.session.query(Shop.shop_name).filter(
-            Shop.shop_name.like("%"+kws+"%")).all()
-        for result in [results1, results2, results3]:
+        # results1 = db.session.query(Goods.goods_name).filter(
+        #     Goods.goods_name.like("%"+kws+"%")).limit(4).all()
+        results2 = db.session.query(Shop.shop_name).filter(
+            Shop.shop_name.like("%"+kws+"%")).limit(4).all()
+        for result in [results2]:
             for r in result:
                 l.append(r[0])
     jsonStr = json.dumps(l)
