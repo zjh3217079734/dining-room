@@ -1,7 +1,42 @@
 ﻿{% extends 'index.html' %}
 {% block content %}
+<script>
 
-<div class="breadcrumb-area gray-bg">
+    function checkoutpost1(){
+        btn = $("#btn1").val()
+        $.post("/checkoutajax",
+            {
+                status:btn
+            },
+        function(data,status){
+            $("#all").html(data)
+        });
+    };
+    function checkoutpost2(){
+        btn = $("#btn2").val()
+        $.post("/checkoutajax",
+            {
+                status:btn
+            },
+        function(data,status){
+            $("#all").html(data)
+        });
+    };
+    function checkoutpost3(){
+        btn = $("#btn3").val()
+        $.post("/checkoutajax",
+            {
+                status:btn
+            },
+        function(data,status){
+            $("#all").html(data)
+        });
+    };
+
+</script>
+
+<div id="all" >
+<div  class="breadcrumb-area gray-bg">
     <div class="container">
         <div class="breadcrumb-content">
             <ul>
@@ -12,7 +47,14 @@
     </div>
 </div>
 <!-- checkout-area start -->
-<div class="checkout-area pb-80 pt-100">
+
+<div class="checkout-area pb-80 pt-10">
+    <div style="margin-left:150px;margin-bottom: 50px">
+        <input id="btn1" type="button" value="未付款" style="height:25px;width:100px" onclick="checkoutpost1()">
+        <input id="btn2" type="button" value="已付款" style="height:25px;width:100px" onclick="checkoutpost2()">
+        <input id="btn3" type="button" value="历史订单" style="height:25px;width:100px" onclick="checkoutpost3()">
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
@@ -154,5 +196,5 @@
         </div>
      </div>
 </div>
-
+</div>
     {% endblock %}
