@@ -1,6 +1,17 @@
 (function ($) {
     'use strict';
+    $("#goodid").click(function () {
+        var goodid = $("#goodid").val()
+        $.ajax({
+            "url": "http://127.0.0.1:5000/goodslookup",
+            "type": "get",
+            "dataType": "jsonp",
+            "success": function () {
+                alreat("添加成功")
+            }
 
+        })
+    })
     /* Cart Currency Search toggle active */
     $(".header-cart a").on("click", function (e) {
         e.preventDefault();

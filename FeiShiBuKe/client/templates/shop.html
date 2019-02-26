@@ -136,103 +136,27 @@
                             </nav>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-menu-area-start -->
-        <!-- 下面是移动端的内容 -->
-        <div class="mobile-menu-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mobile-menu">
-                            <nav id="mobile-menu-active">
-                                <ul class="menu-overflow" id="nav">
-                                    <li><a href="index.html">首页</a></li>
-                                    <li><a href="shop.html">发现商家</a></li>
-                                    <!-- <li><a href="shop-list.html">点菜</a></li> -->
-                                    <li><a href="cart-page.html">购物车</a></li>
-                                    <li><a href="checkout.html">提交订单</a></li>
-                                    <li><a href="about-us.html">关于我们</a></li>
-                                    <!-- <li><a href="contact.html">联系我们</a></li> -->
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-menu-area-end -->
-    </header>
-    <!-- 顶部导航栏结束 -->
-
-
-
-    <div class="breadcrumb-area gray-bg">
-        <div class="container">
-            <div class="breadcrumb-content">
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li class="active"> 川菜馆 </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="shop-page-area pt-100 pb-100">
-        <div class="container">
-            <div class="row flex-row-reverse">
-                <div class="col-lg-9">
-                    <!-- <div class="banner-area pb-30">
-                        <a href="product-details.html"><img alt="" src="../assets/img/banner/banner-4.jpg"></a>
-                    </div> -->
-                    <!-- <div class="shop-topbar-wrapper">
-                        <div class="shop-topbar-left">
-                            <ul class="view-mode">
-                                <li class="active"><a href="#product-grid" data-view="product-grid"><i class="fa fa-th"></i></a></li>
-                                <li><a href="#product-list" data-view="product-list"><i class="fa fa-list-ul"></i></a></li>
-                            </ul>
-                            <p>Showing 1 - 20 of 30 results </p>
-                        </div>
-                        <div class="product-sorting-wrapper">
-                            <div class="product-shorting shorting-style">
-                                <label>View:</label>
-                                <select>
-                                    <option value=""> 20</option>
-                                    <option value=""> 23</option>
-                                    <option value=""> 30</option>
-                                </select>
-                            </div>
-                            <div class="product-show shorting-style">
-                                <label>Sort by:</label>
-                                <select>
-                                    <option value="">Default</option>
-                                    <option value=""> Name</option>
-                                    <option value=""> price</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="grid-list-product-wrapper">
-                        <div class="product-grid product-view pb-20">
-                            <div class="row">
-                                <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                    <div class="product-wrapper">
-                                        <div class="product-img">
-                                            <!-- <a href="product-details.html"> -->
-                                                <img src="../assets/img/goods/niuroumian.jpg" alt="">
-                                            </a>
-                                            <div class="product-action">
-                                                <div class="pro-action-left">
-                                                    <!-- 此处需要将数据传送至购物车页面,并在右上角购物车图标的数字加1 -->
-                                                    <a title="添加至购物车" href="#"><i class="ion-android-cart"></i>
-                                                        添加至购物车</a>
-                                                </div>
-                                                <!-- 此div 为商品详情弹窗和许愿清单添加,均不需要 -->
-                                                <!-- <div class="pro-action-right">
-                                                    <a title="收藏" href="wishlist.html"><i class="ion-ios-heart-outline"></i></a>
-                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                        href="#"><i class="ion-android-open"></i></a>
-                                                </div> -->
+                </div> -->
+                <div class="grid-list-product-wrapper">
+                    <div class="product-grid product-view pb-20">
+                        <div class="row">
+                            {% for good in params.goods %}
+                            <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
+                                <div class="product-wrapper">
+                                    <div class="product-img">
+                                        <a href="product-details.html">
+                                            <img src="../assets/img/goods/{{good.goods_image}}" alt="">
+                                        </a>
+                                        <div class="product-action">
+                                            <div class="pro-action-left">
+{#                                                <a title="添加至购物车" href="" id="tjgwc"><i class="ion-android-cart"></i>#}
+{#                                                    添加至购物车</a>#}
+                                                  <button id="goodid" value={{good.id}}>添加至购物车</button>
+                                            </div>
+                                            <div class="pro-action-right">
+                                                <a title="收藏" href="wishlist.html"><i class="ion-ios-heart-outline"></i></a>
+                                                <!-- <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
+                                                    href="#"><i class="ion-android-open"></i></a> -->
                                             </div>
                                         </div>
                                         <div class="product-content">

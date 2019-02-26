@@ -420,5 +420,15 @@ def goods_views():
         nextpage = page +1
 
     return render_template('/shop.html',params=locals())
+
+@main.route('/goodslookup')
+def gouwuche_views():
+    goods_id = request.args['goodsid']
+    goodids=[]
+    goodids.append(goods_id)
+    session['goods_id'] = goodids
+    cb=request.args['callback']
+    print(goodids)
+    return cb+"('添加购物车成功')"
 #-------------------------------------------------------------------
 
