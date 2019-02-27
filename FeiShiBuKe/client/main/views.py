@@ -92,7 +92,7 @@ def logout_views():
     # print(request.cookies)
     if 'username' in request.cookies:
         resp.delete_cookie('username')
-    elif 'username' in session:
+    elif 'username'in session:
         session.clear()
         # print(request.cookies)
     return resp
@@ -146,7 +146,7 @@ def login_views():
             return resp
         else:
             errMsg = "用户名或密码不正确"
-            resp = make_response(render_template('login-register.html', params=locals()))
+            resp=make_response(render_template('login-register.html', params=locals()))
             resp.delete_cookie('username')
             return resp
 
@@ -158,21 +158,21 @@ def resetpwd_views():
         # print(1)
         return render_template('ResetPwd.html', params={})
     else:
-        username = request.form['username']
+        username=request.form['username']
         # print(username)
-        npwd = request.form['newpassword']
+        npwd=request.form['newpassword']
         # print(npwd)
 
-        s = sha1()
+        s=sha1()
         s.update(npwd.encode())
-        password = s.hexdigest()
-        number = request.form['number']
-        user = User.query.filter_by(user_name=username, phone=number).first()
+        password=s.hexdigest()
+        number=request.form['number']
+        user=User.query.filter_by(user_name=username,phone=number).first()
         # print(user)
         if user:
-            user.password = password
-            user.create_time = datetime.now()
-            user.update_time = datetime.now()
+            user.password=password
+            user.create_time=datetime.now()
+            user.update_time=datetime.now()
 
             db.session.add(user)
             db.session.commit()
@@ -180,104 +180,6 @@ def resetpwd_views():
         else:
             return "用户名和手机号不匹配，请重试"
 
-
-# 这个是之前的,暂时没用了...
-# @main.route('/register', methods=['GET', 'POST'])
-# def register_views():
-#     username = get_name()
-#     if request.method == 'GET':
-#         return render_template('login-register.html', params={})
-#     else:
-#         username = request.form['uname']
-#         upwd = request.form['upwd']
-#         s = sha1()
-#         s.update(upwd.encode())
-#         password = s.hexdigest()
-#         phone = request.form['uphone']
-#
-#         user = User()
-#         user.user_name = username
-#         user.password = password
-#         user.phone = phone
-#         user.sex = 'M'
-#         user.create_time = datetime.now()
-#         user.update_time = datetime.now()
-#
-#         try:
-#             db.session.add(user)
-#             db.session.commit()
-#             return render_template('index.html', params=locals())
-#         except Exception as ex:
-#             print(ex)
-#             return "注册失败，请联系管理员！"
-#
-#
-# @main.route('/logout')
-# def logout_views():
-#     username = get_name()
-#     url = request.headers.get('Referer', '/')
-#     # print(url)
-#     resp = redirect(url)
-#     # print("resp:",resp)
-#     # print(request.cookies)
-#     if 'username' in request.cookies:
-#         resp.delete_cookie('username')
-#     elif 'username' in session:
-#         session.clear()
-#         # print(request.cookies)
-#     return resp
-
-#
-# @main.route('/login', methods=['POST', 'GET'])
-# def login_views():
-#     if request.method == 'GET':
-#         url = request.headers.get('Referer', '/')
-#         session['url'] = url
-#         # return render_template('login-register.html')
-#         if 'username' in session:
-#             return redirect(url)
-#         else:
-#             if 'username' in request.cookies:
-#                 username = request.cookies['username']
-#                 users = User.query.all()
-#                 if username in users:
-#                     session['username'] = username
-#                     return redirect(url)
-#                 else:
-#                     resp = make_response(
-#                         render_template(
-#                             'login-register.html',
-#                             params={}))
-#                     resp.delete_cookie('username')
-#                     return resp
-#             else:
-#                 return render_template('login-register.html', params={})
-#     else:
-#         username = request.form['username']
-#         password = request.form['password']
-#         user = User.query.filter_by(
-#             user_name=username, password=password).first()
-#         if user:
-#             session['id'] = user.user_id
-#             session['username'] = username
-#             url = session['url']
-#             resp = redirect(url)
-#             if 'isSaved' in request.form:
-#                 resp.set_cookie('username', username, 60 * 60 * 24 * 365 * 10)
-#             return resp
-#         else:
-#             errMsg = "用户名或密码不正确"
-#             return render_template('login-register.html', params=locals())
-#
-
-# @main.route('/register/checkuname')
-# def checkuname():
-#     uname = request.args['uname']
-#     users = User.query.filter_by(user_name=uname).all()
-#     if users:
-#         return "1"
-#     else:
-#         return "0"
 
 # -----------------------------------------------------------
 
@@ -630,7 +532,8 @@ def search_views():
 def checkout():
     username = get_name()
     # 检测用户登录
-    session['id'] = 1
+    #这个是合并的时候显示你删除了,我不知道有没有删除,所以保留了
+    # session['id'] = 1
     if 'username' in request.cookies:
         username = request.cookies['username']
 
@@ -670,8 +573,8 @@ def checkoutajax():
         username = request.cookies['username']
 
     if 'id' in session:
-        uid = session['id']
-        # 订单列表
+
+        #订单列表
         if status == 0:
             order = Order.query.filter_by(user_id=uid, status=0).all()
         elif status == 1:
