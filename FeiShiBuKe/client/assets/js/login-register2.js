@@ -1,5 +1,5 @@
-function checkna(){
-	na = form1.uname.value;
+function checkname(){
+	na = form2.username.value;
 	if( na.length <1 || na.length >12)
 	{
 		divname.innerHTML='<font class="tips_false">长度是1~12个字符</font>';
@@ -8,8 +8,8 @@ function checkna(){
 	}
 }
 //验证密码 
-function checkpsd1(){    
-	psd1=form1.upwd.value;  
+function checknpwd1(){    
+	psd1=form2.newpassword.value;  
 	var flagZM=false ;
 	var flagSZ=false ; 
 	var flagQT=false ;
@@ -39,8 +39,8 @@ function checkpsd1(){    
 		}
 }
 //验证确认密码 
-function checkpsd2(){ 
-		if(form1.upwd.value!=form1.upwd1.value) { 
+function checknpwd2(){ 
+		if(form2.newpassword.value!=form2.newpassword1.value) { 
 		    divpassword2.innerHTML='<font class="tips_false">您两次输入的密码不一样</font>';
 		} else { 
 		     divpassword2.innerHTML='<font class="tips_true">输入正确</font>';

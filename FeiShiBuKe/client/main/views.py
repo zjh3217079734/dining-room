@@ -64,7 +64,7 @@ def get_name():
         username = session['username']
         return username
     else:
-        return ""
+        return None
 
 
 @main.route('/register', methods=['GET', 'POST'])
@@ -113,15 +113,14 @@ def logout_views():
     return resp
 
 
-@main.route('/login', methods=['GET', 'POST'])
+@main.route('/login', methods=['POST', 'GET'])
 def login_views():
     if request.method == 'GET':
         url = request.headers.get('Referer', '/')
         session['url'] = url
+        # return render_template('login-register.html')
         if 'username' in session:
             return redirect(url)
-            username = session['username']
-            return render_template('index.html', params=locals())
         else:
             if 'username' in request.cookies:
                 username = request.cookies['username']
@@ -140,59 +139,64 @@ def login_views():
                 return render_template('login-register.html', params={})
     else:
         username = request.form['username']
-        upwd = request.form['password']
-        s = sha1()
-        s.update(upwd.encode())
-        password = s.hexdigest()
+        password = request.form['password']
         user = User.query.filter_by(
             user_name=username, password=password).first()
-        # print(user)
-        # print(user.user_id)
         if user:
             session['id'] = user.user_id
             session['username'] = username
             url = session['url']
-            # print(url)
             resp = redirect(url)
-            # print(resp)
             if 'isSaved' in request.form:
                 resp.set_cookie('username', username, 60 * 60 * 24 * 365 * 10)
             return resp
         else:
             errMsg = "用户名或密码不正确"
-            resp = make_response(render_template('login-register.html', params=locals()))
-            resp.delete_cookie('username')
-            return resp
+            return render_template('login-register.html', params=locals())
 
 
-@main.route('/resetpwd', methods=['GET', 'POST'])
-def resetpwd_views():
+@main.route('/register', methods=['GET', 'POST'])
+def register_views():
     if request.method == 'GET':
-        # print(1)
-        return render_template('ResetPwd.html', params={})
+        return render_template('login-register.html', params={})
     else:
-        username = request.form['username']
-        # print(username)
-        npwd = request.form['newpassword']
-        # print(npwd)
+        username = request.form['uname']
+        password = request.form['upwd']
+        phone = request.form['uphone']
 
-        s = sha1()
-        s.update(npwd.encode())
-        password = s.hexdigest()
-        number = request.form['number']
-        user = User.query.filter_by(user_name=username, phone=number).first()
-        # print(user)
-        if user:
-            user.password = password
-            user.create_time = datetime.now()
-            user.update_time = datetime.now()
-
+        user = User()
+        user.user_name = username
+        user.password = password
+        user.phone = phone
+        user.sex = 'M'
+        user.create_time = datetime.now()
+        user.update_time = datetime.now()
+        try:
             db.session.add(user)
             db.session.commit()
-            return "密码修改成功，请重新登录"
-        else:
-            return "用户名和手机号不匹配，请重试"
+            return render_template('index.html', params=locals())
+        except Exception as ex:
+            print(ex)
+            return "注册失败，请联系管理员！"
 
+
+@main.route('/logout')
+def logout_views():
+    url = request.headers.get('Referer', '/')
+    resp = redirect(url)
+    if 'username' in request.cookies:
+        resp.delete_cookie('username')
+    return resp
+
+
+# @main.route('/register/checkuname')
+# def checkuname():
+#     uname = request.args['uname']
+#     users = User.query.filter_by(user_name=uname).all()
+#     if users:
+#         return "1"
+#     else:
+#         return "0"
 
 # -----------------------------------------------------------
 
@@ -204,8 +208,8 @@ def cart_page_viwes():
         # if 'id' in session and 'lognname' in session:
         # 1. 获取当前订单号,及订单里的数据
         # order_id = session['order_id']
-        # goods_id = session["goods_id"]
-        goodsid = [10001, 10002, 10003, 10004]
+        goodsid = session["goods_id"]
+        # goodsid = [10001, 10002, 10003, 10004]
         goods = []
         i = 1
         for goodid in goodsid:
@@ -218,11 +222,10 @@ def cart_page_viwes():
         return render_template('cart-page.html', params=locals())
     else:
         create_time = datetime.now().strftime('%Y%m%d%H%M%S')
-        # shop_id = session['shop_id']
-        # user_id = session['user_id']
-        # order_id = session['order_id']
-        shop_id = 2
-        user_id = 2
+        shop_id = session['shop_id']
+        user_id = session['user_id']
+        # shop_id = 2
+        # user_id = 2
         order = Order()
         order_details = Order_details()
         today = datetime.now().strftime('%Y-%m-%d')
