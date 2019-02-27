@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>非食不可</title>
     <meta name="description" content="">
-    <meta name="robots" content="noindex, follow" />
+    <meta name="robots" content="noindex, follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.png">
@@ -30,202 +30,191 @@
 
 <body>
 
-    <!-- 顶部导航栏开始 -->
-    <header class="header-area">
-        <div class="header-middle">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-12 col-sm-4">
-                        <div class="logo">
-                            <a href="index.html">
-                                <img alt="" src="../assets/img/logo/logo.png">
-                            </a>
-                        </div>
+<!-- 顶部导航栏开始 -->
+<header class="header-area">
+    <div class="header-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-12 col-sm-4">
+                    <div class="logo">
+                        <a href="index">
+                            <img alt="" src="../assets/img/logo/logo.png">
+                        </a>
                     </div>
-                    <div class="col-lg-9 col-md-8 col-12 col-sm-8">
-                        <div class="header-middle-right f-right">
-                            <div class="header-login">
-                                <a href="login-register.html">
+                </div>
+                <div class="col-lg-9 col-md-8 col-12 col-sm-8">
+                    <div class="header-middle-right f-right">
+                        <div class="header-login">
+                            {% if params.username %}
+                                <a href="/my-account">
                                     <div class="header-icon-style">
-                                        <i class="icon-user icons"></i>
+                                        <i class="icon-user-following icons"></i>
                                     </div>
                                     <div class="login-text-content">
                                         <p>
-                                            {% if params.username %}
-                                                <span>
-                                                    欢迎:{{ params.username }}
-                                                    <a href="/logout">退出</a>
-                                            {% else %}
-                                                    <a href="/login">登录</a>
-                                                </span>
-                                            {% endif %}
-                                            <br> or
                                             <span>
-                                                <a href="/register">注册</a>
-                                            </span>                                            
+                                                    欢迎您:
+                                                <b>
+                                                {{ params.username }}
+                                                </b>
+                                                </span>
+                                            <br>
+                                            <span>
+                                                    <a href="/logout">退出当前用户</a>
+                                        </span>
                                         </p>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="header-wishlist">
-                            </div>
-                            <div class="header-cart">
-                                <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">
+                            {% else %}
+                                <a href="/login">
                                     <div class="header-icon-style">
-                                        <i class="icon-handbag icons"></i>
-                                        <!-- 商品数量标识 -->
-                                        <span class="count-style">3+</span>
-                                        <!-- 商品数量标识,数量后面跟+ -->
+                                        <i class="icon-user-unfollow icons"></i>
                                     </div>
-                                    <div class="cart-text">
-                                        <span class="digit">购物车</span>
-                                        <!-- 当前购物车的统计 -->
-                                        <span class="cart-digit-bold">$209.00</span>
+                                    <div class="login-text-content">
+                                        <p>
+                                            <span>
+                                                <a href="/login">登录</a>
+                                            </span>
+                                            <br> or
+                                            <span>
+                                                <a href="/register">注册</a>
+                                            </span>
+                                        </p>
                                     </div>
                                 </a>
-                                <!-- <div class="shopping-cart-content">
-                                        <ul>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="cart-page.html">Phantom Remote </a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="cart-page.html">Phantom Remote</a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    // ion是删除图标,做成动态删除数据就好了
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="shopping-cart-total">
-                                            <h4>Shipping : <span>$20.00</span></h4>
-                                            <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-btn">
-                                            <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">view
-                                                cart</a>
-                                            <a onclick="window.location = 'checkout.html'" href="javascript:void(0);">checkout</a>
-                                        </div>
-                                    </div> -->
-                            </div>
+                            {% endif %}
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-bottom transparent-bar black-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12">
-                        <div class="main-menu">
-                            <nav>
-                                <ul>
-                                    <li class="mega-menu-position top-hover"><a href="index.html">首页</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="shop.html">发现商家</a></li>
-                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list.html">点菜</a></li> -->
-                                    <li class="mega-menu-position top-hover"><a href="cart-page.html">购物车</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="checkout.html">订单</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="about-us.html">关于我们</a></li>
-                                    <!-- <li class="mega-menu-position top-hover"><a href="contact.html">联系我们</a></li> -->
-                                </ul>
-                            </nav>
+                        <div class="header-wishlist">
+                            <a>
+                                <div class="header-icon-style">
+                                    <i class="icon-location-pin icons icons"></i>
+                                </div>
+                                <div class="wishlist-text">
+                                    <p>所在城市<br>
+                                        <span id="area_city2">未知</span></p>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-menu-area-start -->
-        <!-- 下面是移动端的内容 -->
-        <div class="mobile-menu-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mobile-menu">
-                            <nav id="mobile-menu-active">
-                                <ul class="menu-overflow" id="nav">
-                                    <li><a href="index.html">首页</a></li>
-                                    <li><a href="shop.html">发现商家</a></li>
-                                    <!-- <li><a href="shop-list.html">点菜</a></li> -->
-                                    <li><a href="cart-page.html">购物车</a></li>
-                                    <li><a href="checkout.html">订单</a></li>
-                                    <li><a href="about-us.html">关于我们</a></li>
-                                    <!-- <li><a href="contact.html">联系我们</a></li> -->
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-menu-area-end -->
-    </header>
-    <!-- 顶部导航栏结束 -->
-    {% block content %}
+                        <div class="header-cart">
+                            <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
+                                <div class="header-icon-style">
+                                    <i class="icon-handbag icons"></i>
+                                    <!-- 商品数量标识 -->
+                                    <span class="count-style">0</span>
+                                    <!-- 商品数量标识,数量后面跟+ -->
+                                </div>
+                                <div class="cart-text">
+                                    <span class="digit">购物车</span>
+                                    <!-- 当前购物车的统计 -->
+                                    <span class="cart-digit-bold">$209.00</span>
+                                </div>
+                            </a>
 
-    <div class="slider-area-2">
-        <div class="slider-active owl-dot-style owl-carousel">
-            <div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-3.jpg);">
-                <div class="container">
-                    <div class="slider-content slider-animated-2 text-center">
-                        <h1 class="animated">Drink & Heathy Food</h1>
-                        <h3 class="animated">Fresh Heathy and Organic.</h3>
-                        <div class="slider-btn mt-90">
-                            <a class="animated" href="product-details.html">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-3.jpg);">
-                <div class="container">
-                    <div class="slider-content slider-animated-2 text-center">
-                        <h1 class="animated">Drink & Heathy Food</h1>
-                        <h3 class="animated">Fresh Heathy and Organic.</h3>
-                        <div class="slider-btn mt-90">
-                            <a class="animated" href="product-details.html">Order Now</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- 主体头部 -->
-    <div class="breadcrumb-area gray-bg">
-        <div class="container">
-            <div class="breadcrumb-content">
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li class="active">发现商家</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- 主体头部结束 -->
-    <!-- blog-area start 主体开始-->
-    <div class="blog-area ptb-100">
+    <div class="header-bottom transparent-bar black-bg">
         <div class="container">
             <div class="row">
-                <!-- 主体左侧商家展示区域开始 -->
-                <div class="col-lg-8 col-xl-9 col-md-8">
-                    <!-- 商家介绍 -->
-                    {% for shop in params.shops %}
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li class="mega-menu-position top-hover"><a href="/index">首页</a></li>
+                                {#                                <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>#}
+                                <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
+                                <li class="mega-menu-position top-hover"><a href="/cart-page">购物车</a></li>
+                                <li class="mega-menu-position top-hover"><a href="/checkout">订单</a></li>
+                                <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
+                                {#                                <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>#}
+                                <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile-menu-area-start -->
+    <!-- 下面是移动端的内容 -->
+    <div class="mobile-menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul class="menu-overflow" id="nav">
+                                <li><a href="index">首页</a></li>
+                                <li><a href="shops">发现商家</a></li>
+                                <!-- <li><a href="shop-list">点菜</a></li> -->
+                                <li><a href="cart-page">购物车</a></li>
+                                <li><a href="checkout">订单</a></li>
+                                <li><a href="about-us">关于我们</a></li>
+                                <!-- <li><a href="contact">联系我们</a></li> -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile-menu-area-end -->
+</header>
+<!-- 顶部导航栏结束 -->
+
+
+<div class="slider-area-2">
+    <div class="slider-active owl-dot-style owl-carousel">
+        <div class="single-slider pt-210 pb-220 bg-img"
+             style="background-image:url(../assets/img/slider/slider-3.jpg);">
+            <div class="container">
+                <div class="slider-content slider-animated-2 text-center">
+                    <h1 class="animated">Drink & Heathy Food</h1>
+                    <h3 class="animated">Fresh Heathy and Organic.</h3>
+                    <div class="slider-btn mt-90">
+                        <a class="animated" href="product-details">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slider pt-210 pb-220 bg-img"
+             style="background-image:url(../assets/img/slider/slider-3.jpg);">
+            <div class="container">
+                <div class="slider-content slider-animated-2 text-center">
+                    <h1 class="animated">Drink & Heathy Food</h1>
+                    <h3 class="animated">Fresh Heathy and Organic.</h3>
+                    <div class="slider-btn mt-90">
+                        <a class="animated" href="product-details">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 主体头部 -->
+<div class="breadcrumb-area gray-bg">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index">首页</a></li>
+                <li class="active">发现商家</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 主体头部结束 -->
+<!-- blog-area start 主体开始-->
+<div class="blog-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <!-- 主体左侧商家展示区域开始 -->
+            <div class="col-lg-8 col-xl-9 col-md-8">
+                <!-- 商家介绍 -->
+                {% for shop in params.shops %}
                     <div class="row">
                         <!-- 店家1 -->
                         <div class="col-lg-12">
@@ -245,11 +234,11 @@
                                     <div class="blog-date-categori">
                                         <ul>
                                             <li><a href="/goods?id={{ shop.id }}"><i class="fa fa-user"></i> ★★★★★
-                                                    5分 </a></li>
+                                                5分 </a></li>
                                             <li><a href="/goods?id={{ shop.id }}"><i class="ion-heart"></i> 999+喜欢
-                                                </a></li>
+                                            </a></li>
                                             <li><a href="/goods?id={{ shop.id }}"><i class="fa fa-comment"></i>
-                                                    999+条评论 </a></li>
+                                                999+条评论 </a></li>
                                         </ul>
                                     </div>
                                     <p> {{ shop.shop_intro }} </p>
@@ -259,244 +248,223 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                    {% endfor %}
+                    </div>
+                {% endfor %}
 
-                        <!-- 翻页设计部分 -->
-                    <div class="pagination-total-pages">
-                        <div class="pagination-style">
-                            <ul>
-                                <li><a class="prev-next next" href="/shops?page=1"><i class="ion-ios-arrow-left"></i> 首页</a></li>
-                                <li><a class="active" href="/shops?page={{ params.prevPage }}">上一页</a></li>
-                                <li>
-                                    <input id="upage" type="text" style="width: 50px;height: 34px;
+                <!-- 翻页设计部分 -->
+                <div class="pagination-total-pages">
+                    <div class="pagination-style">
+                        <ul>
+                            <li><a class="prev-next next" href="/shops?page=1"><i class="ion-ios-arrow-left"></i> 首页</a>
+                            </li>
+                            <li><a class="active" href="/shops?page={{ params.prevPage }}">上一页</a></li>
+                            <li>
+                                <input id="upage" type="text" style="width: 50px;height: 34px;
                                            text-align: center" value={{ params.page }}>
-                                    <div id="show"></div>
-                                </li>
-                                <li><a class="active" href="/shops?page={{ params.nextPage }}">下一页</a></li>
-                                <li><a class="prev-next next" href="/shops?page={{ params.lastPage }}">尾页<i class="ion-ios-arrow-right"></i>
-                                    </a></li>
-                            </ul>
-                            <script>
-                                $("#upage").blur(function () {
-                                    var url = "/shops?page="+$("#upage").val();
-                                    window.location.href = url
-                                });
-                            </script>
-                        </div>
-                        <div class="total-pages">
-                            <p>Showing 1 - 20 of 30 results </p>
-                        </div>
+                                <div id="show"></div>
+                            </li>
+                            <li><a class="active" href="/shops?page={{ params.nextPage }}">下一页</a></li>
+                            <li><a class="prev-next next" href="/shops?page={{ params.lastPage }}">尾页<i
+                                    class="ion-ios-arrow-right"></i>
+                            </a></li>
+                        </ul>
+                        <script>
+                            $("#upage").blur(function () {
+                                var url = "/shops?page=" + $("#upage").val();
+                                window.location.href = url
+                            });
+                        </script>
                     </div>
-                </div>
-                <!-- 主体左侧商家展示区域结束 -->
-
-                <!-- 主体右侧搜索标签区域开始 -->
-                <style>
-                    #showkws{
-                        width: 250px;
-                        height: 150px;
-                        border: 1px solid #E6E6E6;
-                        position: absolute;
-                        background: #fff;
-                        display: none;
-
-                    }
-                </style>
-                <script src="../assets/js/common.js"></script>
-                <script src="../assets/js/jquery-1.11.3.js"></script>
-                <script>
-                    $(function () {
-                        $("#id").keyup(function () {
-                            var xhr = createXhr();
-                            var url = "/search?kws="+this.value;
-                            xhr.open("get",url,true);
-                            xhr.onreadystatechange=function () {
-                                if(xhr.readyState==4&&xhr.status==200){
-                                    var arr = JSON.parse(xhr.responseText);
-                                    if(arr.length > 0){
-                                        $("#showkws").html("");
-                                        $("#showkws").css("display","block");
-                                        $.each(arr,function (i,obj) {
-                                            var $a=$("<p><a href="+"/shops?kws="+obj+">"+obj+"</a></p>");
-                                            $("#showkws").append($a);
-                                        });
-                                    }else{
-                                        $("#showkws").css("display","none");
-                                    }
-                                };
-                            };
-                            xhr.send(null);
-                        });
-                    });
-                </script>
-                <script>
-                    $(function () {
-                        $("#btnKws").click(function () {
-                            $.get("/shops",function (resText) {
-
-                            },"json");
-                        });
-                    });
-                </script>
-                <div class="col-lg-4 col-xl-3 col-md-4">
-                    <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
-                        <div class="sidebar-search">
-                            <form class="header-search-form" action="/shops" method="get">
-                                <input type="text" id="id" placeholder="关键字" name="kws1">
-                                <div id="showkws"></div>
-                                <button id="btnKws">
-                                    <i class="ion-android-search"></i>
-                                </button>
-                            </form>
-                        </div>
-
-{#                        <div class="shop-widget mt-25 shop-sidebar-border pt-25">#}
-{#                            <h4 class="shop-sidebar-title">猜你喜欢</h4>#}
-{#                            <div class="sidebar-list-style mt-20">#}
-{#                                <ul>#}
-{#                                    {% for classify in classifies %}#}
-{#                                    <li><a href="/rightSideTag?id={{ classify.id }}">{{ classify.classify_name }}</a></li>#}
-{#                                    {% endfor %}#}
-{#                                </ul>#}
-{#                            </div>#}
-{#                        </div>#}
-
-                        <div class="shop-widget mt-30 shop-sidebar-border pt-25">
-                            <h4 class="shop-sidebar-title">分类 </h4>
-                            <div class="sidebar-list-style mt-20">
-                                <ul>
-                                    {% for like in params.classifies %}
-                                        <div name="values" style="display: none">
-                                            <input type="text" value="{{ like.id }}">
-
-                                        </div>
-                                    <li><a href="/classify?id={{ like.id }}"> {{ like.classify_name }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="shop-widget mt-25 shop-sidebar-border pt-25">
-                            <h4 class="shop-sidebar-title">热门标签</h4>
-                            <div class="shop-tags mt-25">
-                                <ul>
-                                    {% for good in params.goods %}
-                                        {% if  good %}
-                                            <div name="values" style="display: none">
-                                            <input type="text" value="{{ good.shop_id }}">
-                                            </div>
-                                            <li><a href="/hotTag?id={{ good.shop_id }}">{{ good.goods_name }}</a></li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 主体右侧搜索标签区域结束 -->
-            </div>
-        </div>
-    </div>
-    <!-- 主体结束 -->
-
-    {% endblock %}
-    <!-- 底部导航栏 -->
-    <div class="footer-area black-bg-2 pt-70">
-        <div class="footer-top-area pb-18">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="footer-about mb-40">
-                            <div class="footer-logo">
-                                <a href="index.html">
-                                    <img src="../assets/img/logo/footer-logo.png" alt="">
-                                </a>
-                            </div>
-                            <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
-                            <div class="payment-img">
-                                <a href="#">
-                                    <img src="../assets/img/icon-img/payment.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="footer-widget mb-40">
-                            <div class="footer-title mb-22">
-                                <h4>帮助中心</h4>
-                            </div>
-                            <div class="footer-content">
-                                <ul>
-                                    <li><a href="about-us.html">关于我们</a></li>
-                                    <li><a href="#">配送信息</a></li>
-                                    <li><a href="#">隐私政策</a></li>
-                                    <li><a href="#">条款和条件</a></li>
-                                    <li><a href="#">客户服务</a></li>
-                                    <li><a href="#">改进意见</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="footer-widget mb-40">
-                            <div class="footer-title mb-22">
-                                <h4>个人账户</h4>
-                            </div>
-                            <div class="footer-content">
-                                <ul>
-                                    <li><a href="my-account.html">我的账户</a></li>
-                                    <li><a href="#">历史订单</a></li>
-                                    <li><a href="wishlist.html">愿望清单</a></li>
-                                    <li><a href="#">个人信息</a></li>
-                                    <li><a href="#">历史订单</a></li>
-                                    <li><a href="#">国际订单</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="footer-widget mb-40">
-                            <div class="footer-title mb-22">
-                                <h4>关于我们</h4>
-                            </div>
-                            <div class="footer-contact">
-                                <ul>
-                                    <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
-                                    <li>电话咨询: 400-100-6789</li>
-                                    <li>电子邮件: <a href="#">Info@example.com</a></li>
-                                </ul>
-                            </div>
-                            <div class="mt-35 footer-title mb-22">
-                                <h4>服务支持</h4>
-                            </div>
-                            <div class="footer-time">
-                                <ul>
-                                    <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
-                                    <li>周一 - 周日: <span>营业</span></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="total-pages">
+                        <p>Showing 1 - 20 of 30 results </p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom-area border-top-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-7">
-                        <div class="copyright">
-                            <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
-                        </div>
+            <!-- 主体左侧商家展示区域结束 -->
+
+            <!-- 主体右侧搜索标签区域开始 -->
+            <style>
+                #showkws {
+                    width: 250px;
+                    height: 150px;
+                    border: 1px solid #E6E6E6;
+                    position: absolute;
+                    background: #fff;
+                    display: none;
+
+                }
+            </style>
+            <script src="../assets/js/common.js"></script>
+            <script src="../assets/js/jquery-1.11.3.js"></script>
+            <script>
+                $(function () {
+                    $("#id").keyup(function () {
+                        var xhr = createXhr();
+                        var url = "/search?kws=" + this.value;
+                        xhr.open("get", url, true);
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                var arr = JSON.parse(xhr.responseText);
+                                if (arr.length > 0) {
+                                    $("#showkws")("");
+                                    $("#showkws").css("display", "block");
+                                    $.each(arr, function (i, obj) {
+                                        var $a = $("<p><a href=" + "/shops?kws=" + obj + ">" + obj + "</a></p>");
+                                        $("#showkws").append($a);
+                                    });
+                                } else {
+                                    $("#showkws").css("display", "none");
+                                }
+                            }
+                            ;
+                        };
+                        xhr.send(null);
+                    });
+                });
+            </script>
+            <script>
+                $(function () {
+                    $("#btnKws").click(function () {
+                        $.get("/shops", function (resText) {
+
+                        }, "json");
+                    });
+                });
+            </script>
+            <div class="col-lg-4 col-xl-3 col-md-4">
+                <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
+                    <div class="sidebar-search">
+                        <form class="header-search-form" action="/shops" method="get">
+                            <input type="text" id="id" placeholder="关键字" name="kws1">
+                            <div id="showkws"></div>
+                            <button id="btnKws">
+                                <i class="ion-android-search"></i>
+                            </button>
+                        </form>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-5">
-                        <div class="footer-social">
+
+                    {#                        <div class="shop-widget mt-25 shop-sidebar-border pt-25">#}
+                    {#                            <h4 class="shop-sidebar-title">猜你喜欢</h4>#}
+                    {#                            <div class="sidebar-list-style mt-20">#}
+                    {#                                <ul>#}
+                    {#                                    {% for classify in classifies %}#}
+                    {#                                    <li><a href="/rightSideTag?id={{ classify.id }}">{{ classify.classify_name }}</a></li>#}
+                    {#                                    {% endfor %}#}
+                    {#                                </ul>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+
+                    <div class="shop-widget mt-30 shop-sidebar-border pt-25">
+                        <h4 class="shop-sidebar-title">分类 </h4>
+                        <div class="sidebar-list-style mt-20">
                             <ul>
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                                <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
+                                {% for like in params.classifies %}
+                                    <div name="values" style="display: none">
+                                        <input type="text" value="{{ like.id }}">
+
+                                    </div>
+                                    <li><a href="/classify?id={{ like.id }}"> {{ like.classify_name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shop-widget mt-25 shop-sidebar-border pt-25">
+                        <h4 class="shop-sidebar-title">热门标签</h4>
+                        <div class="shop-tags mt-25">
+                            <ul>
+                                {% for good in params.goods %}
+                                    {% if  good %}
+                                        <div name="values" style="display: none">
+                                            <input type="text" value="{{ good.shop_id }}">
+                                        </div>
+                                        <li><a href="/hotTag?id={{ good.shop_id }}">{{ good.goods_name }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 主体右侧搜索标签区域结束 -->
+        </div>
+    </div>
+</div>
+<!-- 主体结束 -->
+
+
+<!-- 底部导航栏 -->
+<div class="footer-area black-bg-2 pt-70">
+    <div class="footer-top-area pb-18">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer-about mb-40">
+                        <div class="footer-logo">
+                            <a href="index">
+                                <img src="../assets/img/logo/footer-logo.png" alt="">
+                            </a>
+                        </div>
+                        <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
+                        <div class="payment-img">
+                            <a href="#">
+                                <img src="../assets/img/icon-img/payment.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="footer-widget mb-40">
+                        <div class="footer-title mb-22">
+                            <h4>帮助中心</h4>
+                        </div>
+                        <div class="footer-content">
+                            <ul>
+                                <li><a href="about-us">关于我们</a></li>
+                                <li><a href="#">配送信息</a></li>
+                                <li><a href="#">隐私政策</a></li>
+                                <li><a href="#">条款和条件</a></li>
+                                <li><a href="#">客户服务</a></li>
+                                <li><a href="#">改进意见</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="footer-widget mb-40">
+                        <div class="footer-title mb-22">
+                            <h4>个人账户</h4>
+                        </div>
+                        <div class="footer-content">
+                            <ul>
+                                <li><a href="my-account">我的账户</a></li>
+                                <li><a href="#">历史订单</a></li>
+                                <li><a href="wishlist">愿望清单</a></li>
+                                <li><a href="#">个人信息</a></li>
+                                <li><a href="#">历史订单</a></li>
+                                <li><a href="#">国际订单</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer-widget mb-40">
+                        <div class="footer-title mb-22">
+                            <h4>关于我们</h4>
+                        </div>
+                        <div class="footer-contact">
+                            <ul>
+                                <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
+                                <li>电话咨询: 400-100-6789</li>
+                                <li>电子邮件: <a href="#">Info@example.com</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-35 footer-title mb-22">
+                            <h4>服务支持</h4>
+                        </div>
+                        <div class="footer-time">
+                            <ul>
+                                <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
+                                <li>周一 - 周日: <span>营业</span></li>
                             </ul>
                         </div>
                     </div>
@@ -504,105 +472,134 @@
             </div>
         </div>
     </div>
-    <!-- 底部导航栏结束 -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+    <div class="footer-bottom-area border-top-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-7">
+                    <div class="copyright">
+                        <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12">
-                            <!-- Thumbnail Large Image start -->
-                            <div class="tab-content">
-                                <div id="pro-1" class="tab-pane fade show active">
-                                    <img src="../assets/img/product-details/product-detalis-l1.jpg" alt="">
-                                </div>
-                                <div id="pro-2" class="tab-pane fade">
-                                    <img src="../assets/img/product-details/product-detalis-l2.jpg" alt="">
-                                </div>
-                                <div id="pro-3" class="tab-pane fade">
-                                    <img src="../assets/img/product-details/product-detalis-l3.jpg" alt="">
-                                </div>
-                                <div id="pro-4" class="tab-pane fade">
-                                    <img src="../assets/img/product-details/product-detalis-l4.jpg" alt="">
-                                </div>
+                <div class="col-lg-6 col-md-6 col-sm-5">
+                    <div class="footer-social">
+                        <ul>
+                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                            <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+                            <li><a href="#"><i class="ion-social-rss"></i></a></li>
+                            <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 底部导航栏结束 -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-12">
+                        <!-- Thumbnail Large Image start -->
+                        <div class="tab-content">
+                            <div id="pro-1" class="tab-pane fade show active">
+                                <img src="../assets/img/product-details/product-detalis-l1.jpg" alt="">
                             </div>
-                            <!-- Thumbnail Large Image End -->
-                            <!-- Thumbnail Image End -->
-                            <div class="product-thumbnail">
-                                <div class="thumb-menu owl-carousel nav nav-style" role="tablist">
-                                    <a class="active" data-toggle="tab" href="#pro-1"><img src="../assets/img/product-details/product-detalis-s1.jpg"
-                                            alt=""></a>
-                                    <a data-toggle="tab" href="#pro-2"><img src="../assets/img/product-details/product-detalis-s2.jpg"
-                                            alt=""></a>
-                                    <a data-toggle="tab" href="#pro-3"><img src="../assets/img/product-details/product-detalis-s3.jpg"
-                                            alt=""></a>
-                                    <a data-toggle="tab" href="#pro-4"><img src="../assets/img/product-details/product-detalis-s4.jpg"
-                                            alt=""></a>
-                                </div>
+                            <div id="pro-2" class="tab-pane fade">
+                                <img src="../assets/img/product-details/product-detalis-l2.jpg" alt="">
                             </div>
-                            <!-- Thumbnail image end -->
+                            <div id="pro-3" class="tab-pane fade">
+                                <img src="../assets/img/product-details/product-detalis-l3.jpg" alt="">
+                            </div>
+                            <div id="pro-4" class="tab-pane fade">
+                                <img src="../assets/img/product-details/product-detalis-l4.jpg" alt="">
+                            </div>
                         </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12">
-                            <div class="modal-pro-content">
-                                <h3>PRODUCTS NAME HERE </h3>
-                                <div class="product-price-wrapper">
-                                    <span>$120.00</span>
-                                    <span class="product-price-old">$162.00 </span>
-                                </div>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>
-                                <div class="quick-view-select">
-                                    <div class="select-option-part">
-                                        <label>Size*</label>
-                                        <select class="select">
-                                            <option value="">S</option>
-                                            <option value="">M</option>
-                                            <option value="">L</option>
-                                        </select>
-                                    </div>
-                                    <div class="quickview-color-wrap">
-                                        <label>Color*</label>
-                                        <div class="quickview-color">
-                                            <ul>
-                                                <li class="blue">b</li>
-                                                <li class="red">r</li>
-                                                <li class="pink">p</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-quantity">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
-                                    </div>
-                                    <button>Add to cart</button>
-                                </div>
-                                <span><i class="fa fa-check"></i> In stock</span>
+                        <!-- Thumbnail Large Image End -->
+                        <!-- Thumbnail Image End -->
+                        <div class="product-thumbnail">
+                            <div class="thumb-menu owl-carousel nav nav-style" role="tablist">
+                                <a class="active" data-toggle="tab" href="#pro-1"><img
+                                        src="../assets/img/product-details/product-detalis-s1.jpg"
+                                        alt=""></a>
+                                <a data-toggle="tab" href="#pro-2"><img
+                                        src="../assets/img/product-details/product-detalis-s2.jpg"
+                                        alt=""></a>
+                                <a data-toggle="tab" href="#pro-3"><img
+                                        src="../assets/img/product-details/product-detalis-s3.jpg"
+                                        alt=""></a>
+                                <a data-toggle="tab" href="#pro-4"><img
+                                        src="../assets/img/product-details/product-detalis-s4.jpg"
+                                        alt=""></a>
                             </div>
+                        </div>
+                        <!-- Thumbnail image end -->
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        <div class="modal-pro-content">
+                            <h3>PRODUCTS NAME HERE </h3>
+                            <div class="product-price-wrapper">
+                                <span>$120.00</span>
+                                <span class="product-price-old">$162.00 </span>
+                            </div>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+                                egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>
+                            <div class="quick-view-select">
+                                <div class="select-option-part">
+                                    <label>Size*</label>
+                                    <select class="select">
+                                        <option value="">S</option>
+                                        <option value="">M</option>
+                                        <option value="">L</option>
+                                    </select>
+                                </div>
+                                <div class="quickview-color-wrap">
+                                    <label>Color*</label>
+                                    <div class="quickview-color">
+                                        <ul>
+                                            <li class="blue">b</li>
+                                            <li class="red">r</li>
+                                            <li class="pink">p</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-quantity">
+                                <div class="cart-plus-minus">
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
+                                </div>
+                                <button>Add to cart</button>
+                            </div>
+                            <span><i class="fa fa-check"></i> In stock</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal end -->
+</div>
+<!-- Modal end -->
 
 
-    <!-- all js here -->
-    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="../assets/js/popper.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="../assets/js/isotope.pkgd.min.js"></script>
-    <script src="../assets/js/ajax-mail.js"></script>
-    <script src="../assets/js/owl.carousel.min.js"></script>
-    <script src="../assets/js/plugins.js"></script>
-    <script src="../assets/js/main.js"></script>
+<!-- all js here -->
+<script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+<script src="../assets/js/popper.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="../assets/js/isotope.pkgd.min.js"></script>
+<script src="../assets/js/ajax-mail.js"></script>
+<script src="../assets/js/owl.carousel.min.js"></script>
+<script src="../assets/js/plugins.js"></script>
+<script src="../assets/js/main.js"></script>
 </body>
 
 </html>

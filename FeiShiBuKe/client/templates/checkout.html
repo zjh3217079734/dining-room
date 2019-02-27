@@ -1,200 +1,594 @@
-﻿{% extends 'index.html' %}
-{% block content %}
+﻿<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>非食不可</title>
+    <meta name="description" content="">
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.png">
+    <!-- 主页2 -->
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/chosen.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+</head>
+
+<body>
+
+<!-- 顶部导航栏开始 -->
+<header class="header-area">
+    <div class="header-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-12 col-sm-4">
+                    <div class="logo">
+                        <a href="index">
+                            <img alt="" src="../assets/img/logo/logo.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8 col-12 col-sm-8">
+                    <div class="header-middle-right f-right">
+                        <div class="header-login">
+                            <a href="login-register">
+                                <div class="header-icon-style">
+                                    <i class="icon-user icons"></i>
+                                </div>
+                                <div class="login-text-content">
+                                    <p>
+                                        {% if params.username %}
+                                            <span>
+                                                    欢迎:{{ params.username }}
+                                                    <a href="/logout">退出</a>
+                                            {% else %}
+                                                    <a href="/login">登录</a>
+                                                </span>
+                                        {% endif %}
+                                        <br> or
+                                        <span>
+                                                <a href="/register">注册</a>
+                                            </span>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="header-wishlist">
+                        </div>
+                        <div class="header-cart">
+                            <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
+                                <div class="header-icon-style">
+                                    <i class="icon-handbag icons"></i>
+                                    <!-- 商品数量标识 -->
+                                    <span class="count-style">3+</span>
+                                    <!-- 商品数量标识,数量后面跟+ -->
+                                </div>
+                                <div class="cart-text">
+                                    <span class="digit">购物车</span>
+                                    <!-- 当前购物车的统计 -->
+                                    <span class="cart-digit-bold">$209.00</span>
+                                </div>
+                            </a>
+                            <!-- <div class="shopping-cart-content">
+                                    <ul>
+                                        <li class="single-shopping-cart">
+                                            <div class="shopping-cart-img">
+                                                <a href="cart-page"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="cart-page">Phantom Remote </a></h4>
+                                                <h6>Qty: 02</h6>
+                                                <span>$260.00</span>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                <a href="#"><i class="ion ion-close"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="single-shopping-cart">
+                                            <div class="shopping-cart-img">
+                                                <a href="cart-page"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="cart-page">Phantom Remote</a></h4>
+                                                <h6>Qty: 02</h6>
+                                                <span>$260.00</span>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                // ion是删除图标,做成动态删除数据就好了
+                                                <a href="#"><i class="ion ion-close"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="shopping-cart-total">
+                                        <h4>Shipping : <span>$20.00</span></h4>
+                                        <h4>Total : <span class="shop-total">$260.00</span></h4>
+                                    </div>
+                                    <div class="shopping-cart-btn">
+                                        <a onclick="window.location = 'cart-page'" href="javascript:void(0);">view
+                                            cart</a>
+                                        <a onclick="window.location = 'checkout'" href="javascript:void(0);">checkout</a>
+                                    </div>
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom transparent-bar black-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li class="mega-menu-position top-hover"><a href="index">首页</a></li>
+                                <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>
+                                <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
+                                <li class="mega-menu-position top-hover"><a href="cart-page">购物车</a></li>
+                                <li class="mega-menu-position top-hover"><a href="checkout">订单</a></li>
+                                <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
+                                <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>
+                                <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile-menu-area-start -->
+    <!-- 下面是移动端的内容 -->
+    <div class="mobile-menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul class="menu-overflow" id="nav">
+                                <li><a href="index">首页</a></li>
+                                <li><a href="shops">发现商家</a></li>
+                                <!-- <li><a href="shop-list">点菜</a></li> -->
+                                <li><a href="cart-page">购物车</a></li>
+                                <li><a href="checkout">订单</a></li>
+                                <li><a href="about-us">关于我们</a></li>
+                                <!-- <li><a href="contact">联系我们</a></li> -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile-menu-area-end -->
+</header>
+<!-- 顶部导航栏结束 -->
+
+
 <script>
 
-    function checkoutpost1(){
+    function checkoutpost1() {
         btn = $("#btn1").val()
         $.post("/checkoutajax",
             {
-                status:btn
+                status: btn
             },
-        function(data,status){
-            $("#all").html(data)
-        });
+            function (data, status) {
+                $("#all").html(data)
+            });
     };
-    function checkoutpost2(){
+
+    function checkoutpost2() {
         btn = $("#btn2").val()
         $.post("/checkoutajax",
             {
-                status:btn
+                status: btn
             },
-        function(data,status){
-            $("#all").html(data)
-        });
+            function (data, status) {
+                $("#all").html(data)
+            });
     };
-    function checkoutpost3(){
+
+    function checkoutpost3() {
         btn = $("#btn3").val()
         $.post("/checkoutajax",
             {
-                status:btn
+                status: btn
             },
-        function(data,status){
-            $("#all").html(data)
-        });
+            function (data, status) {
+                $("#all").html(data)
+            });
     };
 
 </script>
 
-<div id="all" >
-<div  class="breadcrumb-area gray-bg">
-    <div class="container">
-        <div class="breadcrumb-content">
-            <ul>
-                <li><a href="index.html">首页</a></li>
-                <li class="active"> 订单 </li>
-            </ul>
+<div id="all">
+    <div class="breadcrumb-area gray-bg">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li class="active"> 订单</li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<!-- checkout-area start -->
+    <!-- checkout-area start -->
 
-<div class="checkout-area pb-80 pt-10">
-    <div style="margin-left:150px;margin-bottom: 50px">
-        <input id="btn1" type="button" value="未付款" style="height:25px;width:100px" onclick="checkoutpost1()">
-        <input id="btn2" type="button" value="已付款" style="height:25px;width:100px" onclick="checkoutpost2()">
-        <input id="btn3" type="button" value="历史订单" style="height:25px;width:100px" onclick="checkoutpost3()">
-    </div>
+    <div class="checkout-area pb-80 pt-10">
+        <div style="margin-left:150px;margin-bottom: 50px">
+            <input id="btn1" type="button" value="未付款" style="height:25px;width:100px" onclick="checkoutpost1()">
+            <input id="btn2" type="button" value="已付款" style="height:25px;width:100px" onclick="checkoutpost2()">
+            <input id="btn3" type="button" value="历史订单" style="height:25px;width:100px" onclick="checkoutpost3()">
+        </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="checkout-wrapper">
-                    <div id="faq" class="panel-group">
-                        <!-- ------------------------------------------------------- -->
-                        {% for od in params.order %}
-                        {% if od.status == 4 %}
-                        <div class="panel panel-default" style="display:none">
-                        {% else %}
-                        <div class="panel panel-default">
-                        {% endif %}
-                                <div class="panel-heading">
-                                    <h5 class="panel-title">
-                                        <a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="checkout-wrapper">
+                        <div id="faq" class="panel-group">
+                            <!-- ------------------------------------------------------- -->
+                            {% for od in params.order %}
+                                {% if od.status == 4 %}
+                                    <div class="panel panel-default" style="display:none">
+                                {% else %}
+                                    <div class="panel panel-default">
+                                {% endif %}
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a>
                                         <p>
                                             <span style="font-weight:bold;float:left;margin-right: 5px">订单号:</span>
                                             <span style="float:left;margin-right: 20px">{{ od.order_id }} </span>
 
                                             <span style="font-weight:bold;float:left;margin-right: 5px">创建时间:</span>
-                                            <span style="float:left;margin-right: 10px">{{od.create_time}} </span>
+                                            <span style="float:left;margin-right: 10px">{{ od.create_time }} </span>
 
-                                        <span style="float:right" >
+                                            <span style="float:right">
                                             <span style="font-weight:bold;float:left;margin-right: 5px">金额:</span>
                                             <span style="float:left;margin-right: 10px">{{ od.pay_money }}元</span>
                                                 
                                         </span>
-  
+
                                         </p>
                                     </a>
-                                        <a data-toggle="collapse" data-parent="#faq" href="#{{od.id}}">
-                                            
-                                            <img src="{{params.shops[od.order_id].shop_img}}" width="40px"
-                                                height="40px">
-                                            
-                                            <span style="font-weight:bold;margin-right: 30px">{{params.shops[od.order_id].shop_name}}</span>
-                                            <!-- {{ params.odds}} -->
-                                            {% for good in params.odds[od.order_id] %}
+                                    <a data-toggle="collapse" data-parent="#faq" href="#{{ od.id }}">
+
+                                        <img src="{{ params.shops[od.order_id].shop_img }}" width="40px"
+                                             height="40px">
+
+                                        <span style="font-weight:bold;margin-right: 30px">{{ params.shops[od.order_id].shop_name }}</span>
+                                        <!-- {{ params.odds}} -->
+                                        {% for good in params.odds[od.order_id] %}
                                             {% if loop.first %}
-                                            {% if loop.length==1%}
-                                            <span>{{good.goods_name}}</span>
-                                            {% else %}
-                                            <span>{{good.goods_name}} 等{{loop.length}}件商品</span>
+                                                {% if loop.length==1 %}
+                                                    <span>{{ good.goods_name }}</span>
+                                                {% else %}
+                                                    <span>{{ good.goods_name }} 等{{ loop.length }}件商品</span>
+                                                {% endif %}
                                             {% endif %}
-                                            {% endif %}
-                                            {% endfor %}
-
-                                            {% if od.status == 0 %}
-                                            <span style="float:right;font-weight:bold">未付款</span>
-                                            {% elif od.status == 1 %}
-                                            <span style="float:right;font-weight:bold">已付款</span>
-                                            {% elif od.status == 2 %}
-                                            <span style="float:right;font-weight:bold">已完成</span>
-                                            {% elif od.status == 3 %}
-                                            <span style="float:right;font-weight:bold">取消</span>
-                                            {% endif %}
-                                               
-                                            </span>
-
-                                        </a>
-                                        <div style="float:left;padding:15px 100px">
-                                            <span style="font-weight:bold;float:left;margin-right: 20px;margin-left: 100px">备注:</span>
-                                            <span style="font-weight:bold;float:left;margin-right: 5px;margin-left: 150px">{{ od.remark }}</span>
-                                            
-                                        </div>
+                                        {% endfor %}
 
                                         {% if od.status == 0 %}
+                                            <span style="float:right;font-weight:bold">未付款</span>
+                                        {% elif od.status == 1 %}
+                                            <span style="float:right;font-weight:bold">已付款</span>
+                                        {% elif od.status == 2 %}
+                                            <span style="float:right;font-weight:bold">已完成</span>
+                                        {% elif od.status == 3 %}
+                                            <span style="float:right;font-weight:bold">取消</span>
+                                        {% endif %}
+
+                                        </span>
+
+                                    </a>
+                                    <div style="float:left;padding:15px 100px">
+                                        <span style="font-weight:bold;float:left;margin-right: 20px;margin-left: 100px">备注:</span>
+                                        <span style="font-weight:bold;float:left;margin-right: 5px;margin-left: 150px">{{ od.remark }}</span>
+
+                                    </div>
+
+                                    {% if od.status == 0 %}
                                         <form method="POST" action="/zhifu" style="float:right;border-style: solid;
-                                        border-color: darkkhaki;" class="billing-btn" >
-                                            <input type="text" value="{{od.order_id}}"" name="zhifu" hidden="hidden">
+                                        border-color: darkkhaki;" class="billing-btn">
+                                            <input type="text" value="{{ od.order_id }}"" name="zhifu" hidden="hidden">
                                             <button type="submit">支付</button>
                                         </form>
-                                        {% elif od.status == 1 %}
+                                    {% elif od.status == 1 %}
                                         <form method="POST" action="/remove" style="float:right;border-style: solid;
                                         border-color: darkkhaki;" class="billing-btn">
-                                            <input type="text" value="{{od.order_id}}" name="remove" hidden="hidden">
+                                            <input type="text" value="{{ od.order_id }}" name="remove" hidden="hidden">
                                             <button type="submit">取消订单</button>
                                         </form>
-                                        {% endif %}
-                                    </h5>
+                                    {% endif %}
+                                </h5>
 
-                                </div>
-                        
-                                <div id="{{od.id}}" class="panel-collapse collapse"
-                                    style="border-bottom: 50px solid #ebebeb;">
-                                    <div class="panel-body">
-                                        <div class="order-review-wrapper">
-                                            <div class="order-review">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="width-1">商品名</th>
-                                                                <th class="width-2">单价</th>
-                                                                <th class="width-3">数量</th>
-                                                                <th class="width-4">价格</th>
-                                                               
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            {% for good in params.odds[od.order_id] %}
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="o-pro-dec">
-                                                                        <p><img src="{{good.image_url}}" width="40px" height="40px">{{good.goods_name}}</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-price">
-                                                                        <p>{{good.price}}</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-qty">
-                                                                        <p>{{good.num}}</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="o-pro-subtotal">
-                                                                        <p>{{good.count_money}}</p>
-                                                                    </div>
-                                                                </td>
-                                                            <tr>
-                                                            {% endfor %}
-                                                            
-                                                        </tbody>
+                            </div>
 
-                                                    </table>
-                                                </div>
+                            <div id="{{ od.id }}" class="panel-collapse collapse"
+                                 style="border-bottom: 50px solid #ebebeb;">
+                                <div class="panel-body">
+                                    <div class="order-review-wrapper">
+                                        <div class="order-review">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="width-1">商品名</th>
+                                                        <th class="width-2">单价</th>
+                                                        <th class="width-3">数量</th>
+                                                        <th class="width-4">价格</th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for good in params.odds[od.order_id] %}
+                                                        <tr>
+                                                            <td>
+                                                                <div class="o-pro-dec">
+                                                                    <p><img src="{{ good.image_url }}" width="40px"
+                                                                            height="40px">{{ good.goods_name }}</p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="o-pro-price">
+                                                                    <p>{{ good.price }}</p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="o-pro-qty">
+                                                                    <p>{{ good.num }}</p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="o-pro-subtotal">
+                                                                    <p>{{ good.count_money }}</p>
+                                                                </div>
+                                                            </td>
+                                                        <tr>
+                                                    {% endfor %}
+
+                                                    </tbody>
+
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            </div>
+                            {% endfor %}
+                            </div>
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-     </div>
-</div>
-</div>
-    {% endblock %}
+    </div>
+
+
+    <!-- 底部导航栏 -->
+    <div class="footer-area black-bg-2 pt-70">
+        <div class="footer-top-area pb-18">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer-about mb-40">
+                            <div class="footer-logo">
+                                <a href="index">
+                                    <img src="../assets/img/logo/footer-logo.png" alt="">
+                                </a>
+                            </div>
+                            <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
+                            <div class="payment-img">
+                                <a href="#">
+                                    <img src="../assets/img/icon-img/payment.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>帮助中心</h4>
+                            </div>
+                            <div class="footer-content">
+                                <ul>
+                                    <li><a href="about-us">关于我们</a></li>
+                                    <li><a href="#">配送信息</a></li>
+                                    <li><a href="#">隐私政策</a></li>
+                                    <li><a href="#">条款和条件</a></li>
+                                    <li><a href="#">客户服务</a></li>
+                                    <li><a href="#">改进意见</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>个人账户</h4>
+                            </div>
+                            <div class="footer-content">
+                                <ul>
+                                    <li><a href="my-account">我的账户</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="wishlist">愿望清单</a></li>
+                                    <li><a href="#">个人信息</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="#">国际订单</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>关于我们</h4>
+                            </div>
+                            <div class="footer-contact">
+                                <ul>
+                                    <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
+                                    <li>电话咨询: 400-100-6789</li>
+                                    <li>电子邮件: <a href="#">Info@example.com</a></li>
+                                </ul>
+                            </div>
+                            <div class="mt-35 footer-title mb-22">
+                                <h4>服务支持</h4>
+                            </div>
+                            <div class="footer-time">
+                                <ul>
+                                    <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
+                                    <li>周一 - 周日: <span>营业</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-area border-top-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-7">
+                        <div class="copyright">
+                            <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-5">
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
+                                <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 底部导航栏结束 -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">x</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <!-- Thumbnail Large Image start -->
+                            <div class="tab-content">
+                                <div id="pro-1" class="tab-pane fade show active">
+                                    <img src="../assets/img/product-details/product-detalis-l1.jpg" alt="">
+                                </div>
+                                <div id="pro-2" class="tab-pane fade">
+                                    <img src="../assets/img/product-details/product-detalis-l2.jpg" alt="">
+                                </div>
+                                <div id="pro-3" class="tab-pane fade">
+                                    <img src="../assets/img/product-details/product-detalis-l3.jpg" alt="">
+                                </div>
+                                <div id="pro-4" class="tab-pane fade">
+                                    <img src="../assets/img/product-details/product-detalis-l4.jpg" alt="">
+                                </div>
+                            </div>
+                            <!-- Thumbnail Large Image End -->
+                            <!-- Thumbnail Image End -->
+                            <div class="product-thumbnail">
+                                <div class="thumb-menu owl-carousel nav nav-style" role="tablist">
+                                    <a class="active" data-toggle="tab" href="#pro-1"><img
+                                            src="../assets/img/product-details/product-detalis-s1.jpg"
+                                            alt=""></a>
+                                    <a data-toggle="tab" href="#pro-2"><img
+                                            src="../assets/img/product-details/product-detalis-s2.jpg"
+                                            alt=""></a>
+                                    <a data-toggle="tab" href="#pro-3"><img
+                                            src="../assets/img/product-details/product-detalis-s3.jpg"
+                                            alt=""></a>
+                                    <a data-toggle="tab" href="#pro-4"><img
+                                            src="../assets/img/product-details/product-detalis-s4.jpg"
+                                            alt=""></a>
+                                </div>
+                            </div>
+                            <!-- Thumbnail image end -->
+                        </div>
+                        <div class="col-md-7 col-sm-7 col-xs-12">
+                            <div class="modal-pro-content">
+                                <h3>PRODUCTS NAME HERE </h3>
+                                <div class="product-price-wrapper">
+                                    <span>$120.00</span>
+                                    <span class="product-price-old">$162.00 </span>
+                                </div>
+                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+                                    egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>
+                                <div class="quick-view-select">
+                                    <div class="select-option-part">
+                                        <label>Size*</label>
+                                        <select class="select">
+                                            <option value="">S</option>
+                                            <option value="">M</option>
+                                            <option value="">L</option>
+                                        </select>
+                                    </div>
+                                    <div class="quickview-color-wrap">
+                                        <label>Color*</label>
+                                        <div class="quickview-color">
+                                            <ul>
+                                                <li class="blue">b</li>
+                                                <li class="red">r</li>
+                                                <li class="pink">p</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-quantity">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
+                                    </div>
+                                    <button>Add to cart</button>
+                                </div>
+                                <span><i class="fa fa-check"></i> In stock</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+
+
+    <!-- all js here -->
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/ajax-mail.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

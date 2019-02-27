@@ -24,7 +24,7 @@ def Create_App():
     app.config['DEBUG'] = True
 
     # 为app指定数据库的配置
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:zy1205010634@localhost:3306/project"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:admin@localhost:3306/client3"
     app.config['SQLALCHEMY_COMMIT_ON_TEAROWN'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     # 配置session所需要的secret_key

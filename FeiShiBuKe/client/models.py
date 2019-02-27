@@ -79,7 +79,7 @@ class Shop(db.Model):
         db.String(10), nullable=True)
     # ----------下面都是关系映射------------------
     # "与菜单的外键关联映射"
-    shop_meun = db.relationship(
+    shop_menu = db.relationship(
         'Menu',
         backref='menu_shop',
         lazy='dynamic'
@@ -90,6 +90,7 @@ class Shop(db.Model):
         backref='goods_shop',
         lazy='dynamic'
     )
+
     # 与门店申请表的关系映射
     shop_apply = db.relationship(
         'Apply',
