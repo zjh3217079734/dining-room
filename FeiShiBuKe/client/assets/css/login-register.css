@@ -32,6 +32,13 @@ input.group-name,input.group-password,input.group-phone{
 	width:400px;
 }
 
+input#code_input{
+	float: left;
+    width: 150px;
+    height: 45px;
+	margin-bottom: 22px;
+}
+
 form.form-login{
 	width: 400px;
 	margin-left: 90px;
@@ -40,7 +47,8 @@ form.form-login{
 canvas#verifyCanvas{
 	position:relative;
 	left: 160px;
-	bottom: 72px;
+	bottom: 67px;
+	height: 45px;
 }
 
 input#code_input{
@@ -49,20 +57,7 @@ input#code_input{
 	height: 44px;
 }
 
-button#my_button.submit-log{
-	margin: 30px;
-	left: 40px;
-	bottom: 5px;
-}
-
-button#my_button.submit{
-	position:relative;
-	margin: 25px;
-	right: 5px;
-	bottom: 5px;
-}
-
-button#btnReg,button#reSet{
+button#reSet{
 	margin-left: 200px;
 }
 
@@ -113,6 +108,38 @@ label#remember-pwd:hover{
 	text-decoration: none;
 }
 
-/*span#divname.tips,span#divpassword1,span#divpassword2{*/
-	/*width: 150px;*/
-/*}*/
+button#my_button.submit{
+	border: medium none;
+    border-radius: 3px;
+	cursor: pointer;
+    font-size: 14px;
+    font-weight: 500px;
+    line-height: 1px;
+    padding: 11px 30px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+	overflow: visible;
+	margin: 25px;
+	font-family: inherit;
+	touch-action: manipulation;
+	box-sizing: border-box;
+	align-items: flex-start;
+    text-align: center;
+	text-rendering: auto;
+	letter-spacing: normal;
+    word-spacing: normal;
+	text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+	font: 400 13.3333px Arial;
+	left: 190px;
+}
+
+button#my_button.submit:hover {
+    background-color: #e02c2b;
+    color: #fff;
+}
+
+button#btnLog{
+	margin-left: 165px;
+}

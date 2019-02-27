@@ -212,13 +212,8 @@
                                                     <label id="remember-pwd">记住密码</label>
                                                     <a class="reset_password" href="/resetpwd">忘记密码？</a>
                                                 </div>
+                                                <button type="submit" id="btnLog" value="登录"><span>登录</span></button>
 
-                                                <div class="verification-content">
-                                                    <input type="text" id="code_input" value="" placeholder="请输入验证码"/>
-		                                            <div id="v_container" style="width:145px; height:40px;"></div>
-                                                </div>
-                                                    <button class="submit" id="my_button">登录</button>
-{#                                                <button type="submit" id="btnLog" value="登录"><span>登录</span></button>#}
                                             </div>
                                         </form>
                                     </div>
@@ -232,20 +227,13 @@
                                             <input class="group-name" type="text" name="uname" onblur="checkna()" placeholder="用户名"><span class="tips" id="divname">长度1~12个字符</span>
                                             <input class="group-password" type="password" name="upwd" onblur="checkpsd1()" placeholder="密码"><span class="tips" id="divpassword1">密码必须由字母和数字组成</span>
                                             <input class="group-password" type="password" name="upwd1" onblur="checkpsd2()" placeholder="确认密码"><span class="tips" id="divpassword2">两次密码需要相同</span>
-                                            <div class="verification-msg">
-                                                <div class="verification-PhoneNum">
-                                                    <input type="text" name="uphone" placeholder="手机号码">
-                                                    <button type="button" class="send-verificationCode">获取短信验证码</button>
-                                                </div>
-                                                <div class="verification-CodeNum">
-                                                    <input type="text" name="verifyCode" placeholder="验证码">
-                                                    <button type="button" class="sub-btn">提交</button>
-                                                </div>
-                                            </div>
+                                            <input class="group-phone" type="text" name="uphone" placeholder="手机号码">
 
-                                            <div class="button-box">
-                                                <button type="submit" id="btnReg" value="注册"><span>注册</span></button>
+                                            <div class="verification-content">
+                                                <input type="text" id="code_input" value="" placeholder="请输入验证码"/>
+                                                <div id="v_container" style="width:145px; height:45px;"></div>
                                             </div>
+                                                <button class="submit" id="my_button" value="注册"><span>注册</span></button>
                                         </form>
                                     </div>
                                 </div>
