@@ -2,7 +2,7 @@
 # 1.创建flask应用(app)以及各种配置
 # 2.创建SQLALCHEMY的应用实例(db);
 
-import pymysql
+# import pymysql
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.mysql import FLOAT
@@ -24,7 +24,7 @@ def Create_App():
     app.config['DEBUG'] = True
 
     # 为app指定数据库的配置
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:admin@localhost:3306/client3"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://zjh:123456@localhost:3306/client2"
     app.config['SQLALCHEMY_COMMIT_ON_TEAROWN'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     # 配置session所需要的secret_key

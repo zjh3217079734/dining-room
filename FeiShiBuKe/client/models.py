@@ -1,8 +1,7 @@
 # 根据数据库编写实体类
 from . import db
-#导入这个,用来使用功能Float精度
+# 导入这个,用来使用功能Float精度
 from sqlalchemy.dialects.mysql import FLOAT
-
 
 
 # 商家账号表
@@ -31,6 +30,7 @@ class Merchant(db.Model):
             lazy="dynamic"  # 实时获取
         )
     )
+
     def __repr__(self):
         return "%s表创建好了" % (self.__class__.__name__)
 
@@ -84,12 +84,12 @@ class Shop(db.Model):
         backref='menu_shop',
         lazy='dynamic'
     )
-    # 与商品表的关系映射
-    shop_goods = db.relationship(
-        'Goods',
-        backref='goods_shop',
-        lazy='dynamic'
-    )
+    # # 与商品表的关系映射--无用了
+    # shop_goods = db.relationship(
+    #     'Goods',
+    #     backref='goods_shop',
+    #     lazy='dynamic'
+    # )
 
     # 与门店申请表的关系映射
     shop_apply = db.relationship(
@@ -100,8 +100,9 @@ class Shop(db.Model):
     shop_order = db.relationship(
         'Order',
         backref='order_shop',
-        lazy ='dynamic',
+        lazy='dynamic',
     )
+
     # 实现与Classify的关联关系(多对多,中间借助classify_shop关联表进行关联)
 
     def __repr__(self):
@@ -116,11 +117,11 @@ class Merchant_shop(db.Model):
         db.Integer, primary_key=True)
 
     #   '商家账号id',不为空,外键为merchant表下的merchant_id
-    #多对多在merchant表里面
+    # 多对多在merchant表里面
     merchant_id = db.Column(db.Integer, db.ForeignKey("merchant.id"))
 
     #   '门店id',不为空,外键为shop表下的id
-    #多对多在merchant表里面
+    # 多对多在merchant表里面
     shop_id = db.Column(db.Integer, db.ForeignKey("shop.id"))
     #   '备注门店名',可为空
     remake_name = db.Column(
@@ -164,11 +165,11 @@ class Classify_shop(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     # 类型id.主键,自增长
-        #多对多在classify表里面
+    # 多对多在classify表里面
     classify_id = db.Column(db.Integer, db.ForeignKey("classify.id"))
 
     # 类型名称,不为空
-        #多对多在classify表里面
+    # 多对多在classify表里面
     shop_id = db.Column(db.Integer, db.ForeignKey("shop.id"))
 
     def __repr__(self):
@@ -195,9 +196,9 @@ class Area(db.Model):
 class User(db.Model):
     __tablename__ = "user"
     #    '用户id',主键,自增长
-    user_id = db.Column(db.Integer,  primary_key=True )
+    user_id = db.Column(db.Integer, primary_key=True)
     #    '用户账号；默认用手机号，不得超过11位长度.并且不可重复',
-    user_name = db.Column(db.String(11), nullable=False,unique=True, index=True)
+    user_name = db.Column(db.String(11), nullable=False, unique=True, index=True)
 
     #    '用户密码；用哈希值存入',
     password = db.Column(db.String(40), nullable=False)
@@ -251,6 +252,8 @@ class Goods(db.Model):
 
     # '商品的门店id',
     shop_id = db.Column(db.Integer, db.ForeignKey("shop.id"))
+    # '商品的菜单id
+    menu_id = db.Column(db.Integer, db.ForeignKey("menu.id"))
 
     # 商品名称
     goods_name = db.Column(db.String(10), nullable=False)
@@ -286,7 +289,7 @@ class Order(db.Model):
 
     # # '订单id；格式：年月日(8)+时分秒(6)+商家id(6)+订单号(4)',
     # 商家id不够6位的前面填充0
-    order_id = db.Column(db.String(24), nullable=False,unique=True, index=True)
+    order_id = db.Column(db.String(24), nullable=False, unique=True, index=True)
 
     # #   '门店id',
     shop_id = db.Column(db.Integer, db.ForeignKey("shop.id"))

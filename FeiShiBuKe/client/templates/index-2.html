@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-12 col-sm-4">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="index">
                             <img alt="" src="../assets/img/logo/logo.png">
                         </a>
                     </div>
@@ -13,36 +13,62 @@
                 <div class="col-lg-9 col-md-8 col-12 col-sm-8">
                     <div class="header-middle-right f-right">
                         <div class="header-login">
-                            <a href="login-register.html">
-                                <div class="header-icon-style">
-                                    <i class="icon-user icons"></i>
-                                </div>
-                                <div class="login-text-content">
-                                    <p>
-                                        {% if params.username %}
+                            {% if params.username %}
+                                <a href="/my-account">
+                                    <div class="header-icon-style">
+                                        <i class="icon-user-following icons"></i>
+                                    </div>
+                                    <div class="login-text-content">
+                                        <p>
                                             <span>
-                                                欢迎:**{{ params.username }}**
-                                                <a href="/logout">退出</a> /
-                                        {% else %}
+                                                    欢迎您:
+                                                <b>
+                                                {{ params.username }}
+                                                </b>
+                                                </span>
+                                            <br>
+                                            <span>
+                                                    <a href="/logout">退出当前用户</a>
+                                        </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            {% else %}
+                                <a href="/login">
+                                    <div class="header-icon-style">
+                                        <i class="icon-user-unfollow icons"></i>
+                                    </div>
+                                    <div class="login-text-content">
+                                        <p>
+                                            <span>
                                                 <a href="/login">登录</a>
                                             </span>
-                                        {% endif %}
-                                        <br> or
-                                        <span>
-                                            <a href="/register">注册</a>
-                                        </span>                                       
-                                    </p>
+                                            <br> or
+                                            <span>
+                                                <a href="/register">注册</a>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="header-wishlist">
+                            <a>
+                                <div class="header-icon-style">
+                                    <i class="icon-location-pin icons icons"></i>
+                                </div>
+                                <div class="wishlist-text">
+                                    <p>所在城市<br>
+                                        <span id="area_city2">未知</span></p>
                                 </div>
                             </a>
                         </div>
-                        <div class="header-wishlist">
-                        </div>
                         <div class="header-cart">
-                            <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">
+                            <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
                                 <div class="header-icon-style">
                                     <i class="icon-handbag icons"></i>
                                     <!-- 商品数量标识 -->
-                                    <span class="count-style">3+</span>
+                                    <span class="count-style">0</span>
                                     <!-- 商品数量标识,数量后面跟+ -->
                                 </div>
                                 <div class="cart-text">
@@ -51,46 +77,7 @@
                                     <span class="cart-digit-bold">$209.00</span>
                                 </div>
                             </a>
-                            <!-- <div class="shopping-cart-content">
-                                        <ul>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="cart-page.html">Phantom Remote </a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="cart-page.html"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="cart-page.html">Phantom Remote</a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    // ion是删除图标,做成动态删除数据就好了
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="shopping-cart-total">
-                                            <h4>Shipping : <span>$20.00</span></h4>
-                                            <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-btn">
-                                            <a onclick="window.location = 'cart-page.html'" href="javascript:void(0);">view
-                                                cart</a>
-                                            <a onclick="window.location = 'checkout.html'" href="javascript:void(0);">checkout</a>
-                                        </div>
-                                    </div> -->
+
                         </div>
                     </div>
                 </div>
@@ -104,14 +91,14 @@
                     <div class="main-menu">
                         <nav>
                             <ul>
-                                <li class="mega-menu-position top-hover"><a href="index.html">首页</a></li>
-                                <li class="mega-menu-position top-hover"><a href="shops.html">发现商家</a></li>
-                                <!-- <li class="mega-menu-position top-hover"><a href="shop-list.html">点菜</a></li> -->
-                                <li class="mega-menu-position top-hover"><a href="cart-page.html">购物车</a></li>
-                                <li class="mega-menu-position top-hover"><a href="checkout.html">提交订单</a></li>
-                                <li class="mega-menu-position top-hover"><a href="my-account.html">个人信息</a></li>
-                                <li class="mega-menu-position top-hover"><a href="about-us.html">关于我们</a></li>
-                                <!-- <li class="mega-menu-position top-hover"><a href="contact.html">联系我们</a></li> -->
+                                <li class="mega-menu-position top-hover"><a href="/index">首页</a></li>
+                                {#                                <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>#}
+                                <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
+                                <li class="mega-menu-position top-hover"><a href="/cart-page">购物车</a></li>
+                                <li class="mega-menu-position top-hover"><a href="/checkout">订单</a></li>
+                                <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
+                                {#                                <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>#}
+                                <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
                             </ul>
                         </nav>
                     </div>
@@ -128,13 +115,13 @@
                     <div class="mobile-menu">
                         <nav id="mobile-menu-active">
                             <ul class="menu-overflow" id="nav">
-                                <li><a href="index.html">首页</a></li>
-                                <li><a href="shops.html">发现商家</a></li>
-                                <!-- <li><a href="shop-list.html">点菜</a></li> -->
-                                <li><a href="cart-page.html">购物车</a></li>
-                                <li><a href="checkout.html">提交订单</a></li>
-                                <li><a href="about-us.html">关于我们</a></li>
-                                <!-- <li><a href="contact.html">联系我们</a></li> -->
+                                <li><a href="index">首页</a></li>
+                                <li><a href="shops">发现商家</a></li>
+                                <!-- <li><a href="shop-list">点菜</a></li> -->
+                                <li><a href="cart-page">购物车</a></li>
+                                <li><a href="checkout">订单</a></li>
+                                <li><a href="about-us">关于我们</a></li>
+                                <!-- <li><a href="contact">联系我们</a></li> -->
                             </ul>
                         </nav>
                     </div>

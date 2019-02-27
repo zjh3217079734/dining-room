@@ -31,35 +31,51 @@
 
 <body>
 
-    <!-- 顶部导航栏开始 -->
-    <header class="header-area">
-        <div class="header-middle">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-12 col-sm-4">
-                        <div class="logo">
-                            <a href="index">
-                                <img alt="" src="../assets/img/logo/logo.png">
-                            </a>
-                        </div>
+<!-- 顶部导航栏开始 -->
+<header class="header-area">
+    <div class="header-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-12 col-sm-4">
+                    <div class="logo">
+                        <a href="index">
+                            <img alt="" src="../assets/img/logo/logo.png">
+                        </a>
                     </div>
-                    <div class="col-lg-9 col-md-8 col-12 col-sm-8">
-                        <div class="header-middle-right f-right">
-                            <div class="header-login">
-                                <a href="login-register">
+                </div>
+                <div class="col-lg-9 col-md-8 col-12 col-sm-8">
+                    <div class="header-middle-right f-right">
+                        <div class="header-login">
+                            {% if params.username %}
+                                <a href="/my-account">
                                     <div class="header-icon-style">
-                                        <i class="icon-user icons"></i>
+                                        <i class="icon-user-following icons"></i>
                                     </div>
                                     <div class="login-text-content">
                                         <p>
-                                            {% if params.username %}
-                                                <span>
-                                                    欢迎:{{ params.username }}
-                                                    <a href="/logout">退出</a>
-                                            {% else %}
-                                                    <a href="/login">登录</a>
+                                            <span>
+                                                    欢迎您:
+                                                <b>
+                                                {{ params.username }}
+                                                </b>
                                                 </span>
-                                            {% endif %}
+                                            <br>
+                                            <span>
+                                                    <a href="/logout">退出当前用户</a>
+                                        </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            {% else %}
+                                <a href="/login">
+                                    <div class="header-icon-style">
+                                        <i class="icon-user-unfollow icons"></i>
+                                    </div>
+                                    <div class="login-text-content">
+                                        <p>
+                                            <span>
+                                                <a href="/login">登录</a>
+                                            </span>
                                             <br> or
                                             <span>
                                                 <a href="/register">注册</a>
@@ -67,117 +83,88 @@
                                         </p>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="header-wishlist">
-                            </div>
-                            <div class="header-cart">
-                                <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
-                                    <div class="header-icon-style">
-                                        <i class="icon-handbag icons"></i>
-                                        <!-- 商品数量标识 -->
-                                        <span class="count-style">3+</span>
-                                        <!-- 商品数量标识,数量后面跟+ -->
-                                    </div>
-                                    <div class="cart-text">
-                                        <span class="digit">购物车</span>
-                                        <!-- 当前购物车的统计 -->
-                                        <span class="cart-digit-bold">$209.00</span>
-                                    </div>
-                                </a>
-                                <!-- <div class="shopping-cart-content">
-                                        <ul>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="cart-page"><img alt="" src="../assets/img/cart/cart-1.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="cart-page">Phantom Remote </a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="cart-page"><img alt="" src="../assets/img/cart/cart-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="cart-page">Phantom Remote</a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    // ion是删除图标,做成动态删除数据就好了
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="shopping-cart-total">
-                                            <h4>Shipping : <span>$20.00</span></h4>
-                                            <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-btn">
-                                            <a onclick="window.location = 'cart-page'" href="javascript:void(0);">view
-                                                cart</a>
-                                            <a onclick="window.location = 'checkout'" href="javascript:void(0);">checkout</a>
-                                        </div>
-                                    </div> -->
-                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="header-wishlist">
+                            <a>
+                                <div class="header-icon-style">
+                                    <i class="icon-location-pin icons icons"></i>
+                                </div>
+                                <div class="wishlist-text">
+                                    <p>所在城市<br>
+                                        <span id="area_city">未知</span></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="header-cart">
+                            <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
+                                <div class="header-icon-style">
+                                    <i class="icon-handbag icons"></i>
+                                    <!-- 商品数量标识 -->
+                                    <span class="count-style">0</span>
+                                    <!-- 商品数量标识,数量后面跟+ -->
+                                </div>
+                                <div class="cart-text">
+                                    <span class="digit">购物车</span>
+                                    <!-- 当前购物车的统计 -->
+                                    <span class="cart-digit-bold">$209.00</span>
+                                </div>
+                            </a>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="header-bottom transparent-bar black-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12">
-                        <div class="main-menu">
-                            <nav>
-                                <ul>
-                                    <li class="mega-menu-position top-hover"><a href="index">首页</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>
-                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
-                                    <li class="mega-menu-position top-hover"><a href="cart-page">购物车</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="checkout">订单</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
-                                    <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>
-                                    <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
-                                </ul>
-                            </nav>
-                        </div>
+    </div>
+    <div class="header-bottom transparent-bar black-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li class="mega-menu-position top-hover"><a href="/index">首页</a></li>
+                                {#                                <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>#}
+                                <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
+                                <li class="mega-menu-position top-hover"><a href="/cart-page">购物车</a></li>
+                                <li class="mega-menu-position top-hover"><a href="/checkout">订单</a></li>
+                                <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
+                                {#                                <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>#}
+                                <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- mobile-menu-area-start -->
-        <!-- 下面是移动端的内容 -->
-        <div class="mobile-menu-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mobile-menu">
-                            <nav id="mobile-menu-active">
-                                <ul class="menu-overflow" id="nav">
-                                    <li><a href="index">首页</a></li>
-                                    <li><a href="shops">发现商家</a></li>
-                                    <!-- <li><a href="shop-list">点菜</a></li> -->
-                                    <li><a href="cart-page">购物车</a></li>
-                                    <li><a href="checkout">订单</a></li>
-                                    <li><a href="about-us">关于我们</a></li>
-                                    <!-- <li><a href="contact">联系我们</a></li> -->
-                                </ul>
-                            </nav>
-                        </div>
+    </div>
+    <!-- mobile-menu-area-start -->
+    <!-- 下面是移动端的内容 -->
+    <div class="mobile-menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul class="menu-overflow" id="nav">
+                                <li><a href="index">首页</a></li>
+                                <li><a href="shops">发现商家</a></li>
+                                <!-- <li><a href="shop-list">点菜</a></li> -->
+                                <li><a href="cart-page">购物车</a></li>
+                                <li><a href="checkout">订单</a></li>
+                                <li><a href="about-us">关于我们</a></li>
+                                <!-- <li><a href="contact">联系我们</a></li> -->
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- mobile-menu-area-end -->
-    </header>
-    <!-- 顶部导航栏结束 -->
+    </div>
+    <!-- mobile-menu-area-end -->
+</header>
+<!-- 顶部导航栏结束 -->
 
 
 <div class="breadcrumb-area gray-bg">
@@ -214,56 +201,56 @@
                                             </div> -->
                                             <div class="row">
                                                 <!-- 合并 -->
-                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
+                                                <div class="col-lg-6 col-md-6" >
                                                     <div class="billing-info">
                                                         <label>用户名:</label>
-                                                        <input type="test" name="uname" value="{{ user.user_name }}">
+                                                        <input type="test" name="uname" value="{{ params.user.user_name }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
+                                                <div class="col-lg-6 col-md-6">
                                                     <div class="billing-info">
                                                         <label>昵&nbsp;&nbsp;&nbsp;称:</label>
-                                                        <input type="test" name="unick" value="{{ user.nick }}">
+                                                        <input type="test" name="unick" value="{{ params.user.nick }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
+                                                <div class="col-lg-6 col-md-6">
                                                     <div class="billing-info">
                                                         <label>性&nbsp;&nbsp;&nbsp;别:</label>
                                                         <input type="text" name="usex" placeholder="个人昵称"
-                                                               value="{{ user.sex }}">
+                                                               value="{{ params.user.sex }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
+                                                <div class="col-lg-6 col-md-6" >
                                                     <div class="billing-info">
                                                         <label>电话号:</label>
                                                         <input type="text" name="uphone" placeholder="请输入电话号"
-                                                               value="{{ user.phone }}">
+                                                               value="{{ params.user.phone }}">
                                                     </div>
                                                 </div>
 
                                                 <!-- <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>支付宝:</label>
-                                                        <input type="text" name="zfbao" placeholder="请绑定支付宝账号" value="{{user.user_id}}">
+                                                        <input type="text" name="zfbao" placeholder="请绑定支付宝账号" value="{{params.user.user_id}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>微&nbsp;&nbsp;&nbsp;信:</label>
-                                                        <input type="text" name="wxin" placeholder="微信账号" value="{{user.user_id}}">
+                                                        <input type="text" name="wxin" placeholder="微信账号" value="{{params.user.user_id}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>邮&nbsp;&nbsp;&nbsp;箱:</label>
-                                                        <input type="email" name="email" placeholder="个人邮箱" value="{{user.user_id}}">
+                                                        <input type="email" name="email" placeholder="个人邮箱" value="{{params.user.user_id}}">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>地&nbsp;&nbsp;&nbsp;址:</label>
-                                                        <input type="text" name="address" placeholder="店家地址" value="{{user.user_id}}">
+                                                        <input type="text" name="address" placeholder="店家地址" value="{{params.user.user_id}}">
                                                     </div>
                                                 </div> -->
                                                 <input type="hidden" name="hid" value="Q">
@@ -274,7 +261,7 @@
                                                     <!-- 返回顶部改为 修改 -->
                                                     <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
                                                     <!-- <input type="reset" value="重置" style="width: 60px;height: 30px;"> -->
-                                                    <a href="/my-account">重置</a>
+                                                    <button href="/my-account">重置</button>
                                                 </div>
                                                 <div class="billing-btn">
                                                     <!-- <input type="submit" value="保存"> -->
@@ -302,27 +289,27 @@
                                                 <h5>请重新输入</h5>
                                             </div> -->
                                             <div class="row">
-                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
+                                                <div class="col-lg-12 col-md-12">
                                                     <div class="billing-info">
-                                                        <label>请输入密码</label>
+                                                        <label>请输入新密码</label>
                                                         <input type="password" name="upwd1"
                                                                placeholder="请输入大于6位小于20位的组合密码">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12" style="margin:0 90px;">
+                                                <div class="col-lg-12 col-md-12">
                                                     <div class="billing-info">
-                                                        <label>请重新输入</label>
+                                                        <label>确认新密码</label>
                                                         <input type="password" name="upwd2"
                                                                placeholder="请输入大于6位小于20位的组合密码">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="hidden" value="{{ user.user_name }}">
+                                            <input type="hidden" name="hidden" value="{{ params.user.user_name }}">
                                             <div class="billing-back-btn">
                                                 <div class="billing-btn">
                                                     <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
                                                     <!-- <input type="reset" value="重置" style="width: 60px;height: 30px;"> -->
-                                                    <a href="/my-account">重置</a>
+                                                    <button href="/my-account">重置</button>
                                                 </div>
                                                 <div class="billing-btn">
                                                     <button type="submit">保存</button>
@@ -386,7 +373,7 @@
                         <!-- <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title"><span>3</span>
-                                    <a href="wishlist.html"> <b>历史订单 </b></a></h5>
+                                    <a href="wishlist"> <b>历史订单 </b></a></h5>
                             </div>
                         </div> -->
                     </div>
@@ -404,7 +391,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer-about mb-40">
                         <div class="footer-logo">
-                            <a href="index.html">
+                            <a href="index">
                                 <img src="../assets/img/logo/footer-logo.png" alt="">
                             </a>
                         </div>
@@ -423,7 +410,7 @@
                         </div>
                         <div class="footer-content">
                             <ul>
-                                <li><a href="about-us.html">关于我们</a></li>
+                                <li><a href="about-us">关于我们</a></li>
                                 <li><a href="#">配送信息</a></li>
                                 <li><a href="#">隐私政策</a></li>
                                 <li><a href="#">条款和条件</a></li>
@@ -440,9 +427,9 @@
                         </div>
                         <div class="footer-content">
                             <ul>
-                                <li><a href="my-account.html">我的账户</a></li>
+                                <li><a href="my-account">我的账户</a></li>
                                 <li><a href="#">历史订单</a></li>
-                                <li><a href="wishlist.html">愿望清单</a></li>
+                                <li><a href="wishlist">愿望清单</a></li>
                                 <li><a href="#">个人信息</a></li>
                                 <li><a href="#">历史订单</a></li>
                                 <li><a href="#">国际订单</a></li>
