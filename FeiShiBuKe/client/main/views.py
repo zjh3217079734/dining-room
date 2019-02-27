@@ -47,6 +47,7 @@ def SelectCity():
 # -----------------------------------------------------------
 # 应巧
 
+
 @main.route('/')
 def index_views():
     if 'username' in request.cookies:

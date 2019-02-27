@@ -1,18 +1,17 @@
+div.login-form-container{
+	width: 760px;
+}
+
 div.test-button-box{
 	position:relative;
 	right:200px;
 	left:200px;
 	margin-bottom:20px;
 }
+
 div.verification-content{
 	margin-left:5px;
-	margin-bottom:20px;
-}
-
-input.verification-input{
-	margin:2px;
-	width:120px;
-	height:30px;
+	margin-bottom:10px;
 }
 
 div.verification-content>span{
@@ -29,6 +28,118 @@ div.verification-PhoneNum>input,div.verification-CodeNum>input{
 	height:40px;
 }
 
-input{
-	width:100%;
+input.group-name,input.group-password,input.group-phone{
+	width:400px;
+}
+
+input#code_input{
+	float: left;
+    width: 150px;
+    height: 45px;
+	margin-bottom: 22px;
+}
+
+form.form-login{
+	width: 400px;
+	margin-left: 90px;
+}
+
+canvas#verifyCanvas{
+	position:relative;
+	left: 160px;
+	bottom: 67px;
+	height: 45px;
+}
+
+input#code_input{
+	float: left;
+	width: 148px;
+	height: 44px;
+}
+
+button#reSet{
+	margin-left: 200px;
+}
+
+button#reSet_button{
+	position:relative;
+	left: 40px;
+	bottom: 5px;
+	border: medium none;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+	padding: 11px 30px;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+	outline: medium none;
+	overflow: visible;
+	margin: 30px;
+	font-family: inherit;
+	touch-action: manipulation;
+	box-sizing: border-box;
+	text-align: left;
+	font-style: normal;
+}
+
+button#reSet_button:hover{
+	background-color: #e02c2b;
+	color: #fff;
+}
+
+.tips{
+	color: rgba(0, 0, 0, 0.5);
+	padding-left: 10px;
+}
+.tips_true,.tips_false{
+	padding-left: 10px;
+}
+.tips_true{
+	color: green;
+}
+.tips_false{
+	color: red;
+}
+
+label#remember-pwd:hover{
+	color: #e02c2b;
+	text-decoration: none;
+}
+
+button#my_button.submit{
+	border: medium none;
+    border-radius: 3px;
+	cursor: pointer;
+    font-size: 14px;
+    font-weight: 500px;
+    line-height: 1px;
+    padding: 11px 30px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+	overflow: visible;
+	margin: 25px;
+	font-family: inherit;
+	touch-action: manipulation;
+	box-sizing: border-box;
+	align-items: flex-start;
+    text-align: center;
+	text-rendering: auto;
+	letter-spacing: normal;
+    word-spacing: normal;
+	text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+	font: 400 13.3333px Arial;
+	left: 190px;
+}
+
+button#my_button.submit:hover {
+    background-color: #e02c2b;
+    color: #fff;
+}
+
+button#btnLog{
+	margin-left: 165px;
 }
