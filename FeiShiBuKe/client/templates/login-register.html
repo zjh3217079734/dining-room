@@ -211,57 +211,46 @@
                                             <div class="button-box">
 
                                                 <div class="login-toggle-btn">
-                                                    <input type="checkbox" name="isSaved">
+                                                    <input type="checkbox" name="isSaved" checked="checked">
                                                     <label id="remember-pwd">记住密码</label>
                                                     <a class="reset_password" href="/resetpwd">忘记密码？</a>
                                                 </div>
+                                                <button type="submit" id="btnLog" value="登录"><span>登录</span></button>
 
-                                                <div class="verification-content">
-                                                    <input type="text" id="code_input" value="" placeholder="请输入验证码" />
-                                                    <div id="v_container" style="width:145px; height:40px;"></div>
-                                                </div>
-                                                <button class="submit" id="my_button">登录</button>
-                                                {# <button type="submit" id="btnLog" value="登录"><span>登录</span></button>#}
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-                                <div id="lg2" class="tab-pane">
-                                    <div class="login-form-container">
-                                        <div class="login-register-form">
-                                            <form action="/register" method="post" name="form1">
+                            </div>
+                            <div id="lg2" class="tab-pane">
+                                <div class="login-form-container">
+                                    <div class="login-register-form">
+                                        <form action="/register" method="post" name="form1">
 
-                                                <input class="group-name" type="text" name="uname" onblur="checkna()"
-                                                    placeholder="用户名"><span class="tips" id="divname">长度1~12个字符</span>
-                                                <input class="group-password" type="password" name="upwd" onblur="checkpsd1()"
-                                                    placeholder="密码"><span class="tips" id="divpassword1">密码必须由字母和数字组成</span>
-                                                <input class="group-password" type="password" name="upwd1" onblur="checkpsd2()"
-                                                    placeholder="确认密码"><span class="tips" id="divpassword2">两次密码需要相同</span>
-                                                <div class="verification-msg">
-                                                    <div class="verification-PhoneNum">
-                                                        <input type="text" name="uphone" placeholder="手机号码">
-                                                        <button type="button" class="send-verificationCode">获取短信验证码</button>
-                                                    </div>
-                                                    <div class="verification-CodeNum">
-                                                        <input type="text" name="verifyCode" placeholder="验证码">
-                                                        <button type="button" class="sub-btn">提交</button>
-                                                    </div>
-                                                </div>
+                                            <input class="group-name" type="text" name="uname" onblur="checkna()"
+                                                placeholder="用户名"><span class="tips" id="divname">长度1~12个字符</span>
+                                            <input class="group-password" type="password" name="upwd" onblur="checkpsd1()"
+                                                placeholder="密码"><span class="tips" id="divpassword1">密码必须由字母和数字组成</span>
+                                            <input class="group-password" type="password" name="upwd1" onblur="checkpsd2()"
+                                                placeholder="确认密码"><span class="tips" id="divpassword2">两次密码需要相同</span>
+                                            <input class="group-phone" type="text" name="uphone" placeholder="手机号码">
 
-                                                <div class="button-box">
-                                                    <button type="submit" id="btnReg" value="注册"><span>注册</span></button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                            <div class="verification-content">
+                                                <input type="text" id="code_input" value="" placeholder="请输入验证码"/>
+                                                <div id="v_container" style="width:145px; height:45px;"></div>
+                                            </div>
+                                            <button class="submit" id="my_button" disabled="disabled" value="注册"><span>注册</span></button>
+
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                        
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>    
         <!-- 底部导航栏 -->
         <div class="footer-area black-bg-2 pt-70">
             <div class="footer-top-area pb-18">
@@ -382,9 +371,10 @@
 </body>
 <script>
     var verifyCode = new GVerify("v_container");
-    document.getElementById("my_button").onclick = function () {
+    document.getElementById("code_input").onblur = function () {
         var res = verifyCode.validate(document.getElementById("code_input").value);
         if (res) {
+            $('#my_button').removeAttr("disabled","disabled")
             alert("验证正确");
         } else {
             alert("验证码错误");
