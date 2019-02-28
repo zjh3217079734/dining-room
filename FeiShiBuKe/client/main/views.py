@@ -803,18 +803,21 @@ def goods_views():
 
 
 # --------------------------------------------------------------------
-# -------------------------------------------------------------------
+# ----------------------------------------------------------------
 # shop.html中的购物车按钮
 @main.route('/goodslookup')
 def gouwuche_views():
     username = get_name()
+    if "good" in session:
+        good = session["good"]
+    else:
+        good = []
     shop_id = request.args["shop_id"]
+    session['shop_id'] = shop_id
     goods_id = request.args['goods_id']
-    goodids = []
-    goodids.append(goods_id)
-    session["goods_id"] = goods_id
-    print(session)
-    print(goodids)
-    return "('添加购物车成功')"
-
-# ----------------------------------------------------------------
+    if goods_id in good:
+        return ('已添加过购物车')
+    good.append(goods_id)
+    session["good"] = good
+    print(session["good"])
+    return ('添加购物车成功')
