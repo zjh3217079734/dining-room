@@ -156,16 +156,21 @@
                                     </div>
 
                                     <form action="/resetpwd" method="post" name="form2">
-                                        <input class="group-name" type="text" name="username" onblur="checkname()" placeholder="用户名"><span class="tips" id="divname">长度1~12个字符</span>
-                                        <input class="group-password" type="password" name="newpassword" onblur="checknpwd1()" placeholder="输入新密码"><span class="tips" id="divpassword1">密码必须由字母和数字组成</span>
-                                        <input class="group-password" type="password" name="newpassword1" onblur="checknpwd2()" placeholder="再次确认密码"><span class="tips" id="divpassword2">两次密码需要相同</span>
+                                        <input class="group-name" type="text" name="username" onblur="checkname()" placeholder="用户名">
+                                            <span class="tips" id="divname">长度1~12个字符</span>
+                                        <input class="group-password" type="password" name="newpassword" onblur="checknpwd1()" placeholder="输入新密码">
+                                            <span class="tips" id="divpassword1">密码必须由字母和数字组成</span>
+                                        <input class="group-password" type="password" name="newpassword1" onblur="checknpwd2()" placeholder="再次确认密码">
+                                            <span class="tips" id="divpassword2">两次密码需要相同</span>
                                         <input class="group-phone" type="text" name="number" placeholder="手机号码">
 
                                         <div class="verification-content">
                                             <input type="text" id="code_input" value="" placeholder="请输入验证码"/>
                                             <div id="v_container" style="width:145px; height:40px;"></div>
                                         </div>
+                                        <div class="button-box">
                                             <button class="submit" id="my_button">重置</button>
+                                        </div>
 
                                     </form>
 
@@ -176,7 +181,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- 底部导航栏 -->
