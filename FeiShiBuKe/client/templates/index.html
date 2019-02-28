@@ -205,10 +205,82 @@
     </div>
     <!-- 主体头部结束 -->
     <!-- blog-area start 主体开始-->
+                        <!-- 搜索建议js -->
+                <style>
+                    #showkws{
+                        width: 250px;
+                        height: 150px;
+                        border: 1px solid #E6E6E6;
+                        position: absolute;
+                        background: #fff;
+                        display: none;
+                    }
+                </style>
+                <script src="../assets/js/common.js"></script>
+                <script src="../assets/js/jquery-1.11.3.js"></script>
+                <script>
+                    $(function () {
+                        $("#ids").keyup(function () {
+                            var xhr = createXhr();
+                            var url = "/search?kws="+this.value;
+                            xhr.open("get",url,true);
+                            xhr.onreadystatechange=function () {
+                                if(xhr.readyState==4&&xhr.status==200){
+                                    var arr = JSON.parse(xhr.responseText);
+                                    if(arr.length > 0){
+                                        $("#showkws").html("");
+                                        $("#showkws").css("display","block");
+                                        $.each(arr,function (i,obj) {
+                                            var $a=$("<p><a href="+"/goods?id="+obj.id+">"+obj.shopname+"</a></p>");
+                                            $("#showkws").append($a);
+                                        });
+                                    }else{
+                                        $("#showkws").css("display","none");
+                                    }
+                                };
+                            };
+                            xhr.send(null);
+                        });
+                    });
+                </script>
+                <!-- 关键字查询 -->
+                <script>
+                    $(function () {
+                        $("#btnKws1").click(function () {
+                            {#ssss = $("#ids").val()#}
+                            $.get("/keywords","kws1="+this.value,function (params) {
+                                $("#mianshop").html(params)
+                            });
+                        });
+                    });
+                </script>
+                <!-- 分类查询 -->
+                <script>
+                    $(function () {
+                        $("#btnClassify").click(function () {
+                            {#ssss = $("#ids").val()#}
+                            $.get("/classify","nameClassify="+this.value,function (params) {
+                                $("#mianshop").html(params)
+                            });
+                        });
+                    });
+                </script>
+                <!-- 热门标签 -->
+                <script>
+                    $(function () {
+                        $("#btnHotTag").click(function () {
+                            {#ssss = $("#ids").val()#}
+                            $.get("/classify","nameHotTag="+this.value,function (params) {
+                                $("#mianshop").html(params)
+                            });
+                        });
+                    });
+                </script>
     <div class="blog-area ptb-100">
         <div class="container">
             <div class="row">
                 <!-- 主体左侧商家展示区域开始 -->
+                {% block shops %}
                 <div class="col-lg-8 col-xl-9 col-md-8">
                     <!-- 商家介绍 -->
                     {% for shop in params.shops %}
@@ -282,90 +354,27 @@
                         </div>
                     </div>
                 </div>
+                {% endblock %}
                 <!-- 主体左侧商家展示区域结束 -->
 
                 <!-- 主体右侧搜索标签区域开始 -->
-                <style>
-                    #showkws {
-                    width: 250px;
-                    height: 150px;
-                    border: 1px solid #E6E6E6;
-                    position: absolute;
-                    background: #fff;
-                    display: none;
-
-                }
-            </style>
-                <script src="../assets/js/common.js"></script>
-                <script src="../assets/js/jquery-1.11.3.js"></script>
-                <script>
-                    $(function () {
-                    $("#id").keyup(function () {
-                        var xhr = createXhr();
-                        var url = "/search?kws=" + this.value;
-                        xhr.open("get", url, true);
-                        xhr.onreadystatechange = function () {
-                            if (xhr.readyState == 4 && xhr.status == 200) {
-                                var arr = JSON.parse(xhr.responseText);
-                                if (arr.length > 0) {
-                                    $("#showkws")("");
-                                    $("#showkws").css("display", "block");
-                                    $.each(arr, function (i, obj) {
-                                        var $a = $("<p><a href=" + "/shops?kws=" + obj + ">" + obj + "</a></p>");
-                                        $("#showkws").append($a);
-                                    });
-                                } else {
-                                    $("#showkws").css("display", "none");
-                                }
-                            }
-                            ;
-                        };
-                        xhr.send(null);
-                    });
-                });
-            </script>
-                <script>
-                    $(function () {
-                    $("#btnKws").click(function () {
-                        $.get("/shops", function (resText) {
-
-                        }, "json");
-                    });
-                });
-            </script>
                 <div class="col-lg-4 col-xl-3 col-md-4">
                     <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
                         <div class="sidebar-search">
-                            <form class="header-search-form" action="/shops" method="get">
-                                <input type="text" id="id" placeholder="关键字" name="kws1">
+                            <form class="header-search-form" action="/keywords" method="get">
+                                <input type="text" id="ids" placeholder="关键字" name="kws1">
                                 <div id="showkws"></div>
-                                <button id="btnKws">
+                                <button id="btnKws1">
                                     <i class="ion-android-search"></i>
                                 </button>
                             </form>
                         </div>
-
-                        {# <div class="shop-widget mt-25 shop-sidebar-border pt-25">#}
-                            {# <h4 class="shop-sidebar-title">猜你喜欢</h4>#}
-                            {# <div class="sidebar-list-style mt-20">#}
-                                {# <ul>#}
-                                    {# {% for classify in classifies %}#}
-                                    {# <li><a href="/rightSideTag?id={{ classify.id }}">{{ classify.classify_name }}</a></li>#}
-                                    {# {% endfor %}#}
-                                    {# </ul>#}
-                                {# </div>#}
-                            {# </div>#}
-
                         <div class="shop-widget mt-30 shop-sidebar-border pt-25">
                             <h4 class="shop-sidebar-title">分类 </h4>
                             <div class="sidebar-list-style mt-20">
                                 <ul>
-                                    {% for like in params.classifies %}
-                                    <div name="values" style="display: none">
-                                        <input type="text" value="{{ like.id }}">
-
-                                    </div>
-                                    <li><a href="/classify?id={{ like.id }}"> {{ like.classify_name }}</a></li>
+                                    {% for classify in params.classifies %}
+                                    <li><a id="btnClassify" name="nameClassify" href="/classify?id={{ classify.id }}"> {{ classify.classify_name }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -375,12 +384,7 @@
                             <div class="shop-tags mt-25">
                                 <ul>
                                     {% for good in params.goods %}
-                                    {% if good %}
-                                    <div name="values" style="display: none">
-                                        <input type="text" value="{{ good.shop_id }}">
-                                    </div>
-                                    <li><a href="/hotTag?id={{ good.shop_id }}">{{ good.goods_name }}</a></li>
-                                    {% endif %}
+                                    <li><a id="btnHotTag" name="nameHotTag" href="/hotTag?goods={{ good.goods_name }}">{{ good.goods_name }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </div>

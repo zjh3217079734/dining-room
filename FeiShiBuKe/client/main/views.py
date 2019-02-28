@@ -427,95 +427,64 @@ def account_views():
 
 # -----------------------------------------------------------------------------
 # 首页,直接跳转至这里了
-@main.route('/')
-@main.route('/index')
-def index_views():
-    username = get_name()
-    kws = request.args.get("kws", "")
-    if kws:
-        page = request.args.get("page", 1, type=int)
-        shops = db.session.query(Shop).filter_by(shop_name=kws).all()
-        totalCount = db.session.query(Shop).filter_by(shop_name=kws).count()
-    else:
-        page = request.args.get("page", 1, type=int)
-        shops = db.session.query(Shop).all()
-        totalCount = db.session.query(Shop).count()
-    kws1 = request.args.get("kws1", "")
-    if kws1:
-        page = request.args.get("page", 1, type=int)
-        shops = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%" + kws1 + "%")).all()
-        totalCount = db.session.query(Shop).filter(Shop.shop_name.like("%" + kws1 + "%")).count()
-    else:
-        page = request.args.get("page", 1, type=int)
-        shops = db.session.query(Shop).all()
-        totalCount = db.session.query(Shop).count()
+# @main.route('/')
+# @main.route('/index')
+# def index_views():
+#     username = get_name()
+#     kws = request.args.get("kws", "")
+#     if kws:
+#         page = request.args.get("page", 1, type=int)
+#         shops = db.session.query(Shop).filter_by(shop_name=kws).all()
+#         totalCount = db.session.query(Shop).filter_by(shop_name=kws).count()
+#     else:
+#         page = request.args.get("page", 1, type=int)
+#         shops = db.session.query(Shop).all()
+#         totalCount = db.session.query(Shop).count()
+#     kws1 = request.args.get("kws1", "")
+#     if kws1:
+#         page = request.args.get("page", 1, type=int)
+#         shops = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%" + kws1 + "%")).all()
+#         totalCount = db.session.query(Shop).filter(Shop.shop_name.like("%" + kws1 + "%")).count()
+#     else:
+#         page = request.args.get("page", 1, type=int)
+#         shops = db.session.query(Shop).all()
+#         totalCount = db.session.query(Shop).count()
+#
+#     pageSize = 10
+#     ost = (page - 1) * pageSize
+#     lastPage = math.ceil(totalCount / pageSize)
+#     prevPage = 1
+#     if page > 1:
+#         prevPage = page - 1
+#         nextPage = lastPage
+#     if page < lastPage:
+#         nextPage = page + 1
+#
+#     likes = db.session.query(Shop).limit(10).all()
+#     classifies = db.session.query(Classify).all()
+#     goods = db.session.query(Goods.goods_name).group_by(
+#         "goods_name").order_by(func.count(Goods.shop_id).desc()).all()
+#     return render_template("index.html", params=locals())
 
-    pageSize = 10
-    ost = (page - 1) * pageSize
-    lastPage = math.ceil(totalCount / pageSize)
-    prevPage = 1
-    if page > 1:
-        prevPage = page - 1
-        nextPage = lastPage
-    if page < lastPage:
-        nextPage = page + 1
-
-    likes = db.session.query(Shop).limit(10).all()
-    classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods.goods_name).group_by(
-        "goods_name").order_by(func.count(Goods.shop_id).desc()).all()
-    return render_template("index.html", params=locals())
-
-
+@main.route('/', methods=["GET", "POST"])
+@main.route('/index', methods=["GET", "POST"])
 @main.route("/shops", methods=["GET", "POST"])
 def shops_views():
-    username = get_name()
-    # if 'username' in request.cookies:
-    #     username = request.cookies['username']
-    #     return render_template('index.html', params=locals())
-    # elif 'username' in session:
-    #     username = session['username']
-    #     return render_template('index.html', params=locals())
-    # else:
-    #     return render_template('index.html', params={})
-    print("path", request.path)
-    kws = request.args.get("kws", "")
-    if kws:
-        page = request.args.get("page", 1, type=int)
-        shops = db.session.query(Shop).filter_by(shop_name=kws).all()
-        totalCount = db.session.query(Shop).filter_by(shop_name=kws).count()
-    else:
-        page = request.args.get("page", 1, type=int)
-        shops = db.session.query(Shop).all()
-        totalCount = db.session.query(Shop).count()
-    kws1 = request.args.get("kws1", "")
-    if kws1:
-        page = request.args.get("page", 1, type=int)
-        shops = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%" + kws1 + "%")).all()
-        totalCount = db.session.query(Shop).filter(Shop.shop_name.like("%" + kws1 + "%")).count()
-    else:
-        page = request.args.get("page", 1, type=int)
-        shops = db.session.query(Shop).all()
-        totalCount = db.session.query(Shop).count()
-
+    classifies = db.session.query(Classify).all()
+    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
+    page = request.args.get("page",1,type=int)
     pageSize = 10
     ost = (page - 1) * pageSize
+    shops = db.session.query(Shop).limit(pageSize).offset(ost).all()
+    totalCount = db.session.query(Shop).count()
     lastPage = math.ceil(totalCount / pageSize)
     prevPage = 1
     if page > 1:
         prevPage = page - 1
-        nextPage = lastPage
+    nextPage = lastPage
     if page < lastPage:
         nextPage = page + 1
-
-    likes = db.session.query(Shop).limit(10).all()
-    classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods.goods_name).group_by(
-        "goods_name").order_by(func.count(Goods.shop_id).desc()).all()
     return render_template("index.html", params=locals())
-    # request.referrer
-    # return request.referrer()
-
 
 @main.route("/release", methods=["GET", "POST"])
 def release_views():
@@ -526,42 +495,38 @@ def release_views():
             return render_template(("index.html"), params=locals())
         return render_template("index.html")
 
-
-@main.route("/suggest", methods=["GET", "POST"])
-def suggest_views():
-    username = get_name()
-    kws = request.args.get("kws", "")
-    if kws:
-        shops = db.session.query(Shop).filter_by(shop_name=kws).all()
-    else:
-        shops = db.session.query(Shop).all()
-    return render_template("/pages", shops=shops)
-
-
 @main.route("/keywords", methods=["GET", "POST"])
 def keywords_views():
-    username = get_name()
+    classifies = db.session.query(Classify).all()
+    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
+    page = request.args.get("page", 1, type=int)
     kws1 = request.args.get("kws1", "")
-    if kws1:
-        shops = db.session.query(Shop.shop_name).filter(Shop.shop_name.like("%" + kws1 + "%")).all()
-
+    url = "/keywords"
+    pageSize = 10
+    ost = (page - 1) * pageSize
+    shops = db.session.query(Shop).filter(Shop.shop_name.like("%"+kws1+"%")).limit(pageSize).offset(ost).all()
+    totalCount = db.session.query(Shop).filter(Shop.shop_name.like("%"+kws1+"%")).count()
+    lastPage = math.ceil(totalCount / pageSize)
+    prevPage = 1
+    if page > 1:
+        prevPage = page - 1
+    nextPage = lastPage
+    if page < lastPage:
+        nextPage = page + 1
+    return render_template("keywords-child.html", params=locals())
 
 @main.route("/classify", methods=["GET", "POST"])
 def classify_views():
-    username = get_name()
-    likes = db.session.query(Shop).limit(10).all()
     classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods.goods_name).group_by("goods_name").order_by(func.count(Goods.shop_id).desc()).all()
+    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
     classify_id = request.args.get("id")
-    print(classify_id)
+    url = "/classify"
     shopid = db.session.query(Classify_shop).filter_by(classify_id=classify_id).all()
-    print("shop_id:", shopid[0].shop_id)
     shops = []
     for si in shopid:
         shop = db.session.query(Shop).filter_by(id=si.shop_id).first()
         shops.append(shop)
-
-    totalCount = db.session.query(Shop).count()
+    totalCount = db.session.query(Shop).filter_by(id=si.shop_id).count()
     page = request.args.get("page", 1, type=int)
     pageSize = 10
     ost = (page - 1) * pageSize
@@ -572,27 +537,21 @@ def classify_views():
         nextPage = lastPage
     if page < lastPage:
         nextPage = page + 1
-    return render_template("index.html", params=locals())
-
+    return render_template("classify-child.html",params=locals())
 
 @main.route("/hotTag", methods=["GET", "POST"])
 def tag_views():
-    username = get_name()
-    goods_name = request.args.get("goods", "")
-    likes = db.session.query(Shop).limit(10).all()
     classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods).group_by(
-        "goods_name").order_by(func.count(Goods.shop_id).desc()).all()
-    print(goods)
-    shop_id = request.args.get("id")
-    print(shop_id)
-    # shops = []
-    # for goodsname in goods:
-    #     shopsid = db.session.query(Goods.shop_id).filter_by(goods_name=goodsname[0]).all()
-    #     print(shopsid)
-    #     shop = db.session.query(Shop).filter_by(id=shop_id).all()
-    #     shops.append(shop)
-    totalCount = db.session.query(Shop).count()
+    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).limit(5).all()
+    goodsname = request.args.get("goods")
+    url = "/hotTag"
+    shopid = db.session.query(Goods).filter_by(goods_name = goodsname).all()
+    print(shopid[0].shop_id)
+    shops = []
+    for si in shopid:
+        shop = db.session.query(Shop).filter_by(id=si.shop_id).first()
+        shops.append(shop)
+    totalCount = db.session.query(Shop).filter_by(id=si.shop_id).count()
     page = request.args.get("page", 1, type=int)
     pageSize = 10
     ost = (page - 1) * pageSize
@@ -603,24 +562,25 @@ def tag_views():
         nextPage = lastPage
     if page < lastPage:
         nextPage = page + 1
-
-    return render_template("/index.html", params=locals())
-
+    return render_template("/hottag.html", params=locals())
 
 @main.route("/search", methods=["GET", "POST"])
 def search_views():
-    username = get_name()
     l = []
     kws = request.args.get("kws", "")
     if kws != '':
-        # results1 = db.session.query(Goods.goods_name).filter(
-        #     Goods.goods_name.like("%"+kws+"%")).limit(4).all()
-        results2 = db.session.query(Shop.shop_name).filter(
+        results = db.session.query(Shop.id,Shop.shop_name).filter(
             Shop.shop_name.like("%" + kws + "%")).limit(4).all()
-        for result in [results2]:
-            for r in result:
-                l.append(r[0])
+        print(results)
+        for r in results:
+            dic = {
+                "id":r[0],
+                "shopname":r[1]
+            }
+            l.append(dic)
+    print(l)
     jsonStr = json.dumps(l)
+    return jsonStr
 
 
 # -----------------------------------------------------------
