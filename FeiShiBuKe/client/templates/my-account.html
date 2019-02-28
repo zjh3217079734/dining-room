@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>非食不可-个人信息</title>
     <meta name="description" content="">
-    <meta name="robots" content="noindex, follow"/>
+    <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png"> -->
@@ -31,22 +31,22 @@
 
 <body>
 
-<!-- 顶部导航栏开始 -->
-<header class="header-area">
-    <div class="header-middle">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-12 col-sm-4">
-                    <div class="logo">
-                        <a href="index">
-                            <img alt="" src="../assets/img/logo/logo.png">
-                        </a>
+    <!-- 顶部导航栏开始 -->
+    <header class="header-area">
+        <div class="header-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-12 col-sm-4">
+                        <div class="logo">
+                            <a href="index">
+                                <img alt="" src="../assets/img/logo/logo.png">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-9 col-md-8 col-12 col-sm-8">
-                    <div class="header-middle-right f-right">
-                        <div class="header-login">
-                            {% if params.username %}
+                    <div class="col-lg-9 col-md-8 col-12 col-sm-8">
+                        <div class="header-middle-right f-right">
+                            <div class="header-login">
+                                {% if params.username %}
                                 <a href="/my-account">
                                     <div class="header-icon-style">
                                         <i class="icon-user-following icons"></i>
@@ -54,19 +54,19 @@
                                     <div class="login-text-content">
                                         <p>
                                             <span>
-                                                    欢迎您:
+                                                欢迎您:
                                                 <b>
-                                                {{ params.username }}
+                                                    {{ params.username }}
                                                 </b>
-                                                </span>
+                                            </span>
                                             <br>
                                             <span>
-                                                    <a href="/logout">退出当前用户</a>
-                                        </span>
+                                                <a href="/logout">退出当前用户</a>
+                                            </span>
                                         </p>
                                     </div>
                                 </a>
-                            {% else %}
+                                {% else %}
                                 <a href="/login">
                                     <div class="header-icon-style">
                                         <i class="icon-user-unfollow icons"></i>
@@ -83,152 +83,161 @@
                                         </p>
                                     </div>
                                 </a>
-                            {% endif %}
-                        </div>
-                        <div class="header-wishlist">
-                            <a>
-                                <div class="header-icon-style">
-                                    <i class="icon-location-pin icons icons"></i>
-                                </div>
-                                <div class="wishlist-text">
-                                    <p>所在城市<br>
-                                        <span id="area_city">未知</span></p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="header-cart">
-                            <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
-                                <div class="header-icon-style">
-                                    <i class="icon-handbag icons"></i>
-                                    <!-- 商品数量标识 -->
-                                    <span class="count-style">0</span>
-                                    <!-- 商品数量标识,数量后面跟+ -->
-                                </div>
-                                <div class="cart-text">
-                                    <span class="digit">购物车</span>
-                                    <!-- 当前购物车的统计 -->
-                                    <span class="cart-digit-bold">$209.00</span>
-                                </div>
-                            </a>
+                                {% endif %}
+                            </div>
+                            <div class="header-wishlist">
+                                <a>
+                                    <div class="header-icon-style">
+                                        <i class="icon-location-pin icons icons"></i>
+                                    </div>
+                                    <div class="wishlist-text">
+                                        <p>所在城市<br>
+                                            <span id="area_city">未知</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="header-cart">
+                                <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
+                                    <div class="header-icon-style">
+                                        <i class="icon-handbag icons"></i>
+                                        <!-- 商品数量标识 -->
+                                        <span class="count-style">0</span>
+                                        <!-- 商品数量标识,数量后面跟+ -->
+                                    </div>
+                                    <div class="cart-text">
+                                        <span class="digit">购物车</span>
+                                        <!-- 当前购物车的统计 -->
+                                        <span class="cart-digit-bold">$209.00</span>
+                                    </div>
+                                </a>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="header-bottom transparent-bar black-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="main-menu">
+                            <nav>
+                                <ul>
+                                    <li class="mega-menu-position top-hover"><a href="/index">首页</a></li>
+                                    {# <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>#}
+                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
+                                    <li class="mega-menu-position top-hover"><a href="/cart-page">购物车</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/checkout">订单</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
+                                    {# <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>#}
+                                    <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile-menu-area-start -->
+        <!-- 下面是移动端的内容 -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mobile-menu">
+                            <nav id="mobile-menu-active">
+                                <ul class="menu-overflow" id="nav">
+                                    <li><a href="index">首页</a></li>
+                                    <li><a href="shops">发现商家</a></li>
+                                    <!-- <li><a href="shop-list">点菜</a></li> -->
+                                    <li><a href="cart-page">购物车</a></li>
+                                    <li><a href="checkout">订单</a></li>
+                                    <li><a href="about-us">关于我们</a></li>
+                                    <!-- <li><a href="contact">联系我们</a></li> -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile-menu-area-end -->
+    </header>
+    <!-- 顶部导航栏结束 -->
+
+
+    <div class="breadcrumb-area gray-bg">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="/index"><b>首页</b></a></li>
+                    <li class="active"><b>我的账户</b></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="header-bottom transparent-bar black-bg">
+    <!-- my account start -->
+    <div class="myaccount-area pb-80 pt-100">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-12">
-                    <div class="main-menu">
-                        <nav>
-                            <ul>
-                                <li class="mega-menu-position top-hover"><a href="/index">首页</a></li>
-                                {#                                <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>#}
-                                <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
-                                <li class="mega-menu-position top-hover"><a href="/cart-page">购物车</a></li>
-                                <li class="mega-menu-position top-hover"><a href="/checkout">订单</a></li>
-                                <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
-                                {#                                <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>#}
-                                <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- mobile-menu-area-start -->
-    <!-- 下面是移动端的内容 -->
-    <div class="mobile-menu-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mobile-menu">
-                        <nav id="mobile-menu-active">
-                            <ul class="menu-overflow" id="nav">
-                                <li><a href="index">首页</a></li>
-                                <li><a href="shops">发现商家</a></li>
-                                <!-- <li><a href="shop-list">点菜</a></li> -->
-                                <li><a href="cart-page">购物车</a></li>
-                                <li><a href="checkout">订单</a></li>
-                                <li><a href="about-us">关于我们</a></li>
-                                <!-- <li><a href="contact">联系我们</a></li> -->
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- mobile-menu-area-end -->
-</header>
-<!-- 顶部导航栏结束 -->
+                <div class="ml-auto mr-auto col-lg-9">
+                    <div class="checkout-wrapper">
+                        <div id="faq" class="panel-group">
+                            <form action="/my-account" method="post">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq"
+                                                href="#my-account-1"><b>个人信息</b> </a></h5>
+                                    </div>
 
-
-<div class="breadcrumb-area gray-bg">
-    <div class="container">
-        <div class="breadcrumb-content">
-            <ul>
-                <li><a href="/index"><b>首页</b></a></li>
-                <li class="active"><b>我的账户</b></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- my account start -->
-<div class="myaccount-area pb-80 pt-100">
-    <div class="container">
-        <div class="row">
-            <div class="ml-auto mr-auto col-lg-9">
-                <div class="checkout-wrapper">
-                    <div id="faq" class="panel-group">
-                        <form action="/my-account" method="post">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq"
-                                                                              href="#my-account-1"><b>个人信息</b> </a></h5>
-                                </div>
-
-                                <div id="my-account-1" class="panel-collapse collapse show">
-                                    <div class="panel-body">
-                                        <div class="billing-information-wrapper">
-                                            <!-- 注释部分为个人介绍 -->
-                                            <!-- <div class="account-info-wrapper">
+                                    <div id="my-account-1" class="panel-collapse collapse show">
+                                        <div class="panel-body">
+                                            <div class="billing-information-wrapper">
+                                                <!-- 注释部分为个人介绍 -->
+                                                <!-- <div class="account-info-wrapper">
                                                 <h4>My Account Information</h4>
                                                 <h5>Your Personal Details</h5>
                                             </div> -->
-                                            <div class="row">
-                                                <!-- 合并 -->
-                                                <div class="col-lg-6 col-md-6" >
-                                                    <div class="billing-info">
-                                                        <label>用户名:</label>
-                                                        <input type="test" name="uname" value="{{ params.user.user_name }}">
+                                                <div class="row">
+                                                    <!-- 合并 -->
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="billing-info">
+                                                            <label>用户名:</label><label>(不可更改)</label>
+                                                            <input type="test" name="uname" value="{{ params.user.user_name }}"
+                                                                readonly="readonly" />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="billing-info">
-                                                        <label>昵&nbsp;&nbsp;&nbsp;称:</label>
-                                                        <input type="test" name="unick" value="{{ params.user.nick }}">
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="billing-info">
+                                                            <label>昵&nbsp;&nbsp;&nbsp;称:</label>
+                                                            {% if params.user.nick is none %}
+                                                            <input type="test" name="unick" placeholder="请输入昵称" value="" />
+                                                            {% else %}
+                                                            <input type="test" name="unick" placeholder="请输入昵称" value="{{ params.user.nick }}" />
+                                                            {% endif %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="billing-info">
-                                                        <label>性&nbsp;&nbsp;&nbsp;别:</label>
-                                                        <input type="text" name="usex" placeholder="个人昵称"
-                                                               value="{{ params.user.sex }}">
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="billing-info">
+                                                            <label>性&nbsp;&nbsp;&nbsp;别:</label>
+                                                            {% if params.user.sex=='M' %}
+                                                            <input type="text" name="usex" placeholder="性别" value="男">
+                                                            {% elif params.user.sex=='F' %}
+                                                            <input type="text" name="usex" placeholder="性别" value="女">
+                                                            {% else %}
+                                                            <input type="text" name="usex" placeholder="性别" value="未知">
+                                                            {% endif %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6" >
-                                                    <div class="billing-info">
-                                                        <label>电话号:</label>
-                                                        <input type="text" name="uphone" placeholder="请输入电话号"
-                                                               value="{{ params.user.phone }}">
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="billing-info">
+                                                            <label>电话号:</label>
+                                                            <input type="text" name="uphone" placeholder="请输入电话号" value="{{ params.user.phone }}">
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <!-- <div class="col-lg-12 col-md-12" style="margin:0 90px;">
+                                                    <!-- <div class="col-lg-12 col-md-12" style="margin:0 90px;">
                                                     <div class="billing-info">
                                                         <label>支付宝:</label>
                                                         <input type="text" name="zfbao" placeholder="请绑定支付宝账号" value="{{params.user.user_id}}">
@@ -253,75 +262,73 @@
                                                         <input type="text" name="address" placeholder="店家地址" value="{{params.user.user_id}}">
                                                     </div>
                                                 </div> -->
-                                                <input type="hidden" name="hid" value="Q">
+                                                    <input type="hidden" name="hid" value="Q">
 
-                                            </div>
-                                            <div class="billing-back-btn">
-                                                <div class="billing-btn">
-                                                    <!-- 返回顶部改为 修改 -->
-                                                    <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
-                                                    <!-- <input type="reset" value="重置" style="width: 60px;height: 30px;"> -->
-                                                    <button href="/my-account">重置</button>
                                                 </div>
-                                                <div class="billing-btn">
-                                                    <!-- <input type="submit" value="保存"> -->
-                                                    <button type="submit"><b>保存</b></button>
+                                                <div class="billing-back-btn">
+                                                    <div class="billing-btn">
+                                                        <!-- 返回顶部改为 修改 -->
+                                                        <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
+                                                        <!-- <input type="reset" value="重置" style="width: 60px;height: 30px;"> -->
+                                                        <!-- <a href="/my-account" class="button">重置</a> -->
+                                                    </div>
+                                                    <div class="billing-btn">
+                                                        <!-- <input type="submit" value="保存"> -->
+                                                        <button type="submit"><b>保存</b></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                        </form>
-                        <form action="/my-account" method="post">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq"
-                                                                              href="#my-account-2"><b>修改密码</b></a></h5>
                                 </div>
-                                <div id="my-account-2" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="billing-information-wrapper">
-                                            <!-- 密码提示框 -->
-                                            <!-- <div class="account-info-wrapper">
+                            </form>
+                            <form action="/my-account" method="post">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq"
+                                                href="#my-account-2"><b>修改密码</b></a></h5>
+                                    </div>
+                                    <div id="my-account-2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="billing-information-wrapper">
+                                                <!-- 密码提示框 -->
+                                                <!-- <div class="account-info-wrapper">
                                                 <h4>请输入密码</h4>
                                                 <h5>请重新输入</h5>
                                             </div> -->
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="billing-info">
-                                                        <label>请输入新密码</label>
-                                                        <input type="password" name="upwd1"
-                                                               placeholder="请输入大于6位小于20位的组合密码">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="billing-info">
+                                                            <label>请输入新密码</label>
+                                                            <input type="password" name="upwd1" placeholder="请输入大于6位小于20位的组合密码">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="billing-info">
+                                                            <label>确认新密码</label>
+                                                            <input type="password" name="upwd2" placeholder="请输入大于6位小于20位的组合密码">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="billing-info">
-                                                        <label>确认新密码</label>
-                                                        <input type="password" name="upwd2"
-                                                               placeholder="请输入大于6位小于20位的组合密码">
+                                                <input type="hidden" name="hidden" value="{{ params.user.user_name }}">
+                                                <div class="billing-back-btn">
+                                                    <div class="billing-btn">
+                                                        <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
+                                                        <!-- <input type="reset" value="重置" style="width: 60px;height: 30px;"> -->
+                                                        <!-- <button href="/my-account">重置</button> -->
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="hidden" value="{{ params.user.user_name }}">
-                                            <div class="billing-back-btn">
-                                                <div class="billing-btn">
-                                                    <!-- <a href="#"><i class="ion-arrow-up-c"></i>修改</a> -->
-                                                    <!-- <input type="reset" value="重置" style="width: 60px;height: 30px;"> -->
-                                                    <button href="/my-account">重置</button>
-                                                </div>
-                                                <div class="billing-btn">
-                                                    <button type="submit">保存</button>
+                                                    <div class="billing-btn">
+                                                        <button type="submit">保存</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                        </form>
-                        <!-- <div class="panel panel-default">
+                                </div>
+                            </form>
+                            <!-- <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq"
                                         href="#my-account-3"><b>修改地址</b></a></h5>
@@ -337,14 +344,14 @@
                                                 <div class="col-lg-6 col-md-6 d-flex align-items-center
                                                 justify-content-center">
                                                     <div class="entries-info text-center"> -->
-                        <!-- <p>Farhana hayder (shuvo) </p>
+                            <!-- <p>Farhana hayder (shuvo) </p>
                                                         <p>hastech </p>
                                                         <p> Road#1 , Block#c </p>
                                                         <p> Rampura. </p>
                                                         <p>Dhaka </p>
                                                         <p>Bangladesh </p>
                                                     </div> -->
-                        <!-- <select ><a name = "addr"></a>
+                            <!-- <select ><a name = "addr"></a>
                                                         <option> </option>
                                                     </select>
                                                 </div>
@@ -360,146 +367,146 @@
                                             <div class="billing-back">
                                                 <a href="#"><i class="ion-arrow-up-c"></i>返回</a>
                                             </div> -->
-                        <!-- 返回继续 -->
-                        <!-- <div class="billing-btn">
+                            <!-- 返回继续 -->
+                            <!-- <div class="billing-btn">
                                                 <button type="submit">Continue</button>
                                             </div> -->
-                        <!-- </div>
+                            <!-- </div>
                                     </div>
                                 </div>
                             </div>
                         </div> -->
-                        <!-- 原版历史订单 -->
-                        <!-- <div class="panel panel-default">
+                            <!-- 原版历史订单 -->
+                            <!-- <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title"><span>3</span>
                                     <a href="wishlist"> <b>历史订单 </b></a></h5>
                             </div>
                         </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 底部导航栏 -->
-<div class="footer-area black-bg-2 pt-70">
-    <div class="footer-top-area pb-18">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="footer-about mb-40">
-                        <div class="footer-logo">
-                            <a href="index">
-                                <img src="../assets/img/logo/footer-logo.png" alt="">
-                            </a>
-                        </div>
-                        <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
-                        <div class="payment-img">
-                            <a href="#">
-                                <img src="../assets/img/icon-img/payment.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title mb-22">
-                            <h4>帮助中心</h4>
-                        </div>
-                        <div class="footer-content">
-                            <ul>
-                                <li><a href="about-us">关于我们</a></li>
-                                <li><a href="#">配送信息</a></li>
-                                <li><a href="#">隐私政策</a></li>
-                                <li><a href="#">条款和条件</a></li>
-                                <li><a href="#">客户服务</a></li>
-                                <li><a href="#">改进意见</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title mb-22">
-                            <h4>个人账户</h4>
-                        </div>
-                        <div class="footer-content">
-                            <ul>
-                                <li><a href="my-account">我的账户</a></li>
-                                <li><a href="#">历史订单</a></li>
-                                <li><a href="wishlist">愿望清单</a></li>
-                                <li><a href="#">个人信息</a></li>
-                                <li><a href="#">历史订单</a></li>
-                                <li><a href="#">国际订单</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title mb-22">
-                            <h4>关于我们</h4>
-                        </div>
-                        <div class="footer-contact">
-                            <ul>
-                                <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
-                                <li>电话咨询: 400-100-6789</li>
-                                <li>电子邮件: <a href="#">Info@example.com</a></li>
-                            </ul>
-                        </div>
-                        <div class="mt-35 footer-title mb-22">
-                            <h4>服务支持</h4>
-                        </div>
-                        <div class="footer-time">
-                            <ul>
-                                <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
-                                <li>周一 - 周日: <span>营业</span></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer-bottom-area border-top-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-7">
-                    <div class="copyright">
-                        <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
+
+    <!-- 底部导航栏 -->
+    <div class="footer-area black-bg-2 pt-70">
+        <div class="footer-top-area pb-18">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer-about mb-40">
+                            <div class="footer-logo">
+                                <a href="index">
+                                    <img src="../assets/img/logo/footer-logo.png" alt="">
+                                </a>
+                            </div>
+                            <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
+                            <div class="payment-img">
+                                <a href="#">
+                                    <img src="../assets/img/icon-img/payment.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>帮助中心</h4>
+                            </div>
+                            <div class="footer-content">
+                                <ul>
+                                    <li><a href="about-us">关于我们</a></li>
+                                    <li><a href="#">配送信息</a></li>
+                                    <li><a href="#">隐私政策</a></li>
+                                    <li><a href="#">条款和条件</a></li>
+                                    <li><a href="#">客户服务</a></li>
+                                    <li><a href="#">改进意见</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>个人账户</h4>
+                            </div>
+                            <div class="footer-content">
+                                <ul>
+                                    <li><a href="my-account">我的账户</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="wishlist">愿望清单</a></li>
+                                    <li><a href="#">个人信息</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="#">国际订单</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>关于我们</h4>
+                            </div>
+                            <div class="footer-contact">
+                                <ul>
+                                    <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
+                                    <li>电话咨询: 400-100-6789</li>
+                                    <li>电子邮件: <a href="#">Info@example.com</a></li>
+                                </ul>
+                            </div>
+                            <div class="mt-35 footer-title mb-22">
+                                <h4>服务支持</h4>
+                            </div>
+                            <div class="footer-time">
+                                <ul>
+                                    <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
+                                    <li>周一 - 周日: <span>营业</span></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-5">
-                    <div class="footer-social">
-                        <ul>
-                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                        </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-area border-top-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-7">
+                        <div class="copyright">
+                            <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-5">
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
+                                <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- 底部导航栏结束 -->
+    <!-- 底部导航栏结束 -->
 
 
-<!-- all js here -->
-<script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
-<script src="../assets/js/popper.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-<script src="../assets/js/isotope.pkgd.min.js"></script>
-<script src="../assets/js/ajax-mail.js"></script>
-<script src="../assets/js/owl.carousel.min.js"></script>
-<script src="../assets/js/plugins.js"></script>
-<script src="../assets/js/main.js"></script>
+    <!-- all js here -->
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/ajax-mail.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 
 </html>

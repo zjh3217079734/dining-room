@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>非食不可</title>
     <meta name="description" content="">
-    <meta name="robots" content="noindex, follow"/>
+    <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.png">
@@ -28,22 +28,22 @@
 </head>
 
 <body>
-<!-- 顶部导航栏开始 -->
-<header class="header-area">
-    <div class="header-middle">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-12 col-sm-4">
-                    <div class="logo">
-                        <a href="index">
-                            <img alt="" src="../assets/img/logo/logo.png">
-                        </a>
+    <!-- 顶部导航栏开始 -->
+    <header class="header-area">
+        <div class="header-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-12 col-sm-4">
+                        <div class="logo">
+                            <a href="index">
+                                <img alt="" src="../assets/img/logo/logo.png">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-9 col-md-8 col-12 col-sm-8">
-                    <div class="header-middle-right f-right">
-                        <div class="header-login">
-                            {% if params.username %}
+                    <div class="col-lg-9 col-md-8 col-12 col-sm-8">
+                        <div class="header-middle-right f-right">
+                            <div class="header-login">
+                                {% if params.username %}
                                 <a href="/my-account">
                                     <div class="header-icon-style">
                                         <i class="icon-user-following icons"></i>
@@ -51,19 +51,19 @@
                                     <div class="login-text-content">
                                         <p>
                                             <span>
-                                                    欢迎您:
+                                                欢迎您:
                                                 <b>
-                                                {{ params.username }}
+                                                    {{ params.username }}
                                                 </b>
-                                                </span>
+                                            </span>
                                             <br>
                                             <span>
-                                                    <a href="/logout">退出当前用户</a>
-                                        </span>
+                                                <a href="/logout">退出当前用户</a>
+                                            </span>
                                         </p>
                                     </div>
                                 </a>
-                            {% else %}
+                                {% else %}
                                 <a href="/login">
                                     <div class="header-icon-style">
                                         <i class="icon-user-unfollow icons"></i>
@@ -80,125 +80,125 @@
                                         </p>
                                     </div>
                                 </a>
-                            {% endif %}
-                        </div>
-                        <div class="header-wishlist">
-                            <a>
-                                <div class="header-icon-style">
-                                    <i class="icon-location-pin icons icons"></i>
-                                </div>
-                                <div class="wishlist-text">
-                                    <p>所在城市<br>
-                                        <span id="area_city">未知</span></p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="header-cart">
-                            <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
-                                <div class="header-icon-style">
-                                    <i class="icon-handbag icons"></i>
-                                    <!-- 商品数量标识 -->
-                                    <span class="count-style">0</span>
-                                    <!-- 商品数量标识,数量后面跟+ -->
-                                </div>
-                                <div class="cart-text">
-                                    <span class="digit">购物车</span>
-                                    <!-- 当前购物车的统计 -->
-                                    <span class="cart-digit-bold">$209.00</span>
-                                </div>
-                            </a>
+                                {% endif %}
+                            </div>
+                            <div class="header-wishlist">
+                                <a>
+                                    <div class="header-icon-style">
+                                        <i class="icon-location-pin icons icons"></i>
+                                    </div>
+                                    <div class="wishlist-text">
+                                        <p>所在城市<br>
+                                            <span id="area_city">未知</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="header-cart">
+                                <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
+                                    <div class="header-icon-style">
+                                        <i class="icon-handbag icons"></i>
+                                        <!-- 商品数量标识 -->
+                                        <span class="count-style">0</span>
+                                        <!-- 商品数量标识,数量后面跟+ -->
+                                    </div>
+                                    <div class="cart-text">
+                                        <span class="digit">购物车</span>
+                                        <!-- 当前购物车的统计 -->
+                                        <span class="cart-digit-bold">$209.00</span>
+                                    </div>
+                                </a>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="header-bottom transparent-bar black-bg">
+        <div class="header-bottom transparent-bar black-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="main-menu">
+                            <nav>
+                                <ul>
+                                    <li class="mega-menu-position top-hover"><a href="/index">首页</a></li>
+                                    {# <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>#}
+                                    <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
+                                    <li class="mega-menu-position top-hover"><a href="/cart-page">购物车</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/checkout">订单</a></li>
+                                    <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
+                                    {# <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>#}
+                                    <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile-menu-area-start -->
+        <!-- 下面是移动端的内容 -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mobile-menu">
+                            <nav id="mobile-menu-active">
+                                <ul class="menu-overflow" id="nav">
+                                    <li><a href="index">首页</a></li>
+                                    <li><a href="shops">发现商家</a></li>
+                                    <!-- <li><a href="shop-list">点菜</a></li> -->
+                                    <li><a href="cart-page">购物车</a></li>
+                                    <li><a href="checkout">订单</a></li>
+                                    <li><a href="about-us">关于我们</a></li>
+                                    <!-- <li><a href="contact">联系我们</a></li> -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile-menu-area-end -->
+    </header>
+    <!-- 顶部导航栏结束 -->
+
+    <div class="breadcrumb-area gray-bg">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12">
-                    <div class="main-menu">
-                        <nav>
-                            <ul>
-                                <li class="mega-menu-position top-hover"><a href="/index">首页</a></li>
-                                {#                                <li class="mega-menu-position top-hover"><a href="shops">发现商家</a></li>#}
-                                <!-- <li class="mega-menu-position top-hover"><a href="shop-list">点菜</a></li> -->
-                                <li class="mega-menu-position top-hover"><a href="/cart-page">购物车</a></li>
-                                <li class="mega-menu-position top-hover"><a href="/checkout">订单</a></li>
-                                <li class="mega-menu-position top-hover"><a href="/my-account">个人信息</a></li>
-                                {#                                <li class="mega-menu-position top-hover"><a href="about-us">关于我们</a></li>#}
-                                <!-- <li class="mega-menu-position top-hover"><a href="contact">联系我们</a></li> -->
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="index">首页</a></li>
+                    <li class="active" id="shopid" value='{{ params.shop.id }}'> {{ params.shop.shop_name }} </li>
+                </ul>
             </div>
         </div>
     </div>
-    <!-- mobile-menu-area-start -->
-    <!-- 下面是移动端的内容 -->
-    <div class="mobile-menu-area">
+    <div class="shop-page-area pt-100 pb-100">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mobile-menu">
-                        <nav id="mobile-menu-active">
-                            <ul class="menu-overflow" id="nav">
-                                <li><a href="index">首页</a></li>
-                                <li><a href="shops">发现商家</a></li>
-                                <!-- <li><a href="shop-list">点菜</a></li> -->
-                                <li><a href="cart-page">购物车</a></li>
-                                <li><a href="checkout">订单</a></li>
-                                <li><a href="about-us">关于我们</a></li>
-                                <!-- <li><a href="contact">联系我们</a></li> -->
-                            </ul>
-                        </nav>
+            <div class="row flex-row-reverse">
+                <div class="col-lg-9">
+                    <div class="banner-area pb-30">
+                        <a href="#"><img alt="广告" src="../assets/img/banner/banner-49.jpg"></a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- mobile-menu-area-end -->
-</header>
-<!-- 顶部导航栏结束 -->
+                    <div class="shop-topbar-wrapper">
 
-<div class="breadcrumb-area gray-bg">
-    <div class="container">
-        <div class="breadcrumb-content">
-            <ul>
-                <li><a href="index">首页</a></li>
-                <li class="active" id="shopid" value='{{ params.shop.id }}'> {{ params.shop.shop_name }} </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="shop-page-area pt-100 pb-100">
-    <div class="container">
-        <div class="row flex-row-reverse">
-            <div class="col-lg-9">
-                <div class="banner-area pb-30">
-                    <a href="#"><img alt="广告" src="../assets/img/banner/banner-49.jpg"></a>
-                </div>
-                <div class="shop-topbar-wrapper">
+                    </div>
+                    <div class="grid-list-product-wrapper">
+                        <div class="product-grid product-view pb-20">
+                            <div class="row">
 
-                </div>
-                <div class="grid-list-product-wrapper">
-                    <div class="product-grid product-view pb-20">
-                        <div class="row">
-
-                            {% for good in params.goods %}
+                                {% for good in params.goods %}
                                 <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="product-details">
-                                                <img src="../assets/goods/{{ good.goods_image }}"  onerror="onerror=null;src='../assets/nofound.jpg'" width="269" height="269" alt="">
+                                                <img src="../assets/goods/{{ good.goods_image }}" onerror="onerror=null;src='../assets/nullgoods.png'"
+                                                    width="269.98" height="269.98" alt="">
                                             </a>
                                             <div class="product-action">
                                                 <div class="pro-action-left">
                                                     <!-- <a title="添加至购物车" href="" onclick="tjgwc(this)"> -->
-                                                    <a id="goodid"
-                                                       value={{ good.id }} onclick="getgoodid(this)">添加至购物车</a>
+                                                    <a id="goodid" value={{ good.id }} onclick="getgoodid(this)">添加至购物车</a>
                                                     <!--<a title="试试加入到购物车" id="goodid"
                                                        value={#  {{ good.id }}#} href="javascript:void(0);" onclick="addcart(this)"><i class=" ion-android-cart"></i>添加至购物车</a>-->
                                                     <!-- <input style="display:none" type="text"   > -->
@@ -208,8 +208,7 @@
 
                                                 </div>
                                                 <div class="pro-action-right">
-                                                    <a title="收藏" href="wishlist"><i
-                                                            class="ion-ios-heart-outline"></i></a>
+                                                    <a title="收藏" href="wishlist"><i class="ion-ios-heart-outline"></i></a>
                                                     <!-- <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
                                                     href="#"><i class="ion-android-open"></i></a> -->
                                                 </div>
@@ -239,8 +238,7 @@
                                                 <a href="#" title="Wishlist"><i class="ion-ios-heart-outline"></i></a>
                                                 <!-- 添加到购物车 -->
                                                 <a href="#" title="Add To Cart"><i class="ion-android-cart"></i></a>
-                                                <a href="#" data-target="#exampleModal" data-toggle="modal"
-                                                   title="Quick View">
+                                                <a href="#" data-target="#exampleModal" data-toggle="modal" title="Quick View">
                                                     <i class="ion-android-open"></i>
                                                 </a>
                                             </div>
@@ -248,231 +246,230 @@
                                     </div>
                                 </div>
 
-                            {% endfor %}
-
-                        </div>
-                    </div>
-                    <div class="pagination-total-pages">
-                        <div class="pagination-style">
-                            <ul>
-                                <li><a class="prev-next prev" href="/goods?page=1"><i class="ion-ios-arrow-left"></i>
-                                    首页 </a></li>
-                                <li><a class="active" href="/goods?page={{ params.prevPage }}">上一页</a></li>
-                                <li><a href="/goods?page=1"></a>1</li>
-                                <li><a href="/goods?page=2">2</a></li>
-                                <li><a href="#">...</a></li>
-                                <li><a href="/goods?di={{ params.shop.id }}&page={{ params.nextPage }}">下一页</a></li>
-                                <li><a class="prev-next next" href="/goods?page={{ params.lastPage }}"> 尾页 <i
-                                        class="ion-ios-arrow-right"></i>
-                                </a></li>
-                            </ul>
-                        </div>
-                        <div class="total-pages">
-                            <!-- <p>Showing 1 - 20 of 30 results </p> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <!-- 左侧菜单项 -->
-                <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
-                    <div class="shop-widget">
-                        <h4 class="shop-sidebar-title">商品分类</h4>
-                        <div class="shop-catigory">
-
-                            <ul id="shop-catigory-1" class="panel-collapse collapse show">
-                                {% for menu in params.menus %}
-                                    <li><a href="/goods?id={{ params.shop.id }}&menu_id={{ menu.id }}"
-                                           style="cursor:pointer">{{ menu.menu_name }}</a></li>
-
                                 {% endfor %}
-                            </ul>
+
+                            </div>
                         </div>
-                    </div>
-                    {#                        <div class="shop-price-filter mt-40 shop-sidebar-border pt-35">#}
-                    {#                            <h4 class="shop-sidebar-title">价格选择</h4>#}
-                    {#                            <div class="price_filter mt-25">#}
-                    {#                                <span>范围: &yen 0.00 - 200.00 </span>#}
-                    {#                                <div id="slider-range"></div>#}
-                    {#                                <div class="price_slider_amount">#}
-                    {#                                    <div class="label-input">#}
-                    {#                                        <input type="text" id="amount" name="price" placeholder="Add Your Price" />#}
-                    {#                                    </div>#}
-                    {#                                    <button type="button">确定</button>#}
-                    {#                                </div>#}
-                    {#                            </div>#}
-                    {#                        </div>#}
-
-                    {#                        <div class="shop-widget mt-40 shop-sidebar-border pt-35">#}
-                    {#                            <h4 class="shop-sidebar-title">Popular Tags</h4>#}
-                    {#                            <div class="shop-tags mt-25">#}
-                    {#                                <ul>#}
-                    {#                                    <li><a href="#">All</a></li>#}
-                    {#                                    <li><a href="#">Cheesy</a></li>#}
-                    {#                                    <li><a href="#"> 主食</a></li>#}
-                    {#                                    <li><a href="#">French Fries</a></li>#}
-                    {#                                    <li><a href="#">Hamburger </a></li>#}
-                    {#                                    <li><a href="#">Pizza</a></li>#}
-                    {#                                    <li><a href="#">Red Meat</a></li>#}
-                    {#                                </ul>#}
-                    {#                            </div>#}
-                    {#                        </div>#}
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-<!-- 底部导航栏 -->
-<div class="footer-area black-bg-2 pt-70">
-    <div class="footer-top-area pb-18">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="footer-about mb-40">
-                        <div class="footer-logo">
-                            <a href="index">
-                                <img src="../assets/img/logo/footer-logo.png" alt="">
-                            </a>
-                        </div>
-                        <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
-                        <div class="payment-img">
-                            <a href="#">
-                                <img src="../assets/img/icon-img/payment.png" alt="">
-                            </a>
+                        <div class="pagination-total-pages">
+                            <div class="pagination-style">
+                                <ul>
+                                    <li><a class="prev-next prev" href="/goods?page=1"><i class="ion-ios-arrow-left"></i>
+                                            首页 </a></li>
+                                    <li><a class="active" href="/goods?page={{ params.prevPage }}">上一页</a></li>
+                                    <li><a href="/goods?page=1"></a>1</li>
+                                    <li><a href="/goods?page=2">2</a></li>
+                                    <li><a href="#">...</a></li>
+                                    <li><a href="/goods?di={{ params.shop.id }}&page={{ params.nextPage }}">下一页</a></li>
+                                    <li><a class="prev-next next" href="/goods?page={{ params.lastPage }}"> 尾页 <i class="ion-ios-arrow-right"></i>
+                                        </a></li>
+                                </ul>
+                            </div>
+                            <div class="total-pages">
+                                <!-- <p>Showing 1 - 20 of 30 results </p> -->
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title mb-22">
-                            <h4>帮助中心</h4>
+                <div class="col-lg-3">
+                    <!-- 左侧菜单项 -->
+                    <div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
+                        <div class="shop-widget">
+                            <h4 class="shop-sidebar-title">商品分类</h4>
+                            <div class="shop-catigory">
+
+                                <ul id="shop-catigory-1" class="panel-collapse collapse show">
+                                    {% for menu in params.menus %}
+                                    <li><a href="/goods?id={{ params.shop.id }}&menu_id={{ menu.id }}" style="cursor:pointer">{{
+                                            menu.menu_name }}</a></li>
+
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                        <div class="footer-content">
-                            <ul>
-                                <li><a href="about-us">关于我们</a></li>
-                                <li><a href="#">配送信息</a></li>
-                                <li><a href="#">隐私政策</a></li>
-                                <li><a href="#">条款和条件</a></li>
-                                <li><a href="#">客户服务</a></li>
-                                <li><a href="#">改进意见</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title mb-22">
-                            <h4>个人账户</h4>
-                        </div>
-                        <div class="footer-content">
-                            <ul>
-                                <li><a href="my-account">我的账户</a></li>
-                                <li><a href="#">历史订单</a></li>
-                                <li><a href="wishlist">愿望清单</a></li>
-                                <li><a href="#">个人信息</a></li>
-                                <li><a href="#">历史订单</a></li>
-                                <li><a href="#">国际订单</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title mb-22">
-                            <h4>关于我们</h4>
-                        </div>
-                        <div class="footer-contact">
-                            <ul>
-                                <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
-                                <li>电话咨询: 400-100-6789</li>
-                                <li>电子邮件: <a href="#">Info@example.com</a></li>
-                            </ul>
-                        </div>
-                        <div class="mt-35 footer-title mb-22">
-                            <h4>服务支持</h4>
-                        </div>
-                        <div class="footer-time">
-                            <ul>
-                                <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
-                                <li>周一 - 周日: <span>营业</span></li>
-                            </ul>
-                        </div>
+                        {# <div class="shop-price-filter mt-40 shop-sidebar-border pt-35">#}
+                            {# <h4 class="shop-sidebar-title">价格选择</h4>#}
+                            {# <div class="price_filter mt-25">#}
+                                {# <span>范围: &yen 0.00 - 200.00 </span>#}
+                                {# <div id="slider-range"></div>#}
+                                {# <div class="price_slider_amount">#}
+                                    {# <div class="label-input">#}
+                                        {# <input type="text" id="amount" name="price" placeholder="Add Your Price" />#}
+                                        {# </div>#}
+                                    {# <button type="button">确定</button>#}
+                                    {# </div>#}
+                                {# </div>#}
+                            {# </div>#}
+
+                        {# <div class="shop-widget mt-40 shop-sidebar-border pt-35">#}
+                            {# <h4 class="shop-sidebar-title">Popular Tags</h4>#}
+                            {# <div class="shop-tags mt-25">#}
+                                {# <ul>#}
+                                    {# <li><a href="#">All</a></li>#}
+                                    {# <li><a href="#">Cheesy</a></li>#}
+                                    {# <li><a href="#"> 主食</a></li>#}
+                                    {# <li><a href="#">French Fries</a></li>#}
+                                    {# <li><a href="#">Hamburger </a></li>#}
+                                    {# <li><a href="#">Pizza</a></li>#}
+                                    {# <li><a href="#">Red Meat</a></li>#}
+                                    {# </ul>#}
+                                {# </div>#}
+                            {# </div>#}
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-    <div class="footer-bottom-area border-top-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-7">
-                    <div class="copyright">
-                        <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
+
+
+    <!-- 底部导航栏 -->
+    <div class="footer-area black-bg-2 pt-70">
+        <div class="footer-top-area pb-18">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer-about mb-40">
+                            <div class="footer-logo">
+                                <a href="index">
+                                    <img src="../assets/img/logo/footer-logo.png" alt="">
+                                </a>
+                            </div>
+                            <p>非食不可多年以来专注于国内各类菜系的烹调和改进,菜品不断创新,致力于为顾客带来全方位极致的用餐体验</p>
+                            <div class="payment-img">
+                                <a href="#">
+                                    <img src="../assets/img/icon-img/payment.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>帮助中心</h4>
+                            </div>
+                            <div class="footer-content">
+                                <ul>
+                                    <li><a href="about-us">关于我们</a></li>
+                                    <li><a href="#">配送信息</a></li>
+                                    <li><a href="#">隐私政策</a></li>
+                                    <li><a href="#">条款和条件</a></li>
+                                    <li><a href="#">客户服务</a></li>
+                                    <li><a href="#">改进意见</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>个人账户</h4>
+                            </div>
+                            <div class="footer-content">
+                                <ul>
+                                    <li><a href="my-account">我的账户</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="wishlist">愿望清单</a></li>
+                                    <li><a href="#">个人信息</a></li>
+                                    <li><a href="#">历史订单</a></li>
+                                    <li><a href="#">国际订单</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer-widget mb-40">
+                            <div class="footer-title mb-22">
+                                <h4>关于我们</h4>
+                            </div>
+                            <div class="footer-contact">
+                                <ul>
+                                    <li>地址: 文三路, 杭州市, 浙江省 - 中国.</li>
+                                    <li>电话咨询: 400-100-6789</li>
+                                    <li>电子邮件: <a href="#">Info@example.com</a></li>
+                                </ul>
+                            </div>
+                            <div class="mt-35 footer-title mb-22">
+                                <h4>服务支持</h4>
+                            </div>
+                            <div class="footer-time">
+                                <ul>
+                                    <li>营业时间: <span>8:00 AM</span> - 结束: <span>22:00 PM</span></li>
+                                    <li>周一 - 周日: <span>营业</span></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-5">
-                    <div class="footer-social">
-                        <ul>
-                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                        </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-area border-top-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-7">
+                        <div class="copyright">
+                            <p>Copyright © <a href="#">达人预备队</a> . 非食不可.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-5">
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
+                                <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- 底部导航栏结束 -->
+    <!-- 底部导航栏结束 -->
 
 
 
-<!-- all js here -->
-<script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
-<script src="../assets/js/popper.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-<script src="../assets/js/isotope.pkgd.min.js"></script>
-<script src="../assets/js/ajax-mail.js"></script>
-<script src="../assets/js/owl.carousel.min.js"></script>
-<script src="../assets/js/plugins.js"></script>
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- all js here -->
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/ajax-mail.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
 
-<script src="../assets/js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-    function getgoodid(goodid) {
-        var goods = {
-            "shop_id": $("#shopid").attr("value"),
-            "goods_id": $(goodid).attr("value")
-        }
-        $.get('/goodslookup', goods, function (data) {
-            alert(data)
-        })
-    };
-</script>
-
-<script src="../assets/js/jquery-addShopping.js"></script>
-<script>
-    function addcart(obj) {
-        $(obj).shoping({
-            endElement: ".header-cart",
-            iconCSS: "",
-            iconImg: "assets/img/cart.png",
-            endFunction: function (element) {
-                $("#my-cart").html(parseInt($("#my-cart").html()) + 1);
-                return false;
+    <script src="../assets/js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        function getgoodid(goodid) {
+            var goods = {
+                "shop_id": $("#shopid").attr("value"),
+                "goods_id": $(goodid).attr("value")
             }
-        });
-    }
-</script>
+            $.get('/goodslookup', goods, function (data) {
+                alert(data)
+            })
+        };
+    </script>
+
+    <script src="../assets/js/jquery-addShopping.js"></script>
+    <script>
+        function addcart(obj) {
+            $(obj).shoping({
+                endElement: ".header-cart",
+                iconCSS: "",
+                iconImg: "assets/img/cart.png",
+                endFunction: function (element) {
+                    $("#my-cart").html(parseInt($("#my-cart").html()) + 1);
+                    return false;
+                }
+            });
+        }
+    </script>
 
 </body>
 
