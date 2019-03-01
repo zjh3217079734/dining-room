@@ -616,14 +616,17 @@ def search_views():
 def checkout():
     username = get_name()
     # 检测用户登录
-    session['id'] = 1
     if 'username' in request.cookies:
         username = request.cookies['username']
 
+    status = 0
+    page = 1
+    statuss = '未付款'
     if 'id' in session:
         uid = session['id']
         # 订单列表
-        order = Order.query.filter_by(user_id=uid).all()
+        order = Order.query.filter_by(user_id=uid, status=0).all()
+        # order = Order.query.filter_by(user_id=uid).all()
         # 订单列表字典,键为订单id
         odds = {}
         # 商店字典,键为订单id
@@ -637,33 +640,58 @@ def checkout():
         return render_template('checkout.html', params=locals())
 
     else:
-        redirect(url_for('login_views'))
+        return redirect(url_for('main.login_views'))
 
 
-@main.route('/checkoutajax', methods=['POST'])
+@main.route('/checkoutajax', methods=['GET','POST'])
 def checkoutajax():
     username = get_name()
     status = request.form['status']
+    print('hello'+status)
+    page = int(request.form['page'])
+    print(page)
     if status == '未付款':
         status = 0
+        statuss = '未付款'
     elif status == '已付款':
         status = 1
+        statuss = '已付款'
     else:
         status = 2
-    print(status)
-    session['id'] = 1
+        statuss = '历史订单'
+
     if 'username' in request.cookies:
         username = request.cookies['username']
 
     if 'id' in session:
         uid = session['id']
+        pageSize = 4
+        ost = (page - 1) * pageSize
+
         # 订单列表
         if status == 0:
-            order = Order.query.filter_by(user_id=uid, status=0).all()
+            order = Order.query.filter_by(user_id=uid, status=0).limit(pageSize).offset(ost).all()
+            totalCount = Order.query.filter_by(user_id=uid, status=0).count()
         elif status == 1:
-            order = Order.query.filter_by(user_id=uid, status=1).all()
+            order = Order.query.filter_by(user_id=uid, status=1).limit(pageSize).offset(ost).all()
+            totalCount = Order.query.filter_by(user_id=uid, status=1).count()
         else:
-            order = Order.query.filter(Order.user_id == uid, Order.status != 0, Order.status != 1).all()
+            order = Order.query.filter(Order.user_id == uid, Order.status != 0, Order.status != 1).limit(pageSize).offset(ost).all()
+            totalCount = Order.query.filter(Order.user_id == uid, Order.status != 0, Order.status != 1).count()
+
+        # shops = db.session.query(Shop).filter(Shop.shop_name.like("%"+kws1+"%")).limit(pageSize).offset(ost).all()
+        # totalCount = db.session.query(Shop).filter(Shop.shop_name.like("%"+kws1+"%")).count()
+        lastPage = math.ceil(totalCount / pageSize)
+        print(lastPage)
+        prevPage = 1
+        if page > 1:
+            prevPage = page - 1
+        nextPage = lastPage
+        if page < lastPage:
+            nextPage = page + 1
+
+        print(nextPage)
+        
         # 订单列表字典,键为订单id
         odds = {}
         # 商店字典,键为订单id
@@ -674,10 +702,11 @@ def checkoutajax():
             order_details = Order_details.query.filter_by(order_id=od.order_id).all()
             odds[od.order_id] = order_details
             shops[od.order_id] = shop
+        print('ok')
         return render_template('checkoutpost.html', params=locals())
 
     else:
-        redirect(url_for('login_views'))
+        return redirect(url_for('main.login_views'))
 
 
 @main.route('/remove', methods=['POST'])
@@ -698,6 +727,7 @@ def zhifu():
     order.status = 1
     db.session.commit()
     return redirect(url_for('main.checkout'))
+
 
 
 #
