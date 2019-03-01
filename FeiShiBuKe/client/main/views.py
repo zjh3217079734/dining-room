@@ -368,8 +368,6 @@ def cart_page_viwes():
 def account_views():
     username = get_name()
     if request.method == "GET":
-        #     user = User.query.filter_by(user_name="zhao").first()
-        #     return render_template("my-account.html", user=user)
         #     判断是否登录成功
         if 'username' in session:
             print("username是:", username)
@@ -383,14 +381,11 @@ def account_views():
         if hidden == "Q":
             print('你好我们')
             name = request.form.get('uname', '')
-            sex = request.form.get('usex', '')
+            sex = request.form['usex']
             nick = request.form.get('unick', '')
-            print(name)
             phone = request.form.get('uphone', '')
-            # email=request.form.get('uphone','')
-            # Email 和 quest.form.get('uemail','')
-            # address=request.form.get('address','')
             # 创建user 对象 修改数据
+            print(sex)
             # user=Users.query.filter_by(user_id=session['id'])
             user = User.query.filter_by(user_name=name).first()
             user.user_name = name
@@ -400,15 +395,14 @@ def account_views():
             # db.session.add(user)
             db.session.commit()
             return redirect('/my-account')
-            # return "QueryOK"
         else:
-            pwd1 = request.form.get('upwd1', '')
-            pwd2 = request.form.get('upwd1', '')
+            pwd1 = request.form.get('upwd1')
+            pwd2 = request.form.get('upwd2')
             # 判断密码是否一致
             # result = check_password_hash(password, '123456')
             # print('这是测试的:',hidden)
             if pwd1 == pwd2:
-                user = User()
+                # user = User()
                 # sha1加密
                 s = sha1()
                 s.update(pwd1.encode())
@@ -416,7 +410,7 @@ def account_views():
                 # password=hashlib.sha1(pwd1).hexdigest()
                 # 前端加密方式
                 # password = generate_password_hash(pwd1)
-                user = User.query.filter_by(user_name='zhao').first()
+                user = User.query.filter_by(user_name=hidden).first()
                 user.password = password
                 # 添加 add  报错 数据库关系映射出错
                 db.session.add(user)
