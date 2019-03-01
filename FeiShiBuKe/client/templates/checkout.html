@@ -170,7 +170,8 @@
         btn = $("#btn1").val()
         $.post("/checkoutajax",
             {
-                status: btn
+                status: btn,
+                page: 1
             },
             function (data, status) {
                 $("#all").html(data)
@@ -181,7 +182,8 @@
         btn = $("#btn2").val()
         $.post("/checkoutajax",
             {
-                status: btn
+                status: btn,
+                page: 1
             },
             function (data, status) {
                 $("#all").html(data)
@@ -192,7 +194,61 @@
         btn = $("#btn3").val()
         $.post("/checkoutajax",
             {
-                status: btn
+                status: btn,
+                page: 1
+            },
+            function (data, status) {
+                $("#all").html(data)
+            });
+    };
+
+    function checkoutpost5() {
+        status = $('#status').val()
+        page = $("#btn5").attr("value")
+        
+        $.post("/checkoutajax",
+            {
+                status: status,
+                page: page
+            },
+            function (data, status) {
+                $("#all").html(data)
+            });
+    };
+
+    function checkoutpost6() {
+        status = $('#status').val()
+        page = $("#btn6").attr("value")
+        $.post("/checkoutajax",
+            {
+                status: status,
+                page: page
+            },
+            function (data, status) {
+                $("#all").html(data)
+            });
+    };
+
+    function checkoutpost7() {
+        status = $('#status').val()
+        page = $("#btn7").attr("value")
+        $.post("/checkoutajax",
+            {
+                status: status,
+                page: page
+            },
+            function (data, status) {
+                $("#all").html(data)
+            });
+    };
+
+    function checkoutpost8() {
+        status = $('#status').val() 
+        page = $("#btn8").attr("value")
+        $.post("/checkoutajax",
+            {
+                status: status,
+                page: page
             },
             function (data, status) {
                 $("#all").html(data)
@@ -200,6 +256,10 @@
     };
 
 </script>
+
+
+
+
 
 <div id="all">
     <div class="breadcrumb-area gray-bg">
@@ -215,10 +275,10 @@
     <!-- checkout-area start -->
 
     <div class="checkout-area pb-80 pt-10">
-        <div style="margin-left:150px;margin-bottom: 50px">
-            <input id="btn1" type="button" value="未付款" style="height:25px;width:100px" onclick="checkoutpost1()">
-            <input id="btn2" type="button" value="已付款" style="height:25px;width:100px" onclick="checkoutpost2()">
-            <input id="btn3" type="button" value="历史订单" style="height:25px;width:100px" onclick="checkoutpost3()">
+        <div style="margin-left:150px;margin-bottom: 50px" class="blog-btn mt-30">
+            <input id="btn1" type="button" value="未付款" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost1()">
+            <input id="btn2" type="button" value="已付款" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost2()">
+            <input id="btn3" type="button" value="历史订单" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost3()">
         </div>
 
         <div class="container">
@@ -226,6 +286,7 @@
                 <div class="col-lg-9">
                     <div class="checkout-wrapper">
                         <div id="faq" class="panel-group">
+                            <input id="status" type="text" hidden="hidden" value="{{params.statuss}}">
                             <!-- ------------------------------------------------------- -->
                             {% for od in params.order %}
                                 {% if od.status == 4 %}
@@ -235,6 +296,7 @@
                                 {% endif %}
                             <div class="panel-heading">
                                 <h5 class="panel-title">
+                                    
                                     <a>
                                         <p>
                                             <span style="font-weight:bold;float:left;margin-right: 5px">订单号:</span>
@@ -357,13 +419,43 @@
                             </div>
                             </div>
                             {% endfor %}
+                            <!-- 翻页设计 -->
+    <div class="pagination-total-pages">
+        <div class="pagination-style">
+            <ul>
+                <li><a id="btn5" class="prev-next next" value="1" onclick="checkoutpost5()"><i class="ion-ios-arrow-left"></i>
+                        首页</a>
+                </li>
+                <li><a id="btn6" class="active" value="{{ params.prevPage }}" onclick="checkoutpost6()">上一页</a></li>
+                <li>
+                    <input id="upage" type="text" style="width: 50px;height: 34px;
+                           text-align: center"
+                        value={{ params.page }}>
+                    <div id="show"></div>
+                </li>
+                <li><a id="btn7" class="active" value="{{ params.nextPage }}" onclick="checkoutpost7()">下一页</a></li>
+                <li><a id="btn8" class="prev-next next" value="{{ params.lastPage }}" onclick="checkoutpost8()">尾页<i class="ion-ios-arrow-right"></i>
+                    </a></li>
+            </ul>
+ 
+        </div>
+        <div class="total-pages">
+            <p>Showing 1 - 20 of 30 results </p>
+        </div>
+    </div>
+</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
+        
     </div>
+
+
+
 
 
     <!-- 底部导航栏 -->
