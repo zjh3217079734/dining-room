@@ -623,7 +623,7 @@ def checkout():
     # 检测用户登录
     if 'username' in request.cookies:
         username = request.cookies['username']
-
+    session['id'] = 1
     status = 0
     page = 1
     statuss = '未付款'
@@ -650,6 +650,7 @@ def checkout():
 
 @main.route('/checkoutajax', methods=['GET','POST'])
 def checkoutajax():
+    session['id'] = 1
     username = get_name()
     status = request.form['status']
     print('hello'+status)
