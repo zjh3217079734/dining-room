@@ -378,9 +378,9 @@
         if (res) {
             $('#my_button').removeAttr('disabled','disabled');
             {#alert("验证正确");#}
-            $('#right-wrong').html("验证码正确")
+            $('#right-wrong').html("<p style='color:green'"+">验证码正确</p>")
         } else {
-            $('#right-wrong').html("验证码错误");
+            $('#right-wrong').html("<p style='color:red'"+">验证码错误</p>");
             {#alert("验证码错误");#}
         }
     }
