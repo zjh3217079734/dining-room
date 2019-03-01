@@ -135,8 +135,8 @@ def login_views():
             else:
                 return render_template('login-register.html', params={})
     else:
-        # url = request.headers.get('Referer', '/')
-        # session['url'] = url
+        url = request.headers.get('Referer', '/')
+        session['url'] = url
         uname = request.form['username']
         upwd = request.form['password']
         s = sha1()
@@ -147,7 +147,7 @@ def login_views():
         print(user)
         # print(user.user_id)
         if user !=None:
-            session['id'] = user.user_id
+            session['user_id'] = user.user_id
             session['username'] = uname
             url = session['url']
             # print("URL是:",url)
@@ -317,11 +317,12 @@ def cart_page_viwes():
                 numcount = i
                 return render_template('cart-page.html', params=locals())
             else:
-                return render_template('/goods?shop_id=1', params=locals())
+                return redirect('/goods?shop_id=1')
         else:
             return redirect('/login')
     else:
         create_time = datetime.now().strftime('%Y%m%d%H%M%S')
+        print(session)
         shop_id = session['shop_id']
         user_id = session['user_id']
         # shop_id = 2
@@ -333,7 +334,7 @@ def cart_page_viwes():
         todaynum = db.session.query(Order.create_time).filter(
             Order.create_time.like("%" + today + "%")).count() + 1
         tm = ("%04d" % todaynum)
-        sd = ("%06d" % shop_id)
+        sd = ("%06d" % int(shop_id))
         order_id = create_time + sd + tm
         # 获取表单数据并处理
         list = request.form
@@ -377,8 +378,8 @@ def cart_page_viwes():
             db.session.add(order_details)
             db.session.commit()
             i += 1
-        # return redirect('/checkout')
-        return '接收成功'
+        return redirect('/checkout')
+        # return '接收成功'
 
 
 # +---------------------
@@ -506,6 +507,8 @@ def shops_views():
     nextPage = lastPage
     if page < lastPage:
         nextPage = page + 1
+    if lastPage == 1:
+        nextPage = 1
     return render_template("index.html", params=locals())
 
 
@@ -561,6 +564,8 @@ def classify_views():
             nextPage = lastPage
         if page < lastPage:
          nextPage = page + 1
+        if lastPage == 1:
+            nextPage = 1
     shops = tuple(shops)
     return render_template("classify-child.html",params=locals())
 
@@ -748,8 +753,11 @@ def zhifu():
 # 刘光辉 商品分类
 @main.route('/goods')
 def goods_views():
+
+    prevPage = 1
     username = get_name()
     shop_id = request.args.get('shop_id')
+    session['shop_id'] = shop_id
     shop = Shop.query.filter_by(id=shop_id).first()
     # 商品分类列表
     # Menu.query.filter_by(shop_id=shop_id).all()
@@ -784,23 +792,26 @@ def goods_views():
     nextPage = lastPage
     if page < lastPage:
         nextpage = page + 1
+    if lastPage == 1:
+        nextPage =1
+    menu_id =""
 
     return render_template('/shop.html', params=locals())
 
 
 # --------------------------------------------------------------------
 # -------------------------------------------------------------------
-# shop.html中的购物车按钮
+goodidsforjl = []
 @main.route('/goodslookup')
 def gouwuche_views():
     username = get_name()
     shop_id = request.args["shop_id"]
     goods_id = request.args['goods_id']
-    goodids = []
-    goodids.append(goods_id)
-    session["goods_id"] = goods_id
-    print(session)
-    print(goodids)
+    if goods_id not in goodidsforjl:
+        goodidsforjl.append(goods_id)
+        session["goods_id"] = goodidsforjl
+        print(session)
+        print(goodidsforjl)
     return "('添加购物车成功')"
 
 # ----------------------------------------------------------------
