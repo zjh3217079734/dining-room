@@ -31,8 +31,8 @@ class Merchant(db.Model):
         )
     )
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 门店信息表
@@ -105,8 +105,8 @@ class Shop(db.Model):
 
     # 实现与Classify的关联关系(多对多,中间借助classify_shop关联表进行关联)
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 门店和商家关联表
@@ -127,8 +127,8 @@ class Merchant_shop(db.Model):
     remake_name = db.Column(
         db.String(50), nullable=True)
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 门店分类表 - -用来关联门店的种类
@@ -151,8 +151,8 @@ class Classify(db.Model):
         )
     )
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 类型和门店关联的表:
@@ -172,8 +172,8 @@ class Classify_shop(db.Model):
     # 多对多在classify表里面
     shop_id = db.Column(db.Integer, db.ForeignKey("shop.id"))
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 地区表
@@ -223,8 +223,8 @@ class User(db.Model):
         lazy='dynamic'
     )
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 商品菜单表
@@ -240,8 +240,8 @@ class Menu(db.Model):
     # 门店id,多个菜单关联到一个门店
     shop_id = db.Column(db.Integer, db.ForeignKey("shop.id"))
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 商品的信息表
@@ -277,8 +277,8 @@ class Goods(db.Model):
         lazy='dynamic'
     )
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 订单表
@@ -347,8 +347,8 @@ class Order(db.Model):
         lazy='dynamic'
     )
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)
 
 
 # 订单详情表
@@ -412,5 +412,5 @@ class Apply(db.Model):
     # '申请备注',
     remark = db.Column(db.String(100), nullable=True)
 
-    def __repr__(self):
-        return "%s表创建好了" % (self.__class__.__name__)
+    # def __repr__(self):
+    #     return "%s表创建好了" % (self.__class__.__name__)

@@ -253,14 +253,14 @@
                         <div class="pagination-total-pages">
                             <div class="pagination-style">
                                 <ul>
-                                    <li><a class="prev-next prev" href="/goods?page=1"><i class="ion-ios-arrow-left"></i>
+                                    <li><a class="prev-next prev" href="/goods?shop_id={{ params.shop.id }}&page=1"><i class="ion-ios-arrow-left"></i>
                                             首页 </a></li>
-                                    <li><a class="active" href="/goods?page={{ params.prevPage }}">上一页</a></li>
-                                    <li><a href="/goods?page=1"></a>1</li>
-                                    <li><a href="/goods?page=2">2</a></li>
+                                    <li><a class="active" href="/goods?shop_id={{ params.shop.id }}&page={{ params.prevPage }}">上一页</a></li>
+                                    <li><a href="/goods?shop_id={{ params.shop.id }}&menu_id={{ params.menu.id }}&page=1">1</a></li>
+                                    <li><a href="/goods?shop_id={{ params.shop.id }}&menu_id={{ params.menu.id }}&page=2">2</a></li>
                                     <li><a href="#">...</a></li>
-                                    <li><a href="/goods?di={{ params.shop.id }}&page={{ params.nextPage }}">下一页</a></li>
-                                    <li><a class="prev-next next" href="/goods?page={{ params.lastPage }}"> 尾页 <i class="ion-ios-arrow-right"></i>
+                                    <li><a href="/goods?shop_id={{ params.shop.id }}&page={{ params.nextPage }}">下一页</a></li>
+                                    <li><a class="prev-next next" href="/goods?shop_id={{ params.shop.id }}&menu_id={{ params.menu.id }}&page={{ params.lastPage }}"> 尾页 <i class="ion-ios-arrow-right"></i>
                                         </a></li>
                                 </ul>
                             </div>
@@ -279,7 +279,7 @@
 
                                 <ul id="shop-catigory-1" class="panel-collapse collapse show">
                                     {% for menu in params.menus %}
-                                    <li><a href="/goods?id={{ params.shop.id }}&menu_id={{ menu.id }}" style="cursor:pointer">{{
+                                    <li><a href="/goods?shop_id={{ params.shop.id }}&menu_id={{ menu.id }}" style="cursor:pointer">{{
                                             menu.menu_name }}</a></li>
 
                                     {% endfor %}

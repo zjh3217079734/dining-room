@@ -490,24 +490,24 @@ def account_views():
 def shops_views():
     if 'username' in session:
         username =session['username']
-
-        classifies = db.session.query(Classify).all()
-        goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
-        page = request.args.get("page",1,type=int)
-        pageSize = 10
-        ost = (page - 1) * pageSize
-        shops = db.session.query(Shop).limit(pageSize).offset(ost).all()
-        totalCount = db.session.query(Shop).count()
-        lastPage = math.ceil(totalCount / pageSize)
-        prevPage = 1
-        if page > 1:
-            prevPage = page - 1
-        nextPage = lastPage
-        if page < lastPage:
-            nextPage = page + 1
     else:
-        username={}
+        username = {}
+    classifies = db.session.query(Classify).all()
+    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
+    page = request.args.get("page",1,type=int)
+    pageSize = 10
+    ost = (page - 1) * pageSize
+    shops = db.session.query(Shop).limit(pageSize).offset(ost).all()
+    totalCount = db.session.query(Shop).count()
+    lastPage = math.ceil(totalCount / pageSize)
+    prevPage = 1
+    if page > 1:
+        prevPage = page - 1
+    nextPage = lastPage
+    if page < lastPage:
+        nextPage = page + 1
     return render_template("index.html", params=locals())
+
 
 @main.route("/release", methods=["GET", "POST"])
 def release_views():
@@ -544,47 +544,50 @@ def classify_views():
     goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
     classify_id = request.args.get("id")
     url = "/classify"
-    shopid = db.session.query(Classify_shop).filter_by(classify_id=classify_id).all()
+    shopid = db.session.query(Classify_shop.shop_id).filter_by(classify_id=classify_id).first()
     shops = []
     for si in shopid:
-        shop = db.session.query(Shop).filter_by(id=si.shop_id).first()
+        shop = db.session.query(Shop).filter_by(id=si).first()
         shops.append(shop)
-    totalCount = db.session.query(Shop).filter_by(id=si.shop_id).count()
-    page = request.args.get("page", 1, type=int)
-    pageSize = 10
-    ost = (page - 1) * pageSize
-    lastPage = math.ceil(totalCount / pageSize)
-    prevPage = 1
-    if page > 1:
-        prevPage = page - 1
-        nextPage = lastPage
-    if page < lastPage:
-        nextPage = page + 1
+
+        totalCount = db.session.query(Shop).filter_by(id=si).count()
+        page = request.args.get("page", 1, type=int)
+        pageSize = 10
+        ost = (page - 1) * pageSize
+        lastPage = math.ceil(totalCount / pageSize)
+        prevPage = 1
+        if page > 1:
+            prevPage = page - 1
+            nextPage = lastPage
+        if page < lastPage:
+         nextPage = page + 1
+    shops = tuple(shops)
     return render_template("classify-child.html",params=locals())
 
 @main.route("/hotTag", methods=["GET", "POST"])
 def tag_views():
     classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).limit(5).all()
-    goodsname = request.args.get("goods")
+    goodsinfo = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).limit(5).all()
+    goodsname = request.args["goods"]
     url = "/hotTag"
-    shopid = db.session.query(Goods).filter_by(goods_name = goodsname).all()
+    shopid = db.session.query(Goods.shop_id).filter_by(goods_name=goodsname).all()
     print(shopid[0].shop_id)
     shops = []
     for si in shopid:
         shop = db.session.query(Shop).filter_by(id=si.shop_id).first()
         shops.append(shop)
-    totalCount = db.session.query(Shop).filter_by(id=si.shop_id).count()
-    page = request.args.get("page", 1, type=int)
-    pageSize = 10
-    ost = (page - 1) * pageSize
-    lastPage = math.ceil(totalCount / pageSize)
-    prevPage = 1
-    if page > 1:
-        prevPage = page - 1
-        nextPage = lastPage
-    if page < lastPage:
-        nextPage = page + 1
+        totalCount = db.session.query(Shop).filter_by(id=si.shop_id).count()
+        page = request.args.get("page", 1, type=int)
+        pageSize = 10
+        ost = (page - 1) * pageSize
+        lastPage = math.ceil(totalCount / pageSize)
+        prevPage = 1
+        if page > 1:
+            prevPage = page - 1
+            nextPage = lastPage
+        if page < lastPage:
+            nextPage = page + 1
+    shops = tuple(shops)
     return render_template("/hottag.html", params=locals())
 
 @main.route("/search", methods=["GET", "POST"])
@@ -746,7 +749,7 @@ def zhifu():
 @main.route('/goods')
 def goods_views():
     username = get_name()
-    shop_id = request.args.get('id')
+    shop_id = request.args.get('shop_id')
     shop = Shop.query.filter_by(id=shop_id).first()
     # 商品分类列表
     # Menu.query.filter_by(shop_id=shop_id).all()
