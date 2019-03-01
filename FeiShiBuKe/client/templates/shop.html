@@ -199,7 +199,7 @@
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a title="加入到购物车" id="goodid"
-                                               value={# {{ good.id }} #} href="javascript:void(0);"
+                                               value={{ good.id }} href="javascript:void(0);"
                                                onclick="getgoodid(this);addcart(this);">
                                                 <img src="../assets/goods/{{ good.goods_image }}"
                                                      onerror="onerror=null;src='../assets/nullgoods.png'"
@@ -210,7 +210,7 @@
                                                     <!-- <a title="添加至购物车" href="" onclick="tjgwc(this)"> -->
                                                     <!-- <a id="goodid" value={{ good.id }} onclick="getgoodid(this);addcart(this)">添加至购物车</a> -->
                                                     <a title="加入到购物车" id="goodid"
-                                                       value={# {{ good.id }} #} href="javascript:void(0);"
+                                                       value={{good.id }} href="javascript:void(0);"
                                                        onclick="getgoodid(this);addcart(this);"><i
                                                             class=" ion-android-cart"></i>添加至购物车</a>
                                                     <!-- <input style="display:none" type="text"   > -->

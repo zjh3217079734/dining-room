@@ -291,7 +291,12 @@ def cart_page_viwes():
         # 1. 获取当前订单号,及订单里的数据
         # order_id = session['order_id']
         goodsid = session["goods_id"]
+        print("goodsid是:",goodsid)
+        if goodsid:
+            print("goodids获取到了")
         # goodsid = [10001, 10002, 10003, 10004]
+        if 'goods_id' not in session:
+            return redirect('/index')
         goods = []
         i = 1
         for goodid in goodsid:
@@ -767,7 +772,7 @@ def goods_views():
 # shop.html中的购物车按钮
 @main.route('/goodslookup')
 def gouwuche_views():
-    username = get_name()
+
     if "good" in session:
         good = session["good"]
     else:
