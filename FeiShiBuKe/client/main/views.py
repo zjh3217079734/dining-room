@@ -51,11 +51,22 @@ def get_name():
     else:
         return None
 
+ # 注册时验证用户名是否存在--蒋励
+@main.route('/register-username')
+def register_username():
+    username = request.args['username']
+    user = User.query.filter_by(user_name=username).first()
+    if user:
+        return "用户名已存在"
+    else:
+        return "用户名可用"
+
 
 @main.route('/register', methods=['GET', 'POST'])
 def register_views():
     username = get_name()
     if request.method == 'GET':
+
         return render_template('login-register.html', params={})
     else:
         username = request.form['uname']
@@ -100,12 +111,11 @@ def logout_views():
 
 @main.route('/login', methods=['GET', 'POST'])
 def login_views():
-    username = get_name()
     if request.method == 'GET':
         url = request.headers.get('Referer', '/')
         session['url'] = url
         if 'username' in session:
-            return redirect(url)
+            # return redirect(url)
             username = session['username']
             return render_template('index.html', params=locals())
         else:
@@ -125,26 +135,29 @@ def login_views():
             else:
                 return render_template('login-register.html', params={})
     else:
-        username = request.form['username']
+        # url = request.headers.get('Referer', '/')
+        # session['url'] = url
+        uname = request.form['username']
         upwd = request.form['password']
         s = sha1()
         s.update(upwd.encode())
         password = s.hexdigest()
-        user = User.query.filter_by(
-            user_name=username, password=password).first()
-        # print(user)
+        print(password)
+        user = db.session.query(User).filter(User.user_name==uname,User.password==password).first()
+        print(user)
         # print(user.user_id)
-        if user:
+        if user !=None:
             session['id'] = user.user_id
-            session['username'] = username
+            session['username'] = uname
             url = session['url']
             # print("URL是:",url)
             resp = redirect(url)
             # print("resp是:::",resp)
             if 'isSaved' in request.form:
-                resp.set_cookie('username', username, 60 * 60 * 24 * 365 * 10)
-            return resp
+                resp.set_cookie('username', uname, 60 * 60 * 24 * 365 * 10)
+            return redirect('/index')
         else:
+            session.clear()
             errMsg = "用户名或密码不正确"
             resp = make_response(render_template('login-register.html', params=locals()))
             resp.delete_cookie('username')
@@ -284,24 +297,29 @@ def resetpwd_views():
 
 @main.route('/cart-page', methods=["GET", "POST"])
 def cart_page_viwes():
-    username = get_name()
+    # username = get_name()
     if request.method == "GET":
+        if 'username' in session:
         # 先判断是否登录
         # if 'id' in session and 'lognname' in session:
         # 1. 获取当前订单号,及订单里的数据
         # order_id = session['order_id']
-        goodsid = session["goods_id"]
-        # goodsid = [10001, 10002, 10003, 10004]
-        goods = []
-        i = 1
-        for goodid in goodsid:
-            good = Goods().query.filter_by(id=goodid).all()
-            goods.append(good)
-            i += 1
-        # 2.传送到页面上
-        numcount = i
-
-        return render_template('cart-page.html', params=locals())
+            if 'goods_id' in session:
+                goodsid = session["goods_id"]
+                # goodsid = [10001, 10002, 10003, 10004]
+                goods = []
+                i = 1
+                for goodid in goodsid:
+                    good = Goods().query.filter_by(id=goodid).all()
+                    goods.append(good)
+                    i += 1
+                # 2.传送到页面上
+                numcount = i
+                return render_template('cart-page.html', params=locals())
+            else:
+                return render_template('/goods?shop_id=1', params=locals())
+        else:
+            return redirect('/login')
     else:
         create_time = datetime.now().strftime('%Y%m%d%H%M%S')
         shop_id = session['shop_id']
@@ -470,20 +488,25 @@ def account_views():
 @main.route('/index', methods=["GET", "POST"])
 @main.route("/shops", methods=["GET", "POST"])
 def shops_views():
-    classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
-    page = request.args.get("page",1,type=int)
-    pageSize = 10
-    ost = (page - 1) * pageSize
-    shops = db.session.query(Shop).limit(pageSize).offset(ost).all()
-    totalCount = db.session.query(Shop).count()
-    lastPage = math.ceil(totalCount / pageSize)
-    prevPage = 1
-    if page > 1:
-        prevPage = page - 1
-    nextPage = lastPage
-    if page < lastPage:
-        nextPage = page + 1
+    if 'username' in session:
+        username =session['username']
+
+        classifies = db.session.query(Classify).all()
+        goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
+        page = request.args.get("page",1,type=int)
+        pageSize = 10
+        ost = (page - 1) * pageSize
+        shops = db.session.query(Shop).limit(pageSize).offset(ost).all()
+        totalCount = db.session.query(Shop).count()
+        lastPage = math.ceil(totalCount / pageSize)
+        prevPage = 1
+        if page > 1:
+            prevPage = page - 1
+        nextPage = lastPage
+        if page < lastPage:
+            nextPage = page + 1
+    else:
+        username={}
     return render_template("index.html", params=locals())
 
 @main.route("/release", methods=["GET", "POST"])

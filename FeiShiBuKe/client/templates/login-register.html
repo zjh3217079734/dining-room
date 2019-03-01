@@ -228,13 +228,15 @@
                                         <form action="/register" method="post" name="form1">
 
                                             <input class="group-name" type="text" name="uname" onblur="checkna()"
-                                                placeholder="用户名"><span class="tips" id="divname">长度1~12个字符</span>
+                                                placeholder="用户名" id="zcun"><span class="tips" id="divname">长度1~12个字符</span>
                                             <input class="group-password" type="password" name="upwd" onblur="checkpsd1()"
                                                 placeholder="密码"><span class="tips" id="divpassword1">密码必须由字母和数字组成</span>
                                             <input class="group-password" type="password" name="upwd1" onblur="checkpsd2()"
                                                 placeholder="确认密码"><span class="tips" id="divpassword2">两次密码需要相同</span>
                                             <input class="group-phone" type="text" name="uphone" placeholder="手机号码">
-
+                                             <div>
+                                                 <p id="right-wrong"></p>
+                                             </div>
                                             <div class="verification-content">
                                                 <input type="text" id="code_input" value="" placeholder="请输入验证码"/>
                                                 <div id="v_container" style="width:145px; height:45px;"></div>
@@ -374,12 +376,23 @@
     document.getElementById("code_input").onblur = function () {
         var res = verifyCode.validate(document.getElementById("code_input").value);
         if (res) {
-            $('#my_button').removeAttr("disabled","disabled")
-            alert("验证正确");
+            $('#my_button').removeAttr('disabled','disabled');
+            {#alert("验证正确");#}
+            $('#right-wrong').html("验证码正确")
         } else {
-            alert("验证码错误");
+            $('#right-wrong').html("验证码错误");
+            {#alert("验证码错误");#}
         }
     }
+    // 验证用户名是否存在
+    $('#zcun').blur(function () {
+
+	username ={ "username":$("#zcun").val()};
+	$.get('/register-username',username,function (data) {
+		alert(data)
+
+	})
+    })
 </script>
 
 </html>

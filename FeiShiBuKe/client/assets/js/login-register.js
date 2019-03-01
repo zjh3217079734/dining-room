@@ -1,5 +1,6 @@
 function checkna(){
 	na = form1.uname.value;
+
 	if( na.length <1 || na.length >12)
 	{
 		divname.innerHTML='<font class="tips_false">长度是1~12个字符</font>';
@@ -47,3 +48,4 @@ function checkpsd2(){ 
 		}
 }
 
+//验证用户名
