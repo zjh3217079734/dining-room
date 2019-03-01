@@ -105,7 +105,7 @@
                                     <div class="cart-text">
                                         <span class="digit">购物车</span>
                                         <!-- 当前购物车的统计 -->
-                                        <span class="cart-digit-bold">$209.00</span>
+                                        <span class="cart-digit-bold">$0</span>
                                     </div>
                                 </a>
 
@@ -170,10 +170,10 @@
             <div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-3.jpg);">
                 <div class="container">
                     <div class="slider-content slider-animated-2 text-center">
-                        <h1 class="animated">Drink & Heathy Food</h1>
-                        <h3 class="animated">Fresh Heathy and Organic.</h3>
+                        <h1 class="animated">欢迎光临非食不可</h1>
+                        <h3 class="animated">新鲜 便捷 美味 好心情!</h3>
                         <div class="slider-btn mt-90">
-                            <a class="animated" href="product-details">Order Now</a>
+                            <a class="animated" href="/goods?shop_id=">去点餐</a>
                         </div>
                     </div>
                 </div>
@@ -289,8 +289,8 @@
                         <div class="col-lg-12">
                             <div class="single-blog-wrapper mb-50">
                                 <div class="blog-img mb-20">
-                                    <a href="/goods?id={{ shop.id }}">
-                                        <img src="{{ shop.shop_img }}" alt="">
+                                    <a href="/goods?shop_id={{ shop.id }}">
+{#                                        <img src="{{ shop.shop_img }}" alt="">#}
                                     </a>
                                     <!--
                                             <div class="blog-date">
@@ -299,25 +299,24 @@
                                             -->
                                 </div>
                                 <div class="blog-content">
-                                    <h2><a href="/goods?id={{ shop.id }}"> {{ shop.shop_name }} </a></h2>
+                                    <h2><a href="/goods?shop_id={{ shop.id }}"> {{ shop.shop_name }} </a></h2>
                                     <div class="blog-date-categori">
                                         <ul>
-                                            <li><a href="/goods?id={{ shop.id }}"><i class="fa fa-user"></i> ★★★★★
+                                            <li><a href="/goods?shop_id={{ shop.id }}"><i class="fa fa-user"></i> ★★★★★
                                                     5分 </a></li>
-                                            <li><a href="/goods?id={{ shop.id }}"><i class="ion-heart"></i> 999+喜欢
+                                            <li><a href="/goods?shop_id={{ shop.id }}"><i class="ion-heart"></i> 123+喜欢
                                                 </a></li>
-                                            <li><a href="/goods?id={{ shop.id }}"><i class="fa fa-comment"></i>
-                                                    999+条评论 </a></li>
+                                            <li><a href="/goods?shop_id={{ shop.id }}"><i class="fa fa-comment"></i>
+                                                    213+条评论 </a></li>
                                         </ul>
                                     </div>
                                     <p>
-                                        {{ shop.shop_intro }}
-                                        <img src="../assets/shops/{{ shop.shop_intro }}" onerror="onerror=null;src='../assets/null.png'"
-                                            width="870" height="522" />
+                                        <img src="../assets/shops/{{ shop.shop_img }}" onerror="onerror=null;src='../assets/null.png'"
+                                             style="width: 800px; height: 522px"/>
                                     </p>
                                 </div>
                                 <div class="blog-btn mt-30">
-                                    <a href="/goods?id={{ shop.id }}">详情</a>
+                                    <a href="/goods?shop_id={{ shop.id }}">详情</a>
                                 </div>
                             </div>
                         </div>
