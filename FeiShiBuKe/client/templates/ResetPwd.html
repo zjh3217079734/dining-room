@@ -164,10 +164,13 @@
                                             <span class="tips" id="divpassword2">两次密码需要相同</span>
                                         <input class="group-phone" type="text" name="number" placeholder="手机号码">
 
+                                        <div>
+                                            <p id="verify-code"></p>
+                                        </div>
                                         <div class="verification-content">
                                             <input type="text" id="code_input" value="" placeholder="请输入验证码"/>
                                             <div id="v_container" style="width:145px; height:40px;"></div>
-                                        </div>
+                                        </div>                                        
                                         <div class="button-box">
                                             <button class="submit" id="my_button">重置</button>
                                         </div>
@@ -340,10 +343,10 @@
 		document.getElementById("code_input").onblur = function(){
 			var res = verifyCode.validate(document.getElementById("code_input").value);
 			if(res){
-			    $('my_button').removeAttr("disabled","disabled")
-				alert("验证正确");
+			    $('#my_button_reset').removeAttr("disabled","disabled")
+				$('#verify-code').html("<p style='color:green'"+">验证码正确</p>")
 			}else{
-				alert("验证码错误");
+				$('#verify-code').html("<p style='color:red'"+">验证码错误</p>");
 			}
 		}
 	</script>
