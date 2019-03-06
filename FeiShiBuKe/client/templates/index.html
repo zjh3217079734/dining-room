@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/flexslider.css">
 
 </head>
 
@@ -95,18 +96,18 @@
                                 </a>
                             </div>
                             <div class="header-cart">
-                                <a onclick="window.location = 'cart-page'" href="javascript:void(0);">
-                                    <div class="header-icon-style">
-                                        <i class="icon-handbag icons"></i>
-                                        <!-- 商品数量标识 -->
-                                        <span class="count-style">0</span>
-                                        <!-- 商品数量标识,数量后面跟+ -->
-                                    </div>
-                                    <div class="cart-text">
-                                        <span class="digit">购物车</span>
-                                        <!-- 当前购物车的统计 -->
-                                        <span class="cart-digit-bold">$0</span>
-                                    </div>
+{#                                <a onclick="window.location = 'cart-page'" href="javascript:void(0);">#}
+{#                                    <div class="header-icon-style">#}
+{#                                        <i class="icon-handbag icons"></i>#}
+{#                                        <!-- 商品数量标识 -->#}
+{#                                        <span class="count-style">0</span>#}
+{#                                        <!-- 商品数量标识,数量后面跟+ -->#}
+{#                                    </div>#}
+{#                                    <div class="cart-text">#}
+{#                                        <span class="digit">购物车</span>#}
+{#                                        <!-- 当前购物车的统计 -->#}
+{#                                        <span class="cart-digit-bold">$0</span>#}
+{#                                    </div>#}
                                 </a>
 
                             </div>
@@ -164,33 +165,82 @@
     </header>
     <!-- 顶部导航栏结束 -->
 
-
-    <div class="slider-area-2">
-        <div class="slider-active owl-dot-style owl-carousel">
-            <div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-3.jpg);">
+    <div class="flexslider slider">
+        <ul class="slides">
+            <li><div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-1.jpeg);">
                 <div class="container">
                     <div class="slider-content slider-animated-2 text-center">
                         <h1 class="animated">欢迎光临非食不可</h1>
                         <h3 class="animated">新鲜 便捷 美味 好心情!</h3>
                         <div class="slider-btn mt-90">
-                            <a class="animated" href="/goods?shop_id=">去点餐</a>
+                            <a class="animated" href="/goods?shop_id=1">去点餐</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-3.jpg);">
+            </div></li>
+            <li><div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-2.jpeg);">
                 <div class="container">
                     <div class="slider-content slider-animated-2 text-center">
-                        <h1 class="animated">Drink & Heathy Food</h1>
-                        <h3 class="animated">Fresh Heathy and Organic.</h3>
+                        <h1 class="animated">欢迎光临非食不可</h1>
+                        <h3 class="animated">新鲜 便捷 美味 好心情!</h3>
                         <div class="slider-btn mt-90">
-                            <a class="animated" href="product-details">Order Now</a>
+                            <a class="animated" href="/goods?shop_id=1">去点餐</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div></li>
+            <li><div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-3.jpeg);">
+                <div class="container">
+                    <div class="slider-content slider-animated-2 text-center">
+                        <h1 class="animated">欢迎光临非食不可</h1>
+                        <h3 class="animated">新鲜 便捷 美味 好心情!</h3>
+                        <div class="slider-btn mt-90">
+                            <a class="animated" href="/goods?shop_id=1">去点餐</a>
+                        </div>
+                    </div>
+                </div>
+            </div></li>
+            <li><div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-4.jpeg);">
+                <div class="container">
+                    <div class="slider-content slider-animated-2 text-center">
+                        <h1 class="animated">欢迎光临非食不可</h1>
+                        <h3 class="animated">新鲜 便捷 美味 好心情!</h3>
+                        <div class="slider-btn mt-90">
+                            <a class="animated" href="/goods?shop_id=1">去点餐</a>
+                        </div>
+                    </div>
+                </div>
+            </div></li>
+            <li><div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-5.jpeg);">
+                <div class="container">
+                    <div class="slider-content slider-animated-2 text-center">
+                        <h1 class="animated">欢迎光临非食不可</h1>
+                        <h3 class="animated">新鲜 便捷 美味 好心情!</h3>
+                        <div class="slider-btn mt-90">
+                            <a class="animated" href="/goods?shop_id=1">去点餐</a>
+                        </div>
+                    </div>
+                </div>
+            </div></li>
+        </ul>
     </div>
+{#            <div class="slider-area-2">#}
+{#        <div class="slider-active owl-dot-style owl-carousel">#}
+{##}
+{#            <div class="single-slider pt-210 pb-220 bg-img" style="background-image:url(../assets/img/slider/slider-3.jpg);">#}
+{#                <div class="container">#}
+{#                    <div class="slider-content slider-animated-2 text-center">#}
+{#                        <h1 class="animated">Drink & Heathy Food</h1>#}
+{#                        <h3 class="animated">Fresh Heathy and Organic.</h3>#}
+{#                        <div class="slider-btn mt-90">#}
+{#                            <a class="animated" href="product-details">Order Now</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
 
     <!-- 主体头部 -->
     <div class="breadcrumb-area gray-bg">
@@ -602,6 +652,18 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/jquery.flexslider-min.js"></script>
+    <script>
+        $(function () {
+            $(".flexslider").flexslider({
+                animation:'slide',
+                slideshowSpeed:7000,
+                animationSpeed: 1000,
+                slideshow:true,
+                directionNav:true
+            })
+        })
+    </script>
 
 
     <script type="text/javascript">

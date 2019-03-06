@@ -12,7 +12,7 @@
         <!-- checkout-area start -->
     
         <div class="checkout-area pb-80 pt-10">
-            <div style="margin-left:150px;margin-bottom: 50px" class="blog-btn mt-30">
+            <div style="margin-left:25%;margin-bottom: 50px" class="blog-btn mt-30">
                 <input id="btn1" type="button" value="未付款" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost1()">
                 <input id="btn2" type="button" value="已付款" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost2()">
                 <input id="btn3" type="button" value="历史订单" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost3()">
@@ -52,7 +52,7 @@
                                         </a>
                                         <a data-toggle="collapse" data-parent="#faq" href="#{{ od.id }}">
     
-                                            <img src="{{ params.shops[od.order_id].shop_img }}" width="40px"
+                                            <img src="../assets/shops/{{ params.shops[od.order_id].shop_img }}" width="40px"
                                                  height="40px">
     
                                             <span style="font-weight:bold;margin-right: 30px">{{ params.shops[od.order_id].shop_name }}</span>
@@ -124,7 +124,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="o-pro-dec">
-                                                                        <p><img src="{{ good.image_url }}" width="40px"
+                                                                        <p><img src="../assets/goods{{ good.image_url }}" width="40px"
                                                                                 height="40px">{{ good.goods_name }}</p>
                                                                     </div>
                                                                 </td>
@@ -177,7 +177,7 @@
   
             </div>
             <div class="total-pages">
-                <p>Showing 1 - 20 of 30 results </p>
+                <p>第 {{(params.page-1)*params.pageSize+1}} - {{(params.page)*params.pageSize}} 个,共 {{params.totalCount}} 个 </p>
             </div>
         </div>
     </div>

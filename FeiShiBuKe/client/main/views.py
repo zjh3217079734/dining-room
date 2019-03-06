@@ -354,6 +354,7 @@ def cart_page_viwes():
         order.pay_money = pay_money
         order.update_time = create_time
         order.create_time = create_time
+        order.remark=remark
         db.session.add(order)
         db.session.commit()
         for gid in goods_id:
@@ -416,6 +417,7 @@ def account_views():
             user.nick = nick
             user.phone = phone
             user.sex = sex
+            user.update_time = datetime.now()
             # db.session.add(user)
             db.session.commit()
             return redirect('/my-account')
@@ -437,6 +439,7 @@ def account_views():
                 # password = generate_password_hash(pwd1)
                 user = User.query.filter_by(user_name='zhao').first()
                 user.password = password
+                user.update_time = datetime.now()
                 # 添加 add  报错 数据库关系映射出错
                 db.session.add(user)
                 db.session.commit()
@@ -494,7 +497,7 @@ def shops_views():
     else:
         username = {}
     classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
+    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).limit(10).all()
     page = request.args.get("page",1,type=int)
     pageSize = 10
     ost = (page - 1) * pageSize
@@ -524,7 +527,7 @@ def release_views():
 @main.route("/keywords", methods=["GET", "POST"])
 def keywords_views():
     classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
+    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).limit(10).all()
     page = request.args.get("page", 1, type=int)
     kws1 = request.args.get("kws1", "")
     url = "/keywords"
@@ -544,7 +547,7 @@ def keywords_views():
 @main.route("/classify", methods=["GET", "POST"])
 def classify_views():
     classifies = db.session.query(Classify).all()
-    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).all()
+    goods = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).limit(10).all()
     classify_id = request.args.get("id")
     url = "/classify"
     shopid = db.session.query(Classify_shop.shop_id).filter_by(classify_id=classify_id).first()
@@ -572,7 +575,7 @@ def classify_views():
 @main.route("/hotTag", methods=["GET", "POST"])
 def tag_views():
     classifies = db.session.query(Classify).all()
-    goodsinfo = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).limit(5).all()
+    goodsinfo = db.session.query(Goods).group_by(Goods.goods_name).order_by(func.count(Goods.shop_id).desc()).limit(10).all()
     goodsname = request.args["goods"]
     url = "/hotTag"
     shopid = db.session.query(Goods.shop_id).filter_by(goods_name=goodsname).all()
@@ -619,16 +622,13 @@ def search_views():
 
 @main.route('/checkout')
 def checkout():
-    username = get_name()
     # 检测用户登录
-    if 'username' in request.cookies:
-        username = request.cookies['username']
-
     status = 0
     page = 1
     statuss = '未付款'
-    if 'id' in session:
-        uid = session['id']
+    if 'username' in session:
+        username = session['username']
+        uid = session['user_id']
         # 订单列表
         order = Order.query.filter_by(user_id=uid, status=0).all()
         # order = Order.query.filter_by(user_id=uid).all()
@@ -650,7 +650,6 @@ def checkout():
 
 @main.route('/checkoutajax', methods=['GET','POST'])
 def checkoutajax():
-    username = get_name()
     status = request.form['status']
     print('hello'+status)
     page = int(request.form['page'])
@@ -665,11 +664,9 @@ def checkoutajax():
         status = 2
         statuss = '历史订单'
 
-    if 'username' in request.cookies:
-        username = request.cookies['username']
-
-    if 'id' in session:
-        uid = session['id']
+    if 'user_id' in session:
+        uid = session['user_id']
+        username = session['username']
         pageSize = 4
         ost = (page - 1) * pageSize
 

@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../assets/css/simple-line-icons.css">
     <link rel="stylesheet" href="../assets/css/ionicons.min.css">
     <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style1.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
 
 </head>
@@ -105,7 +105,7 @@
                                 <div class="cart-text">
                                     <span class="digit">购物车</span>
                                     <!-- 当前购物车的统计 -->
-                                    <span class="cart-digit-bold">$209.00</span>
+                                    <span class="cart-digit-bold"></span>
                                 </div>
                             </a>
 
@@ -275,7 +275,7 @@
     <!-- checkout-area start -->
 
     <div class="checkout-area pb-80 pt-10">
-        <div style="margin-left:150px;margin-bottom: 50px" class="blog-btn mt-30">
+        <div style="margin-left:25%;margin-bottom: 50px" class="blog-btn mt-30">
             <input id="btn1" type="button" value="未付款" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost1()">
             <input id="btn2" type="button" value="已付款" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost2()">
             <input id="btn3" type="button" value="历史订单" style="height:35px;width:100px;cursor:pointer" onclick="checkoutpost3()">
@@ -315,7 +315,7 @@
                                     </a>
                                     <a data-toggle="collapse" data-parent="#faq" href="#{{ od.id }}">
 
-                                        <img src="{{ params.shops[od.order_id].shop_img }}" width="40px"
+                                        <img src="../assets/shops/{{ params.shops[od.order_id].shop_img }}" width="40px"
                                              height="40px">
 
                                         <span style="font-weight:bold;margin-right: 30px">{{ params.shops[od.order_id].shop_name }}</span>
@@ -345,15 +345,21 @@
                                     </a>
                                     <div style="float:left;padding:15px 100px">
                                         <span style="font-weight:bold;float:left;margin-right: 20px;margin-left: 100px">备注:</span>
-                                        <span style="font-weight:bold;float:left;margin-right: 5px;margin-left: 150px">{{ od.remark }}</span>
+                                        <span style="font-weight:bold;float:left;margin-right: 5px;margin-left: 150px">{% if od.remark %} {{ od.remark }} {% endif %}</span>
 
                                     </div>
 
                                     {% if od.status == 0 %}
-                                        <form method="POST" action="/zhifu" style="float:right;border-style: solid;
-                                        border-color: darkkhaki;" class="billing-btn">
-                                            <input type="text" value="{{ od.order_id }}"" name="zhifu" hidden="hidden">
-                                            <button type="submit">支付</button>
+                                        <form method="POST" action="/zhifu" style="float:right;" class="billing-btn">
+                                            <!-- <button title="该功能正在开发中..." style="background-image:url('../assets/wx.jpg') " width="118px" height="46px" > -->
+                                            <img class="wxpay" src="../assets/wx.jpg" title="该功能正在开发中..." width="94px" height="45px" alt="" >
+                                            <!-- </button> -->
+                                            &nbsp;&nbsp;
+                                            <img class="alipay" src="../assets/alipay.png" title="该功能正在开发中..." width="70px" height="25px" alt="" >
+                                            &nbsp;&nbsp;
+                                            <input type="text" value="{{ od.order_id }}" name="zhifu" hidden="hidden">
+                                            &nbsp;&nbsp;
+                                            <button type="submit">现金支付</button>
                                         </form>
                                     {% elif od.status == 1 %}
                                         <form method="POST" action="/remove" style="float:right;border-style: solid;
@@ -387,7 +393,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="o-pro-dec">
-                                                                    <p><img src="{{ good.image_url }}" width="40px"
+                                                                    <p><img src="../assets/img/cart/{{ good.image_url }}" width="40px"
                                                                             height="40px">{{ good.goods_name }}</p>
                                                                 </div>
                                                             </td>
@@ -439,9 +445,7 @@
             </ul>
  
         </div>
-        <div class="total-pages">
-            <p>Showing 1 - 20 of 30 results </p>
-        </div>
+        
     </div>
 </div>
                             </div>
@@ -667,6 +671,40 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script type="text/javascript">
+        function getcity() {
+            $.ajax({
+                url: 'https://restapi.amap.com/v3/ip',
+                // https://restapi.amap.com/v3/ip?key=3e6b87028081f58e8f378de61182e572
+                data: { //默认自动添加callback参数
+                    'key': '3e6b87028081f58e8f378de61182e572', //不安全，请定期刷新token，建议进行文件压缩
+                },
+                'dataType': 'jsonp',
+                success: function (json) {
+                    var city = json['city'];
+                    document.getElementById("area_city").innerHTML = city;
+                    postcity();
+                }
+            });
+        }
+
+        function postcity() {
+            var city = document.getElementById("area_city").innerText;
+            console.log(city);
+            $.ajax({
+                'url': "/SelectCity",
+                'data': {
+                    "city": city,
+                }, //转化字符串
+                'contentType': 'application/json; charset=UTF-8',
+                'success': function (data) { //成功的话，得到消息
+                    console.log("selectcity:", data);
+                }
+            });
+        }
+
+        getcity();
+    </script>
 </body>
 
 </html>

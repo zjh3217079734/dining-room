@@ -27,6 +27,11 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script>
+		function lick(){
+			alert("           保存成功!!");
+		}
+	</script>
 </head>
 
 <body>
@@ -107,7 +112,7 @@
                                     <div class="cart-text">
                                         <span class="digit">购物车</span>
                                         <!-- 当前购物车的统计 -->
-                                        <span class="cart-digit-bold">$209.00</span>
+                                        <span class="cart-digit-bold"></span>
                                     </div>
                                 </a>
 
@@ -218,16 +223,20 @@
                                                             {% endif %}
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6">
+                                                   <div class="col-lg-6 col-md-6">
                                                         <div class="billing-info">
-                                                            <label>性&nbsp;&nbsp;&nbsp;别:</label>
-                                                            {% if params.user.sex=='M' %}
-                                                            <input type="text" name="usex" placeholder="性别" value="男">
-                                                            {% elif params.user.sex=='F' %}
-                                                            <input type="text" name="usex" placeholder="性别" value="女">
-                                                            {% else %}
-                                                            <input type="text" name="usex" placeholder="性别" value="未知">
-                                                            {% endif %}
+															<label>性&nbsp;&nbsp;&nbsp;别:</label>
+															<select name="usex" style="height:40px ;border: 1px solid #ebebeb;border-radius: 5px;">
+																<option value ="M" {% if params.user.sex=='M' %} selected="selected" {% endif %}>男</option>
+																<option value ="F" {% if params.user.sex=='F' %} selected="selected"  {% endif %}>女</option>
+
+																<!-- {% if params.user.sex == M %} -->
+																<!-- {% else %}
+																<option value ="F">女</option>
+																<option value ="M">男</option>
+																{% endif %} -->
+															</select>
+
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
@@ -274,7 +283,7 @@
                                                     </div>
                                                     <div class="billing-btn">
                                                         <!-- <input type="submit" value="保存"> -->
-                                                        <button type="submit"><b>保存</b></button>
+                                                        <button type="submit" onclick="lick()"><b>保存</b></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -319,7 +328,7 @@
                                                         <!-- <button href="/my-account">重置</button> -->
                                                     </div>
                                                     <div class="billing-btn">
-                                                        <button type="submit">保存</button>
+                                                        <button type="submit" onclick="lick()">保存</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -507,6 +516,40 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script type="text/javascript">
+        function getcity() {
+            $.ajax({
+                url: 'https://restapi.amap.com/v3/ip',
+                // https://restapi.amap.com/v3/ip?key=3e6b87028081f58e8f378de61182e572
+                data: { //默认自动添加callback参数
+                    'key': '3e6b87028081f58e8f378de61182e572', //不安全，请定期刷新token，建议进行文件压缩
+                },
+                'dataType': 'jsonp',
+                success: function (json) {
+                    var city = json['city'];
+                    document.getElementById("area_city").innerHTML = city;
+                    postcity();
+                }
+            });
+        }
+
+        function postcity() {
+            var city = document.getElementById("area_city").innerText;
+            console.log(city);
+            $.ajax({
+                'url': "/SelectCity",
+                'data': {
+                    "city": city,
+                }, //转化字符串
+                'contentType': 'application/json; charset=UTF-8',
+                'success': function (data) { //成功的话，得到消息
+                    console.log("selectcity:", data);
+                }
+            });
+        }
+
+        getcity();
+    </script>
 </body>
 
 </html>
