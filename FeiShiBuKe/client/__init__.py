@@ -24,7 +24,7 @@ def Create_App():
     app.config['DEBUG'] = True
 
     # 为app指定数据库的配置
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@localhost:3306/project"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://zjh:123456@localhost:3306/client2"
     app.config['SQLALCHEMY_COMMIT_ON_TEAROWN'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     # 配置session所需要的secret_key
@@ -35,5 +35,7 @@ def Create_App():
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)  # 关联main蓝图
 
+    from .SJ import SJ as SJ_blueprint
+    app.register_blueprint(SJ_blueprint)  # 关联SJ蓝图(商家)
     # 返回已经创建好的程序实例app
     return app
