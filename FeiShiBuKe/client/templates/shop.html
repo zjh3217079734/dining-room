@@ -98,13 +98,13 @@
                                     <div class="header-icon-style">
                                         <i class="icon-handbag icons"></i>
                                         <!-- 商品数量标识 -->
-                                        <span class="count-style">0</span>
+                                        <span class="count-style" id="my-cart">0</span>
                                         <!-- 商品数量标识,数量后面跟+ -->
                                     </div>
                                     <div class="cart-text">
                                         <span class="digit">购物车</span>
                                         <!-- 当前购物车的统计 -->
-                                        <span class="cart-digit-bold">$209.00</span>
+                                        <span class="cart-digit-bold"></span>
                                     </div>
                                 </a>
 
@@ -178,7 +178,7 @@
             <div class="row flex-row-reverse">
                 <div class="col-lg-9">
                     <div class="banner-area pb-30">
-                        <a href="#"><img alt="广告" src="../assets/img/banner/banner-49.jpg"></a>
+                        <a href="#"><img alt="广告" src="../assets/img/banner/{{ params.shop.shop_intro }}"></a>
                     </div>
                     <div class="shop-topbar-wrapper">
 
@@ -191,14 +191,15 @@
                                 <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
                                     <div class="product-wrapper">
                                         <div class="product-img">
-                                            <a href="product-details">
-                                                <img src="../assets/goods/{{ good.goods_image }}" onerror="onerror=null;src='../assets/nullgoods.png'"
+                                            <a id="goodid" value={{ good.id }} onclick="getgoodid(this);">
+                                                <!-- addcart(this) -->
+                                                <img src="../assets/img/cart/{{ good.goods_image }}" onerror="onerror=null;src='../assets/nullgoods.png'"
                                                     width="269.98" height="269.98" alt="">
                                             </a>
-                                            <div class="product-action">
+                                            <div class="product-action">    
                                                 <div class="pro-action-left">
                                                     <!-- <a title="添加至购物车" href="" onclick="tjgwc(this)"> -->
-                                                    <a id="goodid" value={{ good.id }} onclick="getgoodid(this)">添加至购物车</a>
+                                                    <a id="goodid" value={{ good.id }} onclick="getgoodid(this);addcart(this);">添加至购物车</a>
                                                     <!--<a title="试试加入到购物车" id="goodid"
                                                        value={#  {{ good.id }}#} href="javascript:void(0);" onclick="addcart(this)"><i class=" ion-android-cart"></i>添加至购物车</a>-->
                                                     <!-- <input style="display:none" type="text"   > -->
@@ -452,25 +453,45 @@
             }
             $.get('/goodslookup', goods, function (data) {
                 alert(data)
+                $("#my-cart").html(parseInt($("#my-cart").html()) + 1);
+                
             })
         };
     </script>
-
-    <script src="../assets/js/jquery-addShopping.js"></script>
-    <script>
-        function addcart(obj) {
-            $(obj).shoping({
-                endElement: ".header-cart",
-                iconCSS: "",
-                iconImg: "assets/img/cart.png",
-                endFunction: function (element) {
-                    $("#my-cart").html(parseInt($("#my-cart").html()) + 1);
-                    return false;
+       <script type="text/javascript">
+        function getcity() {
+            $.ajax({
+                url: 'https://restapi.amap.com/v3/ip',
+                // https://restapi.amap.com/v3/ip?key=3e6b87028081f58e8f378de61182e572
+                data: { //默认自动添加callback参数
+                    'key': '3e6b87028081f58e8f378de61182e572', //不安全，请定期刷新token，建议进行文件压缩
+                },
+                'dataType': 'jsonp',
+                success: function (json) {
+                    var city = json['city'];
+                    document.getElementById("area_city").innerHTML = city;
+                    postcity();
                 }
             });
         }
-    </script>
 
+        function postcity() {
+            var city = document.getElementById("area_city").innerText;
+            console.log(city);
+            $.ajax({
+                'url': "/SelectCity",
+                'data': {
+                    "city": city,
+                }, //转化字符串
+                'contentType': 'application/json; charset=UTF-8',
+                'success': function (data) { //成功的话，得到消息
+                    console.log("selectcity:", data);
+                }
+            });
+        }
+
+        getcity();
+    </script>
 </body>
 
 </html>

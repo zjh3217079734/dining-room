@@ -4958,8 +4958,8 @@ h4.grand-totall-title span {
 /* #f9f9f9 */
 h5.panel-title {
     background-color:  #f9f9f9;
-    border-bottom: 55px solid #ebebeb;
-    border-top: 20px solid #ebebeb;
+    border-bottom: 55px solid #f9f9f9;
+    border-top: 20px solid #f9f9f9;
     color: #242424;
     font-size: 14px;
     font-weight: 500;
@@ -5011,6 +5011,12 @@ h5.panel-title a.collapsed::after {
     right: 10px;
     top: 21px;
 }
+
+h5.panel-title a:hover{
+    color: #0b2e13;
+    background-color: #e02c2b;
+}
+
 
 h5.panel-title a.collapsed::before {
     display: none;
